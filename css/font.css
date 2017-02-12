@@ -1,0 +1,27 @@
+@font-face {
+    font-family: NotoSansThaiUI-Regular;
+    src: url('../font/noto/th/NotoSansThaiUI-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: NotoSansUI-Regular;
+    src: url('../font/noto/en/NotoSansUI-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: NotoColorEmoji;
+    src: url('../font/noto/NotoColorEmoji.ttf') format('truetype');
+}
+
+*,
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+[class*="mdl-typography--"] {
+    font-family: 'NotoSansUI-Regular', 'NotoSansThaiUI-Regular', 'NotoColorEmoji';
+}

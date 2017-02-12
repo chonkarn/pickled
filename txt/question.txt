@@ -1,0 +1,5 @@
+﻿<option value=1>บ้านเกิดคุณอยู่ที่จังหวัดใด</option>
+<option value=2>สัตว์เลี้ยงตัวแรกชื่ออะไร</option>
+<option value=3>โรงเรียนอนุบาลของคุณชื่ออะไร</option>
+<option value=4>หนังสือเล่มโปรดของคุณชื่ออะไร</option>
+<option value=5>โทรศัพท์เครื่องแรกยี่ห้ออะไร</option>

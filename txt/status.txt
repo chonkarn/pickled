@@ -1,0 +1,6 @@
+﻿<option style='background-color: #B3E2C5'>-- สถานภาพ  --</option>
+<option value="0">โสด</option>
+<option value="1">สมรส</option>
+<option value="2">หม้าย</option>
+<option value="3">หย่าร้าง</option>
+<option value="4">แยกกันอยู่</option>

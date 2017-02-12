@@ -1,0 +1,29 @@
+<?php 
+$hn = $_GET['hn'];
+$type = $_GET['type'];
+switch ($type) {
+case 1:
+    $type = "Home visit care"; break;
+case 2:
+    $type = "Geriatric case"; break;
+case 3:
+    $type = "Palliative case"; break;
+}
+$p_name = "txt/p_name.txt";
+$month = "txt/month.txt";
+$status = "txt/status.txt";
+$religion ="txt/religion.txt";
+$re = "religion";
+$education = "txt/education.txt";
+$edu = "education";
+$occupation = "txt/occupation.txt";
+$occ = "occupation";
+$day = "day";
+$year = "year";
+include 'dropdown.php';
+?>
+    <script>
+        var occ = <?php echo(json_encode($occ)); ?>;
+        var edu = <?php echo(json_encode($edu)); ?>;
+        var re = <?php echo(json_encode($re)); ?>;
+    </script>
