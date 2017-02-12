@@ -11,7 +11,7 @@
       
  
                                     $user = $_SESSION['id'];
-                                    $connect = mysql_connect("localhost","root", "");
+                                    $connect = mysql_connect("localhost","hvmsdb", "1234");
                                     if (!$connect) {
                                         die(mysql_error());
                                     }

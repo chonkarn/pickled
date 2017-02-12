@@ -28,8 +28,8 @@ $main = $_POST['main'];
     }
 
 $dbhost = 'localhost';
-$dbuser = 'root';
-$dbpass = '';
+$dbuser = 'hvmsdb';
+$dbpass = '1234';
 $dbname = 'homevisit';
 mysql_connect($dbhost,$dbuser,$dbpass) or die("ติดต่อฐานข้อมูลไม่ได้");
 mysql_select_db($dbname) or die("เลือกฐานข้อมูลไม่ได้");

@@ -13,8 +13,8 @@ $user = $_SESSION['id'];
     if ($newpwd === $_POST["newpwd2"]){
       
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "hvmsdb";
+    $password = "1234";
     $dbname = "homevisit";
     $conn = new mysqli($servername, $username, $password, $dbname);
     $newpwd = md5($newpwd);

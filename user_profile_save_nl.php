@@ -52,8 +52,8 @@ $user = $_SESSION['id'];
     $filename = $_FILES["fileToUpload"]["name"];
 
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "hvmsdb";
+    $password = "1234";
     $dbname = "homevisit";
     $conn = new mysqli($servername, $username, $password, $dbname);
     $sql = "UPDATE tbuser SET  f_user = '$newname' , l_user = '$newlname' , photo = '$filename' WHERE user = '$user';";

@@ -1,8 +1,8 @@
 <?php 
 $dbhost="localhost";
 $dbname="homevisit";
-$dbuser="root";
-$dbpass="";
+$dbuser="hvmsdb";
+$dbpass="1234";
 
 mysql_query("SET NAMES UTF8");
 mysql_query("SET character_set_results=utf8");

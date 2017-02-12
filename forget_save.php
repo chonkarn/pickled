@@ -13,8 +13,8 @@ if ($_POST['new_pwd'] === $_POST['new_pwd_re']){
 
 
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "hvmsdb";
+    $password = "1234";
     $dbname = "homevisit";
     $conn = new mysqli($servername, $username, $password, $dbname);
     $sql = "UPDATE tbuser SET passwd = '$new_pwd' WHERE user = '$user'";

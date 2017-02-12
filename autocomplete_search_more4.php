@@ -1,7 +1,7 @@
 <?php
 $dbHost = 'localhost';
-$dbUsername = 'root';
-$dbPassword = '';
+$dbUsername = 'hvmsdb';
+$dbPassword = '1234';
 $dbName = 'homevisit';
 //connect with the database
 $db = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
