@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
+
+    <!--mdl-->
+    <link rel="stylesheet" href="lib/mdl/material.min.css">
+    <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
+
+    <!--uikit-->
+    <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
+
+    <!--mdl-stepper-->
+    <link rel="stylesheet" href="lib/mdl-stepper/stepper.min.css">
+
+    <!--icon-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--custom css-->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/calendar-all.css">
+</head>
+
+<body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <header class="demo-header mdl-layout__header mdl-color--primary mdl-color-text--white">
+            <div class="mdl-layout__header-row">
+                <img src="img/logo-rama.png" width="50px" style="margin-right: 20px;">
+                <div class="mdl-layout-title" style="margin-top: 20px;">
+                    <h6 class="mdl-typography--title mdl-color-text--white">
+                        ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน
+                        <p>ภาควิชาเวชศาสตร์ครอบครัว คณะแพทยศาสตร์โรงพยาบาลรามาธิบดี มหาวิทยาลัยมหิดล</p>
+                    </h6>
+                </div>
+            </div>
+        </header>
+        <div class="demo-drawer mdl-layout__drawer mdl-color--green">
+            <header class="demo-drawer-header">
+                <img src="img/user.jpg" class="demo-avatar">
+                <div class="demo-avatar-dropdown">
+                    <span class="mdl-color-text--white">
+                        นพ.ประสงค์ ทรงธรรม<br>
+                        <small>แพทย์ประจำบ้าน</small>
+                    </span>
+                    <div class="mdl-layout-spacer"></div>
+                    <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                        <i class="material-icons mdl-color-text--white">arrow_drop_down</i>
+                    </button>
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                        <li class="mdl-menu__item">แก้ไขข้อมูลส่วนตัว</li>
+                        <li class="mdl-menu__item"><i class="material-icons">exit_to_app</i> ออกจากระบบ</li>
+                    </ul>
+                </div>
+            </header>
+            <nav class="demo-navigation mdl-navigation mdl-color--grey-200">
+                <a class="mdl-navigation__link mdl-color-text--grey-900" href="index.html">
+                    <i class="material-icons mdl-color-text--grey-900" role="presentation">home</i> หน้าหลัก
+                </a>
+                <a class="mdl-navigation__link mdl-color-text--grey-900" href="patient.html">
+                    <i class="material-icons mdl-color-text--grey-900">folder_shared</i> ผู้ป่วยเยี่ยมบ้าน
+                </a>
+                <a class="mdl-navigation__link mdl-color-text--grey-900" href="patient.html">
+                    <i class="material-icons mdl-color-text--grey-900">date_range</i> ปฏิทินนัดหมาย
+                </a>
+                <a class="mdl-navigation__link mdl-color-text--grey-900" href="summary.html">
+                    <i class="material-icons mdl-color-text--grey-900">assignment</i> สรุปเยี่ยมบ้าน
+                </a>
+                <div class="mdl-layout-spacer"></div>
+            </nav>
+        </div>
+        <main class="mdl-layout__content mdl-color--grey-100">
+            <div class="mdl-grid demo-content">
+
+                <ul class="uk-breadcrumb">
+                    <li><a href="calendar.html">ปฏิทินนัดหมาย</a></li>
+                    <li><span href=""></span>เพิ่มนัดหมาย</li>
+                </ul>
+                <!--ul.uk-breadcrumb-->
+
+                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
+                    <div class="mdl-card__menu"></div>
+
+                    <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+
+                        <div class="uk-margin">
+                            <form class="uk-form-horizontal uk-margin-large">
+
+                                <h4><span uk-icon="icon: calendar"></span> เพิ่มนัดหมาย</h4>
+
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-horizontal-text">ชื่อผู้ป่วย</label>
+                                    <div class="uk-form-controls">
+                                        <input list="patient" class="uk-input uk-width-medium uk-form-small" placeholder="พิมพ์รหัส / ชื่อ-นามสกุล">
+                                        <datalist id="patient">
+                                            <option value="นาง มาลิณี เกียรติขจร" /> 5987452
+                                            <option value="นาย รุ่งโรจน์ เรืองรอง" /> 6215845
+                                            <option value="นาย วิบูรณ์ ธนโชติไพศาล" /> 8963215
+                                            <option value="นาง เพียรจิต จงใจรักษ์" /> 4987521
+                                            <option value="นาย เหมันต์ ธนไพบูรณ์" /> 5874158
+                                            <option value="นาง รุ่งทิพย์ ก่อเกียรติ" /> 5965485
+                                            <option value="นาง ชญานิศ พลฑา" /> 6158489
+                                            <option value="นาย ชัชพิสิทธิ์ กาวิโล" /> 6258459
+                                        </datalist>
+                                        <a class=" uk-icon-button" href="calendar_add_patient.html">
+                                            <span uk-icon="icon: list; ratio: 1"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-horizontal-select">วันที่เยี่ยม</label>
+                                    <div class="uk-form-controls">
+                                        <input class="uk-input uk-form-small uk-width-medium" type="date" id="visit-date">
+                                    </div>
+                                </div>
+
+                                <div class="uk-margin">
+                                    <div class="uk-form-label">ช่วงเวลา</div>
+                                    <div class="uk-form-controls uk-form-controls-text">
+                                        <label>
+                                            <input class="uk-radio" type="radio" name="visit-time" checked> เช้า (9.00-12.00 น)</label>
+                                        <br>
+                                        <label>
+                                            <input class="uk-radio " type="radio" name="visit-time"> บ่าย (13.00-16.00 น)</label>
+                                    </div>
+                                </div>
+                                <div class="uk-margin">
+                                    <label class="uk-form-label" for="form-horizontal-text">แพทย์เยี่ยมบ้าน</label>
+                                    <div class="uk-form-controls">
+                                        <input list="doctor" class="uk-input uk-width-medium uk-form-small" placeholder="พิมพ์รหัส / ชื่อ-นามสกุล">
+                                        <datalist id="doctor">
+                                            <option value="นพ.ประสงค์ ทรงธรรม" /> 012568
+                                            <option value="นพ.นพดล ชลธาร" /> 013654
+                                            <option value="นพ.คชสร อมรรัตน์" /> 016325
+                                            <option value="พญ.รัตนา พานิชญ์" /> 014251
+                                            <option value="นญ.วิภาวรรณ ใจสุทธิ์" /> 013212
+                                            <option value="นพ.ชลธร รุ่งเจริญ" /> 013625
+                                        </datalist>
+
+                                        <a class=" uk-icon-button" href="calendar_add_doctor.html">
+                                            <span uk-icon="icon: list; ratio: 1"></span>
+                                        </a>
+                                        <br>
+                                        <br>
+                                        <a class="uk-button uk-button-green uk-button-small" href="#">
+                                            <span uk-icon="icon: plus; ratio: 0.8"></span> เพิ่มแพทย์
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--/.mdl-card__supporting-text-->
+                    <div class="mdl-card__actions mdl-card--border">
+                        <div class="mdl-grid">
+                            <div class="mdl-layout-spacer"></div>
+                            <a class="uk-button uk-button-green" href="calendar.html">บันทึก</a>
+
+
+                        </div>
+                    </div>
+                    <!--.mdl-card__actions-->
+                </div>
+            </div>
+            <!--/.demo-content-->
+
+
+
+        </main>
+    </div>
+
+    <!--jquery-->
+    <!--<script src="js/jquery-3.1.1.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+    <!--js mdl-->
+    <script src="lib/mdl/material.min.js"></script>
+    <script src="lib/mdl-stepper/stepper.min.js"></script>
+
+
+    <!--js uikit-->
+    <script src="lib/uikit/js/uikit.min.js"></script>
+    <script src="lib/uikit/js/uikit-icons.min.js"></script>
+
+    <!--custom js-->
+    <script src="js/stepper-nonlinear.js"></script>
+</body>
+
+</html>

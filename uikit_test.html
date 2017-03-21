@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
+
+    <!--uikit-->
+    <link rel="stylesheet" href="lib/uikit/css/uikit.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="lib/uikit/js/uikit.min.js"></script>
+    <script src="lib/uikit/js/uikit-icons.min.js"></script>
+
+
+</head>
+
+<body>
+
+<span uk-icon="icon: check"></span>
+
+<a href="" uk-icon="icon: heart"></a>
+    <hr>
+    <!--FORM #custom-controls-->
+    <form>
+
+        <div class="uk-margin">
+            <div uk-form-custom>
+                <input type="file">
+                <button class="uk-button uk-button-default" type="button" tabindex="-1">Select</button>
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <span class="uk-text-middle">Here is a text</span>
+            <div uk-form-custom>
+                <input type="file">
+                <span class="uk-link">upload</span>
+            </div>
+        </div>
+
+        <div class="uk-margin" uk-margin>
+            <div uk-form-custom="target: true">
+                <input type="file">
+                <input class="uk-input uk-form-width-medium" type="text" placeholder="Select file" disabled>
+            </div>
+            <button class="uk-button uk-button-default">Submit</button>
+        </div>
+
+    </form>
+    
+    <hr>
+
+    <!--FORM #selct-->
+    <form>
+
+        <div class="uk-margin">
+            <div uk-form-custom="target: true">
+                <select>
+                    <option value="1">Option 01</option>
+                    <option value="2">Option 02</option>
+                    <option value="3">Option 03</option>
+                    <option value="4">Option 04</option>
+                </select>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <div uk-form-custom="target: > * > span:last">
+                <select>
+                    <option value="1">Option 01</option>
+                    <option value="2">Option 02</option>
+                    <option value="3">Option 03</option>
+                    <option value="4">Option 04</option>
+                </select>
+                <span class="uk-link">
+                <span uk-icon="icon: pencil"></span>
+                <span></span>
+                </span>
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <div uk-form-custom="target: > * > span:first">
+                <select>
+                    <option value="">Please select...</option>
+                    <option value="1">Option 01</option>
+                    <option value="2">Option 02</option>
+                    <option value="3">Option 03</option>
+                    <option value="4">Option 04</option>
+                </select>
+                <button class="uk-button uk-button-default" type="button" tabindex="-1">
+                    <span></span>
+                    <span uk-icon="icon: chevron-down"></span>
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+<hr>
+    <!--UPLOAD-->
+    <div class="test-upload uk-placeholder uk-text-center">
+        <span uk-icon="icon: cloud-upload"></span>
+        <span class="uk-text-middle">Attach binaries by dropping them here or</span>
+        <div uk-form-custom>
+            <input type="file" multiple>
+            <span class="uk-link">selecting one</span>
+        </div>
+    </div>
+
+    <progress id="progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+
+    <script>
+        (function ($) {
+
+            var bar = $("#progressbar")[0];
+
+            UIkit.upload('.test-upload', {
+
+                url: '',
+                multiple: true,
+
+                beforeSend: function () {
+                    console.log('beforeSend', arguments);
+                },
+                beforeAll: function () {
+                    console.log('beforeAll', arguments);
+                },
+                load: function () {
+                    console.log('load', arguments);
+                },
+                error: function () {
+                    console.log('error', arguments);
+                },
+                complete: function () {
+                    console.log('complete', arguments);
+                },
+
+                loadStart: function (e) {
+                    console.log('loadStart', arguments);
+
+                    bar.removeAttribute('hidden');
+                    bar.max = e.total;
+                    bar.value = e.loaded;
+                },
+
+                progress: function (e) {
+                    console.log('progress', arguments);
+
+                    bar.max = e.total;
+                    bar.value = e.loaded;
+
+                },
+
+                loadEnd: function (e) {
+                    console.log('loadEnd', arguments);
+
+                    bar.max = e.total;
+                    bar.value = e.loaded;
+                },
+
+                completeAll: function () {
+                    console.log('completeAll', arguments);
+
+                    setTimeout(function () {
+                        bar.setAttribute('hidden', 'hidden');
+                    }, 1000);
+
+                    alert('Upload Completed');
+                }
+            });
+
+        })(jQuery);
+    </script>
+
+<hr>
+    <!--MODAL-->
+<p uk-margin>
+
+    <a id="modal-dialog" class="uk-button uk-button-default" href="#">Dialog</a>
+
+    <a id="modal-alert" class="uk-button uk-button-default" href="#">Alert</a>
+
+    <a id="modal-confirm" class="uk-button uk-button-default" href="#">Confirm</a>
+
+    <a id="modal-prompt" class="uk-button uk-button-default" href="#">Prompt</a>
+
+    <script>
+        (function ($) {
+
+            $('#modal-dialog').on('click', function (e) {
+                e.preventDefault();
+                $(this).blur();
+                UIkit.modal.dialog('<p class="uk-modal-body">UIkit dialog!</p>');
+            });
+
+            $('#modal-alert').on('click', function (e) {
+                e.preventDefault();
+                $(this).blur();
+                UIkit.modal.alert('UIkit alert!').then(function() {
+                    console.log('Alert closed.')
+                });
+            });
+
+            $('#modal-confirm').on('click', function (e) {
+                e.preventDefault();
+                $(this).blur();
+                UIkit.modal.confirm('UIkit confirm!').then(function() {
+                    console.log('Confirmed.')
+                }, function () {
+                    console.log('Rejected.')
+                });
+            });
+
+            $('#modal-prompt').on('click', function (e) {
+                e.preventDefault();
+                $(this).blur();
+                UIkit.modal.prompt('Name:', 'Your name').then(function(name) {
+                    console.log('Prompted:', name)
+                });
+            });
+
+        })(jQuery);
+
+    </script>
+
+</p>
+</body>
+
+</html>

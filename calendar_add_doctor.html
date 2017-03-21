@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
+
+    <!--mdl-->
+    <link rel="stylesheet" href="lib/mdl/material.min.css">
+    <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
+
+    <!--uikit-->
+    <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
+
+    <!--mdl-stepper-->
+    <link rel="stylesheet" href="lib/mdl-stepper/stepper.min.css">
+
+    <!--icon-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--custom css-->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/calendar-all.css">
+</head>
+
+<body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <header class="demo-header mdl-layout__header mdl-color--primary mdl-color-text--white">
+            <div class="mdl-layout__header-row">
+                <img src="img/logo-rama.png" width="50px" style="margin-right: 20px;">
+                <div class="mdl-layout-title" style="margin-top: 20px;">
+                    <h6 class="mdl-typography--title mdl-color-text--white">
+                        ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน
+                        <p>ภาควิชาเวชศาสตร์ครอบครัว คณะแพทยศาสตร์โรงพยาบาลรามาธิบดี มหาวิทยาลัยมหิดล</p>
+                    </h6>
+                </div>
+            </div>
+        </header>
+        <div class="demo-drawer mdl-layout__drawer mdl-color--green">
+            <header class="demo-drawer-header">
+                <img src="img/user.jpg" class="demo-avatar">
+                <div class="demo-avatar-dropdown">
+                    <span class="mdl-color-text--white">
+                        นพ.ประสงค์ ทรงธรรม<br>
+                        <small>แพทย์ประจำบ้าน</small>
+                    </span>
+                    <div class="mdl-layout-spacer"></div>
+                    <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                        <i class="material-icons mdl-color-text--white">arrow_drop_down</i>
+                    </button>
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                        <li class="mdl-menu__item">แก้ไขข้อมูลส่วนตัว</li>
+                        <li class="mdl-menu__item"><i class="material-icons">exit_to_app</i> ออกจากระบบ</li>
+                    </ul>
+                </div>
+            </header>
+            <nav class="demo-navigation mdl-navigation mdl-color--grey-200">
+                <a class="mdl-navigation__link mdl-color-text--grey-900" href="index.html">
+                    <i class="material-icons mdl-color-text--grey-900" role="presentation">home</i> หน้าหลัก
+                </a>
+                <a class="mdl-navigation__link mdl-color-text--grey-900" href="patient.html">
+                    <i class="material-icons mdl-color-text--grey-900">folder_shared</i> ผู้ป่วยเยี่ยมบ้าน
+                </a>
+                <a class="mdl-navigation__link mdl-color-text--grey-900" href="patient.html">
+                    <i class="material-icons mdl-color-text--grey-900">date_range</i> ปฏิทินนัดหมาย
+                </a>
+                <a class="mdl-navigation__link mdl-color-text--grey-900" href="summary.html">
+                    <i class="material-icons mdl-color-text--grey-900">assignment</i> สรุปเยี่ยมบ้าน
+                </a>
+                <div class="mdl-layout-spacer"></div>
+            </nav>
+        </div>
+        <main class="mdl-layout__content mdl-color--grey-100">
+            <div class="mdl-grid demo-content">
+
+                <ul class="uk-breadcrumb">
+                    <li><a href="calendar.html">ปฏิทินนัดหมาย</a></li>
+                    <li><a href="calendar.html">เพิ่มนัดหมาย</a></li>
+                    <li><span href=""></span>เพิ่มแพทย์เยี่ยมบ้าน</li>
+                </ul>
+                <!--ul.uk-breadcrumb-->
+
+                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
+                    <div class="mdl-card__menu"></div>
+
+                    <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+
+                        <div class="uk-margin">
+
+
+                            <h5><span uk-icon="icon: calendar"></span> รายชื่อผู้ป่วย</h5>
+
+                            <!--table-->
+                            <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col ">
+                                <thead>
+                                    <tr>
+                                        <th class="mdl-data-table__header--sorted-ascending">ID</th>
+                                        <th class="mdl-data-table__cell--non-numeric">ชื่อ-นามสกุล</th>
+                                        <th>ตำแหน่ง</th>
+                                        <th>สถานะ</th>
+                                        <th>ลงเยี่ยมบ้าน</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--new-->
+                                    <tr>
+                                        <td>5987452</td>
+                                        <td class="mdl-data-table__cell--non-numeric"><a href="patient_5987452.html">พญ. มาลิณี เกียรติขจร</a></td>
+                                       <td>แพทย์ประจำบ้าน</td>
+                                        <td>ไม่มีนัด</td>
+                                        <td><a href="calendar_add.html"><i class="material-icons">person_add</i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6215845</td>
+                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">นพ. รุ่งโรจน์ เรืองรอง</a></td>
+                                       <td>แพทย์ประจำบ้าน</td>
+                                         <td>ไม่มีนัด</td>
+                                        <td><a href="calendar_add.html"><i class="material-icons">person_add</i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>8963215</td>
+                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">นพ. วิบูรณ์ ธนโชติไพศาล</a></td>
+                                        <td>แพทย์ประจำบ้าน</td>
+                                         <td>ไม่มีนัด</td>
+                                        <td><a href="calendar_add.html"><i class="material-icons">person_add</i></a></td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>4987521</td>
+                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">พญ. เพียรจิต จงใจรักษ์</a></td>
+                                       <td>แพทย์ประจำบ้าน</td>
+                                      <td>ไม่มีนัด</td>
+                                        <td><a href="calendar_add.html"><i class="material-icons">person_add</i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5874158</td>
+                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">นพ. เหมันต์ ธนไพบูรณ์</a></td>
+                                      <td>แพทย์ประจำบ้าน</td>
+                                        <td>ไม่มีนัด</td>
+                                        <td><a href="calendar_add.html"><i class="material-icons">person_add</i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5965485</td>
+                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">พญ. รุ่งทิพย์ ก่อเกียรติ</a></td>
+                                        <td>แพทย์ประจำบ้าน</td>
+                                         <td>ไม่มีนัด</td>
+                                        <td><a href="calendar_add.html"><i class="material-icons">person_add</i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6158489</td>
+                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">พญ. ชญานิศ พลฑา</a></td>
+                                        <td>แพทย์ประจำบ้าน</td>
+                                     <td>มีนัดแล้ว</td>
+                                        <td><a href="calendar_add.html"><i class="material-icons">person_add</i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>6258459</td>
+                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">นพ. ชัชพิสิทธิ์ กาวิโล</a></td>
+                                        <td>แพทย์ประจำบ้าน</td>
+                                     <td>มีนัดแล้ว</td>
+                                        <td><a href="calendar_add.html"><i class="material-icons">person_add</i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>7854485</td>
+                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">พญ. วิยดา เครื่องดี</a></td>
+                                        <td>แพทย์ประจำบ้าน</td>
+                                        <td>มีนัดแล้ว</td>
+                                        <td><a href="calendar_add.html"><i class="material-icons">person_add</i></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>8512365</td>
+                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">นพ. ธนโชติ  มหาทรัพย์</a></td>
+                                        <td>แพทย์ประจำบ้าน</td>
+                                      <td>มีนัดแล้ว</td>
+                                        <td><a href="calendar_add.html"><i class="material-icons">person_add</i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                    <!--.mdl-card__supporting-text-->
+                   <div class="mdl-card__actions mdl-card--border">
+                        <div class="mdl-grid">
+                            <span class="margin-right-10">แสดง</span>
+                            <select>
+                                <option>10</option>
+                                <option>20</option>
+                                <option>30</option>
+                                <option>40</option>
+                                <option>50</option>
+                            </select>
+                            <span class="margin-left-10">รายชื่อต่อหน้า</span>
+
+                            <div class="mdl-layout-spacer"></div>
+
+                            <button disabled class="mdl-button mdl-js-button mdl-button--icon">
+                                <i class="material-icons">navigate_before</i>
+                            </button>
+
+                            <span class="margin-left-10 margin-right-10">1-10 จาก 12 รายชื่อ</span>
+
+                            <a href="patient_2.html">
+                                <button class="mdl-button mdl-js-button mdl-button--icon">
+                                    <i class="material-icons">navigate_next</i>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <!--.mdl-card__actions-->
+                </div>
+            </div>
+            <!--/.demo-content-->
+
+        </main>
+    </div>
+
+    <!--jquery-->
+    <!--<script src="js/jquery-3.1.1.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+    <!--js mdl-->
+    <script src="lib/mdl/material.min.js"></script>
+    <script src="lib/mdl-stepper/stepper.min.js"></script>
+
+
+    <!--js uikit-->
+    <script src="lib/uikit/js/uikit.min.js"></script>
+    <script src="lib/uikit/js/uikit-icons.min.js"></script>
+
+    <!--custom js-->
+    <script src="js/stepper-nonlinear.js"></script>
+</body>
+
+</html>
