@@ -79,10 +79,8 @@
             <div class="mdl-grid demo-content">
 
                 <ul class="uk-breadcrumb">
-                    <!--                    <li><a href="summary.html">ผู้ป่วยเยี่ยมบ้าน</a></li>-->
                     <li><span href=""></span>ปฏิทินนัดหมาย</li>
                 </ul>
-                <!--ul.uk-breadcrumb-->
 
                 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
                     <div class="mdl-card__menu"></div>
@@ -124,39 +122,43 @@
                 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col mdl-color-text--black">
                         <div class="mdl-card__menu">
-                            <a href="calendar_add.html">
-                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--green">
-                                    <i class="material-icons">add</i>
-                                </button>
-                            </a>
+                            <ul class="uk-iconnav">
+                                <li>
+                                    <a href="calendar_notify.html" class=" mdl-badge mdl-badge--overlap" data-badge="3" title="แจ้งเตือน" uk-tooltip>
+                                        <i class="material-icons">notifications</i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" uk-icon="icon: print" title="พิมพ์นัดหมาย" uk-tooltip>
+                                        <i class="material-icons">print</i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="calendar_add.html" title="เพิ่มนัดหมาย" uk-tooltip>
+                                        <i class="material-icons">add</i>
+                                    </a>
+                                </li>
+                            </ul>
                         </div>
 
-                        <h4>
+                        <h4 class="uk-text-center">
                             <a href="#" uk-slidenav-previous></a> มีนาคม 2560
                             <a href="" uk-slidenav-next></a>
                         </h4>
-
-
-
 
                         <!--calendar-wrap-->
                         <div id="calendar-wrap">
                             <div id="calendar">
                                 <ul class="weekdays">
-                                    <li>อาทิตย์</li>
                                     <li>จันทร์</li>
                                     <li>อังคาร</li>
                                     <li>พุธ</li>
                                     <li>พฤหัสบดี</li>
                                     <li>ศุกร์</li>
-                                    <li>เสาร์</li>
                                 </ul>
 
                                 <!-- Days from previous month -->
                                 <ul class="days">
-                                    <li class="day other-month">
-                                        <div class="date">26</div>
-                                    </li>
                                     <li class="day other-month">
                                         <div class="date">27</div>
 
@@ -168,10 +170,9 @@
                                     <!-- Days in current month -->
                                     <li class="day">
                                         <div class="date">1</div>
-
                                         <div class="event past">
                                             <div class="event-desc">
-                                                <img class="icon-daytime" src="img/icon_morning.png">
+                                                <span uk-icon="icon: check; ratio: 0.8"></span>
                                                 <span class="title">นาย</span> ธนโชติ <span class="lastname">มหาทรัพย์</span>
                                                 <b>8512365</b>
                                                 <br />
@@ -180,10 +181,7 @@
                                             <div class="event-time">
                                                 9:00 - 12.00 น (เช้า)
                                             </div>
-
                                         </div>
-
-
                                     </li>
                                     <li class="day" onclick="add_calendar()">
                                         <div class="date">2</div>
@@ -191,16 +189,10 @@
                                     <li class="day">
                                         <div class="date">3</div>
                                     </li>
-                                    <li class="day">
-                                        <div class="date">4</div>
-                                    </li>
                                 </ul>
-                                <!-- Row #2 -->
 
+                                <!-- Row #2 -->
                                 <ul class="days">
-                                    <li class="day">
-                                        <div class="date">5</div>
-                                    </li>
                                     <li class="day">
                                         <div class="date">6</div>
                                     </li>
@@ -208,12 +200,12 @@
                                         <div class="date">7</div>
                                         <div class="event afternoon past">
                                             <div class="event-desc">
-                                                <img class="icon-daytime" src="img/icon_afternoon.png">
-                                                <span class="title">นาย</span> ชูชาติ <span class="lastname">มณีโชติ</span>
-                                                <b>7463256</b>
-                                                <br />
+                                                <div class="uk-text-trucate"><span uk-icon="icon: check; ratio: 0.8"></span>
+                                                    <b>นาย ชูชาติ มณีโชติ
+                                            <small>(7463256)</small></b>
+                                                </div>
                                                 <div class="uk-text-truncate">
-                                                    <small>นพ.อภิชัย วรรธนะพิศิษฐ์ <b>011115</b></small>
+                                                    นพ.อภิชัย วรรธนะพิศิษฐ์ <small>(011115)</small>
                                                 </div>
                                             </div>
                                             <div class="event-time">
@@ -225,16 +217,15 @@
                                         <div class="date">8</div>
                                     </li>
                                     <li class="day">
-
                                         <div class="date ">9</div>
                                         <div class="event past">
                                             <div class="event-desc">
-                                                <img class="icon-daytime" src="img/icon_morning.png">
-                                                <span class="title">นาง</span> เพียรจิต <span class="lastname">จงใจรักษ์</span>
-                                                <b>6213261</b>
-                                                <br />
                                                 <div class="uk-text-truncate">
-                                                    <small>นพ.ประสงค์ ทรงธรรม <b>011365</b></small>
+                                                    <span uk-icon="icon: check; ratio: 0.8"></span>
+                                                    <b>นาง เพียรจิต จงใจรักษ์ <small>(6213261)</small></b>
+                                                </div>
+                                                <div class="uk-text-truncate">
+                                                    นพ.ประสงค์ ทรงธรรม <small>(0113650)</small>
                                                 </div>
                                             </div>
                                             <div class="event-time">
@@ -243,12 +234,12 @@
                                         </div>
                                         <div class="event past">
                                             <div class="event-desc">
-                                                <img class="icon-daytime" src="img/icon_morning.png">
-                                                <span class="title">นาง</span> รุ่งทิพย์ <span class="lastname">ก่อเกียรติ</span>
-                                                <b>5965485</b>
-                                                <br />
                                                 <div class="uk-text-truncate">
-                                                    <small> พญ.ปุณพรรณ กมลมุนีโชติ <b>013829</b></small>
+                                                    <span uk-icon="icon: check; ratio: 0.8"></span>
+                                                    <b> นาง รุ่งทิพย์ ก่อเกียรติ <small>(5965485)</small></b>
+                                                </div>
+                                                <div class="uk-text-truncate">
+                                                    พญ.ปุณพรรณ กมลมุนีโชติ <small>(013829)</small>
                                                 </div>
                                             </div>
                                             <div class="event-time">
@@ -256,22 +247,18 @@
                                             </div>
                                         </div>
 
-                                        <a href="#show-more" class="event-more" uk-toggle>+2 นัดหมาย</a>
+                                        <a href="#show-more" class="event-more" uk-toggle><small>+2 นัดหมาย</small></a>
 
                                         <!--THIS IS A MODAL-->
                                         <div id="show-more" uk-modal="center: true">
                                             <div class="uk-modal-dialog uk-modal-body">
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
-                                                <h2 class="uk-modal-title">นาย ธนโชติ มหาทรัพย์ (HN 8512365)</h2>
+                                                <h4>นัดหมายวันที่ 9 มีนาคม 2560</h4>
 
-                                                <div class="date">9</div>
                                                 <div class="event past">
                                                     <div class="event-desc">
-                                                        <img class="icon-daytime" src="img/icon_morning.png">
-                                                        <span class="title">นาง</span> เพียรจิต <span class="lastname">จงใจรักษ์</span>
-                                                        <b>6213261</b>
-                                                        <br />
-                                                        <small>นพ.ประสงค์ ทรงธรรม <b>011365</b></small>
+                                                        <div class="uk-text-truncate"> <span uk-icon="icon: check"></span> นาง เพียรจิต จงใจรักษ์ <b>6213261</b></div>
+                                                        <div class="uk-text-truncate">นพ.ประสงค์ ทรงธรรม <small>(011365)</small></div>
                                                     </div>
                                                     <div class="event-time">
                                                         9:00 - 12.00 น (เช้า)
@@ -279,13 +266,8 @@
                                                 </div>
                                                 <div class="event past">
                                                     <div class="event-desc">
-                                                        <img class="icon-daytime" src="img/icon_morning.png">
-                                                        <span class="title">นาง</span> รุ่งทิพย์ <span class="lastname">ก่อเกียรติ</span>
-                                                        <b>5965485</b>
-                                                        <br />
-                                                        <div class="uk-text-truncate">
-                                                            พญ.ปุณพรรณ กมลมุนีโชติ <b>013829</b>
-                                                        </div>
+                                                        <div class="uk-text-truncate"> <span uk-icon="icon: check"></span> นาง รุ่งทิพย์ ก่อเกียรติ <b>5965485</b></div>
+                                                        <div class="uk-text-truncate">พญ.ปุณพรรณ กมลมุนีโชติ <small>(013829)</small></div>
                                                     </div>
                                                     <div class="event-time">
                                                         9:00 - 12.00 น (เช้า)
@@ -297,34 +279,28 @@
                                             </div>
                                         </div>
                                         <!--/.uk-modal-->
-
                                     </li>
                                     <li class="day">
                                         <div class="date">10</div>
                                     </li>
-                                    <li class="day">
-                                        <div class="date ">11</div>
-                                    </li>
                                 </ul>
-                                <!-- Row #3 -->
 
+                                <!-- Row #3 -->
                                 <ul class="days">
-                                    <li class="day">
-                                        <div class="date">12</div>
-                                    </li>
                                     <li class="day">
                                         <div class="date">13</div>
                                     </li>
                                     <li class="day">
                                         <div class="date">14</div>
                                         <a href="#show-hn5874158" uk-toggle>
-                                            <div class="event afternoon past">
+                                            <div class="event afternoon">
                                                 <div class="event-desc">
-                                                    <img class="icon-daytime" src="img/icon_afternoon.png">
-                                                    <span class="title">นาย</span> เหมันต์ <span class="lastname">ธนไพบูรณ์</span>
-                                                    <b>5874158</b>
-                                                    <br />
-                                                    <small>พญ.ภัควิภา เริ่มยินดี <b>011097</b></small>
+                                                    <div class="ul-text-truncate"> <span uk-icon="icon: check; ratio: 0.8"></span>
+                                                        <b>นาย เหมันต์ ธนไพบูรณ์ <small>(5874158)</small></b>
+                                                    </div>
+                                                    <div class="uk-text-truncate">
+                                                        พญ.ภัควิภา เริ่มยินดี <small>(011097) </small>
+                                                    </div>
                                                 </div>
                                                 <div class="event-time">
                                                     13:00 - 16.00 น (บ่าย)
@@ -453,12 +429,13 @@
                                         <a href="#show-hn7854485" uk-toggle>
                                             <div class="event morning ">
                                                 <div class="event-desc">
-                                                    <img class="icon-daytime" src="img/icon_morning.png">
-                                                    <span class="title">นาง </span> วิยดา
-                                                    <span class="lastname">เครื่องดี</span>
-                                                    <b>7854485</b>
-                                                    <br />
-                                                    <small>นพ.ประสงค์ ทรงธรรม <b>011365</b></small>
+                                                    <div class="uk-text-truncate">
+                                                        <span uk-icon="icon: users; ratio: 0.8"></span>
+                                                        <b>นาง วิยดา เครื่องดี <small>(7854485)</small></b>
+                                                    </div>
+                                                    <div class="uk-text-truncate">
+                                                        นพ.ประสงค์ ทรงธรรม <small>011365</small>
+                                                    </div>
                                                 </div>
                                                 <div class="event-time">
                                                     9:00 - 12.00 น (เช้า)
@@ -506,7 +483,7 @@
                                                             <label class="uk-form-label">ทีมแพทย์เยี่ยมบ้าน
                                                             </label>
                                                             <div class="uk-form-controls uk-form-controls-text">
-                                                                <span class="text-green">&#11044;</span> พญ.ภัควิภา เริ่มยินดี <small>011097</small>
+                                                                <span class="text-green">&#11044;</span> พญ.ภัควิภา เริ่มยินดี <small>(011097)</small>
                                                                 <br>
                                                                 <span class="text-green">&#11044;</span> นพ.นพดล นพกุล <small>(011106)</small>
                                                                 <br>
@@ -533,11 +510,11 @@
                                                             </label>
                                                             <div class="uk-form-controls uk-form-controls-text">
                                                                 <label class="uk-margin-right">
-                                                                    <input class="uk-radio" type="radio" name="reason" checked> ได้เยี่ยมบ้าน
+                                                                    <input class="uk-radio" type="radio" name="reason" disabled> ได้เยี่ยมบ้าน
                                                                 </label>
                                                                 <br>
                                                                 <label class="uk-margin-right">
-                                                                    <input class="uk-radio" type="radio" name="reason"> ยกเลิกเยี่ยมบ้าน
+                                                                    <input class="uk-radio" type="radio" name="reason" checked> ยกเลิกเยี่ยมบ้าน
                                                                 </label>
                                                                 <br>
                                                                 <label class="uk-margin-right">
@@ -560,32 +537,24 @@
                                         </div>
                                         <!--/.uk-modal-->
 
-                                        <div class="event afternoon">
+                                        <div class="event afternoon summary">
                                             <div class="event-desc">
-                                                <img class="icon-daytime" src="img/icon_afternoon.png">
-                                                <span class="title">นาง </span> วิภา
-                                                <span class="lastname">มานะยิ่ง</span>
-                                                <b>7465116</b>
-                                                <br />
-                                                <small>นพ.ประสงค์ ทรงธรรม <b>011365</b></small>
+                                                <div class="uk-text-truncte">
+                                                    <span uk-icon="icon: users; ratio: 0.8"></span>
+                                                    <b>นาง วิภา มานะยิ่ง <small>(7465116)</small></b>
+                                                </div>
+                                                <div class="uk-text-truncte">
+                                                    <small>นพ.ประสงค์ ทรงธรรม (011365)</small></div>
                                             </div>
                                             <div class="event-time">
                                                 13:00 - 16.00 น (บ่าย)
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="day">
-                                        <div class="date">18</div>
-                                    </li>
                                 </ul>
+
                                 <!-- Row #4 -->
-
                                 <ul class="days">
-
-
-                                    <li class="day">
-                                        <div class="date">19</div>
-                                    </li>
                                     <li class="day">
                                         <div class="date">20</div>
                                     </li>
@@ -597,12 +566,15 @@
                                         <a href="#show-hn4683265" uk-toggle>
                                             <div class="event">
                                                 <div class="event-desc">
-                                                    <img class="icon-daytime" src="img/icon_morning.png">
-                                                    <span class="title">นาง</span> มาณี <span class="lastname">ประชาไท</span>
-                                                    <b>4683265</b>
-                                                    <br />
+
                                                     <div class="uk-text-truncate">
-                                                        นพ.ณัฐพล พรรณเชษฐ์ <b>011106</b>
+                                                        <span uk-icon="icon: comments; ratio: 0.8"></span>
+
+                                                        <b> นาง มาณี ประชาไท <small>(4683265)</small>
+                                                    
+                                                        </b></div>
+                                                    <div class="uk-text-truncate">
+                                                        นพ.ณัฐพล พรรณเชษฐ์ <small>(011106)</small>
                                                     </div>
                                                 </div>
                                                 <div class="event-time">
@@ -676,7 +648,7 @@
                                                 </div>
                                                 <div class="uk-modal-footer">
                                                     <div class="uk-align-left uk-margin-remove-vertical">
-                                                        <a href="" uk-icon="icon: trash" title="ลบนัดหมายผิดพลาด" tooltip></a>
+                                                        <a href="" uk-icon="icon: trash" title="ลบนัดหมายผิดพลาด" uk-tooltip="pos: right"></a>
                                                     </div>
                                                     <div class="uk-align-right uk-margin-remove-vertical">
                                                         <button class="uk-button uk-button-green uk-button-small" uk- type="button">แก้ไข</button>
@@ -696,12 +668,12 @@
                                             <div class="event afternoon">
                                                 <div class="event-desc">
                                                     <!--                                                    <img class="icon-daytime" src="img/icon_afternoon.png">-->
-                                                    <span uk-icon="icon: commenting; ratio: 0.8"></span>
-                                                    <span class="title">นาง</span> ชญานิศ <span class="lastname">พลฑา</span>
-                                                    <b>6118489</b>
-                                                    <br />
                                                     <div class="uk-text-truncate">
-                                                        นพ.ณัฐพล พรรณเชษฐ์ <b>011106</b>
+                                                        <span uk-icon="icon: commenting; ratio: 0.8"></span>
+                                                        <b>นาง ชญานิศ พลฑา <small>(6118489)</small></b>
+                                                    </div>
+                                                    <div class="uk-text-truncate">
+                                                        นพ.ณัฐพล พรรณเชษฐ์ <small>(011106)</small>
                                                     </div>
                                                 </div>
                                                 <div class="event-time">
@@ -754,9 +726,9 @@
                                                                 <br>
                                                                 <span class="text-green">&#11044;</span> นพ.นพดล นพกุล <small>(011106)</small>
                                                                 <br>
-                                                                <span class="text-orange">&#11044;</span> นพ.ประสงค์ ทรงธรรม <small>(011156)</small>
+                                                                <span class="text-yellow">&#11044;</span> นพ.ประสงค์ ทรงธรรม <small>(011156)</small>
                                                                 <br>
-                                                                <span>&#11044;</span> นพ.พฤกษา วนารี <small>(011196)</small>
+                                                                <span class="text-red">&#11044;</span> นพ.พฤกษา วนารี <small>(011196)</small>
                                                                 <br>
                                                             </div>
                                                         </div>
@@ -786,19 +758,10 @@
                                         </div>
                                         <!--/.uk-modal-->
                                     </li>
-                                    <li class="day">
-                                        <div class="date">25</div>
-                                    </li>
                                 </ul>
 
                                 <!-- Row #5 -->
-
                                 <ul class="days">
-
-
-                                    <li class="day">
-                                        <div class="date">26</div>
-                                    </li>
                                     <li class="day">
                                         <div class="date">27</div>
                                     </li>
@@ -814,13 +777,14 @@
                                     <li class="day">
                                         <div class="date">31</div>
                                     </li>
-                                    <!-- Next Month -->
 
+                                    <!-- Next Month -->
+                                    <!--
                                     <li class="day other-month">
                                         <div class="date">1</div>
                                     </li>
+                                    -->
                                 </ul>
-
                             </div>
                             <!-- /. calendar -->
                         </div>
@@ -836,24 +800,23 @@
                         <div class="uk-grid">
                             <div class="uk-width-1-3@m">
                                 <h5 class="uk-heading-divider">สีของนัดหมาย</h5>
-                                <p> สีจาง คือนัดหมายที่สรุปแล้ว</p>
-                                <span>
-                                    <img class="icon-daytime morning" src=""> เวลาเช้า (9.00 - 12.00 น)
+                                <div class="uk-margin-small-bottom">สีจาง คือนัดหมายที่สรุปแล้ว
+                                </div> <span>
+                                    <img class="icon-desc morning past" src=""> เวลาเช้า <small>(9.00 - 12.00 น)</small>
                                 </span>
                                 <br>
                                 <span>
-                                    <img class="icon-daytime afternoon" src=""> เวลาบ่าย (13.00-16.00 น)
+                                    <img class="icon-desc afternoon past" src=""> เวลาบ่าย <small>(13.00-16.00 น)</small>
                                 </span>
-
-                                <p>สีเข้ม คือนัดหมายที่ยังไม่สรุป</p>
+                                <div class="uk-margin-top uk-margin-small-bottom">สีเข้ม คือนัดหมายที่ยังไม่สรุป</div>
 
                                 <span>
-                                    <img class="icon-daytime morning" src=""> เวลาบ่าย (13.00-16.00 น)
+                                    <img class="icon-desc morning" src=""> เวลาเช้า <small>(9.00 - 12.00 น)</small>
                                 </span>
                                 <br>
 
                                 <span>
-                                    <img class="icon-daytime afternoon" src=""> เวลาบ่าย (13.00-16.00 น)
+                                    <img class="icon-desc afternoon" src=""> เวลาบ่าย <small>(13.00-16.00 น)</small>
                                 </span>
                             </div>
                             <div class="uk-width-1-3@m">

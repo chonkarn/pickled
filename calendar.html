@@ -124,12 +124,19 @@
                         <div class="mdl-card__menu">
                             <ul class="uk-iconnav">
                                 <li>
+                                    <a href="calendar_notify.html" class=" mdl-badge mdl-badge--overlap" data-badge="2" title="แจ้งเตือน" uk-tooltip>
+                                        <i class="material-icons">notifications</i>
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="#" uk-icon="icon: print" title="พิมพ์นัดหมาย" uk-tooltip>
                                         <i class="material-icons">print</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="calendar_add.html" uk-icon="icon: plus" title="เพิ่มนัดหมาย" uk-tooltip></a>
+                                    <a href="calendar_add.html" title="เพิ่มนัดหมาย" uk-tooltip>
+                                        <i class="material-icons">add</i>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
@@ -165,11 +172,12 @@
                                         <div class="date">1</div>
                                         <div class="event past">
                                             <div class="event-desc">
-                                                <span uk-icon="icon: check; ratio: 0.8"></span>
-                                                <span class="title">นาย</span> ธนโชติ <span class="lastname">มหาทรัพย์</span>
-                                                <b>8512365</b>
-                                                <br />
-                                                <small>นพ.ประสงค์ ทรงธรรม <b>011365</b></small>
+                                                <div class="uk-text-truncate"><span uk-icon="icon: check; ratio: 0.8"></span>
+                                                    <b>นาย ธนโชติ มหาทรัพย์ <small>(8512365)</small>
+                                                    </b></div>
+                                                <div class="uk-text-truncate">
+                                                    นพ.ประสงค์ ทรงธรรม <small>(011365)</small>
+                                                </div>
                                             </div>
                                             <div class="event-time">
                                                 9:00 - 12.00 น (เช้า)
@@ -559,12 +567,9 @@
                                         <a href="#show-hn4683265" uk-toggle>
                                             <div class="event">
                                                 <div class="event-desc">
-
                                                     <div class="uk-text-truncate">
                                                         <span uk-icon="icon: comments; ratio: 0.8"></span>
-
-                                                        <b> นาง มาณี ประชาไท <small>(4683265)</small>
-                                                    
+                                                        <b>นาง มาณี ประชาไท <small>(4683265)</small>
                                                         </b></div>
                                                     <div class="uk-text-truncate">
                                                         นพ.ณัฐพล พรรณเชษฐ์ <small>(011106)</small>
@@ -616,11 +621,11 @@
                                                             <label class="uk-form-label">ทีมแพทย์เยี่ยมบ้าน
                                                             </label>
                                                             <div class="uk-form-controls uk-form-controls-text">
-                                                                <span class="text-green">&#11044;</span> พญ.ภัควิภา เริ่มยินดี <small>011097</small>
+                                                                <span class="text-green">&#11044;</span> พญ.ภัควิภา เริ่มยินดี <small>(011097)</small>
                                                                 <br>
                                                                 <span class="text-green">&#11044;</span> นพ.นพดล นพกุล <small>(011106)</small>
                                                                 <br>
-                                                                <span class="text-green">&#11044;</span> นพ.ประสงค์ ทรงธรรม <small>(011156)</small>
+                                                                <span class="text-green">&#11044;</span> <b>นพ.ประสงค์ ทรงธรรม <small>(011156)</small></b>
                                                                 <br>
                                                                 <span class="text-green">&#11044;</span> นพ.พฤกษา วนารี <small>(011196)</small>
                                                                 <br>
@@ -637,14 +642,27 @@
                                                                 </ol>
                                                             </div>
                                                         </div>
+                                                        <hr>
+                                                        <div class="uk-margin">
+                                                            <label class="uk-form-label">เข้าร่วมทีมเยี่ยมบ้านหรือไม่
+                                                            </label>
+                                                            <div class="uk-form-controls uk-form-controls-text">
+                                                                <label class="uk-margin-right">
+                                                                    <input class="uk-radio" type="radio" name="reason" > อาจจะ
+                                                                </label>
+                                                                <label class="uk-margin-right">
+                                                                    <input class="uk-radio" type="radio" name="reason" checked> เข้าร่วม
+                                                                </label>
+                                                                <label class="uk-margin-right">
+                                                                    <input class="uk-radio" type="radio" name="reason"> ปฏิเสธ
+                                                                </label>
+                                                            </div>
+                                                        </div>
                                                     </form>
                                                 </div>
                                                 <div class="uk-modal-footer">
-                                                    <div class="uk-align-left uk-margin-remove-vertical">
-                                                        <a href="" uk-icon="icon: trash" title="ลบนัดหมายผิดพลาด" uk-tooltip="pos: right"></a>
-                                                    </div>
                                                     <div class="uk-align-right uk-margin-remove-vertical">
-                                                        <button class="uk-button uk-button-green uk-button-small" uk- type="button">แก้ไข</button>
+                                                        <button class="uk-button uk-button-green uk-button-small" uk- type="button">บันทึก</button>
                                                     </div>
                                                 </div>
                                                 <!--/.uk-modal-footer-->
@@ -660,7 +678,6 @@
                                         <a href="#show-hn6118489" uk-toggle>
                                             <div class="event afternoon">
                                                 <div class="event-desc">
-                                                    <!--                                                    <img class="icon-daytime" src="img/icon_afternoon.png">-->
                                                     <div class="uk-text-truncate">
                                                         <span uk-icon="icon: commenting; ratio: 0.8"></span>
                                                         <b>นาง ชญานิศ พลฑา <small>(6118489)</small></b>
@@ -715,11 +732,11 @@
                                                             <label class="uk-form-label">ทีมแพทย์เยี่ยมบ้าน
                                                             </label>
                                                             <div class="uk-form-controls uk-form-controls-text">
-                                                                <span class="text-green">&#11044;</span> พญ.ภัควิภา เริ่มยินดี <small>011097</small>
+                                                                <span class="text-green">&#11044;</span> พญ.ภัควิภา เริ่มยินดี <small>(011097)</small>
                                                                 <br>
                                                                 <span class="text-green">&#11044;</span> นพ.นพดล นพกุล <small>(011106)</small>
                                                                 <br>
-                                                                <span class="text-yellow">&#11044;</span> นพ.ประสงค์ ทรงธรรม <small>(011156)</small>
+                                                                <span class="text-yellow">&#11044;</span> <b>นพ.ประสงค์ ทรงธรรม <small>(011156)</small></b>
                                                                 <br>
                                                                 <span class="text-red">&#11044;</span> นพ.พฤกษา วนารี <small>(011196)</small>
                                                                 <br>
@@ -736,14 +753,32 @@
                                                                 </ol>
                                                             </div>
                                                         </div>
+                                                        <hr>
+                                                        <div class="uk-margin">
+                                                            <label class="uk-form-label">เข้าร่วมทีมเยี่ยมบ้านหรือไม่
+                                                            </label>
+                                                            <div class="uk-form-controls uk-form-controls-text">
+                                                                <label class="uk-margin-right">
+                                                                    <input class="uk-radio" type="radio" name="reason" checked> อาจจะ
+                                                                </label>
+                                                                <label class="uk-margin-right">
+                                                                    <input class="uk-radio" type="radio" name="reason" > เข้าร่วม
+                                                                </label>
+                                                                <label class="uk-margin-right">
+                                                                    <input class="uk-radio" type="radio" name="reason"> ปฏิเสธ
+                                                                </label>
+                                                            </div>
+                                                        </div>
                                                     </form>
                                                 </div>
                                                 <div class="uk-modal-footer">
+                                                    <!--
                                                     <div class="uk-align-left uk-margin-remove-vertical">
                                                         <a href="" uk-icon="icon: trash" title="ลบนัดหมายผิดพลาด" tooltip></a>
                                                     </div>
+-->
                                                     <div class="uk-align-right uk-margin-remove-vertical">
-                                                        <button class="uk-button uk-button-green uk-button-small" uk- type="button">แก้ไข</button>
+                                                        <button class="uk-button uk-button-green uk-button-small" uk- type="button">บันทึก</button>
                                                     </div>
                                                 </div>
                                                 <!--/.uk-modal-footer-->
