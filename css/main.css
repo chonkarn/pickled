@@ -88,12 +88,21 @@ dialog {
     color: #4caf50;
 }
 
-.text-orange {
-    color: darkorange;
+.text-yellow {
+    color: #ffd800;
 }
 
-.text-yellow {
-    color: orange;
+.text-red {
+    color: #ff0045;
+}
+
+a.btn{
+    color: #fff;
+}
+
+.btn-color {
+    color: #fff;
+    background-color: #4caf50;
 }
 
 /* --------------- MDL --------------- */
