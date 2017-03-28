@@ -129,7 +129,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#print-calendar" title="พิมพ์นัดหมาย" uk-tooltip uk-toggle>
+                                    <a href="#print-calendar" title="พิมพ์รายสัปดาห์" uk-tooltip uk-toggle>
                                         <i class="material-icons">print</i>
                                     </a>
                                 </li>
@@ -147,12 +147,16 @@
                             <div class="uk-modal-dialog ">
                                 <button class="uk-modal-close-default" type="button" uk-close></button>
                                 <div class="uk-modal-body">
-                                    <h4>พิมพ์ข้อมูลผู้ป่วยนัดหมายเดือน มีนาคม 2560</h4>
+                                    <h4>พิมพ์สรุปผลเยี่ยมบ้านของผู้ป่วย ในเดือนมีนาคม 2560</h4>
                                     <form class="uk-form">
+
+                                        <label>
+                                            <input class="uk-radio " type="radio" name="print-week" checked> ทั้งหมด
+                                        </label>
 
                                         <div class="uk-margin-small">
                                             <label>
-                                            <input class="uk-radio" type="radio" name="print-week" > 27 กุมภาพันธ์ - 3 มีนาคม
+                                            <input class="uk-radio" type="radio" name="print-week"> 27 กุมภาพันธ์ - 3 มีนาคม
                                         </label>
                                         </div>
 
@@ -164,7 +168,7 @@
 
                                         <div class="uk-margin-small">
                                             <label>
-                                        <input class="uk-radio " type="radio" name="print-week" checked> 13 มีนาคม - 17 มีนาคม <small>(สัปดาห์นี้)</small>
+                                        <input class="uk-radio " type="radio" name="print-week"> 13 มีนาคม - 17 มีนาคม 
                                             </label>
                                         </div>
 
@@ -179,18 +183,115 @@
                                         <input class="uk-radio " type="radio" name="print-week"> 27 มีนาคม - 31 มีนาคม
                                             </label>
                                         </div>
-
-                                        <label>
-                                            <input class="uk-radio " type="radio" name="print-week"> ทั้งหมด
-                                        </label>
-
                                     </form>
+                                </div>
+                                <!--/.uk-modal-body-->
+                                <div class="uk-modal-footer">
+                                    <div class="uk-align-right ">
+                                        <a href="#week-appointment" class="uk-button uk-button-default uk-button-small uk-button-green" uk-toggle>เลือก</a>
+                                    </div>
+                                </div>
+                                <!--/.uk-modal-footer-->
+                            </div>
+                        </div>
+                        <!--/.uk-modal-->
+
+                        <!--show list Modal-->
+                        <div id="week-appointment" uk-modal="center: true">
+                            <div class="uk-modal-dialog">
+                                <div class=" uk-modal-body">
+                                    <button class="uk-modal-close-default" type="button" uk-close></button>
+                                    <h4 class="uk-heading-divider">นัดหมายวันที่ 6 - 10 มีนาคม 2560</h4>
+                                    <ul uk-accordion="multiple: true">
+                                        <li class="uk-open">
+                                            <h3 class="uk-accordion-title">7 มีนาคม 2560</h3>
+                                            <div class="uk-accordion-content">
+                                                <div class="uk-grid-small uk-flex-middle pm-past" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <span uk-icon="icon: check"></span>
+                                                    </div>
+                                                    <div class="uk-width-expand">
+                                                        <b>นาย ชูชาติ มณีโชติ <small>(7463256)</small></b>
+                                                        <p class="uk-text-meta uk-margin-remove-top">
+                                                            นพ.อภิชัย วรรธนะพิศิษฐ์ <small>(011115)</small>
+                                                        </p>
+                                                    </div>
+                                                    <div class="uk-float-right">
+                                                        13.00 - 16.00 น (บ่าย)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="uk-open">
+                                            <h3 class="uk-accordion-title">9 มีนาคม 2560</h3>
+                                            <div class="uk-accordion-content">
+                                                <div class="uk-grid-small uk-flex-middle am-past" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <span uk-icon="icon: check"></span>
+                                                    </div>
+                                                    <div class="uk-width-expand">
+                                                        <b>นาง เพียรจิต จงใจรักษ์ <small>(6213261)</small></b>
+                                                        <p class="uk-text-meta uk-margin-remove-top">
+                                                            นพ.ประสงค์ ทรงธรรม <small>(0113650)</small>
+                                                        </p>
+                                                    </div>
+                                                    <div class="uk-float-right">
+                                                        9:00 - 12.00 น (เช้า)
+                                                    </div>
+                                                </div>
+                                                <div class="uk-grid-small uk-flex-middle am-past" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <span uk-icon="icon: check"></span>
+                                                    </div>
+                                                    <div class="uk-width-expand">
+                                                        <b>นาง รุ่งทิพย์ ก่อเกียรติ <small>(5965485)</small></b>
+                                                        <p class="uk-text-meta uk-margin-remove-top">
+                                                            พญ.ปุณพรรณ กมลมุนีโชติ <small>(013829)</small>
+                                                        </p>
+                                                    </div>
+                                                    <div class="uk-float-right">
+                                                        9:00 - 12.00 น (เช้า)
+                                                    </div>
+                                                </div>
+                                                <div class="uk-grid-small uk-flex-middle pm-past" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <span uk-icon="icon: check"></span>
+                                                    </div>
+                                                    <div class="uk-width-expand">
+                                                        <b>นาง มาลิณี เขียนทอง<small>(6543215)</small></b>
+                                                        <p class="uk-text-meta uk-margin-remove-top">
+                                                            พญ.ปุณพรรณ กมลมุนีโชติ <small>(013829)</small>
+                                                        </p>
+                                                    </div>
+                                                    <div class="uk-float-right">
+                                                        13.00 - 16.00 น (บ่าย)
+                                                    </div>
+                                                </div>
+                                                <div class="uk-grid-small uk-flex-middle pm-past" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <span uk-icon="icon: check"></span>
+                                                    </div>
+                                                    <div class="uk-width-expand">
+                                                        <b>นาย ชัชชัย สมรภูมิ <small>(6932651)</small></b>
+                                                        <p class="uk-text-meta uk-margin-remove-top">
+                                                            นพ.ประพันธ์ ประสิทธิกุล <small>(013626)</small>
+                                                        </p>
+                                                    </div>
+                                                    <div class="uk-float-right">
+                                                        13.00 - 16.00 น (บ่าย)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/.uk-accordion-content-->
+                                        </li>
+                                    </ul>
                                 </div>
                                 <div class="uk-modal-footer">
                                     <div class="uk-align-right ">
-                                        <a href="#" class="uk-button uk-button-default uk-button-small uk-button-green">พิมพ์</a>
+                                        <a href="#week-appointment" class="uk-button uk-button-default uk-button-small uk-button-green" uk-toggle>พิมพ์</a>
                                     </div>
                                 </div>
+                                <!--/.uk-modal-footer-->
                             </div>
                         </div>
                         <!--/.uk-modal-->
@@ -303,34 +404,67 @@
                                         </div>
 
                                         <a href="#show-more" class="event-more" uk-toggle><small>+2 นัดหมาย</small></a>
-
-                                        <!--THIS IS A MODAL-->
+                                        <!--MORE Modal-->
                                         <div id="show-more" uk-modal="center: true">
                                             <div class="uk-modal-dialog uk-modal-body">
                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
-                                                <h4>นัดหมายวันที่ 9 มีนาคม 2560</h4>
-
-                                                <div class="event past">
-                                                    <div class="event-desc">
-                                                        <div class="uk-text-truncate"> <span uk-icon="icon: check"></span> นาง เพียรจิต จงใจรักษ์ <b>6213261</b></div>
-                                                        <div class="uk-text-truncate">นพ.ประสงค์ ทรงธรรม <small>(011365)</small></div>
+                                                <h4 class="uk-heading-divider">นัดหมายวันที่ 9 มีนาคม 2560</h4>
+                                                <div class="uk-grid-small uk-flex-middle am-past" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <span uk-icon="icon: check"></span>
                                                     </div>
-                                                    <div class="event-time">
+                                                    <div class="uk-width-expand">
+                                                        <b>นาง เพียรจิต จงใจรักษ์ <small>(6213261)</small></b>
+                                                        <p class="uk-text-meta uk-margin-remove-top">
+                                                            นพ.ประสงค์ ทรงธรรม <small>(0113650)</small>
+                                                        </p>
+                                                    </div>
+                                                    <div class="uk-float-right">
                                                         9:00 - 12.00 น (เช้า)
                                                     </div>
                                                 </div>
-                                                <div class="event past">
-                                                    <div class="event-desc">
-                                                        <div class="uk-text-truncate"> <span uk-icon="icon: check"></span> นาง รุ่งทิพย์ ก่อเกียรติ <b>5965485</b></div>
-                                                        <div class="uk-text-truncate">พญ.ปุณพรรณ กมลมุนีโชติ <small>(013829)</small></div>
+                                                <div class="uk-grid-small uk-flex-middle am-past" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <span uk-icon="icon: check"></span>
                                                     </div>
-                                                    <div class="event-time">
+                                                    <div class="uk-width-expand">
+                                                        <b>นาง รุ่งทิพย์ ก่อเกียรติ <small>(5965485)</small></b>
+                                                        <p class="uk-text-meta uk-margin-remove-top">
+                                                            พญ.ปุณพรรณ กมลมุนีโชติ <small>(013829)</small>
+                                                        </p>
+                                                    </div>
+                                                    <div class="uk-float-right">
                                                         9:00 - 12.00 น (เช้า)
                                                     </div>
                                                 </div>
-                                                <p class="uk-text-right">
-                                                    <button class="uk-button uk-button-green" type="button">สรุป</button>
-                                                </p>
+                                                <div class="uk-grid-small uk-flex-middle pm-past" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <span uk-icon="icon: check"></span>
+                                                    </div>
+                                                    <div class="uk-width-expand">
+                                                        <b>นาง มาลิณี เขียนทอง<small>(6543215)</small></b>
+                                                        <p class="uk-text-meta uk-margin-remove-top">
+                                                            พญ.ปุณพรรณ กมลมุนีโชติ <small>(013829)</small>
+                                                        </p>
+                                                    </div>
+                                                    <div class="uk-float-right">
+                                                        13.00 - 16.00 น (บ่าย)
+                                                    </div>
+                                                </div>
+                                                <div class="uk-grid-small uk-flex-middle pm-past" uk-grid>
+                                                    <div class="uk-width-auto">
+                                                        <span uk-icon="icon: check"></span>
+                                                    </div>
+                                                    <div class="uk-width-expand">
+                                                        <b>นาย ชัชชัย สมรภูมิ <small>(6932651)</small></b>
+                                                        <p class="uk-text-meta uk-margin-remove-top">
+                                                            นพ.ประพันธ์ ประสิทธิกุล <small>(013626)</small>
+                                                        </p>
+                                                    </div>
+                                                    <div class="uk-float-right">
+                                                        13.00 - 16.00 น (บ่าย)
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <!--/.uk-modal-->
@@ -672,7 +806,7 @@
                                                 <div class="uk-modal-footer">
                                                     <div class="uk-align-left uk-margin-remove-vertical">
                                                         <a href="#confirm-delete" uk-icon="icon: trash" title="ลบนัดหมายผิดพลาด" uk-tooltip="pos: right" uk-toggle></a>
-                                                        
+
                                                         <div id="confirm-delete" uk-modal="center: true">
                                                             <div class="uk-modal-dialog">
                                                                 <button class="uk-modal-close-default" type="button" uk-close></button>
