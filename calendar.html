@@ -16,7 +16,7 @@
     <!--uikit-->
     <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
 
-    <!--mdl-stepper-->
+    <!--mdl stepper-->
     <link rel="stylesheet" href="lib/mdl-stepper/stepper.min.css">
 
     <!--icon-->
@@ -129,7 +129,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" uk-icon="icon: print" title="พิมพ์นัดหมาย" uk-tooltip>
+                                    <a href="#print-calendar" uk-icon="icon: print" title="พิมพ์นัดหมาย" uk-tooltip uk-toggle>
                                         <i class="material-icons">print</i>
                                     </a>
                                 </li>
@@ -140,6 +140,37 @@
                                 </li>
                             </ul>
                         </div>
+
+                        <!--PRINT MODAL-->
+                        <div id="print-calendar" uk-modal="center: true">
+                            <div class="uk-modal-dialog uk-modal-body">
+                                <button class="uk-modal-close-default" type="button" uk-close></button>
+                                <h4>print</h4>
+
+                                <div class="event past">
+                                    <div class="event-desc">
+                                        <div class="uk-text-truncate"> <span uk-icon="icon: check"></span> นาง เพียรจิต จงใจรักษ์ <b>6213261</b></div>
+                                        <div class="uk-text-truncate">นพ.ประสงค์ ทรงธรรม <small>(011365)</small></div>
+                                    </div>
+                                    <div class="event-time">
+                                        9:00 - 12.00 น (เช้า)
+                                    </div>
+                                </div>
+                                <div class="event past">
+                                    <div class="event-desc">
+                                        <div class="uk-text-truncate"> <span uk-icon="icon: check"></span> นาง รุ่งทิพย์ ก่อเกียรติ <b>5965485</b></div>
+                                        <div class="uk-text-truncate">พญ.ปุณพรรณ กมลมุนีโชติ <small>(013829)</small></div>
+                                    </div>
+                                    <div class="event-time">
+                                        9:00 - 12.00 น (เช้า)
+                                    </div>
+                                </div>
+                                <p class="uk-text-right">
+                                    <button class="uk-button uk-button-green" type="button">สรุป</button>
+                                </p>
+                            </div>
+                        </div>
+                        <!--/.uk-modal-->
 
                         <h4 class="uk-text-center">
                             <a href="#" uk-slidenav-previous></a> มีนาคม 2560
@@ -173,8 +204,8 @@
                                         <div class="event past">
                                             <div class="event-desc">
                                                 <div class="uk-text-truncate"><span uk-icon="icon: check; ratio: 0.8"></span>
-                                                    <b>นาย ธนโชติ มหาทรัพย์ <small>(8512365)</small>
-                                                    </b></div>
+                                                    <b>นาย ธนโชติ มหาทรัพย์ <small>(8512365)</small></b>
+                                                </div>
                                                 <div class="uk-text-truncate">
                                                     นพ.ประสงค์ ทรงธรรม <small>(011365)</small>
                                                 </div>
@@ -759,7 +790,7 @@
                                                             </label>
                                                             <div class="uk-form-controls uk-form-controls-text">
                                                                 <label class="uk-margin-right">
-                                                                    <input class="uk-radio" type="radio" name="reason" checked> อาจจะ
+                                                                    <input class="uk-radio" type="radio" name="reason" checked> รอตอบรับ
                                                                 </label>
                                                                 <label class="uk-margin-right">
                                                                     <input class="uk-radio" type="radio" name="reason" > เข้าร่วม
@@ -867,8 +898,6 @@
                     <!--/.mdl-card__supporting-text-->
                 </div>
                 <!--/.mdl-card-->
-
-
             </div>
             <!--/.demo-content-->
         </main>
