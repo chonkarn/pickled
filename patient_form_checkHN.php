@@ -9,11 +9,8 @@
 	}
     ?>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-
     <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
 
    <!--mdl-->
@@ -40,14 +37,14 @@
         <main class="mdl-layout__content mdl-color--grey-100">
             <div class="mdl-grid demo-content">
                 
-                 <ul class="uk-breadcrumb">
-                    <li><a href="patient.php">ผู้ป่วยเยี่ยมบ้าน</a></li>
+                 <ul class="uk-breadcrumb breadcrumb">
+                    <li><a href="patient.php" class="uk-button uk-button-text"><i class="material-icons breadcrumb-icons">folder_shared</i> ผู้ป่วยเยี่ยมบ้าน</a></li>
                     <li><span href=""></span>เพิ่มผู้ป่วยเยี่ยมบ้าน</li>
                 </ul>
                 
                 <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell--12-col mdl-cell mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                     <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                        <h1 class="mdl-typography--title">ตรวจสอบเลขที่โรงพยาบาล</h1>
+                        <h4 class="uk-heading-divider">ตรวจสอบเลขที่โรงพยาบาล</h4>
                         <form class="uk-form-horizontal" action="patient_form_checkHN_db.php" method="POST">
                             <div class="uk-margin">
                                 <label class="uk-form-label">เลขที่โรงพยาบาล</label>
@@ -66,16 +63,16 @@
                                 <label class="uk-form-label">ประเภทการเยี่ยมบ้าน
                                 </label>
                                 <div class="uk-form-controls uk-form-controls-text">
-                                    <label class="margin-right-20">
-                                        <input class="uk-radio" type="radio" name="type" checked value="1"> Home visit care  </label>
-                                    <label class="margin-right-20">
-                                        <input class="uk-radio" type="radio" name="type" value="2"> Geriatric case  </label>
-                                    <label class="margin-right-20">
+                                    <label class="uk-margin-right">
+                                        <input class="uk-radio" type="radio" name="type" checked value="1"> Home visit care</label>
+                                    <label class="uk-margin-right">
+                                        <input class="uk-radio" type="radio" name="type" value="2"> Geriatric case</label>
+                                    <label class="uk-margin-right">
                                         <input class="uk-radio" type="radio" name="type" value="3"> Palliative case</label>
                                 </div>
                             </div>
                             <div class="uk-text-right">
-                            <button class="uk-button uk-button-primary uk-button-green">เริ่มกรอกข้อมูล</button></div>
+                            <a class="uk-button uk-button-default button-green" href="patient_step1.php">เริ่มกรอกข้อมูล</a></div>
                         </form>
                     </div>
                    
