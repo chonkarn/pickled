@@ -2,7 +2,6 @@
 session_start();
 include "db_head.php";
 
-
 $pwd = $_POST["pwd"];
 $md = md5($pwd);
 

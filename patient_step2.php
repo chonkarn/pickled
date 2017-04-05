@@ -38,10 +38,10 @@
             <?php include "header.html";?>
                 <main class="mdl-layout__content mdl-color--grey-100">
                     <div class="mdl-grid demo-content">
-                        <ul class="uk-breadcrumb">
-                            <li><a href="patient.php">ผู้ป่วยเยี่ยมบ้าน</a></li>
-                            <li><span href=""></span>เพิ่มผู้ป่วยเยี่ยมบ้าน</li>
-                        </ul>
+                        <ul class="uk-breadcrumb breadcrumb">
+                    <li><a href="patient.php" class="uk-button uk-button-text"><i class="material-icons breadcrumb-icons">folder_shared</i>ผู้ป่วยเยี่ยมบ้าน</a></li>
+                    <li><a href="#">เพิ่มผู้ป่วยเยี่ยมบ้าน</a></li>
+                </ul>
                         <!--stepper-nonlinear-->
                         <ul class="mdl-stepper mdl-stepper--horizontal" id="demo-stepper-nonlinear" style="height: 1300px;">
                             <!--step1-->
