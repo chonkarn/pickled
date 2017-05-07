@@ -84,6 +84,28 @@ dialog {
     padding-top: 150px;
 }
 
+
+/* --------------- header --------------- */
+
+#header-title {
+    color: #fff;
+}
+
+#header-logo {
+    width: 50px;
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 760px) {
+    #header-title {
+        display: none;
+    }
+    #header-logo {
+        margin-right: 0;
+        margin: auto;
+    }
+}
+
 /* --------------- table --------------- */
 
 .th-label {
@@ -95,7 +117,6 @@ dialog {
         display: none;
     }
 }
-
 
 
 /* --------------- text --------------- */
@@ -178,5 +199,6 @@ label .uk-radio[type=radio]:disabled {}
 .uk-checkbox[type=checkbox]:checked {
     background-color: #4caf50;
 }
+
 
 /* ---------------  --------------- */

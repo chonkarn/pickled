@@ -7,7 +7,7 @@
 		exit();
 	}
     $user = $_SESSION['id'];
-    include 'db.php';
+    include 'dbname.php';
     $connect = mysql_connect($servername, $username, $password);
     if (!$connect) {
         die(mysql_error());
@@ -46,10 +46,6 @@
         <!--custom css-->
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/font.css">
-
-        <!--datepicker-->
-        <link rel="stylesheet" href="lib/jquery-ui/jquery-ui.min.css">
-        <script src="lib/jquery-ui/jquery-ui.min.js"></script>
     </head>
 
     <body>
@@ -104,7 +100,14 @@
                                 <!--/.mdl-tabs__tab-bar-->
                                 <div class="mdl-tabs__panel is-active" id="doctor-panel">
 
-                                    <h5 class="uk-margin-top uk-heading-bullet">รายชื่อแพทย์ประจำบ้าน</h5>
+                                    <?php 
+                                        $doctor_data = mysql_query(" SELECT * FROM tbuser 
+                                                    WHERE id_position BETWEEN 1 AND 2
+                                                    ORDER BY user ASC");
+                                        $doctor_count = mysql_num_rows($doctor_data);
+                                    ?>
+                                    
+                                    <h5 class="uk-margin-top uk-heading-bullet">รายชื่อแพทย์ประจำบ้าน (<?php echo "$doctor_count" ?> คน)</h5>
 
                                     <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                         <thead>
@@ -118,12 +121,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $results = mysql_query("
-                                                    SELECT * FROM tbuser 
-                                                    WHERE id_position BETWEEN 1 AND 2
-                                                    ORDER BY user ASC
-                                                ");
-                                                while($row = mysql_fetch_array($results)) {
+                                                while($row = mysql_fetch_array($doctor_data)) {
                                                     include 'id_position.php';
                                                     if($row["photo"] == "") {
                                                         $photo = "img/avatar-doctor.svg";
@@ -135,11 +133,12 @@
                                                 <tr>
                                                     <td><img class="uk-preserve-width uk-border-circle" src="<?php echo $photo ?>" width="40" alt=""></td>
                                                     <td>
-                                                        <span class="th-label">รหัสประจำตัว: </span> <?php echo $row['user'] ?>
+                                                        <span class="th-label">รหัสประจำตัว: </span>
+                                                        <?php echo $row['user'] ?>
                                                     </td>
                                                     <td>
                                                         <span class="th-label">ชื่อ-นามสกุล: </span>
-                                                        
+
                                                         <a href="#" class="uk-button uk-button-text text-green">
                                                             <?php
                                                             echo $row['f_user']." ".$row['l_user']
@@ -159,7 +158,18 @@
 
                                 <!--/#staff-->
                                 <div class="mdl-tabs__panel" id="staff-panel">
-                                    <h5 class="uk-margin-top uk-heading-bullet">รายชื่อเจ้าหน้าที่ผู้มีส่วนเกี่ยวข้อง</h5>
+                                    
+                                    <?php
+                                        $staff_data = mysql_query("
+                                            SELECT * FROM tbuser 
+                                            WHERE NOT id_position BETWEEN 1 AND 2
+                                            ORDER BY user ASC
+                                        ");
+                                        $staff_count = mysql_num_rows($staff_data);
+                                    ?>
+                                    
+                                    <h5 class="uk-margin-top uk-heading-bullet">รายชื่อเจ้าหน้าที่ผู้มีส่วนเกี่ยวข้อง (<?php echo "$staff_count" ?> คน)</h5>
+                                    
                                     <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                         <thead>
                                             <tr>
@@ -172,12 +182,7 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                                $results = mysql_query("
-                                                    SELECT * FROM tbuser 
-                                                    WHERE NOT id_position BETWEEN 1 AND 2
-                                                    ORDER BY user ASC
-                                                ");
-                                                while($row = mysql_fetch_array($results)) {
+                                                while($row = mysql_fetch_array($staff_data)) {
                                                     include 'id_position.php';
                                                     if($row["photo"] == "") {
                                                         $photo = "img/avatar-doctor.svg";
