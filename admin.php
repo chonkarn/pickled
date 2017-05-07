@@ -66,7 +66,7 @@
                     </ul>
 
                     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
-<!--
+                        <!--
                         <div class="mdl-card__menu">
                             <a href="patient_form_checkHN.php">
                                 <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--green">
@@ -130,16 +130,16 @@
                                                     }
                                                     else {
                                                         $photo = "img/".$row["photo"];
-                                                    }
+                                                    } 
                                             ?>
                                                 <tr>
                                                     <td><img class="uk-preserve-width uk-border-circle" src="<?php echo $photo ?>" width="40" alt=""></td>
                                                     <td>
-                                                        <?php
-                                                        echo $row['user']
-                                                    ?>
+                                                        <span class="th-label">รหัสประจำตัว: </span> <?php echo $row['user'] ?>
                                                     </td>
                                                     <td>
+                                                        <span class="th-label">ชื่อ-นามสกุล: </span>
+                                                        
                                                         <a href="#" class="uk-button uk-button-text text-green">
                                                             <?php
                                                             echo $row['f_user']." ".$row['l_user']
@@ -147,15 +147,12 @@
                                                         </a>
                                                     </td>
                                                     <td>
-                                                        <?php
-                                                        echo $row['id_position']
-                                                    ?>
+                                                        <span class="th-label">ตำแหน่ง: </span>
+                                                        <?php echo $row['id_position'] ?>
                                                     </td>
                                                     <td><a href="#" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a></td>
                                                 </tr>
-                                                <?php 
-                                                }
-                                            ?>
+                                                <?php } ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -165,7 +162,7 @@
                                     <h5 class="uk-margin-top uk-heading-bullet">รายชื่อเจ้าหน้าที่ผู้มีส่วนเกี่ยวข้อง</h5>
                                     <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                         <thead>
-                                             <tr>
+                                            <tr>
                                                 <th>รูปภาพ</th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">รหัสประจำตัว <span uk-icon="icon: arrow-down"></span></a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
