@@ -1,0 +1,53 @@
+<?php
+    include 'id_position.php';
+
+    if($row["photo"] == ""){
+        $photo = "img/avatar-doctor.svg";
+    }
+    else {
+        $photo = "img/".$row["photo"];
+    }
+?>
+    <header class="demo-header mdl-layout__header mdl-color--primary mdl-color-text--white">
+        <div class="mdl-layout__header-row">
+            <img src="img/logo-rama.png" width="50px" style="margin-right: 20px;">
+            <div class="mdl-layout-title" style="margin-top: 20px;">
+                <h6 class="mdl-typography--title mdl-color-text--white">
+                    ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน
+                    <p>ภาควิชาเวชศาสตร์ครอบครัว คณะแพทยศาสตร์โรงพยาบาลรามาธิบดี มหาวิทยาลัยมหิดล</p>
+                </h6>
+            </div>
+        </div>
+    </header>
+    <div class="demo-drawer mdl-layout__drawer mdl-color--green">
+        <header class="demo-drawer-header">
+            <img src="<?php echo $photo;?>" class="demo-avatar">
+            <div class="demo-avatar-dropdown">
+                <span class="mdl-color-text--white">
+                    <?php echo $row["f_user"]." ".$row["l_user"]; ?><br>
+                    <small><?php echo $row["id_position"]; ?></small>
+                </span>
+                <div class="mdl-layout-spacer"></div>
+                <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                    <i class="material-icons mdl-color-text--white">arrow_drop_down</i>
+                </button>
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                    <li class="mdl-menu__item"><a href="user_profile.php">แก้ไขข้อมูลส่วนตัว</a></li>
+                    <li class="mdl-menu__item"><a href="logout.php"><i class="material-icons" style="font-size: 14px;">exit_to_app</i> ออกจากระบบ</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <nav class="demo-navigation mdl-navigation mdl-color--grey-200">
+            <a class="mdl-navigation__link mdl-color-text--grey-900" href="index.php">
+                <i class="material-icons mdl-color-text--grey-900">folder_shared</i> รายชื่อผู้ใช้งาน
+            </a>
+            <a class="mdl-navigation__link mdl-color-text--grey-900" href="patient.php">
+                <i class="material-icons mdl-color-text--grey-900">add</i> เพิ่มผู้ใช้งาน
+            </a>
+            <a class="mdl-navigation__link mdl-color-text--grey-900" href="summary.php">
+                <i class="material-icons mdl-color-text--grey-900">assignment</i> กำหนดแพทย์ประจำเดือน
+            </a>
+            <div class="mdl-layout-spacer"></div>
+        </nav>
+    </div>

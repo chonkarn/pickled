@@ -12,12 +12,12 @@ $objResult = mysql_fetch_array($objQuery);
 $_SESSION["id"] = $objResult["user"];
 $_SESSION["name"] = $objResult["f_user"];
 $_SESSION["surname"] = $objResult["l_user"];
-
-    if(!$objResult) {
-        header("location:login_false.php");
-    }
-    else {
-        header("location:index.php");
+    if(!$objResult)
+        {
+            header("location:login_false.php");
+        }
+	else {
+        header("location:calendar.php");
     }
 	mysql_close(); 
 ?>
