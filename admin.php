@@ -2,7 +2,7 @@
 <html>
 <?php
 	session_start();
-	if($_SESSION['id'] == "") {
+	if($_SESSION['id'] == "" && $_SESSION['position'] != 0) {
 		header( "location:login.php");
 		exit();
 	}
