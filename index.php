@@ -216,6 +216,7 @@
                     <div class=" demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--5-col">
                         <div class="mdl-card__supporting-text mdl-color-text--grey-900">
                             <h4 class="uk-heading-divider">นัดหมายเยี่ยมบ้าน</h4>
+                            <h5 class="uk-heading-bullet">วันนี้</h5>
                         </div>
                     </div>
 
