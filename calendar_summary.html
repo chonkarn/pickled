@@ -1,0 +1,23 @@
+<form method="post" action="<?php echo $action;?>">
+<div class="uk-margin">
+    <label class="uk-form-label">สรุปผลเยี่ยมบ้าน </label>
+    <div class="uk-form-controls uk-form-controls-text">
+        <label>
+            <input class="uk-radio" type="radio" name="reason" checked> ได้เยี่ยมบ้าน </label>
+        <br>
+        <label class="uk-margin-top">
+            <input class="uk-radio" type="radio" name="reason"> ยกเลิกเยี่ยมบ้าน
+            <br>
+            <label class="uk-margin-right">
+                <input class="uk-radio" type="radio" name="reason"> ปิดเยี่ยมบ้าน </label>
+            <br> <small>ถ้าไม่ได้เยี่ยมบ้าน โปรดระบุเหตุผล</small>
+            <input class="uk-input uk-form-width-medium uk-form-small" type="text" placeholder="เลือกเหตุผล" disabled> 
+            
+        </div>
+</div>
+<div class="uk-modal-footer">
+<!--    <div class="uk-align-right uk-margin-remove-vertical"> <a class="uk-button uk-button-default button-green uk-button-small">บันทึก</a> </div>-->
+<div class="uk-align-right uk-margin-remove-vertical"> <button class="uk-button uk-button-default button-green uk-button-small"> บันทึก</button> </div>
+    </div>
+</form>
+    

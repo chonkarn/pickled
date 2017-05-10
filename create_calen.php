@@ -31,22 +31,28 @@ function create_calen($monday){
     $pt4 = "</div>";
     $first = "<ul class=\"day\">";
     $last = "</ul>";
-    $checkapp = "2017-04-";
+    $currentmonth = date("m");
+    $checkapp = "2017-".$currentmonth."-";
     $query = "SELECT * FROM calendar_info ";
     $link = mysqli_connect("localhost", "hvmsdb", "1234", "homevisit");
     $r = mysqli_query($link, $query);
       
     
-        while ($val < $monday ){
+     
+                while ($val < $monday && $val <32){
+           
                 if ($val == date("d")) 
                     $pt = "<div class=\"date today\" name=";
                 else 
                     $pt = "<div class=\"date\" name=";
-            if ($val < 10) {$checkapp = "2017-04-0";}    
+            if ($val < 10) {$checkapp = "2017-".$currentmonth."-0";}    
             $d = "d"+$val;
             $checkapp = $checkapp.$val;
-            $same = "<li class=\"day\" onclick=\"location.href='calendar_add.php?date=";
+//            $same = "<li class=\"day\" >";
+//            $same = $same.$checkapp."';\" >";
+            $same = "<li id=\"test\" class=\"day\" onclick=\"location.href='calendar_add.php?date=";
             $same = $same.$checkapp."';\" >";
+            
             
             echo $same;
             echo $pt.$col.$d.$col.$pt2.$col.$d.$col.$pt3.$val.$pt4;
@@ -64,10 +70,12 @@ function create_calen($monday){
       
                 
             echo $same2;
-            $checkapp = "2017-04-";
+            $checkapp = "2017-".$currentmonth."-";
             $val++;
             
         }
+                
+            
     
 }
 

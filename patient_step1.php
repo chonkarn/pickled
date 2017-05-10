@@ -80,7 +80,7 @@
                                     </label>
                                     <div class="uk-form-controls uk-form-controls-text">
                                         <input class="mdl-textfield__input" type="text" name="hn" style="visibility:hidden;" value="<?php echo $hn; ?>">
-                                        <?php echo $hn; ?>
+<!--                                        <?php echo $hn; ?>-->
                                     </div>
                                 </div>
                                 <div class="uk-margin">
@@ -98,7 +98,7 @@
                                     <div class="uk-form-controls uk-form-controls-text">
                                         <input class="uk-input uk-form-small" type="text" name="type" style="visibility:hidden;" value="<?php echo $type; ?>">
 
-                                        <?php echo $type;?>
+<!--                                        <?php echo $type;?>-->
                                     </div>
                                 </div>
                                 <div class="uk-margin">
@@ -145,6 +145,7 @@
                                         <div class="uk-form-controls uk-form-controls-text">
                                             <select name="bday" class="uk-input uk-form-width-small uk-form-small">
                                                 <?php droploop($day); ?>
+<!--                        อยู่ใน dropdown.php                        -->
                                             </select> /
                                             <select name="bmonth" class="uk-input uk-form-width-small uk-form-small">
                                                 <?php droptext($month); ?>

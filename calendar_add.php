@@ -7,6 +7,8 @@
 		header( "location:login.php");
 		exit();
 	}
+    mysql_connect("localhost", "hvmsdb","1234") or die(mysql_error());
+mysql_select_db("homevisit") or die(mysql_error());
 ?>
 
     <head>
@@ -61,72 +63,83 @@
             <main class="mdl-layout__content mdl-color--grey-100">
                 <div class="mdl-grid demo-content">
                     <ul class="uk-breadcrumb breadcrumb">
-                        <li><a href="calendar.html" class="uk-button uk-button-text"><i class="material-icons breadcrumb-icons">date_range</i>ปฏิทินนัดหมาย</a></li>
+                        <li><a href="calendar.php" class="uk-button uk-button-text"><i class="material-icons breadcrumb-icons">date_range</i>ปฏิทินนัดหมาย</a></li>
                         <li>เพิ่มนัดหมาย</li>
                     </ul>
 
                     <div id="content" class="mdl-shadow--2dp">
                         <h4 class="uk-heading-divider">เพิ่มนัดหมาย</h4>
-                        <form class="uk-form-horizontal">
+                        <form class="uk-form-horizontal" action="calendar_add_db.php" method="get">
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">ชื่อผู้ป่วย</label>
                                 <div class="uk-form-controls">
-                                    <select name="patient" class="ui search selection dropdown" id="select-patient">
-                                        <option value="">พิมพ์รหัส / ชื่อ-นามสกุล</option>
-                                        <option value="5987452">นาง มาลิณี เกียรติขจร (HN 5987452)</option>
-                                        <option value="6215845">นาย รุ่งโรจน์ เรืองรอง (HN 6215845)</option>
-                                        <option value="8963215">นาย วิบูรณ์ ธนโชติไพศาล (HN 8963215)</option>
-                                        <option value="4987521">นาง เพียรจิต จงใจรักษ์ (HN 4987521)</option>
-                                        <option value="5874158">นาย เหมันต์ ธนไพบูรณ์ (HN 5874158)</option>
-                                        <option value="5965485">นาง รุ่งทิพย์ ก่อเกียรติ (HN 5965485)</option>
-                                        <option value="6158489">นาง ชญานิศ พลฑา (HN 6158489)</option>
-                                        <option value="6258459">นาย ชัชพิสิทธิ์ กาวิโล (HN 6258459)</option>
-                                    </select>
-                                    <!--
-                                        <input list="patient" class="uk-input uk-width-medium uk-form-small" placeholder="พิมพ์รหัส / ชื่อ-นามสกุล">
-                                        <datalist id="patient">
-                                            <option value="นาย ชัชพิสิทธิ์ กาวิโล" /> 6258459
-                                        </datalist>
-                                    -->
+                                   <?php
+                                        
+
+                                        $query = "SELECT patient_hn,patient_p_name,patient_name,patient_surname FROM patientinfo ORDER BY patient_hn DESC";
+                                        $result = mysql_query($query) or die(mysql_error()."[".$query."]");
+                                        ?>
+
+                                        <select name="patient" class="ui search selection dropdown" id="select-patient">
+                                        <?php 
+                                        while ($row = mysql_fetch_array($result))
+                                        {
+                                            echo "<option value='".$row['patient_hn']."'>".$row['patient_p_name'].$row['patient_name']." ".$row['patient_surname']." (HN ".$row['patient_hn'].")"."</option>";
+                                        }
+                                    ?>        
+                                        </select>
+                                
+<!--
                                     <a class=" uk-icon-button" href="calendar_add_patient.html">
                                         <span uk-icon="icon: list; ratio: 1"></span>
                                     </a>
+-->
                                 </div>
                             </div>
 
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-select">วันที่เยี่ยม</label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input uk-width-medium" type="text" id="datepicker">
+                                    <input class="uk-input uk-width-medium" type="date" name="datepicker" value="<?php echo $_GET['date'];?>"> 
                                 </div>
                             </div>
 
                             <div class="uk-margin">
                                 <div class="uk-form-label">ช่วงเวลา</div>
                                 <div class="uk-form-controls uk-form-controls-text">
-                                    <label><input class="uk-radio" type="radio" name="visit-time" checked> เช้า (9.00-12.00 น)</label>
-                                    <div class="uk-margin-small"><label><input class="uk-radio " type="radio" name="visit-time"> บ่าย (13.00-16.00 น)</label></div>
+                                    <label><input class="uk-radio" type="radio" name="visit-time" value="0" checked> เช้า (9.00-12.00 น)</label>
+                                    <div class="uk-margin-small"><label><input class="uk-radio " type="radio" name="visit-time" value="1"> บ่าย (13.00-16.00 น)</label></div>
                                 </div>
                             </div>
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">แพทย์เยี่ยมบ้าน</label>
+                                        
+                                
+                                
                                 <div class="uk-form-controls">
-                                    <select name="doctor" class="ui search multiple selection dropdown" multiple="" id="select-doctor">
-                                    <option value="">พิมพ์รหัส / ชื่อ-นามสกุล</option>
-                                    <option value="012568">นพ.ประสงค์ ทรงธรรม (012568)</option>
-                                    <option value="013654">นพ.นพดล ชลธาร (013654)</option>
-                                    <option value="016325">นพ.คชสร อมรรัตน์ (016325)</option>
-                                    <option value="014251">พญ.รัตนา พานิชญ์ (014251)</option>
-                                    <option value="013212">นญ.วิภาวรรณ ใจสุทธิ์ (013212)</option>
-                                    <option value="013625">นพ.ชลธร รุ่งเจริญ (013625)</option>
-                                </select>
+                                    <?php
+                                        $q = "SELECT user,f_user,l_user FROM tbuser ORDER BY user DESC ";
+                                        $r = mysql_query($q) or die(mysql_error()."[".$q."]");
+                                        ?>
+
+                                        <select name="doctor[]" class="ui search multiple selection dropdown" multiple="" id="select-doctor">
+                                        <?php 
+                                        while ($ro = mysql_fetch_array($r))
+                                        {
+                                            echo "<option value='".$ro['user']."'>".$ro['f_user']." ".$ro['l_user']." (".$ro['user'].")"."</option>";
+                                        }
+                                    ?>        
+                                        </select>
+<!--
                                     <a class=" uk-icon-button" href="calendar_add_doctor.html">
                                         <span uk-icon="icon: list; ratio: 1"></span>
                                     </a>
+-->
                                 </div>
                             </div>
                             <div class="uk-text-right">
-                                <a href="calendar.html" class="uk-button uk-button-default button-green">บันทึก</a>
+<!--                                <a class="uk-button uk-button-default button-green">บันทึก</a>-->
+                                <button>บันทึก </button>
                             </div>
                         </form>
                     </div>

@@ -12,7 +12,7 @@
 }
 
 body {
-    background-color: #eee;
+    background-color: #fff;
 }
 
 a {
@@ -116,6 +116,11 @@ dialog {
     .th-label {
         display: none;
     }
+}
+
+table thead tr th {
+    font-weight: bold;
+    color: red;
 }
 
 

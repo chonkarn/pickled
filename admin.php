@@ -62,22 +62,11 @@
                     </ul>
 
                     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
-                        <!--
-                        <div class="mdl-card__menu">
-                            <a href="patient_form_checkHN.php">
-                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--green">
-                                <i class="material-icons">add</i></button>
-                            </a>
-                        </div>
--->
-                        <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                            <div class="uk-text-truncate">
-                                <h4 class="uk-heading-divider">ค้นหาผู้ใช้งานในระบบ</h4>
-                            </div>
 
+                        <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+                            <h4 class="uk-heading-divider">ค้นหาผู้ใช้งานในระบบ</h4>
                             <div class="mdl-grid">
                                 <div class="mdl-layout-spacer"></div>
-
                                 <div class="ui category search">
                                     <div class="ui icon input">
                                         <input class="prompt" type="text" placeholder="ค้นหารหัส หรือ ชื่อ-นามสกุล...">
@@ -91,6 +80,14 @@
                     </div>
 
                     <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell--12-col mdl-cell mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+
+                        <div class="mdl-card__menu">
+                            <a href="#" title="พิมพ์สรุปก่อนประชุม" uk-tooltip uk-toggle>
+                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                <i class="material-icons">add</i></button>
+                            </a>
+                        </div>
+
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                                 <div class="mdl-tabs__tab-bar">
@@ -106,14 +103,15 @@
                                                     ORDER BY user ASC");
                                         $doctor_count = mysql_num_rows($doctor_data);
                                     ?>
-                                    
-                                    <h5 class="uk-margin-top uk-heading-bullet">รายชื่อแพทย์ประจำบ้าน (<?php echo "$doctor_count" ?> คน)</h5>
+
+                                    <h5 class="uk-margin-top uk-heading-bullet">รายชื่อแพทย์ในภาควิชา (
+                                        <?php echo "$doctor_count" ?> คน)</h5>
 
                                     <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                         <thead>
                                             <tr>
                                                 <th>รูปภาพ</th>
-                                                <th class="uk-table-link"><a href="#" class="uk-button-text">รหัสประจำตัว <span uk-icon="icon: arrow-down"></span></a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text text-green">รหัสประจำตัว <span uk-icon="icon: arrow-down"></span></a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ตำแหน่ง</a></th>
                                                 <th>แก้ไข</th>
@@ -138,18 +136,17 @@
                                                     </td>
                                                     <td>
                                                         <span class="th-label">ชื่อ-นามสกุล: </span>
-
                                                         <a href="#" class="uk-button uk-button-text text-green">
-                                                            <?php
-                                                            echo $row['f_user']." ".$row['l_user']
-                                                        ?>
+                                                            <?php echo $row['f_user']." ".$row['l_user'] ?>
                                                         </a>
                                                     </td>
                                                     <td>
                                                         <span class="th-label">ตำแหน่ง: </span>
                                                         <?php echo $row['id_position'] ?>
                                                     </td>
-                                                    <td><a href="#" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a></td>
+                                                    <td>
+                                                        <a href="#" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    </td>
                                                 </tr>
                                                 <?php } ?>
                                         </tbody>
@@ -158,7 +155,7 @@
 
                                 <!--/#staff-->
                                 <div class="mdl-tabs__panel" id="staff-panel">
-                                    
+
                                     <?php
                                         $staff_data = mysql_query("
                                             SELECT * FROM tbuser 
@@ -167,57 +164,55 @@
                                         ");
                                         $staff_count = mysql_num_rows($staff_data);
                                     ?>
-                                    
-                                    <h5 class="uk-margin-top uk-heading-bullet">รายชื่อเจ้าหน้าที่ผู้มีส่วนเกี่ยวข้อง (<?php echo "$staff_count" ?> คน)</h5>
-                                    
-                                    <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
-                                        <thead>
-                                            <tr>
-                                                <th>รูปภาพ</th>
-                                                <th class="uk-table-link"><a href="#" class="uk-button-text">รหัสประจำตัว <span uk-icon="icon: arrow-down"></span></a></th>
-                                                <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
-                                                <th class="uk-table-link"><a href="#" class="uk-button-text">ตำแหน่ง</a></th>
-                                                <th>แก้ไข</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                                while($row = mysql_fetch_array($staff_data)) {
-                                                    include 'id_position.php';
-                                                    if($row["photo"] == "") {
-                                                        $photo = "img/avatar-doctor.svg";
-                                                    }
-                                                    else {
-                                                        $photo = "img/".$row["photo"];
-                                                    }
-                                                    
-                                            ?>
+
+                                        <h5 class="uk-margin-top uk-heading-bullet">รายชื่อเจ้าหน้าที่ผู้มีส่วนเกี่ยวข้อง (
+                                            <?php echo "$staff_count" ?> คน)</h5>
+
+                                        <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
+                                            <thead>
                                                 <tr>
-                                                    <td><img class="uk-preserve-width uk-border-circle" src="<?php echo $photo ?>" width="40" alt=""></td>
-                                                    <td>
-                                                        <?php
+                                                    <th>รูปภาพ</th>
+                                                    <th class="uk-table-link"><a href="#" class="uk-button-text">รหัสประจำตัว <span uk-icon="icon: arrow-down"></span></a></th>
+                                                    <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
+                                                    <th class="uk-table-link"><a href="#" class="uk-button-text">ตำแหน่ง</a></th>
+                                                    <th>แก้ไข</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                    while($row = mysql_fetch_array($staff_data)) {
+                                                        include 'id_position.php';
+                                                        if($row["photo"] == "") {
+                                                            $photo = "img/avatar-doctor.svg";
+                                                        }
+                                                        else {
+                                                            $photo = "img/".$row["photo"];
+                                                        }
+                                                ?>
+                                                    <tr>
+                                                        <td><img class="uk-preserve-width uk-border-circle" src="<?php echo $photo ?>" width="40" alt=""></td>
+                                                        <td>
+                                                            <?php
                                                         echo $row['user']
                                                     ?>
-                                                    </td>
-                                                    <td>
-                                                        <a href="#" class="uk-button uk-button-text text-green">
-                                                            <?php
+                                                        </td>
+                                                        <td>
+                                                            <a href="#" class="uk-button uk-button-text text-green">
+                                                                <?php
                                                             echo $row['f_user']." ".$row['l_user']
                                                         ?>
-                                                        </a>
-                                                    </td>
-                                                    <td>
-                                                        <?php
-                                                        echo $row['id_position']
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <?php
+                                                        echo $row['id_position']." "
                                                     ?>
-                                                    </td>
-                                                    <td><a href="#" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a></td>
-                                                </tr>
-                                                <?php 
-                                                }
-                                            ?>
-                                        </tbody>
-                                    </table>
+                                                        </td>
+                                                        <td><a href="#" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a></td>
+                                                    </tr>
+                                                    <?php } ?>
+                                            </tbody>
+                                        </table>
                                 </div>
                                 <!--/#closed-panel-->
                             </div>

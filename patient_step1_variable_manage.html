@@ -1,15 +1,5 @@
 <?php 
-$hn = $_GET['hn'];
-$type = $_GET['type'];
 
-switch ($type) {
-case 1:
-    $type = "Home visit care"; break;
-case 2:
-    $type = "Geriatric case"; break;
-case 3:
-    $type = "Palliative case"; break;
-}
 
 $p_name = "txt/p_name.txt";
 $month = "txt/month.txt";
@@ -30,3 +20,4 @@ include 'dropdown.php';
     var edu = <?php echo(json_encode($edu)); ?>;
     var re = <?php echo(json_encode($re)); ?>;
 </script>
+

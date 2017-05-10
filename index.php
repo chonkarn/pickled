@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <?php
 	session_start();
 	if($_SESSION['id'] == "")
@@ -8,6 +7,14 @@
 		header( "location:login.php");
 		exit();
 	}
+    $user = $_SESSION['id'];
+    include 'dbname.php';
+    $connect = mysql_connect($servername, $username, $password);
+    if (!$connect) {
+        die(mysql_error());
+    }
+    mysql_select_db("homevisit");
+    mysql_query("set character set utf8");  
 ?>
 
     <head>
@@ -15,12 +22,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
 
+        <!--jQuery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
         <!--mdl-->
         <link rel="stylesheet" href="lib/mdl/material.min.css">
         <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
+        <script src="lib/mdl/material.min.js"></script>
 
         <!--uikit-->
         <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
+        <script src="lib/uikit/js/uikit.min.js"></script>
+        <script src="lib/uikit/js/uikit-icons.min.js"></script>
 
         <!--icon-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -32,7 +45,9 @@
 
     <body>
         <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+
             <?php include"header.html"; ?>
+
             <main class="mdl-layout__content mdl-color--grey-100 ">
                 <div class="mdl-grid demo-content">
 
@@ -49,208 +64,206 @@
                             </a>
                         </div>
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col mdl-color-text--black">
-                            <h4 class="uk-heading-bullet">ผู้ป่วยเยี่ยมบ้านในความดูแล</h4>
+                            <h4 class="uk-heading-divider">ผู้ป่วยเยี่ยมบ้านในความดูแล</h4>
                             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                                 <div class="mdl-tabs__tab-bar">
                                     <a href="#visiting-panel" class="mdl-tabs__tab is-active">เยี่ยมต่อ</a>
                                     <a href="#closed-panel" class="mdl-tabs__tab">ปิดเคส</a>
                                 </div>
-                                <!--/.mdl-tabs__tab-bar-->
+
+                                <!--#VISITING-PANEL-->
                                 <div class="mdl-tabs__panel is-active" id="visiting-panel">
-                                    <h5 class="uk-margin-top">ผู้ป่วยปัจจุบันใน 3 เดือนที่ผ่านมา</h5>
-                                    <table class="mdl-data-table mdl-js-data-table mdl-cell mdl-cell--12-col" id="patient_own_con">
+                                    <h5 class="uk-margin-top uk-heading-bullet">ผู้ป่วยปัจจุบันใน 3 เดือนที่ผ่านมา</h5>
+                                    <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                         <thead>
                                             <tr>
-                                                <th class="mdl-data-table__header--sorted-ascending" onclick="sortTable(0,'patient_own_con','sort')" id="sort">HN</th>
-                                                <th class="mdl-data-table__cell--non-numeric">ชื่อ-นามสกุล</th>
-                                                <th>สถานะ</th>
-                                                <th>เยี่ยมแล้ว (ครั้ง)</th>
-                                                <th>เยี่ยมครั้งสุดท้าย</th>
-                                                <th>เยี่ยมครั้งต่อไป</th>
+                                                <th>รูปภาพ</th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text text-green">HN <span uk-icon="icon: arrow-up"></span></a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">สถานะ</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมแล้ว (ครั้ง)</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมครั้งสุดท้าย</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมครั้งต่อไป</a></th>
                                                 <th>แก้ไข</th>
                                             </tr>
                                         </thead>
-
-                                        <?php
-                                            $user = $_SESSION['id'];
-                                            $connect = mysql_connect("localhost","hvmsdb", "1234");
-                                            if (!$connect) {
-                                                die(mysql_error());
-                                            }
-                                            mysql_query("set character set utf8");   
-                                            mysql_select_db("homevisit");
-                                            $results = mysql_query("SELECT * FROM patientinfo WHERE patient_doctor_owner = '$user' AND (patient_visit_status = 1 OR patient_visit_status = 2) ");
-                                            while($row = mysql_fetch_array($results)) {
-                                                if ($row['patient_visit_status'] == 1) $row['patient_visit_status'] = "ใหม่" ;
-                                                else $row['patient_visit_status'] = "เยี่ยมต่อ"
-                                            
-                                        ?>
-                                            <tr>
-                                                <td>
-                                                    <?php echo $row['patient_hn']?>
-                                                </td>
-                                                <td class="mdl-data-table__cell--non-numeric">
-                                                    <?php echo $row['patient_p_name'].$row['patient_name']." ".$row['patient_surname']?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['patient_visit_status']?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['num_visit']?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['last_visit']?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['next_visit']?>
-                                                </td>
-                                                <td><a href="patient_edit_5987452.html"><i class="material-icons">edit</i></a></td>
-                                            </tr>
-
+                                        <tbody>
                                             <?php
-                                    }
-                                    ?>
+                                            
+                                            $results = mysql_query("
+                                                SELECT * FROM patientinfo 
+                                                WHERE patient_doctor_owner = '$user' 
+                                                AND (patient_visit_status = 1 OR patient_visit_status = 2) 
+                                            ");
+                                            
+                                                while($row = mysql_fetch_array($results)) {
+                                                    if ($row['patient_visit_status'] == 1)
+                                                        $row['patient_visit_status'] = "ใหม่" ;
+                                                    else $row['patient_visit_status'] = "เยี่ยมต่อ";
+                                            ?>
+                                                <tr>
+                                                    <td>
+                                                        <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
+                                                    </td>
+                                                    <td>
+                                                        <span class="th-label">HN: </span>
+                                                        <?php echo $row['patient_hn']?>
+                                                    </td>
+                                                    <td>
+                                                        <span class="th-label">ชื่อ-นามสกุล: </span>
+                                                        <a href="#" class="uk-button-text text-green">
+                                                            <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <span class="th-label">สถานะ: </span>
+                                                        <?php echo $row['patient_visit_status']?>
+                                                    </td>
+                                                    <td>
+                                                        <span class="th-label">เยี่ยมครั้งที่: </span>
+                                                        <?php echo $row['num_visit']?>
+                                                    </td>
+                                                    <td>
+                                                        <span class="th-label">เยี่ยมครั้งสุดท้าย: </span>
+                                                        <?php echo $row['last_visit']?>
+                                                    </td>
+                                                    <td>
+                                                        <span class="th-label">เยี่ยมครั้งต่อไป: </span>
+                                                        <?php echo $row['next_visit']?>
+                                                    </td>
+                                                    <td>
+                                                        <a href="#" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    </td>
+                                                </tr>
+                                                <?php } ?>
+                                        </tbody>
                                     </table>
                                 </div>
                                 <!--/#visiting-panel-->
+
+                                <!--#CLOSED-PANEL-->
                                 <div class="mdl-tabs__panel" id="closed-panel">
-                                    <h5 class="uk-margin-top">ผู้ป่วยที่ปิดเคสใน 3 เดือนที่ผ่านมา</h5>
-                                    <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col" id="patient_own_closed">
+                                    <h5 class="uk-margin-top uk-heading-bullet">ผู้ป่วยที่ปิดเคสใน 3 เดือนที่ผ่านมา</h5>
+                                    <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                         <thead>
                                             <tr>
-                                                <th class="mdl-data-table__header--sorted-ascending" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">HN</th>
-                                                <th class="mdl-data-table__cell--non-numeric">ชื่อ-นามสกุล</th>
+                                                <th>รูปภาพ</th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">HN <span uk-icon="icon: arrow-up"></span></a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                                 <th>สถานะ</th>
                                                 <th>เยี่ยมแล้ว (ครั้ง)</th>
                                                 <th>เยี่ยมครั้งสุดท้าย</th>
                                                 <th>เยี่ยมครั้งต่อไป</th>
-                                                <th>แก้ไข</th>
+                                                <th>แก้ไขประวัติ</th>
                                             </tr>
                                         </thead>
                                         <?php
-                                    $user = $_SESSION['id'];
-                                    $connect = mysql_connect("localhost","hvmsdb", "1234");
-                                    if (!$connect) {
-                                        die(mysql_error());
-                                    }
-                                    mysql_query("set character set utf8");   
-                                    mysql_select_db("homevisit");
-                                    $results = mysql_query("SELECT * FROM patientinfo WHERE patient_doctor_owner = '$user' AND patient_visit_status = 0 ");
-                                    while($row = mysql_fetch_array($results)) {
-                                    $row['patient_visit_status'] = "ปิดเยี่ยมบ้าน";
-                                    ?>
+                                            $results = mysql_query("
+                                                SELECT * FROM patientinfo 
+                                                WHERE patient_doctor_owner = '$user' 
+                                                AND patient_visit_status = 0
+                                            ");
+                                            while($row = mysql_fetch_array($results)) {
+                                                $row['patient_visit_status'] = "ปิดเยี่ยมบ้าน";
+                                        ?>
                                             <tr>
                                                 <td>
-                                                    <?php echo $row['patient_hn']?>
-                                                </td>
-                                                <td class="mdl-data-table__cell--non-numeric">
-                                                    <?php echo $row['patient_p_name'].$row['patient_name']." ".$row['patient_surname']?>
+                                                    <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
                                                 </td>
                                                 <td>
+                                                    <span class="th-label">HN: </span>
+                                                    <?php echo $row['patient_hn']?>
+                                                </td>
+                                                <td>
+                                                    <span class="th-label">ชื่อ-นามสกุล: </span>
+                                                    <a href="#" class="uk-button-text text-green">
+                                                        <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <span class="th-label">สถานะ: </span>
                                                     <?php echo $row['patient_visit_status']?>
                                                 </td>
                                                 <td>
+                                                    <span class="th-label">เยี่ยมครั้งที่: </span>
                                                     <?php echo $row['num_visit']?>
                                                 </td>
                                                 <td>
+                                                    <span class="th-label">เยี่ยมครั้งสุดท้าย: </span>
                                                     <?php echo $row['last_visit']?>
                                                 </td>
                                                 <td>
+                                                    <span class="th-label">เยี่ยมครั้งต่อไป: </span>
                                                     <?php echo $row['next_visit']?>
                                                 </td>
-                                                <td><a href="patient_edit_5987452.html"><i class="material-icons">edit</i></a></td>
+                                                <td>
+                                                    <a href="#" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                </td>
                                             </tr>
-
-                                            <?php
-                                    }
-                                    ?>
+                                            <?php } ?>
                                     </table>
                                 </div>
                                 <!--/#closed-panel-->
                             </div>
                             <!--/.tabs-->
                         </div>
-                        <hr>
-                        <div class="uk-align-right">
-                            <a href="#" class="uk-button uk-button-text">ดูผู้ป่วยทั้งหมด</a>
+                        <div class="mdl-card__actions mdl-card--border uk-text-right">
+                            <a href="patient.php" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--green">ดูผู้ป่วยทั้งหมด</a>
                         </div>
                     </div>
 
-                    <!--calendar-->
-                    <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-desktop">
+
+                    <div class=" demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--5-col">
                         <div class="mdl-card__supporting-text mdl-color-text--grey-900">
-                            <h4 class="uk-heading-bullet">นัดหมายเยี่ยมบ้าน</h4>
-                            <h5>สัปดาห์นี้</h5>
-                            <ul class="uk-list uk-list-large uk-list-divider">
-                                <li><b class="text-green">วันนี้</b>
-                                    <ul class="uk-list">
-                                        <li>นาง เพียรจิต จงใจรักษ์</li>
-                                    </ul>
-                                </li>
-                                <li>ศ. 3/2/2560
-                                    <ul class="uk-list">
-                                        <li>นาง เพียรจิต จงใจรักษ์</li>
-                                        <li>นาง เพียรจิต จงใจรักษ์</li>
-                                        <li>นาง เพียรจิต จงใจรักษ์</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                            <hr>
-                            <h5>สัปดาห์หน้า</h5>
-                            <ul class="uk-list uk-list-large uk-list-divider">
-                                <li>จ. 6/2/2560
-                                    <ul class="uk-list">
-                                        <li>นาง เพียรจิต จงใจรักษ์</li>
-                                    </ul>
-                                </li>
-                                <li>พ. 8/2/2560
-                                    <ul class="uk-list">
-                                        <li>นาง เพียรจิต จงใจรักษ์</li>
-                                        <li>นาง เพียรจิต จงใจรักษ์</li>
-                                    </ul>
-                                </li>
-                            </ul>
+                            <h4 class="uk-heading-divider">นัดหมายเยี่ยมบ้าน</h4>
                         </div>
                     </div>
 
-                    <!-- SUMMARY -->
-                    <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-cell--8-col-desktop">
-                        <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col mdl-color-text--black">
-                            <h4 class="uk-heading-bullet">สรุปเยี่ยมบ้าน</h4>
-                            <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col">
+                    <div class=" demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--7-col">
+                        <div class="mdl-card__supporting-text mdl-color-text--grey-900">
+                            <h4 class="uk-heading-divider">สรุปเยี่ยมบ้าน</h4>
+                            <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                 <thead>
                                     <tr>
-                                        <th>HN</th>
-                                        <th class="mdl-data-table__cell--non-numeric">ชื่อ-นามสกุล</th>
-                                        <th class="mdl-data-table__header--sorted-descending">วันที่เยี่ยม</th>
+                                        <th>รูปภาพ</th>
+                                        <th class="uk-table-link"><a href="#" class="uk-button-text text-green" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">HN <span uk-icon="icon: arrow-up"></span></a></th>
+                                        <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
+                                        <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมครั้งล่าสุด</a></th>
+                                        <th class="uk-table-link"><a href="#" class="uk-button-text">แก้ไขสรุป</a></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>7469584</td>
-                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">นาง มะลิ บำรุงมิตร</a></td>
-                                        <td>15/8/2559</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7567245</td>
-                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">นาย ขจร ชัยโชค</a></td>
-                                        <td>14/8/2559</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6981258</td>
-                                        <td class="mdl-data-table__cell--non-numeric"><a href="#">นาง กันยา สุปราณี</a></td>
-                                        <td>10/8/2559</td>
-                                    </tr>
-                                </tbody>
+                                <tr>
+                                    <td>
+                                        <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
+                                    </td>
+                                    <td>
+                                        <span class="th-label">HN: </span>
+                                        <?php echo $row['patient_hn']?>
+                                    </td>
+                                    <td>
+                                        <span class="th-label">ชื่อ-นามสกุล: </span>
+                                        <a href="#" class="uk-button-text text-green">
+                                            <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <span class="th-label">วันที่เยี่ยมบ้าน: </span>
+                                        <?php echo $row['last_visit']?>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
-                        <div class="mdl-card__actions mdl-card--border">
+                        <div class="mdl-card__actions mdl-card--border uk-text-right">
                             <a href="summary.php" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--green">ดูสรุปทั้งหมด</a>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
+
         <!--sort-->
         <script src="js/table_sort.js"></script>
 

@@ -95,7 +95,8 @@
                                             <div class="uk-margin">
                                                 <div class="uk-form-label"> </div>
                                                 <div class="uk-form-controls">
-<!--                                                    <input type="button" id="addProblems" class="uk-button uk-button-green uk-button-small" value="+ เพิ่มปัญหา"> </div>-->
+                                                    <input type="button" id="addProblems" class="uk-button uk-button-green uk-button-small" value="+ เพิ่มปัญหา"> </div>
+                                                <br>
                                             </div>
                                             <div class="mdl-step__actions">
                                                 <!--
