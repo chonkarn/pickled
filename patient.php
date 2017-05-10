@@ -133,11 +133,13 @@
                                                     </td>
                                                     <td>
                                                         <span class="th-label">HN: </span>
-                                                        <?php echo $row['patient_hn']?>
+                                                        <?php echo $row['patient_hn']; ?>
                                                     </td>
                                                     <td>
                                                         <span class="th-label">ชื่อ-นามสกุล: </span>
-                                                        <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                                        <a class="uk-button-text text-green" href="<?php echo " patient_show.php?hn=".$row['patient_hn']; ?>">
+                                                            <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                                        </a>
                                                     </td>
                                                     <td>
                                                         <span class="th-label">สถานะ: </span>

@@ -78,7 +78,8 @@
                                         <thead>
                                             <tr>
                                                 <th>รูปภาพ</th>
-                                                <th class="uk-table-link"><a href="#" class="uk-button-text text-green">HN <span uk-icon="icon: arrow-up"></span></a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text uk-text-bold">HN <span uk-icon="icon: arrow-up"></span></a>
+                                                </th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">สถานะ</a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมแล้ว (ครั้ง)</a></th>
@@ -148,13 +149,17 @@
                                         <thead>
                                             <tr>
                                                 <th>รูปภาพ</th>
-                                                <th class="uk-table-link"><a href="#" class="uk-button-text" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">HN <span uk-icon="icon: arrow-up"></span></a></th>
+                                                <th class="uk-table-link">
+                                                    <a href="#" class="uk-button-text uk-text-bold" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">
+                                                        HN <span uk-icon="icon: arrow-up"></span>
+                                                    </a>
+                                                </th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
-                                                <th>สถานะ</th>
-                                                <th>เยี่ยมแล้ว (ครั้ง)</th>
-                                                <th>เยี่ยมครั้งสุดท้าย</th>
-                                                <th>เยี่ยมครั้งต่อไป</th>
-                                                <th>แก้ไขประวัติ</th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">สถานะ</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมแล้ว (ครั้ง)</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมครั้งสุดท้าย</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมครั้งต่อไป</a></th>
+                                                <th>แก้ไข</th>
                                             </tr>
                                         </thead>
                                         <?php
@@ -211,54 +216,73 @@
                             <a href="patient.php" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--green">ดูผู้ป่วยทั้งหมด</a>
                         </div>
                     </div>
-
-
-                    <div class=" demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--5-col">
-                        <div class="mdl-card__supporting-text mdl-color-text--grey-900">
-                            <h4 class="uk-heading-divider">นัดหมายเยี่ยมบ้าน</h4>
-                            <h5 class="uk-heading-bullet">วันนี้</h5>
+                    <div class="demo-cards mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--5-col-desktop mdl-grid mdl-grid--no-spacing">
+                        <div class=" demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+                            <div class="mdl-card__supporting-text mdl-color-text--grey-900">
+                                <h4 class="uk-heading-divider">นัดหมายเยี่ยมบ้านสัปดาห์นี้</h4>
+                                <h5 class="uk-heading-bullet">วันนี้</h5>
+                                <ul class="uk-list uk-list-divider">
+                                    <li>List item 1</li>
+                                    <li>List item 2</li>
+                                    <li>List item 3</li>
+                                </ul>
+                                <h5 class="uk-heading-bullet">พรุ่งนี้</h5>
+                                <ul class="uk-list uk-list-divider">
+                                    <li>List item 1</li>
+                                    <li>List item 2</li>
+                                    <li>List item 3</li>
+                                </ul>
+                                <h5 class="uk-heading-bullet">สัปดาห์นี้</h5>
+                                <ul class="uk-list uk-list-divider">
+                                    <li>List item 1</li>
+                                    <li>List item 2</li>
+                                    <li>List item 3</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
-                    <div class=" demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--7-col">
-                        <div class="mdl-card__supporting-text mdl-color-text--grey-900">
-                            <h4 class="uk-heading-divider">สรุปเยี่ยมบ้าน</h4>
-                            <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
-                                <thead>
+                    <div class="demo-cards mdl-cell mdl-cell--7-col mdl-cell--7-col-tablet mdl-cell--7-col-desktop mdl-grid mdl-grid--no-spacing">
+                        <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+                            <div class="mdl-card__supporting-text mdl-color-text--grey-900">
+                                <h4 class="uk-heading-divider">สรุปเยี่ยมบ้าน</h4>
+                                <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
+                                    <thead>
+                                        <tr>
+                                            <th>รูปภาพ</th>
+                                            <th class="uk-table-link"><a href="#" class="uk-button-text uk-text-bold" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">HN <span uk-icon="icon: arrow-up"></span></a></th>
+                                            <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
+                                            <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมครั้งล่าสุด</a></th>
+                                            <th class="uk-table-link">แก้ไข</th>
+                                        </tr>
+                                    </thead>
                                     <tr>
-                                        <th>รูปภาพ</th>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text text-green" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">HN <span uk-icon="icon: arrow-up"></span></a></th>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมครั้งล่าสุด</a></th>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">แก้ไขสรุป</a></th>
+                                        <td>
+                                            <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
+                                        </td>
+                                        <td>
+                                            <span class="th-label">HN: </span>
+                                            <?php echo $row['patient_hn']?>
+                                        </td>
+                                        <td>
+                                            <span class="th-label">ชื่อ-นามสกุล: </span>
+                                            <a href="#" class="uk-button-text text-green">
+                                                <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <span class="th-label">วันที่เยี่ยมบ้าน: </span>
+                                            <?php echo $row['last_visit']?>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tr>
-                                    <td>
-                                        <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
-                                    </td>
-                                    <td>
-                                        <span class="th-label">HN: </span>
-                                        <?php echo $row['patient_hn']?>
-                                    </td>
-                                    <td>
-                                        <span class="th-label">ชื่อ-นามสกุล: </span>
-                                        <a href="#" class="uk-button-text text-green">
-                                            <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span class="th-label">วันที่เยี่ยมบ้าน: </span>
-                                        <?php echo $row['last_visit']?>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="mdl-card__actions mdl-card--border uk-text-right">
-                            <a href="summary.php" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--green">ดูสรุปทั้งหมด</a>
+                                </table>
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border uk-text-right">
+                                <a href="summary.php" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--green">ดูสรุปทั้งหมด</a>
+                            </div>
                         </div>
                     </div>
                 </div>
