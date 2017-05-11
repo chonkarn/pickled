@@ -58,15 +58,15 @@
                         <li>เพิ่มสรุปเยี่ยมบ้าน</li>
                     </ul>
 
-                                            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+                    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
 
-                    <form>
+                        <form>
                             <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                                 <ul class="uk-subnav uk-subnav-pill stepper" uk-switcher>
-                                    <li class="step complete"><a href="#" title="ข้อมูลทั่วไป" uk-tooltip>1</a></li>
-                                    <li class="step uncomplete"><a href="#" title="รายละเอียดของปัญหา" uk-tooltip>2</a></li>
-                                    <li class="step active"><a href="#" title="สรุปข้อมูลปัญหา" uk-tooltip>3</a></li>
-                                    <li class="step"><a href="#" title="สรุปหลังประชุม" uk-tooltip>4</a></li>
+                                    <li id="step1" class="step complete"><a href="#" title="ข้อมูลทั่วไป" uk-tooltip>1</a></li>
+                                    <li id="step2" class="step uncomplete "><a href="#" title="รายละเอียดของปัญหา" uk-tooltip>2</a></li>
+                                    <li id="step3 " class="step active"><a href="#" title="สรุปข้อมูลปัญหา" uk-tooltip>3</a></li>
+                                    <li id="step4" class="step"><a href="#" title="สรุปหลังประชุม" uk-tooltip>4</a></li>
                                 </ul>
                                 <ul class="uk-switcher">
                                     <li>
@@ -76,7 +76,7 @@
                                         </div>
                                         <?php include 'summary_step1.php' ?>
                                         <div class="uk-align-right">
-                                        <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป</a></div>
+                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป</a></div>
                                     </li>
                                     <li>
                                         <div class="uk-alert-danger" uk-alert>
@@ -84,7 +84,7 @@
                                             <p>กรอกข้อมูลไม่ครบถ้วน</p>
                                         </div>
                                         <?php include 'summary_step2.php' ?>
-                                        
+
                                         <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="previous">ย้อนกลับ</a>
                                         <div class="uk-align-right">
                                             <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป</a></div>
@@ -101,8 +101,9 @@
                                     </li>
                                 </ul>
                             </div>
-                        
-                    </form></div>
+
+                        </form>
+                    </div>
                 </div>
                 <!--/.demo-content-->
             </main>
@@ -110,6 +111,7 @@
 
         <!--custom js-->
         <script src="js/select.js"></script>
+        <script src="js/stepper.js"></script>
 
     </body>
 

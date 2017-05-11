@@ -1,4 +1,4 @@
-$('#selecter')
+$("[id*='select']")
     .dropdown({
         match: 'both',
         placeholder: 'auto',

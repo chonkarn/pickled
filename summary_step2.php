@@ -3,13 +3,11 @@
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">Biological problem</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2" rows="3" placeholder="Biological problem..."></textarea>
+            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="Biological problem..."></textarea>
         </div>
     </div>
 
-
     <h5 class="uk-heading-bullet">Physical examination</h5>
-
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">Vital sign</label>
         <div class="uk-form-controls">
@@ -44,7 +42,7 @@
                 <div class="uk-width-1-6@s">
                     <input class="uk-checkbox" type="checkbox"> ปกติ
                 </div>
-                <div class="uk-width-1-2">
+                <div class="uk-width-1-2@s">
                     <input class="uk-input uk-form-small ">
                 </div>
             </div>
@@ -57,7 +55,7 @@
                 <div class="uk-width-1-6@s">
                     <input class="uk-checkbox" type="checkbox"> ปกติ
                 </div>
-                <div class="uk-width-1-2">
+                <div class="uk-width-1-2@s">
                     <input class="uk-input uk-form-small ">
                 </div>
             </div>
@@ -70,7 +68,7 @@
                 <div class="uk-width-1-6@s">
                     <input class="uk-checkbox" type="checkbox"> ปกติ
                 </div>
-                <div class="uk-width-1-2">
+                <div class="uk-width-1-2@s">
                     <input class="uk-input uk-form-small ">
                 </div>
             </div>
@@ -84,7 +82,7 @@
                 <div class="uk-width-1-6@s">
                     <input class="uk-checkbox" type="checkbox"> ปกติ
                 </div>
-                <div class="uk-width-1-2">
+                <div class="uk-width-1-2@s">
                     <input class="uk-input uk-form-small ">
                 </div>
             </div>
@@ -97,7 +95,7 @@
                 <div class="uk-width-1-6@s">
                     <input class="uk-checkbox" type="checkbox"> ปกติ
                 </div>
-                <div class="uk-width-1-2">
+                <div class="uk-width-1-2@s">
                     <input class="uk-input uk-form-small ">
                 </div>
             </div>
@@ -110,13 +108,13 @@
                 <div class="uk-width-1-6@s">
                     <input class="uk-checkbox" type="checkbox"> ปกติ
                 </div>
-                <div class="uk-width-1-2">
+                <div class="uk-width-1-2@s">
                     <input class="uk-input uk-form-small ">
                 </div>
             </div>
         </div>
     </div>
-    
+
     <h5 class="uk-heading-bullet">Score assessment</h5>
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-select">PPS</label>
@@ -130,7 +128,7 @@
             <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
         </div>
     </div>
-    
+
     <h5 class="uk-heading-bullet">Mini mental state examination</h5>
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-select">Orientation to time</label>
@@ -213,27 +211,27 @@
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text"> Psychological and Social peroblem</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2" rows="3" placeholder=" Psychological and Social peroblem..."></textarea>
+            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder=" Psychological and Social peroblem..."></textarea>
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">Other problem</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2" rows="3" placeholder="Other problem..."></textarea>
+            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="Other problem..."></textarea>
         </div>
     </div>
-    
+
     <h5 class="uk-heading-bullet">Summarized</h5>
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">Assessment and Plan</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2" rows="3" placeholder="Assessment and Plan..."></textarea>
+            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="Assessment and Plan..."></textarea>
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">Goal</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2" rows="3" placeholder="Goal..."></textarea>
+            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="Goal..."></textarea>
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">สรุปคำแนะนำ</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2" rows="3" placeholder="สรุปคำแนะนำ..."></textarea>
+            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="สรุปคำแนะนำ..."></textarea>
         </div>
     </div>
     <h5 class="uk-heading-bullet">วางแผนครั้งต่อไป</h5>
@@ -36,7 +36,7 @@
             <label class="uk-margin-right">
                                             เหตุผล
                                         </label>
-            <select class="uk-select uk-form-small uk-width-1-3">
+            <select class="uk-select uk-form-small uk-width-1-3@m">
                                             <option>เลือกเหตุผล</option>
                                             <option>ติดต่อผู้ป่วยไม่ได้</option>
                                             <option>2 สัปดาห์</option>
