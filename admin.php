@@ -61,8 +61,7 @@
                         <li><span href="#"></span><i class="material-icons breadcrumb-icons">folder_shared</i> รายชื่อผู้ใช้งาน</li>
                     </ul>
 
-                    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
-
+                    <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                             <h4 class="uk-heading-divider">ค้นหาผู้ใช้งานในระบบ</h4>
                             <div class="mdl-grid">
@@ -82,7 +81,7 @@
                     <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell--12-col mdl-cell mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
 
                         <div class="mdl-card__menu">
-                            <a href="#" title="พิมพ์สรุปก่อนประชุม" uk-tooltip uk-toggle>
+                            <a href="#" title="เพิ่มผู้ใช้งาน" uk-tooltip uk-toggle>
                                 <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
                                 <i class="material-icons">add</i></button>
                             </a>

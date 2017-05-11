@@ -46,11 +46,12 @@
     <body>
         <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
 
-            <?php include"header.html"; ?>
+            <?php include "header.html"; ?>
 
             <main class="mdl-layout__content mdl-color--grey-100 ">
                 <div class="mdl-grid demo-content">
 
+                    <!--breadcrumb-->
                     <ul class="uk-breadcrumb breadcrumb">
                         <li><span href="#"></span><i class="material-icons breadcrumb-icons">home</i> หน้าหลัก</li>
                     </ul>
@@ -63,7 +64,7 @@
                             </button>
                             </a>
                         </div>
-                        <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col mdl-color-text--black">
+                        <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                             <h4 class="uk-heading-divider">ผู้ป่วยเยี่ยมบ้านในความดูแล</h4>
                             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                                 <div class="mdl-tabs__tab-bar">

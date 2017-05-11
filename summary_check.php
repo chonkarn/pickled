@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="uk-text-right">
-                                <a href="summary_step1.php" class="uk-button uk-button-default button-green">
+                                <a href="summary_form.php" class="uk-button uk-button-default button-green">
                                 เริ่มกรอกข้อมูล
                                 </a>
                             </div>
