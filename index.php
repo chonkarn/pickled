@@ -113,7 +113,7 @@
                                                     </td>
                                                     <td>
                                                         <span class="th-label">ชื่อ-นามสกุล: </span>
-                                                        <a href="#" class="uk-button-text text-green">
+                                                        <a href="<?php echo " patient_show.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green">
                                                             <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                         </a>
                                                     </td>

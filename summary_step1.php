@@ -150,14 +150,14 @@
         <label class="uk-form-label">Place at risk</label>
         <div class="uk-form-controls uk-form-controls-text">
             <select class="uk-select uk-width-1-2@s uk-form-small">
-                                            <option>เลือก Place at risk</option>
-                                            <option>1 สัปดาห์</option>
-                                            <option>2 สัปดาห์</option>
-                                            <option>3 สัปดาห์</option>
-                                            <option>1 เดือน</option>
-                                            <option>2 เดือน</option>
-                                            <option>3 เดือน</option>
-                                        </select>
+                <option>เลือก Place at risk</option>
+                <option>1 สัปดาห์</option>
+                <option>2 สัปดาห์</option>
+                <option>3 สัปดาห์</option>
+                <option>1 เดือน</option>
+                <option>2 เดือน</option>
+                <option>3 เดือน</option>
+            </select>
         </div>
     </div>
 
@@ -165,26 +165,22 @@
     <div class="uk-margin">
         <label class="uk-form-label">Caregiver burden</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right">
-                                            <input class="uk-radio" type="radio" name="caregiver" checked> Yes
-                                        </label>
-            <label>
-                                            <input class="uk-radio" type="radio" name="caregiver"> No
-                                        </label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="caregiver" checked> Yes</label>
+            <label><input class="uk-radio" type="radio" name="caregiver"> No</label>
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label">Main caregiver</label>
         <div class="uk-form-controls uk-form-controls-text">
             <select class="uk-select uk-width-1-2@s uk-form-small">
-                                            <option>เลือก Main caregiver</option>
-                                            <option>1 สัปดาห์</option>
-                                            <option>2 สัปดาห์</option>
-                                            <option>3 สัปดาห์</option>
-                                            <option>1 เดือน</option>
-                                            <option>2 เดือน</option>
-                                            <option>3 เดือน</option>
-                                        </select>
+                <option>เลือก Main caregiver</option>
+                <option>1 สัปดาห์</option>
+                <option>2 สัปดาห์</option>
+                <option>3 สัปดาห์</option>
+                <option>1 เดือน</option>
+                <option>2 เดือน</option>
+                <option>3 เดือน</option>
+            </select>
         </div>
     </div>
     <div class="uk-margin">
@@ -328,7 +324,7 @@
     <div class="uk-margin">
         <div class="uk-form-controls">
             <div class="uk-grid">
-                <div class="uk-width-1-3@s">
+                <div class="uk-width-1-3@s uk-text-truncate">
                     <input class="uk-checkbox" type="checkbox"> Social support & Health insurance
                 </div>
                 <div class="uk-width-1-2@s">
@@ -378,9 +374,9 @@
         <label class="uk-form-label" for="form-horizontal-text"></label>
         <div class="uk-form-controls">
             <div class="uk-grid">
-                <div class="uk-width-1-3@s">
-                    <input class="uk-checkbox" type="checkbox"> Dying
-                    <span class="uk-text-meta uk-text-small">Funeral plan / Grief bereavement care</span>
+                <div class="uk-width-1-3@s uk-text-truncate">
+                    <input class="uk-checkbox" type="checkbox"> Dying<br>
+                    <small>Funeral plan / Grief bereavement care</small>
                 </div>
                 <div class="uk-width-1-2@s">
                     <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">

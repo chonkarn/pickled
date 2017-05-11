@@ -7,265 +7,204 @@
 		header( "location:login.php");
 		exit();
 	}
-    ?>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    $user = $_SESSION['id'];
+    include 'dbname.php';
+    $connect = mysql_connect($servername, $username, $password);
+    if (!$connect) {
+        die(mysql_error());
+    }
+    mysql_select_db("homevisit");
+    mysql_query("set character set utf8");  
+?>
 
-    <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
 
-    <!--mdl-->
-    <link rel="stylesheet" href="lib/mdl/material.min.css">
-    <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
+        <!--jQuery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-    <!--uikit-->
-    <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
+        <!--mdl-->
+        <link rel="stylesheet" href="lib/mdl/material.min.css">
+        <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
+        <script src="lib/mdl/material.min.js"></script>
 
-    <!--icon-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <!--uikit-->
+        <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
+        <script src="lib/uikit/js/uikit.min.js"></script>
+        <script src="lib/uikit/js/uikit-icons.min.js"></script>
 
-    <!--custom css-->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/font.css">
-</head>
+        <!--icon-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<body>
-    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-        <?php include"header.html";?>
-        <main class="mdl-layout__content mdl-color--grey-100">
-            <div class="mdl-grid demo-content">
+        <!--custom css-->
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/font.css">
+    </head>
 
-                <ul class="uk-breadcrumb breadcrumb">
-                    <li><span href="#"></span><i class="material-icons breadcrumb-icons">assignment</i> สรุปเยี่ยมบ้าน</li>
-                </ul>
+    <body>
+        <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+            
+            <?php include"header.html"; ?>
+            
+            <main class="mdl-layout__content mdl-color--grey-100">
+                <div class="mdl-grid demo-content">
 
-                <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell--12-col mdl-cell mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
-                    <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+                    <!--breadcrumb-->
+                    <ul class="uk-breadcrumb breadcrumb">
+                        <li><span href="#"></span><i class="material-icons breadcrumb-icons">assignment</i> สรุปเยี่ยมบ้าน</li>
+                    </ul>
 
-                        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-                            <div class="mdl-tabs__tab-bar">
-                                <a href="#nosum-panel" class="mdl-tabs__tab is-active">ยังไม่สรุป</a>
-                                <a href="#sum-panel" class="mdl-tabs__tab">สรุปแล้ว</a>
+                    <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+                        <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+                            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                                <div class="mdl-tabs__tab-bar">
+                                    <a href="#nosum-panel" class="mdl-tabs__tab is-active">ยังไม่สรุป</a>
+                                    <a href="#sum-panel" class="mdl-tabs__tab">สรุปแล้ว</a>
+                                </div>
+                                <div class="mdl-tabs__panel is-active" id="nosum-panel">
+                                    <h5 class="uk-margin-top uk-heading-bullet">สรุปเยี่ยมบ้านที่ยังไม่สรุป</h5>
+                                    <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
+                                        <thead>
+                                            <tr>
+                                                <th>รูปภาพ</th>
+                                                <th class="uk-table-link">
+                                                    <a href="#" class="uk-button-text uk-text-bold" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">
+                                                        HN <span uk-icon="icon: arrow-up"></span>
+                                                    </a>
+                                                </th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">ครั้งที่เยี่ยม</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">วันเวลาเยี่ยม</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">สถานะ</a></th>
+                                                <th>แก้ไข</th>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                            $results = mysql_query("
+                                                SELECT * FROM patientinfo 
+                                                WHERE patient_doctor_owner = '$user' 
+                                                AND patient_visit_status = 0
+                                            ");
+                                            while($row = mysql_fetch_array($results)) {
+                                                $row['patient_visit_status'] = "ยังไม่ได้สรุป";
+                                        ?>
+                                            <tr>
+                                                <td>
+                                                    <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
+                                                </td>
+                                                <td>
+                                                    <span class="th-label">HN: </span>
+                                                    <?php echo $row['patient_hn']?>
+                                                </td>
+                                                <td>
+                                                    <span class="th-label">ชื่อ-นามสกุล: </span>
+                                                    <a href="<?php echo "summary_view.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green">
+                                                        <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                                    </a>
+                                                </td>
+
+                                                <td>
+                                                    <span class="th-label">เยี่ยมครั้งที่: </span>
+                                                    <?php echo $row['num_visit']?>
+                                                </td>
+                                                <td>
+                                                    <span class="th-label">เยี่ยมครั้งสุดท้าย: </span>
+                                                    <?php echo $row['last_visit']?>
+                                                </td>
+
+                                                <td>
+                                                    <span class="th-label">สถานะ: </span>
+                                                    <?php echo $row['patient_visit_status']?>
+                                                </td>
+                                                <td>
+                                                    <a href="<?php echo "summary_edit.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                    </table>
+                                </div>
+                                <!--/#nosum-panel-->
+                                <div class="mdl-tabs__panel" id="sum-panel">
+                                    <h5 class="uk-margin-top uk-heading-bullet">สรุปเยี่ยมบ้านที่สรุปแล้ว</h5>
+                                    <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
+                                        <thead>
+                                            <tr>
+                                                <th>รูปภาพ</th>
+                                                <th class="uk-table-link">
+                                                    <a href="#" class="uk-button-text uk-text-bold" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">
+                                                        HN <span uk-icon="icon: arrow-up"></span>
+                                                    </a>
+                                                </th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">ครั้งที่เยี่ยม</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">วันเวลาเยี่ยม</a></th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">สถานะ</a></th>
+                                                <th>แก้ไข</th>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                            $results = mysql_query("
+                                                SELECT * FROM patientinfo 
+                                                WHERE patient_doctor_owner = '$user' 
+                                                AND patient_visit_status = 1
+                                            ");
+                                            while($row = mysql_fetch_array($results)) {
+                                                $row['patient_visit_status'] = "สรุปบางส่วน";
+                                        ?>
+                                            <tr>
+                                                <td>
+                                                    <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
+                                                </td>
+                                                <td>
+                                                    <span class="th-label">HN: </span>
+                                                    <?php echo $row['patient_hn']?>
+                                                </td>
+                                                <td>
+                                                    <span class="th-label">ชื่อ-นามสกุล: </span>
+                                                    <a href="<?php echo "summary_view.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green">
+                                                        <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                                    </a>
+                                                </td>
+
+                                                <td>
+                                                    <span class="th-label">เยี่ยมครั้งที่: </span>
+                                                    <?php echo $row['num_visit']?>
+                                                </td>
+                                                <td>
+                                                    <span class="th-label">เยี่ยมครั้งสุดท้าย: </span>
+                                                    <?php echo $row['last_visit']?>
+                                                </td>
+
+                                                <td>
+                                                    <span class="th-label">สถานะ: </span>
+                                                    <?php echo $row['patient_visit_status']?>
+                                                </td>
+                                                <td>
+                                                    <a href="<?php echo "summary_edit.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                    </table>
+                                </div>
+                                <!--/#sum-panel-->
                             </div>
-                            <!--/.mdl-tabs__tab-bar-->
-                            <div class="mdl-tabs__panel is-active" id="nosum-panel">
-                                <h5 class="uk-margin-top">สรุปเยี่ยมบ้านที่ยังไม่สรุป</h5>
-                                <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col">
-                                    <thead>
-                                        <tr>
-                                            <th class="mdl-data-table__header--sorted-ascending">HN</th>
-                                            <th class="mdl-data-table__cell--non-numeric">ชื่อ-นามสกุล</th>
-                                            <th class="mdl-data-table__cell--non-numeric">วันเวลาเยี่ยม</th>
-                                            <th>ครั้งที่เยี่ยม</th>
-                                            <th>สถานะ</th>
-                                            <th>แก้ไข</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>5987452</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="summary_check.php">นาง เพียรจิต จงใจรักษ์</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>5</td>
-                                            <td>ยังไม่ได้สรุป</td>
+                            <!--/.tabs-->
 
-                                            <td><a href="summary_check.php"><i class="material-icons">edit</i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6215845</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาย รุ่งโรจน์ เรืองรอง</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>4</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>8963215</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาย วิบูรณ์ ธนโชติไพศาล</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>6</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4987521</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาง เพียรจิต จงใจรักษ์</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>5</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5874158</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาย เหมันต์ ธนไพบูรณ์</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>6</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5965485</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาง รุ่งทิพย์ ก่อเกียรติ</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>3</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6158489</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาง ชญานิศ พลฑา</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>7</td>
-                                            <td>สรุปบางส่วน</td>
-
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6258459</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาย ชัชพิสิทธิ์ กาวิโล</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/6/2559 (บ่าย)</td>
-                                            <td>8</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7854485</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาง วิยดา เครื่องดี</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">5/8/2560 (เช้า)</td>
-                                            <td>6</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>8512365</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาย ธนโชติ  มหาทรัพย์</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">5/8/2560 (เช้า)</td>
-                                            <td>9</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!--/#nosum-panel-->
-                            <div class="mdl-tabs__panel" id="sum-panel">
-                                <h5 class="uk-margin-top">สรุปเยี่ยมบ้านที่สรุปแล้ว</h5>
-                                <table class="mdl-data-table mdl-js-data-table mdl-cell--12-col">
-                                    <thead>
-                                        <tr>
-                                            <th class="mdl-data-table__header--sorted-ascending">HN</th>
-                                            <th class="mdl-data-table__cell--non-numeric">ชื่อ-นามสกุล</th>
-                                            <th class="mdl-data-table__cell--non-numeric">วันเวลาเยี่ยม</th>
-                                            <th>ครั้งที่เยี่ยม</th>
-                                            <th>สถานะ</th>
-                                            <th>แก้ไข</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>5987452</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="patient_5987452.html">นาง มาลิณี เกียรติขจร</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>5</td>
-                                            <td>ยังไม่ได้สรุป</td>
-
-                                            <td><a href="patient_edit_5987452.html"><i class="material-icons">edit</i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6215845</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาย รุ่งโรจน์ เรืองรอง</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>4</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>8963215</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาย วิบูรณ์ ธนโชติไพศาล</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>6</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>4987521</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาง เพียรจิต จงใจรักษ์</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>5</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5874158</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาย เหมันต์ ธนไพบูรณ์</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>6</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>5965485</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาง รุ่งทิพย์ ก่อเกียรติ</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>3</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6158489</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาง ชญานิศ พลฑา</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/7/2560 (เช้า)</td>
-                                            <td>7</td>
-                                            <td>สรุปบางส่วน</td>
-
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>6258459</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาย ชัชพิสิทธิ์ กาวิโล</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">12/6/2559 (บ่าย)</td>
-                                            <td>8</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>7854485</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาง วิยดา เครื่องดี</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">5/8/2560 (เช้า)</td>
-                                            <td>6</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                        <tr>
-                                            <td>8512365</td>
-                                            <td class="mdl-data-table__cell--non-numeric"><a href="#">นาย ธนโชติ  มหาทรัพย์</a></td>
-                                            <td class="mdl-data-table__cell--non-numeric">5/8/2560 (เช้า)</td>
-                                            <td>9</td>
-                                            <td>สรุปบางส่วน</td>
-                                            <td><i class="material-icons">edit</i></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!--/#sum-panel-->
                         </div>
-                        <!--/.tabs-->
-
                     </div>
+                    <!--/.mdl-card-->
                 </div>
-                <!--/.mdl-card-->
-            </div>
-        </main>
-    </div>
+            </main>
+        </div>
 
-    <!--jquery-->
-    <script src="js/jquery-3.1.1.min.js"></script>
+        <!--jquery-->
+        <script src="js/jquery-3.1.1.min.js"></script>
 
-    <!--js-->
-    <script src="lib/mdl/material.min.js"></script>
-    <script src="lib/uikit/js/uikit.min.js"></script>
-</body>
+        <!--js-->
+        <script src="lib/mdl/material.min.js"></script>
+        <script src="lib/uikit/js/uikit.min.js"></script>
+    </body>
 
 </html>
