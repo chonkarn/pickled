@@ -123,7 +123,7 @@
                                                     <?php echo $row['patient_visit_status']?>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo "summary_check.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    <a href="<?php echo "summary_form.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -187,7 +187,7 @@
                                                     <?php echo $row['patient_visit_status']?>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo " summary_check.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    <a href="<?php echo "summary_form.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>

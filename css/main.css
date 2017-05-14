@@ -104,9 +104,26 @@ dialog {
 }
 
 
+/* --------------- print --------------- */
+
+.paper-print {
+    margin: 2%;
+    max-width: 960px;
+}
+
+
+/*
+.paper-print .uk-form-horizontal .uk-margin .uk-form-label {
+    float: left;
+    width: 20%;
+}
+*/
+
+
 /* --------------- table --------------- */
 
-.th-label {
+.th-label,
+.td-label {
     font-weight: bold;
 }
 
@@ -139,8 +156,6 @@ table thead tr th {
 .text-red {
     color: #ff0045;
 }
-
-
 
 
 /* --------------- icon --------------- */

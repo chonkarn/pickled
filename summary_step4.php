@@ -1,5 +1,5 @@
-<h4 class="uk-heading-divider">สรุปหลังประชุม</h4>
 <div class="uk-form-horizontal">
+    <h4 class="uk-heading-divider">ส่วนที่ 4 สรุปหลังประชุม</h4>
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">สรุปคำแนะนำ</label>
         <div class="uk-form-controls">
@@ -25,11 +25,6 @@
             <select class="uk-select uk-form-small uk-width-1-3@m">
                 <option>เลือกเหตุผล</option>
                 <option>ติดต่อผู้ป่วยไม่ได้</option>
-                <option>2 สัปดาห์</option>
-                <option>3 สัปดาห์</option>
-                <option>1 เดือน</option>
-                <option>2 เดือน</option>
-                <option>3 เดือน</option>
             </select>
         </div>
     </div>

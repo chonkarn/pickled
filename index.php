@@ -51,12 +51,14 @@
             <main class="mdl-layout__content mdl-color--grey-100 ">
                 <div class="mdl-grid demo-content">
 
-                    <!--breadcrumb-->
+                    <!--BREADCRUMB-->
                     <ul class="uk-breadcrumb breadcrumb">
                         <li><span href="#"></span><i class="material-icons breadcrumb-icons">home</i> หน้าหลัก</li>
                     </ul>
 
                     <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
+                        
+                        <!--CARD-MENU-->
                         <div class="mdl-card__menu">
                             <a href="patient_form_checkHN.php">
                                 <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--green">
@@ -64,6 +66,8 @@
                             </button>
                             </a>
                         </div>
+                        
+                        <!--CARD-SUPPORTING-TEXT-->
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                             <h4 class=""><i class="material-icons text-top">folder_shared</i> ผู้ป่วยเยี่ยมบ้านในความดูแล</h4>
                             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">

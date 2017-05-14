@@ -15,6 +15,19 @@
     }
     mysql_select_db("homevisit");
     mysql_query("set character set utf8");  
+    
+    $patient_hn = $_GET['hn'];
+    $hnSQL = "SELECT * FROM patientinfo 
+    INNER JOIN summary ON summary.patient_hn = patientinfo.patient_hn
+    INNER JOIN tbuser ON patientinfo.patient_doctor_owner = tbuser.user
+    WHERE patientinfo.patient_hn LIKE '$patient_hn'";
+
+    $result = mysql_db_query($dbname, $hnSQL) or die (mysql_error());
+    $row = mysql_fetch_array($result); 
+    
+    $patient_name = $row["patient_p_name"]." ".$row["patient_name"]." ".$row["patient_surname"];
+    $num_visit = $row["num_visit"];
+    $visit_date = $row["last_visit"];
 ?>
 
     <head>
@@ -45,18 +58,27 @@
 
     <body>
         <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+            
             <?php include"header.html"; ?>
+            
             <main class="mdl-layout__content mdl-color--grey-100">
                 <div class="mdl-grid demo-content">
 
                     <!--breadcrumb-->
                     <ul class="uk-breadcrumb breadcrumb">
                         <li><a href="summary.php" class="uk-button-text"><i class="material-icons breadcrumb-icons">assignment</i> สรุปเยี่ยมบ้าน</a></li>
-                        <li><a href="<?php echo "patient_show.php?hn=".$row['patient_hn']; ?>" class="uk-button-text">นาง เพียรจิต จงใจรักษ์</a></li>
-                        <li>ดูสรุปเยี่ยมบ้านครั้งที่ 5</li>
+                        <li>
+                            <a href="<?php echo "patient_show.php?hn=".$patient_hn ?>" class="uk-button-text">
+                                <?php echo $patient_name ?>
+                            </a>
+                        </li>
+                        <li>ดูสรุปเยี่ยมบ้านครั้งที่ 
+                            <?php echo $num_visit ?>
+                        </li>
                     </ul>
 
                     <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
+<!--
                         <div class="mdl-card__menu">
                             <button id="menu-function" class="mdl-button mdl-js-button mdl-button--icon">
                             <i class="material-icons">more_vert</i>
@@ -66,6 +88,20 @@
                                 <li class="mdl-menu__item"><a href="patient_print_5987452.html" target="_blank"><i class="material-icons">print</i> พิมพ์</a></li>
                             </ul>
                         </div>
+-->
+                        
+                        <!--CARD-MENU-->
+                        <div class="mdl-card__menu">
+                            <a href="sumary_print.php" class="mdl-button mdl-button--icon mdl-color-text--green">
+                                <i class="material-icons">print</i>
+                            </a>
+                            <a href="summary_form.php" class="mdl-button mdl-button--icon mdl-color-text--green">
+                                <i class="material-icons">edit</i>
+                            </a>
+                            
+                        </div>
+                        
+                        <!--CARD-SUPPORTING-TEXT-->
                         <div class="mdl-card__supporting-text mdl-color-text--grey-900 mdl-cell--12-col">
                             <div class="mdl-grid mdl-typography--subhead">
                                 <div><img class="logo-report" src="img/logo-report.jpg">
@@ -86,7 +122,7 @@
                                   ชื่อผู้ป่วย
                                 </label>
                                     <div class="uk-form-controls uk-form-controls-text">
-                                        นาง เพียรชิต จงใจรักษ์
+                                        <?php echo $patient_name ?>
                                     </div>
                                 </div>
                                 <div class="uk-margin">
@@ -94,7 +130,7 @@
                                    รหัสโรงพยาบาล
                                 </label>
                                     <div class="uk-form-controls uk-form-controls-text">
-                                        9785356
+                                    HN <?php echo $patient_hn ?>
                                     </div>
                                 </div>
                                 <div class="uk-margin">
@@ -107,26 +143,19 @@
                                 </div>
                                 <div class="uk-margin">
                                     <label class="uk-form-label">
-                                    วันที่ไปเยี่ยม
+                                    วันเวลาเยี่ยมบ้าน
                                 </label>
                                     <div class="uk-form-controls uk-form-controls-text">
-                                        20 มิถุนายน พ.ศ. 2559
+                                        <span class="uk-margin-right">20 มิถุนายน พ.ศ. 2559</span>
+                                        เวลาเช้า (9.00-12.00 น)
                                     </div>
                                 </div>
                                 <div class="uk-margin">
                                     <label class="uk-form-label">
-                                    เวลาที่ไปเยี่ยม
+                                    จำนวนครั้งเยี่ยมบ้าน
                                 </label>
                                     <div class="uk-form-controls uk-form-controls-text">
-                                        เช้า (9.00-12.00)
-                                    </div>
-                                </div>
-                                <div class="uk-margin">
-                                    <label class="uk-form-label">
-                                    เยี่ยมบ้านครั้งที่
-                                </label>
-                                    <div class="uk-form-controls uk-form-controls-text">
-                                        5
+                                        ครั้งที่ <?php echo $num_visit ?>
                                     </div>
                                 </div>
                                 <div class="uk-margin">

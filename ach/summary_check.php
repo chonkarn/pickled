@@ -30,7 +30,7 @@
     $doctor_owner_lname = $row["l_user"];
     $doctor_owner_id = $row["patient_doctor_owner"];
     
-    #cannot select each doctor
+    #NOTE: cannot select each doctor
     $doctor_visit_id = $row["doctor_team"];
 ?>
 
