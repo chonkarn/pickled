@@ -9,11 +9,8 @@
 	}
     $user = $_SESSION['id'];
     include 'dbname.php';
-    $connect = mysql_connect($servername, $username, $password);
-    if (!$connect) {
-        die(mysql_error());
-    }
-    mysql_select_db("homevisit");
+    $connect = mysql_connect($servername, $username, $password) or die(mysql_error());
+    mysql_select_db($dbname) or die(mysql_error());
     mysql_query("set character set utf8");  
 ?>
 
@@ -45,9 +42,9 @@
 
     <body>
         <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-            
+
             <?php include"header.html"; ?>
-            
+
             <main class="mdl-layout__content mdl-color--grey-100">
                 <div class="mdl-grid demo-content">
 
@@ -81,14 +78,22 @@
                                                 <th>แก้ไข</th>
                                             </tr>
                                         </thead>
+
+                                        <!--                 
+                                            0 คือยังไม่สรุป - ไปที่หน้า summary_check.php
+                                            1 คือสรุปบางส่วน - ไปที่หน้า summary_form.php
+                                            2 คือสรุปเสร็จแล้ว
+                                        -->
+
                                         <?php
                                             $results = mysql_query("
-                                                SELECT * FROM patientinfo 
-                                                WHERE patient_doctor_owner = '$user' 
-                                                AND patient_visit_status = 0
+                                                SELECT * FROM summary 
+                                                INNER JOIN patientinfo ON summary.patient_hn = patientinfo.patient_hn
+                                                
                                             ");
+                                        
                                             while($row = mysql_fetch_array($results)) {
-                                                $row['patient_visit_status'] = "ยังไม่ได้สรุป";
+                                               $row['summary_status'] = "ยังไม่ได้สรุป";
                                         ?>
                                             <tr>
                                                 <td>
@@ -100,11 +105,10 @@
                                                 </td>
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
-                                                    <a href="<?php echo "summary_view.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green">
+                                                    <a href="<?php echo " summary_view.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green">
                                                         <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                     </a>
                                                 </td>
-
                                                 <td>
                                                     <span class="th-label">เยี่ยมครั้งที่: </span>
                                                     <?php echo $row['num_visit']?>
@@ -119,7 +123,7 @@
                                                     <?php echo $row['patient_visit_status']?>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo "summary_edit.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    <a href="<?php echo "summary_check.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -146,12 +150,13 @@
                                         </thead>
                                         <?php
                                             $results = mysql_query("
-                                                SELECT * FROM patientinfo 
-                                                WHERE patient_doctor_owner = '$user' 
-                                                AND patient_visit_status = 1
+                                                SELECT * FROM summary 
+                                                INNER JOIN patientinfo ON summary.patient_hn = patientinfo.patient_hn
+                                                WHERE summary.summary_status = 2
                                             ");
+                                        
                                             while($row = mysql_fetch_array($results)) {
-                                                $row['patient_visit_status'] = "สรุปบางส่วน";
+                                               $row['patient_visit_status'] = "สรุปแล้ว";
                                         ?>
                                             <tr>
                                                 <td>
@@ -163,7 +168,7 @@
                                                 </td>
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
-                                                    <a href="<?php echo "summary_view.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green">
+                                                    <a href="<?php echo " summary_view.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green">
                                                         <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                     </a>
                                                 </td>
@@ -182,7 +187,7 @@
                                                     <?php echo $row['patient_visit_status']?>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo "summary_edit.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    <a href="<?php echo " summary_check.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -198,13 +203,6 @@
                 </div>
             </main>
         </div>
-
-        <!--jquery-->
-        <script src="js/jquery-3.1.1.min.js"></script>
-
-        <!--js-->
-        <script src="lib/mdl/material.min.js"></script>
-        <script src="lib/uikit/js/uikit.min.js"></script>
     </body>
 
 </html>

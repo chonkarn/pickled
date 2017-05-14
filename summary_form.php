@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    
 <?php
 	session_start();
 	if($_SESSION['id'] == "")
@@ -10,6 +11,24 @@
     include 'dbname.php';
     mysql_connect($servername, $username, $password) or die(mysql_error());
     mysql_select_db($dbname) or die(mysql_error());
+    mysql_query("set character set utf8"); 
+    
+    $patient_hn = $_GET['hn'];
+    $hnSQL = "SELECT * FROM patientinfo 
+    INNER JOIN summary ON summary.patient_hn = patientinfo.patient_hn
+    INNER JOIN tbuser ON patientinfo.patient_doctor_owner = tbuser.user
+    WHERE patientinfo.patient_hn LIKE '$patient_hn'";
+
+    $result = mysql_db_query($dbname, $hnSQL) or die (mysql_error());
+    $row = mysql_fetch_array($result); 
+    
+    #update data
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    $visit_status = $_POST['visit_status'];
+    $sumSQL = "UPDATE summary SET visit_status = '$visit_status'
+    WHERE patient_hn = '$patient_hn'";
+    
+    $conn->query($sumSQL);
 ?>
 
     <head>
@@ -75,7 +94,8 @@
                                         </div>
                                         <?php include 'summary_step1.php' ?>
                                         <div class="uk-align-right">
-                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป</a></div>
+                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป <span uk-icon="chevron-right"></span></a>
+                                        </div>
                                     </li>
                                     <li>
                                         <div class="uk-alert-danger" uk-alert>
@@ -83,24 +103,27 @@
                                             <p>กรอกข้อมูลไม่ครบถ้วน</p>
                                         </div>
                                         <?php include 'summary_step2.php' ?>
-
-                                        <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="previous">ย้อนกลับ</a>
+                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                         <div class="uk-align-right">
-                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป</a></div>
+                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป <span uk-icon="chevron-right"></span></a>
+                                        </div>
                                     </li>
                                     <li>
                                         <?php include 'summary_step3.php' ?>
-                                        <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="previous">ย้อนกลับ</a>
+                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                         <div class="uk-align-right">
-                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป</a></div>
+                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป <span uk-icon="chevron-right"></span></a>
+                                        </div>
                                     </li>
                                     <li>
                                         <?php include 'summary_step4.php' ?>
-                                        <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="previous">ย้อนกลับ</a>
+                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
+                                        <div class="uk-align-right">
+                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">บันทึก</a>
+                                        </div>
                                     </li>
                                 </ul>
                             </div>
-
                         </form>
                     </div>
                 </div>

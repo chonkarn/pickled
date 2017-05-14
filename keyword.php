@@ -16,6 +16,10 @@
     mysql_query("set character set utf8");  
     $results = mysql_query("SELECT * FROM tbuser WHERE user = '$user'");
     $row = mysql_fetch_array($results);
+    
+    $keyword_data = mysql_query("SELECT * FROM icd10 ORDER BY icd10_id ASC LIMIT 10 OFFSET 15");
+    $keyword_count = mysql_num_rows($keyword_data);
+    
 ?>
 
     <head>
@@ -88,56 +92,45 @@
                         </div>
 
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                            <?php 
-                                $keyword_data = mysql_query(" SELECT * FROM icd10 
-                                    WHERE id_position BETWEEN 1 AND 2
-                                    ORDER BY user ASC
-                                    LIMIT 10 OFFSET 15
-                                    ");
-                                $keyword_count = mysql_num_rows($keyword_data);
-                            ?>
-
-                            <h5 class="uk-margin-top uk-heading-bullet">รายชื่อแพทย์ประจำบ้าน จำนวน <?php echo "$doctor_count" ?> คน</h5>
-
+                            <h5 class="uk-margin-top uk-heading-bullet">รหัสของโรคและอาการ (ICD-10)</h5>
                             <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                 <thead>
                                     <tr>
                                         <th class="uk-table-link"><a href="#" class="uk-button-text">ID <span uk-icon="icon: arrow-down"></span></a></th>
                                         <th class="uk-table-link"><a href="#" class="uk-button-text">Name</a></th>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">Keyword</a></th>
+                                        <th class="uk-table-link"><a href="#" class="uk-button-text">Keyword </a></th>
                                         <th class="uk-table-link"><a href="#" class="uk-button-text">My keyword</a></th>
                                         <th>แก้ไข</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                                
-                                                while($row = mysql_fetch_array($doctor_data)) {
-                                            ?>
-                                        <tr>
-                                            <td><img class="uk-preserve-width uk-border-circle" src="<?php echo $photo ?>" width="40" alt=""></td>
-                                            <td>
-                                                <span class="th-label">รหัสประจำตัว: </span>
-                                                <?php echo $row['user'] ?>
-                                            </td>
-                                            <td>
-                                                <span class="th-label">ชื่อ-นามสกุล: </span>
-
-                                                <a href="#" class="uk-button uk-button-text text-green">
-                                                    <?php
-                                                            echo $row['f_user']." ".$row['l_user']
-                                                        ?>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <span class="th-label">ตำแหน่ง: </span>
-                                                <?php echo $row['id_position'] ?>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
+                                        while($row = mysql_fetch_array($keyword_data)) {
+                                    ?>
+                                    <tr>
+                                        <td>
+                                            <span class="th-label">ID: </span>
+                                            <?php echo $row['icd10_id'] ?>
+                                        </td>
+                                        <td>
+                                            <span class="th-label">Name: </span>
+                                            <?php echo $row['icd10_name'] ?>
+                                        </td>
+                                        <td>
+                                            <span class="th-label">Keyword: </span>
+                                            <a href="#" class="uk-button uk-button-text text-green">
+                                                <?php echo $row['icd10_keyword'] ?>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <span class="th-label">My Keyword: </span>
+                                            <?php echo $row['icd10_keyword'] ?>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                        </td>
+                                    </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>

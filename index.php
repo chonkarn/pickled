@@ -65,7 +65,7 @@
                             </a>
                         </div>
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                            <h4 class="uk-heading-divider">ผู้ป่วยเยี่ยมบ้านในความดูแล</h4>
+                            <h4 class=""><i class="material-icons text-top">folder_shared</i> ผู้ป่วยเยี่ยมบ้านในความดูแล</h4>
                             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                                 <div class="mdl-tabs__tab-bar">
                                     <a href="#visiting-panel" class="mdl-tabs__tab is-active">เยี่ยมต่อ</a>
@@ -91,12 +91,11 @@
                                         </thead>
                                         <tbody>
                                             <?php
-                                            
-                                            $results = mysql_query("
-                                                SELECT * FROM patientinfo 
-                                                WHERE patient_doctor_owner = '$user' 
-                                                AND (patient_visit_status = 1 OR patient_visit_status = 2) 
-                                            ");
+                                                $results = mysql_query("
+                                                    SELECT * FROM patientinfo 
+                                                    WHERE patient_doctor_owner = '$user' 
+                                                    AND (patient_visit_status = 1 OR patient_visit_status = 2) 
+                                                ");
                                             
                                                 while($row = mysql_fetch_array($results)) {
                                                     if ($row['patient_visit_status'] == 1)
@@ -220,7 +219,7 @@
                     <div class="demo-cards mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--5-col-desktop mdl-grid mdl-grid--no-spacing">
                         <div class=" demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                             <div class="mdl-card__supporting-text mdl-color-text--grey-900">
-                                <h4 class="uk-heading-divider">นัดหมายเยี่ยมบ้านสัปดาห์นี้</h4>
+                                <h4><i class="material-icons text-top">date_range</i> นัดหมายเยี่ยมบ้านสัปดาห์นี้</h4>
                                 <h5 class="uk-heading-bullet">วันนี้</h5>
                                 <ul class="uk-list uk-list-divider">
                                     <li>List item 1</li>
@@ -246,7 +245,7 @@
                     <div class="demo-cards mdl-cell mdl-cell--7-col mdl-cell--7-col-tablet mdl-cell--7-col-desktop mdl-grid mdl-grid--no-spacing">
                         <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                             <div class="mdl-card__supporting-text mdl-color-text--grey-900">
-                                <h4 class="uk-heading-divider">สรุปเยี่ยมบ้าน</h4>
+                                <h4><i class="material-icons text-top">assignment</i> สรุปเยี่ยมบ้าน</h4>
                                 <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                     <thead>
                                         <tr>
