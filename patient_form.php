@@ -44,27 +44,20 @@
                         <form action="<?php echo "patient_save.php?hn=".$patient_hn; ?>" method="post">
                             <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                                 <ul class="uk-subnav uk-subnav-pill stepper" uk-switcher>
-                                    <li class="step active"><a href="#" title="เพิ่มผู้ป่วย" uk-tooltip><i class="material-icons">assignment</i></a></li>
-                                    <li class="step"><a href="#" title="ข้อมูลทั่วไป" uk-tooltip>1</a></li>
-                                    <li class="step"><a href="#" title="รายละเอียดของปัญหา" uk-tooltip>2</a></li>
-                                    <li class="step"><a href="#" title="สรุปข้อมูลปัญหา" uk-tooltip>3</a></li>
+                                    <li id="step1" class="step three active"><a href="#" title="ข้อมูลทั่วไป" uk-tooltip>1</a></li>
+                                    <li id="step2" class="step three"><a href="#" title="รายละเอียดของปัญหา" uk-tooltip>2</a></li>
+                                    <li id="step3" class="step three"><a href="#" title="สรุปข้อมูลปัญหา" uk-tooltip>3</a></li>
                                 </ul>
                                 <ul class="uk-switcher">
-                                    <li>
-                                        <?php include 'patient_step0.php' ?>
-                                        <div class="uk-align-right">
-                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป <span uk-icon="chevron-right"></span></a>
-                                        </div>
-                                    </li>
                                     <li>
                                         <div class="uk-alert-success" uk-alert>
                                             <a class="uk-alert-close" uk-close></a>
                                             <p>กรอกข้อมูลครบถ้วน</p>
                                         </div>
                                         <?php include 'patient_step1.php' ?>
-                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
+                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                         <div class="uk-align-right">
-                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป <span uk-icon="chevron-right"></span></a>
+                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next" id="next-btn">ถัดไป <span uk-icon="chevron-right"></span></a>
                                         </div>
                                     </li>
                                     <li>
@@ -73,14 +66,14 @@
                                             <p>กรอกข้อมูลไม่ครบถ้วน</p>
                                         </div>
                                         <?php include 'patient_step2.php' ?>
-                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
+                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                         <div class="uk-align-right">
-                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next">ถัดไป <span uk-icon="chevron-right"></span></a>
+                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next" id="next-btn">ถัดไป <span uk-icon="chevron-right"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <?php include 'patient_step3.php' ?>
-                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
+                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                         <div class="uk-align-right">
                                             <button type="submit" class="uk-button uk-button-default button-green">บันทึก</button>
                                         </div>
@@ -95,7 +88,7 @@
         </div>
 
         <!--custom js-->
-        <script src="js/select.js"></script>
+        <script src="js/dropdown.js"></script>
         <script src="js/stepper.js"></script>
 
     </body>

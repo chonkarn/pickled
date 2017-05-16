@@ -22,34 +22,14 @@
 ?>
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
-
-        <!--jquery-->
-        <script src="lib/jquery/jquery-3.1.1.min.js"></script>
-
-        <!--mdl-->
-        <link rel="stylesheet" href="lib/mdl/material.min.css">
-        <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
-        <script src="lib/mdl/material.min.js"></script>
-
-        <!--uikit-->
-        <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
-        <script src="lib/uikit/js/uikit.min.js"></script>
-        <script src="lib/uikit/js/uikit-icons.min.js"></script>
-
-        <!--icon-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-        <!--custom css-->
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/font.css">
+        <?php include"head.html";?>
     </head>
 
     <body>
         <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-            <?php include"header.html";?>
+          
+            <?php include"header.html"; ?>
+            
             <main class="mdl-layout__content mdl-color--grey-100">
                 <div class="mdl-grid demo-content">
 

@@ -62,7 +62,7 @@
 
                     <!--breadcrumb-->
                     <ul class="uk-breadcrumb breadcrumb">
-                        <li><span href="#"></span><i class="material-icons breadcrumb-icons">folder_shared</i> รายชื่อผู้ใช้งาน</li>
+                        <li><a href="#"><i class="material-icons breadcrumb-icons">account_circle</i> จัดการรหัสของโรค</a></li>
                     </ul>
 
                     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">

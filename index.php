@@ -198,7 +198,7 @@
                             <a href="patient.php" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--green">ดูผู้ป่วยทั้งหมด</a>
                         </div>
                     </div>
-                    <div class="demo-cards mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--5-col-desktop mdl-grid mdl-grid--no-spacing">
+                    <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-desktop mdl-grid mdl-grid--no-spacing">
                         <div class=" demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                             <div class="mdl-card__supporting-text mdl-color-text--grey-900">
                                 <h4>นัดหมายเยี่ยมบ้านสัปดาห์นี้</h4>
@@ -224,7 +224,7 @@
                         </div>
                     </div>
 
-                    <div class="demo-cards mdl-cell mdl-cell--7-col mdl-cell--7-col-tablet mdl-cell--7-col-desktop mdl-grid mdl-grid--no-spacing">
+                    <div class="demo-cards mdl-cell mdl-cell--8-col mdl-cell--12-col-tablet mdl-cell--8-col-desktop mdl-grid mdl-grid--no-spacing">
                         <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                             <div class="mdl-card__supporting-text mdl-color-text--grey-900">
                                 <h4>สรุปเยี่ยมบ้านที่ยังไม่สรุป</h4>
@@ -235,7 +235,7 @@
                                             <th class="uk-table-link"><a href="#" class="uk-button-text uk-text-bold" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">HN <span uk-icon="icon: arrow-up"></span></a></th>
                                             <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                             <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมครั้งล่าสุด</a></th>
-                                            <th class="uk-table-link">แก้ไข</th>
+                                            <th>แก้ไข</th>
                                         </tr>
                                     </thead>
                                     <?php
@@ -248,7 +248,6 @@
                                             while($row = mysql_fetch_array($results)) {
                                                $row['summary_status'] = "ยังไม่ได้สรุป";
                                         ?>
-                                           
                                     <tr>
                                         <td>
                                             <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
@@ -285,13 +284,6 @@
 
         <!--sort-->
         <script src="js/table_sort.js"></script>
-
-        <!--jquery-->
-        <script src="js/jquery-3.1.1.min.js"></script>
-
-        <!--js-->
-        <script src="lib/mdl/material.min.js"></script>
-        <script src="lib/uikit/js/uikit.min.js"></script>
     </body>
 
 </html>

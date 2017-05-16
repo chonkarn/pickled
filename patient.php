@@ -28,7 +28,7 @@
 
                     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
                         <div class="mdl-card__menu">
-                            <a href="patient_form_checkHN.php">
+                            <a href="patient_checkhn.php">
                                 <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--green">
                                 <i class="material-icons">add</i></button>
                             </a>

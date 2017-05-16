@@ -19,8 +19,7 @@
             <label class="uk-margin-right"><input class="uk-radio" type="radio" name="type" value="3"> Palliative case</label>
         </div>
     </div>
-<!--
     <div class="uk-text-right">
-        <a class="uk-button uk-button-default button-green" href="patient_step1.php">เริ่มกรอกข้อมูล</a></div>
--->
+        <button type="submit" class="uk-button uk-button-default button-green">เริ่มกรอกข้อมูล</button>
+    </div>
 </div>
