@@ -55,17 +55,6 @@ a:hover.mdl-navigation__link {
     width: 60%;
 }
 
-.dl-horizontal dt {
-    float: left;
-    min-width: 20%;
-    text-align: right;
-}
-
-.dl-horizontal dd {
-    margin: 10px;
-    margin-left: 25%;
-}
-
 .clearfix {
     overflow: auto;
 }
@@ -112,14 +101,6 @@ dialog {
 }
 
 
-/*
-.paper-print .uk-form-horizontal .uk-margin .uk-form-label {
-    float: left;
-    width: 20%;
-}
-*/
-
-
 /* --------------- table --------------- */
 
 .th-label,
@@ -136,6 +117,30 @@ dialog {
 table thead tr th {
     font-weight: bold;
     color: red;
+}
+
+
+/* --------------- form --------------- */
+
+.dl-horizontal dt {
+    float: left;
+    min-width: 20%;
+    text-align: right;
+}
+
+.dl-horizontal dd {
+    margin: 10px;
+    margin-left: 25%;
+}
+
+@media screen and (max-width: 760px) {
+    .dl-horizontal dt {
+        width: 100%;
+        text-align: left;
+    }
+    .dl-horizontal dd {
+        margin-left: 0;
+    }
 }
 
 

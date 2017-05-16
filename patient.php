@@ -4,39 +4,13 @@
 	session_start();
 	if($_SESSION['id'] == "")
 	{
-		echo "Please Login!";
+		header( "location:login.php");
 		exit();
 	}
 ?>
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
-
-        <!--jQuery-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-        <!--mdl-->
-        <link rel="stylesheet" href="lib/mdl/material.min.css">
-        <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
-        <script src="lib/mdl/material.min.js"></script>
-
-        <!--semantic-ui-->
-        <link rel="stylesheet" href="lib/semantic-ui/dist/semantic.min.css">
-        <script src="lib/semantic-ui/dist/semantic.min.js"></script>
-
-        <!--uikit-->
-        <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
-        <script src="lib/uikit/js/uikit.min.js"></script>
-        <script src="lib/uikit/js/uikit-icons.min.js"></script>
-
-        <!--icon-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-        <!--custom css-->
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/font.css">
+         <?php include"head.html"; ?>
     </head>
 
     <body>
@@ -49,7 +23,7 @@
 
                     <!--breadcrumb-->
                     <ul class="uk-breadcrumb breadcrumb">
-                        <li><span href="#"></span><i class="material-icons breadcrumb-icons">folder_shared</i> ผู้ป่วยเยี่ยมบ้าน</li>
+                        <li><i class="material-icons breadcrumb-icons">folder_shared</i> ผู้ป่วยเยี่ยมบ้าน</li>
                     </ul>
 
                     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
@@ -60,7 +34,7 @@
                             </a>
                         </div>
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                            <h4 class="uk-heading-divider">ค้นหาผู้ป่วยเยี่ยมบ้านในความดูแล</h4>
+                            <h4 class="uk-heading-divider">ค้นหาผู้ป่วยเยี่ยมบ้านทั้งหมด</h4>
                             <div class="mdl-grid">
                                 <div class="mdl-layout-spacer"></div>
                                 <div class="ui category search">
@@ -72,21 +46,6 @@
                                 </div>
                                 <div class="mdl-layout-spacer"></div>
                             </div>
-                            <!--
-                            <div class="mdl-grid">
-                                <div class="mdl-layout-spacer"></div>
-                                <div class="mdl-textfield mdl-js-textfield">
-                                    <input class="mdl-textfield__input" type="text" id="search" name="search">
-                                    <label class="mdl-textfield__label" for="sample1">ค้นหา HN หรือ ชื่อ-นามสกุล</label>
-                                </div>
-                                <form action="patient_view.php">
-                                    <button class="mdl-button mdl-js-button mdl-button--icon">
-                                    <i class="material-icons">search</i>
-                                </button>
-                                </form>
-                                <div class="mdl-layout-spacer"></div>
-                            </div>
--->
                         </div>
                     </div>
 
@@ -137,7 +96,7 @@
                                                     </td>
                                                     <td>
                                                         <span class="th-label">ชื่อ-นามสกุล: </span>
-                                                        <a class="uk-button-text text-green" href="<?php echo " patient_show.php?hn=".$row['patient_hn']; ?>">
+                                                        <a class="uk-button-text text-green" href="<?php echo " patient_profile.php?hn=".$row['patient_hn']; ?>">
                                                             <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                         </a>
                                                     </td>

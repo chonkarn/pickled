@@ -1,3 +1,8 @@
+
+$('.dropdown')
+  .dropdown()
+;
+
 $("[id*='select']")
     .dropdown({
         match: 'both',

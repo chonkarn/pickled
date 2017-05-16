@@ -22,13 +22,14 @@
                             <div><img class="logo-report" src="img/logo-report.jpg">
                                 <p class="mdl-typography--body-2">FAM-MED</p>
                             </div>
+
                             <div>
-                                แบบบันทึกการเยี่ยมบ้าน
+                                แบบบันทึกสุขภาพผู้ป่วยและครอบครัว
                                 <br> ภาควิชาเวชศาสตร์ครอบครัว คณะแพทยศาสตร์โรงพยาบาลรามาธิบดี
                                 <p class="mdl-typography--title">Department of Family Medicine</p>
                             </div>
                         </div>
-                        <?php include 'summary_view.php' ?>
+                        <?php include 'patient_view.php' ?>
                     </div>
                 </div>
                 <!--/.mdl-card-->

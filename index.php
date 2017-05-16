@@ -18,29 +18,7 @@
 ?>
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
-
-        <!--jQuery-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-        <!--mdl-->
-        <link rel="stylesheet" href="lib/mdl/material.min.css">
-        <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
-        <script src="lib/mdl/material.min.js"></script>
-
-        <!--uikit-->
-        <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
-        <script src="lib/uikit/js/uikit.min.js"></script>
-        <script src="lib/uikit/js/uikit-icons.min.js"></script>
-
-        <!--icon-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-        <!--custom css-->
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/font.css">
+        <?php include "head.html"; ?>
     </head>
 
     <body>
@@ -57,7 +35,7 @@
                     </ul>
 
                     <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-                        
+
                         <!--CARD-MENU-->
                         <div class="mdl-card__menu">
                             <a href="patient_form_checkHN.php">
@@ -66,10 +44,10 @@
                             </button>
                             </a>
                         </div>
-                        
+
                         <!--CARD-SUPPORTING-TEXT-->
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                            <h4 class=""><i class="material-icons text-top">folder_shared</i> ผู้ป่วยเยี่ยมบ้านในความดูแล</h4>
+                            <h4>ผู้ป่วยเยี่ยมบ้านในความดูแล</h4>
                             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                                 <div class="mdl-tabs__tab-bar">
                                     <a href="#visiting-panel" class="mdl-tabs__tab is-active">เยี่ยมต่อ</a>
@@ -116,7 +94,7 @@
                                                     </td>
                                                     <td>
                                                         <span class="th-label">ชื่อ-นามสกุล: </span>
-                                                        <a href="<?php echo " patient_show.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green">
+                                                        <a href="<?php echo " patient_profile.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green">
                                                             <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                         </a>
                                                     </td>
@@ -223,7 +201,7 @@
                     <div class="demo-cards mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--5-col-desktop mdl-grid mdl-grid--no-spacing">
                         <div class=" demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                             <div class="mdl-card__supporting-text mdl-color-text--grey-900">
-                                <h4><i class="material-icons text-top">date_range</i> นัดหมายเยี่ยมบ้านสัปดาห์นี้</h4>
+                                <h4>นัดหมายเยี่ยมบ้านสัปดาห์นี้</h4>
                                 <h5 class="uk-heading-bullet">วันนี้</h5>
                                 <ul class="uk-list uk-list-divider">
                                     <li>List item 1</li>
@@ -249,7 +227,7 @@
                     <div class="demo-cards mdl-cell mdl-cell--7-col mdl-cell--7-col-tablet mdl-cell--7-col-desktop mdl-grid mdl-grid--no-spacing">
                         <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                             <div class="mdl-card__supporting-text mdl-color-text--grey-900">
-                                <h4><i class="material-icons text-top">assignment</i> สรุปเยี่ยมบ้าน</h4>
+                                <h4>สรุปเยี่ยมบ้านที่ยังไม่สรุป</h4>
                                 <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                     <thead>
                                         <tr>
@@ -260,6 +238,17 @@
                                             <th class="uk-table-link">แก้ไข</th>
                                         </tr>
                                     </thead>
+                                    <?php
+                                            $results = mysql_query("
+                                                SELECT * FROM summary 
+                                                INNER JOIN patientinfo ON summary.patient_hn = patientinfo.patient_hn
+                                                
+                                            ");
+                                        
+                                            while($row = mysql_fetch_array($results)) {
+                                               $row['summary_status'] = "ยังไม่ได้สรุป";
+                                        ?>
+                                           
                                     <tr>
                                         <td>
                                             <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
@@ -282,6 +271,7 @@
                                             <a href="#" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                         </td>
                                     </tr>
+                                    <?php } ?>
                                 </table>
                             </div>
                             <div class="mdl-card__actions mdl-card--border uk-text-right">
