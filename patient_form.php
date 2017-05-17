@@ -32,6 +32,8 @@
 
             <main class="mdl-layout__content mdl-color--grey-100">
                 <div class="mdl-grid demo-content">
+                    
+                    <div id="demo"></div>
 
                     <!--breadcrumb-->
                     <ul class="uk-breadcrumb breadcrumb">
@@ -55,9 +57,8 @@
                                             <p>กรอกข้อมูลครบถ้วน</p>
                                         </div>
                                         <?php include 'patient_step1.php' ?>
-                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                         <div class="uk-align-right">
-                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next" id="next-btn">ถัดไป <span uk-icon="chevron-right"></span></a>
+                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next" id="next-btn1">ถัดไป <span uk-icon="chevron-right"></span></a>
                                         </div>
                                     </li>
                                     <li>
@@ -66,14 +67,14 @@
                                             <p>กรอกข้อมูลไม่ครบถ้วน</p>
                                         </div>
                                         <?php include 'patient_step2.php' ?>
-                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
+                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn2"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                         <div class="uk-align-right">
-                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next" id="next-btn">ถัดไป <span uk-icon="chevron-right"></span></a>
+                                            <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next" id="next-btn2">ถัดไป <span uk-icon="chevron-right"></span></a>
                                         </div>
                                     </li>
                                     <li>
                                         <?php include 'patient_step3.php' ?>
-                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
+                                        <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn3"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                         <div class="uk-align-right">
                                             <button type="submit" class="uk-button uk-button-default button-green">บันทึก</button>
                                         </div>
