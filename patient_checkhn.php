@@ -34,7 +34,9 @@
 
                     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                            <form class="uk-form-horizontal" action="<?php echo " patient_form.php?hn=".$patient_hn; ?>" method="post">
+                           
+                            
+                            <form class="uk-form-horizontal" action="patient_checkhn_db.php" method="post">
                                 <h4 class="uk-heading-divider">ตรวจสอบเลขที่โรงพยาบาล</h4>
                                 <div class="uk-margin">
                                     <label class="uk-form-label">เลขที่โรงพยาบาล</label>
@@ -59,6 +61,7 @@
                                     <button type="submit" class="uk-button uk-button-default button-green">เริ่มกรอกข้อมูล</button>
                                 </div>
                             </form>
+                            
                         </div>
                     </div>
                 </div>

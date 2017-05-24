@@ -38,7 +38,7 @@
 
                         <!--CARD-MENU-->
                         <div class="mdl-card__menu">
-                            <a href="patient_form_checkHN.php">
+                            <a href="patient_checkhn.php">
                                 <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--green">
                                 <i class="material-icons">add</i>
                             </button>

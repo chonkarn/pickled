@@ -62,7 +62,7 @@
 
                     <!--breadcrumb-->
                     <ul class="uk-breadcrumb breadcrumb">
-                        <li><a href="#"><i class="material-icons breadcrumb-icons">account_circle</i> จัดการรหัสของโรค</a></li>
+                        <li><a href="#"><i class="material-icons breadcrumb-icons">format_list_numbered</i> จัดการรหัสของโรค</a></li>
                     </ul>
 
                     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
@@ -96,10 +96,10 @@
                             <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                 <thead>
                                     <tr>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">ID <span uk-icon="icon: arrow-down"></span></a></th>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">Name</a></th>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">Keyword </a></th>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">My keyword</a></th>
+                                        <th class="uk-table-link"><a href="#" class="uk-button-text">ไอดี <span uk-icon="icon: arrow-down"></span></a></th>
+                                        <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อโรคและอาการ</a></th>
+                                        <th class="uk-table-link"><a href="#" class="uk-button-text">คีย์เวิร์ด</a></th>
+                                        <th class="uk-table-link"><a href="#" class="uk-button-text">คีย์เวิร์ดของฉัน</a></th>
                                         <th>แก้ไข</th>
                                     </tr>
                                 </thead>

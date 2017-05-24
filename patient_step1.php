@@ -1,44 +1,33 @@
 <div class="uk-form-horizontal">
     <div class="uk-margin">
-        <label class="uk-form-label">
-                                        รหัสโรงพยาบาล
-                                    </label>
+        <label class="uk-form-label">รหัสโรงพยาบาล</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <input class="mdl-textfield__input" type="text" name="hn" style="visibility:hidden;" value="<?php echo $hn; ?>">
-            <!--                                        <?php echo $hn; ?>-->
+<!--            <input class="mdl-textfield__input" type="text" name="hn" style="visibility:hidden;" value="<?php echo $hn; ?>">-->
+            <?php echo $hn; ?>
         </div>
     </div>
     <div class="uk-margin">
-        <label class="uk-form-label">
-                                        สถานะเยี่ยมบ้าน
-                                    </label>
+        <label class="uk-form-label">สถานะเยี่ยมบ้าน</label>
         <div class="uk-form-controls uk-form-controls-text">
             ใหม่
         </div>
     </div>
     <div class="uk-margin">
-        <label class="uk-form-label">
-                                        ประเภทการเยี่ยมบ้าน
-                                    </label>
+        <label class="uk-form-label">ประเภทการเยี่ยมบ้าน</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <input class="uk-input uk-form-small" type="text" name="type" style="visibility:hidden;" value="<?php echo $type; ?>">
-
-            <!--                                        <?php echo $type;?>-->
+<!--            <input class="uk-input uk-form-small" type="text" name="type" style="visibility:hidden;" value="<?php echo $type; ?>">-->
+             <?php echo $type;?>
         </div>
     </div>
     <div class="uk-margin">
-        <label class="uk-form-label">
-                                        เลขบัตรประชาชน
-                                    </label>
+        <label class="uk-form-label">เลขบัตรประชาชน</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <input class="uk-input uk-form-width-small uk-form-medium" type="text" name="id-number" id="id-number">
+            <input class="uk-input uk-form-width-medium uk-form-small" type="text" name="id-number" id="id-number">
         </div>
     </div>
 
     <div class="uk-margin">
-        <label class="uk-form-label">
-                                        ชื่อ-นามสกุล
-                                    </label>
+        <label class="uk-form-label">ชื่อ-นามสกุล</label>
         <div class="uk-form-controls">
             <div class="uk-grid uk-grid-small">
                 <div class="uk-width-1-6">
