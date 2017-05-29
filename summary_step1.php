@@ -15,51 +15,6 @@
             <textarea name="med" class="uk-textarea uk-width-1-2@m" rows="3" placeholder="โปรดระบุ..."></textarea>
         </div>
     </div>
-    <!--
-    <div class="uk-margin">
-        <label class="uk-form-label">ยาที่ใช้ปัจจุบันและยาที่ซื้อกินเอง</label>
-        <div class="uk-form-controls uk-form-controls-text">
-            <div class="uk-grid">
-                <div class="uk-width-auto">
-                    <label class="uk-margin-right uk-text-bold">ชื่อยา</label>
-                    <input class="uk-input uk-form-width-medium uk-form-small" placeholder="ชื่อยา...">
-                </div>
-                <div>
-                    <label class="uk-margin-right uk-text-bold">ลักษณะ</label>
-                    <label class="uk-margin-right"><input class="uk-radio" type="radio" name="unit" checked> ยาเม็ด</label>
-                    <label class="uk-margin-right"><input class="uk-radio" type="radio" name="unit"> ยาน้ำ</label>
-                </div>
-                <div>
-                    <label class="uk-margin-right uk-text-bold">โดส</label>
-                    <input class="uk-input uk-form-width-xsmall uk-form-small" type="number" placeholder="1"> เม็ด
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls uk-form-controls-text">
-            <div class="uk-grid">
-                <div class="uk-width-auto">
-                    <label class="uk-margin-right uk-text-bold">วิธีใช้ยา</label>
-                    <label class="uk-margin-right"><input class="uk-radio" type="radio" name="method" checked> ก่อนอาหาร</label>
-                    <label class="uk-margin-right"><input class="uk-radio" type="radio" name="method"> หลังอาหาร</label>
-                </div>
-                <div>
-                    <label class="uk-margin-right uk-text-bold">ช่วงเวลา</label>
-                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> เช้า</label>
-                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> กลางวัน</label>
-                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> เย็น</label>
-                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> ก่อนนอน</label>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls">
-            <button class="uk-button uk-button-default uk-button-small button-green">+ เพิ่มยาที่ใช้</button>
-        </div>
-    </div>
--->
 
     <h5 class="uk-heading-bullet">Impairment / Immobility</h5>
     <div class="uk-margin">
@@ -122,7 +77,7 @@
     <div class="uk-margin">
         <label class="uk-form-label">Place at risk</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <input class="uk-input uk-form-small" name="home_place" placeholder="">
+            <div class="uk-width-1-2@s"><input class="uk-input uk-form-small" name="home_place" placeholder="โปรดระบุ..."></div>
         </div>
     </div>
 
@@ -137,7 +92,7 @@
     <div class="uk-margin">
         <label class="uk-form-label">Main caregiver</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <input class="uk-input uk-form-small" name="main_caregiver" placeholder="">
+            <div class="uk-width-1-2@s"><input class="uk-input uk-form-small" name="main_caregiver" placeholder="โปรดระบุ..."></div>
         </div>
     </div>
     <div class="uk-margin">
@@ -165,11 +120,11 @@
         <div class="uk-form-controls uk-form-controls-text">
             <div class="uk-grid">
                 <div class="uk-width-1-5@s">
-                    <label class="uk-margin-right"><input class="uk-radio" type="radio" name="prescription" checked> Yes</label>
-                    <label><input class="uk-radio" type="radio" name="prescription"> No</label>
+                    <label class="uk-margin-right"><input class="uk-radio" type="radio" name="pre_drug" checked> Yes</label>
+                    <label><input class="uk-radio" type="radio" name="pre_drug"> No</label>
                 </div>
                 <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
+                    <input name="pre_drug_text" class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
                 </div>
             </div>
         </div>
@@ -179,11 +134,11 @@
         <div class="uk-form-controls uk-form-controls-text">
             <div class="uk-grid">
                 <div class="uk-width-1-5@s">
-                    <label class="uk-margin-right"><input class="uk-radio " type="radio" name="nonprescription" checked> Yes</label>
-                    <label><input class="uk-radio" type="radio" name="nonprescription"> No</label>
+                    <label class="uk-margin-right"><input class="uk-radio " type="radio" name="non_drug" checked> Yes</label>
+                    <label><input class="uk-radio" type="radio" name="non_drug"> No</label>
                 </div>
                 <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
+                    <input name="non_drug_text" class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
                 </div>
             </div>
         </div>
@@ -193,11 +148,11 @@
         <div class="uk-form-controls uk-form-controls-text">
             <div class="uk-grid">
                 <div class="uk-width-1-5@s">
-                    <label class="uk-margin-right"><input class="uk-radio " type="radio" name="supplement" checked> Yes</label>
-                    <label><input class="uk-radio" type="radio" name="supplement"> No</label>
+                    <label class="uk-margin-right"><input class="uk-radio " type="radio" name="diet_sup" checked> Yes</label>
+                    <label><input class="uk-radio" type="radio" name="diet_sup"> No</label>
                 </div>
                 <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
+                    <input name="diet_sup_text" class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
                 </div>
             </div>
         </div>
@@ -207,11 +162,11 @@
         <div class="uk-form-controls uk-form-controls-text">
             <div class="uk-grid">
                 <div class="uk-width-1-5@s">
-                    <label class="uk-margin-right"><input class="uk-radio " type="radio" name="compliance" checked> Yes</label>
-                    <label><input class="uk-radio" type="radio" name="compliance"> No</label>
+                    <label class="uk-margin-right"><input class="uk-radio " type="radio" name="med_com" checked> Yes</label>
+                    <label><input class="uk-radio" type="radio" name="med_com"> No</label>
                 </div>
                 <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
+                    <input name="med_com_text" class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
                 </div>
             </div>
         </div>

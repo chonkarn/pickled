@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
 
-
+<?php 
+    session_start();
+	if($_SESSION['id'] == "") {
+		header( "location:login.php");
+		exit();
+	}
+    include 'dbname.php';
+    mysql_connect($servername, $username, $password) or die(mysql_error());
+    mysql_select_db($dbname) or die(mysql_error());
+    mysql_query("set character set utf8"); 
+    
+    $patient_hn = $_GET['hn'];
+    $calendar_id = $_GET['calendar_id'];
+    
+    include "summary_show.php";
+?>
 
 <head>
     <?php 
-        include "summary_show.php";
         include "head.html";
     ?>
     <link rel="stylesheet" href="css/stepper.css">
@@ -27,7 +41,7 @@
 
                 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
 
-                    <form action="<?php echo " summary_save.php?hn=".$hn." &calendar_id=".$calendar_id; ?>" method="post">
+                    <form action="<?php echo "summary_save.php?hn=".$patient_hn."&calendar_id=".$calendar_id; ?>" method="post">
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                             <ul class="uk-subnav uk-subnav-pill stepper" uk-switcher>
                                 <li id="step0" class="step active"><a href="#" title="สรุปเยี่ยมบ้าน" uk-tooltip><i class="material-icons stepper-icons">assignment</i></a></li>
@@ -44,10 +58,6 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="uk-alert-success" uk-alert>
-                                        <a class="uk-alert-close" uk-close></a>
-                                        <p>กรอกข้อมูลครบถ้วน</p>
-                                    </div>
                                     <?php include 'summary_step1.php' ?>
                                     <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn1"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                     <div class="uk-align-right">
@@ -55,10 +65,6 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="uk-alert-danger" uk-alert>
-                                        <a class="uk-alert-close" uk-close></a>
-                                        <p>กรอกข้อมูลไม่ครบถ้วน</p>
-                                    </div>
                                     <?php include 'summary_step2.php' ?>
                                     <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn2"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                     <div class="uk-align-right">
@@ -76,13 +82,8 @@
                                     <?php include 'summary_step4.php' ?>
                                     <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn4"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                     <div class="uk-align-right">
-                                        <input type="submit" class="uk-button uk-button-default button-green">
+                                        <button type="submit" class="uk-button uk-button-default button-green">บันทึก</button>
                                     </div>
-                                    <!--
-                                        <div class="uk-align-right">
-                                            <input type="submit" class="uk-button uk-button-default button-green">บันทึก
-                                        </div>
--->
                                 </li>
                             </ul>
                         </div>

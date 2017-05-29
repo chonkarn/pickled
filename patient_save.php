@@ -143,7 +143,7 @@
     mysql_db_query($dbname, $sumSQL) or die (mysql_error());
     mysql_close();
     
-    header("location: patient_profile.php?hn=".$patient_hn);
+    header("location: patient.php");
 ?>
 
     <head>

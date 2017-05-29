@@ -17,9 +17,11 @@
     $results = mysql_query("SELECT * FROM tbuser WHERE user = '$user'");
     $row = mysql_fetch_array($results);
     
-    $keyword_data = mysql_query("SELECT * FROM icd10 ORDER BY icd10_id ASC LIMIT 10 OFFSET 15");
-    $keyword_count = mysql_num_rows($keyword_data);
+    $icd10_id = $_GET['icd10_id'];
+    $icd10_query = mysql_query("SELECT * FROM icd10 WHERE icd10_id = '$icd10_id'");
+    $icd10_row = mysql_fetch_array($icd10_query);
     
+    $icd10_name = $icd10_row['icd10_name'];
 ?>
 
     <head>
@@ -47,15 +49,16 @@
                                 <div class="uk-margin">
                                     <label class="uk-form-label">ชื่อโรคและอาการ</label>
                                     <div class="uk-form-controls uk-form-controls-text">
-                                        <input class="uk-input uk-form-small uk-width-1-2" id="form-stacked-text" type="text" value="A029 Salmonella infection, unspecified" name="icd10_name">
+                                        <?php echo $icd10_name ?>
                                     </div>
                                 </div>
                                 <div class="uk-margin">
                                     <label class="uk-form-label">คีย์เวิร์ดของฉัน</label>
                                     <div class="uk-form-controls uk-form-controls-text">
-                                        <input class="uk-input uk-form-small uk-form-small uk-width-1-2" id="form-stacked-text" type="text" value="" name="icd10_mykeyword">
+                                        <input class="uk-input uk-form-small uk-form-small uk-width-1-2" id="form-stacked-text" type="text" value="" name="icd10_mykeyword" placeholder="พิมพ์คีย์เวิร์ด">
                                     </div>
                                 </div>
+<!--
                                 <div class="uk-margin">
                                     <label class="uk-form-label">คีย์เวิร์ด</label>
                                     <div class="uk-form-controls uk-form-controls-text">
@@ -63,6 +66,7 @@
                                         <p class="uk-text-small">สำหรับผู้ใช้ทุกคนในระบบสามารถเรียกใช้ด้วยคีย์เวิร์ดนี้ได้</p>
                                     </div>
                                 </div>
+-->
                                 <div class="uk-text-right">
                                     <button type="submit" class="uk-button uk-button-default button-green">บันทึก</button>
                                 </div>

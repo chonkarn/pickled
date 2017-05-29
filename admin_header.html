@@ -21,7 +21,7 @@
     </header>
     <div class="demo-drawer mdl-layout__drawer mdl-color--green">
         <header class="demo-drawer-header">
-            <img src="<?php echo $photo;?>" class="demo-avatar">
+<!--            <img src="<?php echo $photo;?>" class="demo-avatar">-->
             <div class="demo-avatar-dropdown">
                 <span class="mdl-color-text--white">
                     <?php echo $row["f_user"]." ".$row["l_user"]; ?><br>
@@ -32,19 +32,21 @@
                     <i class="material-icons mdl-color-text--white">arrow_drop_down</i>
                 </button>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-                    <li class="mdl-menu__item"><a href="user_profile.php">แก้ไขข้อมูลส่วนตัว</a></li>
+                    <li class="mdl-menu__item"><a href="admin_profile.php">แก้ไขข้อมูลส่วนตัว</a></li>
                     <li class="mdl-menu__item"><a href="logout.php"><i class="material-icons" style="font-size: 14px;">exit_to_app</i> ออกจากระบบ</a></li>
                 </ul>
             </div>
         </header>
 
         <nav class="demo-navigation mdl-navigation mdl-color--grey-200">
-            <a class="mdl-navigation__link mdl-color-text--grey-900" href="index.php">
+            <a class="mdl-navigation__link mdl-color-text--grey-900" href="admin.php">
                 <i class="material-icons mdl-color-text--grey-900">folder_shared</i> รายชื่อผู้ใช้งาน
             </a>
-            <a class="mdl-navigation__link mdl-color-text--grey-900" href="summary.php">
+<!--
+            <a class="mdl-navigation__link mdl-color-text--grey-900" href="admin_position.php">
                 <i class="material-icons mdl-color-text--grey-900">assignment</i> สิทธิ์การใช้งาน
             </a>
+-->
             <div class="mdl-layout-spacer"></div>
         </nav>
     </div>

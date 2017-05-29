@@ -38,19 +38,14 @@
                                     <a href="#nosum-panel" class="mdl-tabs__tab is-active">ยังไม่สรุป</a>
                                     <a href="#sum-panel" class="mdl-tabs__tab">สรุปแล้ว</a>
                                 </div>
-                                
+
                                 <!--#NOSUM-PANEL-->
                                 <div class="mdl-tabs__panel is-active" id="nosum-panel">
                                     <h5 class="uk-margin-top uk-heading-bullet">สรุปเยี่ยมบ้านที่ยังไม่สรุป</h5>
                                     <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                         <thead>
                                             <tr>
-                                                <th>รูปภาพ</th>
-                                                <th class="uk-table-link">
-                                                    <a href="#" class="uk-button-text uk-text-bold" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">
-                                                        HN <span uk-icon="icon: arrow-up"></span>
-                                                    </a>
-                                                </th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">HN <span uk-icon="icon: arrow-up"></span></a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ครั้งที่เยี่ยม</a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">วันเวลาเยี่ยม</a></th>
@@ -84,9 +79,6 @@
                                         ?>
                                             <tr>
                                                 <td>
-                                                    <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
-                                                </td>
-                                                <td>
                                                     <span class="th-label">HN: </span>
                                                     <?php echo $row['patient_hn']?>
                                                 </td>
@@ -115,20 +107,16 @@
                                             </tr>
                                             <?php } ?>
                                     </table>
-                                </div><!--/#nosum-panel-->
-                                
+                                </div>
+                                <!--/#nosum-panel-->
+
                                 <!--#SUM-PANEL-->
                                 <div class="mdl-tabs__panel" id="sum-panel">
                                     <h5 class="uk-margin-top uk-heading-bullet">สรุปเยี่ยมบ้านที่สรุปแล้ว</h5>
                                     <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                         <thead>
                                             <tr>
-                                                <th>รูปภาพ</th>
-                                                <th class="uk-table-link">
-                                                    <a href="#" class="uk-button-text uk-text-bold" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">
-                                                        HN <span uk-icon="icon: arrow-up"></span>
-                                                    </a>
-                                                </th>
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">HN <span uk-icon="icon: arrow-up"></span></a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ครั้งที่เยี่ยม</a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">วันเวลาเยี่ยม</a></th>
@@ -151,15 +139,12 @@
                                         ?>
                                             <tr>
                                                 <td>
-                                                    <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
-                                                </td>
-                                                <td>
                                                     <span class="th-label">HN: </span>
                                                     <?php echo $row['patient_hn']?>
                                                 </td>
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
-                                                    <a href="<?php echo "summary_form.php?hn=".$row['patient_hn']."&calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green">
+                                                    <a href="<?php echo " summary_form.php?hn=".$row['patient_hn']." &calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green">
                                                         <?php echo $row['patient_pname']." ".$row['patient_fname']." ".$row['patient_lname']?>
                                                     </a>
                                                 </td>
@@ -178,7 +163,7 @@
                                                     <?php echo $row['summary_edit_status']?>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo "summary_form.php?hn=".$row['patient_hn']."&calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    <a href="<?php echo " summary_form.php?hn=".$row['patient_hn']." &calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>

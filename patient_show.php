@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+    session_start();
 if($_SESSION['id'] == "")
 {
     header( "location:login.php");
@@ -10,7 +10,7 @@ $user = $_SESSION['id'];
 include 'dbname.php';
 $connect = mysql_connect($servername, $username, $password) or die(mysql_error());
 mysql_select_db($dbname) or die(mysql_error());
-mysql_query("set character set utf8");  
+mysql_query("set character set utf8"); 
 
 # Patient HN
 $patient_hn = $_GET['hn'];
@@ -123,6 +123,6 @@ $relate_name = $row['relate_name'];
 $relate_tel = $row['relate_tel'];
 $relate_def = $row['relate_def'];
 
-include 'meaning.php';
+//include 'meaning.php';
 
 ?>

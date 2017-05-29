@@ -58,12 +58,14 @@
                                         <label class="uk-form-label">ตำแหน่ง</label>
                                         <div class="uk-form-controls uk-form-controls-text">แพทย์ประจำบ้าน</div>
                                     </div>
+<!--
                                     <div class="uk-margin">
                                         <label class="uk-form-label">รูปภาพผู้ใช้</label>
                                         <div class="uk-form-controls uk-form-controls-text">
                                             <input type="file" name="fileToUpload" id="fileToUpload">
                                         </div>
                                     </div>
+-->
                                     <input type="submit" class="uk-button uk-button-default button-green uk-align-right uk-margin-remove" value="บันทึก">
                                 </form>
                             </div>

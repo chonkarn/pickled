@@ -17,39 +17,13 @@
     $results = mysql_query("SELECT * FROM tbuser WHERE user = '$user'");
     $row = mysql_fetch_array($results);
     
-    $keyword_data = mysql_query("SELECT * FROM icd10 ORDER BY icd10_id ASC LIMIT 10 OFFSET 15");
+    $keyword_data = mysql_query("SELECT * FROM icd10 ORDER BY icd10_id ASC LIMIT 20");
     $keyword_count = mysql_num_rows($keyword_data);
     
 ?>
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
-
-        <!--jQuery-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-        <!--mdl-->
-        <link rel="stylesheet" href="lib/mdl/material.min.css">
-        <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
-        <script src="lib/mdl/material.min.js"></script>
-
-        <!--semantic-ui-->
-        <link rel="stylesheet" href="lib/semantic-ui/dist/semantic.min.css">
-        <script src="lib/semantic-ui/dist/semantic.min.js"></script>
-
-        <!--uikit-->
-        <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
-        <script src="lib/uikit/js/uikit.min.js"></script>
-        <script src="lib/uikit/js/uikit-icons.min.js"></script>
-
-        <!--icon-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-        <!--custom css-->
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/font.css">
+        <?php include "head.html"; ?>
     </head>
 
     <body>
@@ -68,14 +42,11 @@
                     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                             <h4 class="uk-heading-divider">ค้นหารหัสของโรคและอาการ (ICD-10)</h4>
-                            <div class="mdl-grid">
+                            <div class="uk-grid">
                                 <div class="mdl-layout-spacer"></div>
-                                <div class="ui category search">
-                                    <div class="ui icon input">
-                                        <input class="prompt" type="text" placeholder="ค้นหารหัส หรือ ชื่อโรค...">
-                                        <i class="search icon"></i>
-                                    </div>
-                                    <div class="results"></div>
+                                <div class="ui icon input small">
+                                    <input type="text" placeholder="ค้นหาด้วยรหัสหรือชื่อโรค...">
+                                    <i class="circular search link icon"></i>
                                 </div>
                                 <div class="mdl-layout-spacer"></div>
                             </div>
@@ -96,10 +67,10 @@
                             <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                 <thead>
                                     <tr>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">ไอดี <span uk-icon="icon: arrow-down"></span></a></th>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อโรคและอาการ</a></th>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">คีย์เวิร์ด</a></th>
-                                        <th class="uk-table-link"><a href="#" class="uk-button-text">คีย์เวิร์ดของฉัน</a></th>
+                                        <th class="uk-table-link"><a class="uk-button-text">รหัส</a></th>
+                                        <th class="uk-table-link"><a class="uk-button-text">ชื่อโรคและอาการ</a></th>
+                                        <th class="uk-table-link"><a class="uk-button-text">คีย์เวิร์ด</a></th>
+                                        <th class="uk-table-link"><a class="uk-button-text">คีย์เวิร์ดของฉัน</a></th>
                                         <th>แก้ไข</th>
                                     </tr>
                                 </thead>
@@ -127,7 +98,7 @@
                                             <?php echo $row['icd10_keyword'] ?>
                                         </td>
                                         <td>
-                                            <a href="#" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                            <a href="<?php echo "keyword_edit.php?user=".$user."&icd10_id=".$row['icd10_id'] ?>" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                         </td>
                                     </tr>
                                     <?php } ?>
@@ -140,16 +111,11 @@
             </main>
         </div>
 
-        <!--js-->
-        <script src="lib/mdl/material.min.js"></script>
-        <script src="lib/uikit/js/uikit.min.js"></script>
-
-        <!--js stepper-->
-        <script src="lib/mdl-stepper/stepper.min.js"></script>
-        <script src="js/stepper-nonlinear.js"></script>
-
-        <!--custom js-->
-        <script src="js/openwindow.js"></script>
+        <!--table sort-->
+        <script src="lib/tablesort/tablesort.js"></script>
+        <script>
+            $('table').tablesort()
+        </script>
     </body>
 
 </html>

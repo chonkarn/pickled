@@ -3,7 +3,7 @@
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">สรุปคำแนะนำ</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="สรุปคำแนะนำ..."></textarea>
+            <textarea name="suggestion" class="uk-textarea uk-width-1-2@m" rows="3" placeholder="โปรดระบุ..."></textarea>
         </div>
     </div>
     <h5 class="uk-heading-bullet">วางแผนครั้งต่อไป</h5>
@@ -21,10 +21,21 @@
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text"><input class="uk-radio" type="radio" name="next-planning"> ปิดเยี่ยมบ้าน</label>
         <div class="uk-form-controls">
-            <label class="uk-margin-right">เหตุผล</label>
-            <select class="uk-select uk-form-small uk-width-1-3@m">
-                <option>เลือกเหตุผล</option>
-                <option>ติดต่อผู้ป่วยไม่ได้</option>
+            <label class="uk-margin-right">เหตุผล:</label>
+            <select name="reason_cancel" class="ui search dropdown" id="select-cancel-reason">                    
+                <option value="">เลือกเหตุผล</option>
+                <?php 
+                    $reason_cancel_file = file_get_contents("txt/reason_cancel.txt");
+                    $rows = explode("\n", $reason_cancel_file);
+                    array_shift($rows);
+                    foreach($rows as $row => $data) {
+                        $row_data = explode("\t", $data);
+                        $info[$row]['name'] = $data;
+                ?>               
+                <option value="<?php echo $info[$row]['name']; ?>">
+                    <?php echo $info[$row]['name']; ?>
+                </option>
+                <?php } ?>
             </select>
         </div>
     </div>

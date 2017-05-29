@@ -1,6 +1,7 @@
 <dl class="dl-horizontal">
+    <?php echo $calendar_id ?>
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
-
+    
     <dt>ชื่อผู้ป่วย</dt>
     <dd>
         <?php echo $patient_name ?>
@@ -8,7 +9,7 @@
 
     <dt>รหัสโรงพยาบาล</dt>
     <dd>HN
-        <?php echo $hn ?>
+        <?php echo $patient_hn ?>
     </dd>
 
     <dt>แพทย์เจ้าของไข้</dt>
@@ -25,13 +26,13 @@
     </dd>
 
     <dt>วันที่ไปเยี่ยม</dt>
-    <dd>20 มิถุนายน พ.ศ. 2559</dd>
+    <dd><?php echo $date_visit ?></dd>
 
     <dt>เวลาที่ไปเยี่ยม</dt>
-    <dd>ภาคเช้า (9.00-12.00 น)</dd>
+    <dd><?php echo $time_visit ?></dd>
 
     <dt>เยี่ยมบ้านครั้งที่</dt>
-    <dd>5</dd>
+    <dd><?php echo $num_visit ?></dd>
 
     <dt>เหตุผลการเยี่ยมบ้าน</dt>
     <dd>
@@ -42,121 +43,13 @@
     </dd>
 
     <dt>ยาที่ใช้ปัจจุบัน<br>และยาที่ซื้อกินเอง</dt>
-    <dd>
-        <b>ยาชนิดที่ 1:</b>
-        <br> ชื่อยา: ยาลดไข้
-        <hr>
-        <b>ยาชนิดที่ 2:</b>
-        <br> ชื่อยา: ยาลดน้ำมูก
-    </dd>
-
-    <!--
-    <div class="uk-margin">
-        <label class="uk-form-label">ยาที่ใช้ปัจจุบันและยาที่ซื้อกินเอง</label>
-        <div class="uk-form-controls uk-form-controls-text">
-            <div class="uk-grid">
-                <div class="uk-width-auto">
-                    <label class="uk-margin-right uk-text-bold">ชื่อยา</label> ยาลดไข้
-                </div>
-                <div>
-                    <label class="uk-margin-right uk-text-bold">ลักษณะ</label>
-                    <label class="uk-margin-right"><input class="uk-radio" type="radio" name="unit-1" checked> ยาเม็ด
-                                                    </label>
-                    <label class="uk-margin-right uk-text-muted">
-                                                        <input class="uk-radio" type="radio" name="unit-1" disabled> ยาน้ำ
-                                                    </label>
-                </div>
-                <div>
-                    <label class="uk-margin-right uk-text-bold">โดส</label> 1 เม็ด
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls uk-form-controls-text">
-            <div class="uk-grid">
-                <div class="uk-width-auto">
-                    <label class="uk-margin-right uk-text-bold">วิธีใช้ยา</label>
-                    <label class="uk-margin-right uk-text-muted">
-                                                        <input class="uk-radio" type="radio" name="method-1" disabled> ก่อนอาหาร</label>
-                    <label class="uk-margin-right">
-                                                        <input class="uk-radio" type="radio" name="method-1" checked> หลังอาหาร</label>
-                </div>
-                <div>
-                    <label class="uk-margin-right uk-text-bold">ช่วงเวลา</label>
-                    <label class="uk-margin-right">
-                                                        <input class="uk-checkbox" type="checkbox" checked> เช้า
-                                                    </label>
-                    <label class="uk-margin-right">
-                                                        <input class="uk-checkbox" type="checkbox" checked> กลางวัน
-                                                    </label>
-                    <label class="uk-margin-right">
-                                                        <input class="uk-checkbox" type="checkbox" checked> เย็น
-                                                    </label>
-                    <label class="uk-margin-right uk-text-muted">
-                                                        <input class="uk-checkbox" type="checkbox" disabled> ก่อนนอน
-                                                    </label>
-                </div>
-            </div>
-            <hr>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls uk-form-controls-text">
-            <div class="uk-grid">
-                <div class="uk-width-auto">
-                    <label class="uk-margin-right uk-text-bold">ชื่อยา</label> ยาลดน้ำมูก
-                </div>
-                <div>
-                    <label class="uk-margin-right uk-text-bold">ลักษณะ</label>
-                    <label class="uk-margin-right">
-                                                        <input class="uk-radio" type="radio" name="unit" checked> ยาเม็ด
-                                                    </label>
-                    <label class="uk-margin-right uk-text-muted">
-                                                        <input class="uk-radio" type="radio" name="unit" disabled> ยาน้ำ
-                                                    </label>
-                </div>
-                <div>
-                    <label class="uk-margin-right uk-text-bold">โดส</label> 1 เม็ด
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls uk-form-controls-text">
-            <div class="uk-grid">
-                <div class="uk-width-auto">
-                    <label class="uk-margin-right uk-text-bold">วิธีใช้ยา</label>
-                    <label class="uk-margin-right uk-text-muted">
-                                                        <input class="uk-radio" type="radio" name="method-2" disabled> ก่อนอาหาร</label>
-                    <label class="uk-margin-right">
-                                                        <input class="uk-radio" type="radio" name="method-2" checked> หลังอาหาร</label>
-                </div>
-                <div>
-                    <label class="uk-margin-right uk-text-bold">ช่วงเวลา</label>
-                    <label class="uk-margin-right">
-                                                        <input class="uk-checkbox" type="checkbox" checked> เช้า
-                                                    </label>
-                    <label class="uk-margin-right uk-text-muted">
-                                                        <input class="uk-checkbox" type="checkbox" disabled> กลางวัน
-                                                    </label>
-                    <label class="uk-margin-right">
-                                                        <input class="uk-checkbox" type="checkbox" checked> เย็น
-                                                    </label>
-                    <label class="uk-margin-right uk-text-muted">
-                                                        <input class="uk-checkbox" type="checkbox" disabled> ก่อนนอน
-                                                    </label>
-                </div>
-            </div>
-        </div>
-    </div>
--->
+    <dd><?php echo $med ?><br></dd>
 
     <h5 class="uk-heading-bullet">Impairment / Immobility</h5>
     <dt>Basic activities<br>of daily living</dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-radio " type="radio" name="basic" checked> Yes</label>
-        <label class="uk-text-muted"><input class="uk-radio" type="radio" name="basic" disabled> No</label>
+        <label class="uk-margin-right"><input class="uk-radio " type="radio" name="basic_act" checked> Yes</label>
+        <label class="uk-text-muted"><input class="uk-radio" type="radio" name="basic_act" disabled> No</label>
         <hr>
         <label class="uk-margin-right"><b>Problem</b></label>
         <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Dressing</label>
@@ -168,8 +61,8 @@
 
     <dt>Instrumental activities<br>of daily living</dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-radio " type="radio" name="basic" checked> Yes</label>
-        <label class="uk-text-muted"><input class="uk-radio" type="radio" name="basic" disabled> No</label>
+        <label class="uk-margin-right"><input class="uk-radio " type="radio" name="instu_act" checked> Yes</label>
+        <label class="uk-text-muted"><input class="uk-radio" type="radio" name="instru_act" disabled> No</label>
         <hr>
         <label class="uk-margin-right"><b>Problem</b></label>
         <label class="uk-margin-right uk-text-muted"><input class="uk-checkbox" type="checkbox" disabled> Shopping</label>
@@ -195,7 +88,7 @@
     </dd>
 
     <dt>Place at risk</dt>
-    <dd>ห้องน้ำ</dd>
+    <dd><?php echo $home_place ?></dd>
 
     <h5 class="uk-heading-bullet">Social support</h5>
     <dt>Caregiver burden</dt>
@@ -205,7 +98,7 @@
     </dd>
 
     <dt>Main caregiver</dt>
-    <dd>?</dd>
+    <dd><?php echo $main_caregiver ?></dd>
 
     <dt>สิทธิ์การรักษา</dt>
     <dd>
@@ -238,14 +131,12 @@
 
     <h5 class="uk-heading-bullet">Management</h5>
     <dt></dt>
-    <dd>
-        <input class="uk-checkbox" type="checkbox" checked> Assessment
-    </dd>
+    <dd><input class="uk-checkbox" type="checkbox" checked> Assessment</dd>
 
     <dt></dt>
     <dd>
         <input class="uk-checkbox" type="checkbox" checked> Pain & Symptom management
-        <span>: ตัวตน ซาร์สแตนดาร์ดเซ็นเซอร์บร็อกโคลี</span>
+        <span></span>
     </dd>
     <dt></dt>
     <dd>
@@ -276,7 +167,7 @@
     <dd>
         <input class="uk-checkbox" type="checkbox" checked> Dying
         <span class="uk-text-meta text-small">Funeral plan / Grief bereavement care</span>
-        <span>: ตัวตน ซาร์สแตนดาร์ดเซ็นเซอร์บร็อกโคลี</span>
+        <span></span>
     </dd>
 
     <dt></dt>
@@ -286,7 +177,7 @@
 
     <dt>Biological problem</dt>
     <dd>
-        <?php echo $bio_problem ?>
+        <?php echo $bio_problem ?><br>
     </dd>
 
     <h5 class="uk-heading-bullet">Physical examination</h5>
@@ -294,16 +185,16 @@
     <dd>
         <div class="uk-grid">
             <div class="uk-margin-right">
-                <b class="uk-margin-right">BP</b> 200 mmHg
+                <b class="uk-margin-right">BP</b> <?php echo $bp ?> mmHg
             </div>
             <div class="uk-margin-right">
-                <b class="uk-margin-right">HR</b> 20 /min
+                <b class="uk-margin-right">HR</b> <?php echo $hr ?> /min
             </div>
             <div class="uk-margin-right">
-                <b class="uk-margin-right">RR</b> 200 /min
+                <b class="uk-margin-right">RR</b> <?php echo $rr ?> /min
             </div>
             <div class="uk-margin-right">
-                <b class="uk-margin-right">Oxygen saturation</b> 50 %
+                <b class="uk-margin-right">Oxygen saturation</b> <?php echo $oxygen ?> %
             </div>
         </div>
     </dd>
@@ -314,7 +205,7 @@
     <dt>Heart</dt>
     <dd>
         <input class="uk-checkbox" type="checkbox" checked> ปกติ
-        <span>: แอคทีฟอัลบั้มทำงานเบบี้</span>
+        <span> <?php echo $heart_text ?></span>
     </dd>
 
     <dt>Lungs</dt>
@@ -332,89 +223,66 @@
     <h5 class="uk-heading-bullet">Score assessment</h5>
 
     <dt>PPS</dt>
-    <dd><input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder=""></dd>
+    <dd><?php echo $pps ?></dd>
 
     <dt>Geriatric depression scale</dt>
-    <dd><input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder=""></dd>
+    <dd><?php echo $gds ?></dd>
 
     <h5 class="uk-heading-bullet">Mini mental state examination</h5>
 
     <dt>Orientation to time</dt>
-    <dd><input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder=""></dd>
+    <dd><?php echo $mini_time ?></dd>
 
     <dt>Orientation to place</dt>
-    <dd>
-        <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
-    </dd>
+    <dd><?php echo $mini_place ?></dd>
 
     <dt>Registration</dt>
-    <dd>
-        <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
-    </dd>
+    <dd><?php echo $mini_reg ?></dd>
 
-    <dt>Attention / Calculation <span class="uk-text-warning">*</span></dt>
-    <dd>
-        <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
-        <span class="uk-text-muted uk-text-meta">(ไม่ต้องลงข้อมูล ถ้าหากผู้ป่วยไม่ได้เรียนหนังสือ)</span>
-    </dd>
+    <dt>Attention / Calculation</dt>
+    <dd><?php echo $mini_cal ?></dd>
 
     <dt>Recall</dt>
-    <dd>
-        <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
-    </dd>
+    <dd><?php echo $mini_recall ?></dd>
 
     <dt>Naming</dt>
-    <dd>
-        <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
-    </dd>
+    <dd><?php echo $mini_naming ?></dd>
 
     <dt>Repetition</dt>
-    <dd>
-        <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
-    </dd>
+    <dd><?php echo $mini_repetition ?></dd>
 
     <dt>Verbal command</dt>
-    <dd>
-        <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
-    </dd>
+    <dd><?php echo $mini_verbal ?></dd>
 
-    <dt>Written command <span class="uk-text-warning">*</span></dt>
-    <dd>
-        <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
-        <span class="uk-text-muted uk-text-meta">(ไม่ต้องลงข้อมูล ถ้าหากผู้ป่วยไม่ได้เรียนหนังสือ)</span>
-    </dd>
+    <dt>Written command</dt>
+    <dd><?php echo $mini_written ?></dd>
 
-    <dt>Writing <span class="uk-text-warning">*</span></dt>
-    <dd>
-        <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
-        <span class="uk-text-muted uk-text-meta">(ไม่ต้องลงข้อมูล ถ้าหากผู้ป่วยไม่ได้เรียนหนังสือ)</span>
-    </dd>
+    <dt>Writing</dt>
+    <dd><?php echo $mini_writing ?></dd>
 
     <dt>Visuoconstruction</dt>
-    <dd>
-        <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
-    </dd>
+    <dd><?php echo $mini_vis ?></dd>
 
     <dt>Psychological<br>and Social peroblem</dt>
-    <dd>
-        แฮนด์ อัตลักษณ์คอมพ์ฮันนีมูน รอยัลตี้นายแบบเช็กเพลย์บอยแครอท แจ๊กพอตเช็กถูกต้อง เบิร์นธรรมาภิบาล อึมครึมโมเดิร์น เปราะบางบอยคอตฮันนีมูน มินต์ลามะแบ็กโฮ สติ๊กเกอร์ ควิก แฟนตาซี ยนตรกรรมภควัมบดีเทรลเลอร์เทรลเลอร์ เปปเปอร์มินต์โทรธัมโม เบิร์ดแจ๊กพ็อตดั๊มพ์แมคเคอเรลซีน แจ๊กพอต ริคเตอร์นิวกระดี๊กระด๊า
+    <dd><br>
+        <?php echo $summary_plan ?><br>
     </dd>
 
     <dt>Other problem</dt>
     <dd>
-        ไฮไลท์ไมค์ไมค์ คอมพ์โยเกิร์ตภารตะโต๋เต๋โก๊ะ มาร์กซีดานไอซียูอึมครึม มือถือสตรอเบอรีติงต๊องคอนเทนเนอร์ ป๊อปโชห่วยไทยแลนด์ โพสต์เพาเวอร์ไวอากร้า สกรัม บึมปาสกาล แรงใจโคโยตี้ตุ๊กตุ๊กพาร์มอคค่า บัสเอ๊าะแรงดูดเซี้ยว สะเด่า จูเนียร์ม้านั่งป่าไม้แฟรี หมวย ภควัมปติคีตกวีอิสรชน ฮวงจุ้ยซีอีโอไฮแจ็ค เที่ยงวันไทเฮาเฟรชชี่
+        <?php echo $summary_plan ?><br>
     </dd>
 
     <h5 class="uk-heading-bullet">Summarized</h5>
 
     <dt>Assessment and Plan</dt>
     <dd>
-        แมกกาซีนแคนู พะเรอสแตนดาร์ดควิกสหรัฐแรลลี ออร์แกนดีไซน์เนอร์ สามช่าเปโซรุมบ้าพะเรอ ฟลุกติวพันธกิจ แตงกวา สปาโกะโอเปร่าเซี้ยว เคลียร์โครนารีพอร์ทโกลด์เทค เสือโคร่งฮิตอัลไซเมอร์ดีพาร์ตเมนต์พุดดิ้ง
+       <?php echo $summary_plan ?><br>
     </dd>
 
     <dt>Goal</dt>
     <dd>
-        ป่ายิ้งฉุบดีเจ แฟ็กซ์สตรอเบอร์รีแมมโบ้อินดอร์ ท็อปบู๊ทอัลตราแฟนตาซีไมเกรน ตรวจสอบร็อคแอปพริคอททาวน์บัลลาสต์ บัลลาสต์ชะโนดซิตีออร์แกน เฟรมกาญจนาภิเษกเอสเพรสโซเทวาธิราช เย้วริคเตอร์ซิงจิ๊กซอว์ แจมเก๊ะ คอนโดเปียโนดีมานด์คอรัปชันแหวว
+       <?php echo $summary_goal ?><br>
     </dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 3 สรุปข้อมูลปัญหา</h4>
@@ -438,7 +306,7 @@
 
     <dt>สรุปคำแนะนำ</dt>
     <dd>
-        เทคออร์แกนิก อิเหนาวีซ่ากุมภาพันธ์ไพลิน ไฮเวย์ซูโม่วิลล์ทาวน์ งี้ไอติมว้าว เนิร์สเซอรี ชินบัญชรฮิปฮอปสถาปัตย์ ปักขคณนาแพลน คณาญาติยอมรับช็อปมยุราภิรมย์พิซซ่า วโรกาส ซีนีเพล็กซ์ ขั้นตอนเอาต์เนิร์สเซอรีสเตเดียมโอยัวะ เจี๊ยวออยล์บาร์บีคิว บร็อคโคลีธุหร่ำแฮปปี้ปิยมิตร พาสเจอร์ไรส์เบิร์นโลโก้ชาร์ปอมาตยาธิปไตย โชห่วยปิยมิตรเซอร์ไพรส์บึ้ม เบิร์ดบูม
+        <?php echo $suggestion ?><br>
     </dd>
 
     <dt>วางแผนครั้งต่อไป</dt>

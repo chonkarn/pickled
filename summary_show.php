@@ -1,31 +1,15 @@
 <?php
-	session_start();
-	if($_SESSION['id'] == "")
-	{
-		header( "location:login.php");
-		exit();
-	}
-    include 'dbname.php';
-    mysql_connect($servername, $username, $password) or die(mysql_error());
-    mysql_select_db($dbname) or die(mysql_error());
-    mysql_query("set character set utf8"); 
-    
-    $patient_hn = $_GET['hn'];
-    $calendar_id = $_GET['calendar_id'];
-    
-    //INNER JOIN summary ON summary.calendar_id = calendar_info.Id_app
-    //INNER JOIN patientinfo ON patientinfo.patient_hn = calendar_info.patient_hn
-    
+
     #calendar_info
     $calendarSQL = "SELECT * FROM calendar_info
         WHERE calendar_info.Id_app LIKE '$calendar_id'";
     $calendarQuery = mysql_db_query($dbname, $calendarSQL) or die (mysql_error());
     $calendarData = mysql_fetch_array($calendarQuery);
     $date_visit = $calendarData['dmy'];
-    $time_visit_id = $calendarData['time_calen'];
+    $time_visit = $calendarData['time_calen'];
     $num_visit = $calendarData['num_visit'];
-    $visit_status_id = $calendarData['patient_visit_status'];
-    $visit_type_id = $calendarData['patient_visit_type'];
+    $visit_status = $calendarData['patient_visit_status'];
+    $visit_type = $calendarData['patient_visit_type'];
     $doctor_owner_id = $calendarData['patient_doctor_owner'];
     
     #patientinfo
@@ -43,16 +27,22 @@
     $doctorData = mysql_fetch_array($doctorQuery);
     $doctor_owner = $doctorData['f_user']." ".$doctorData['l_user'];
 
-    # meaning
-    $meaningSQL = "SELECT * FROM tbmeaning
-        WHERE name = 'visit_status' OR name = 'visit_type' OR name='time'";
-    $meaningQuery = mysql_db_query($dbname, $meaningSQL) or die (mysql_error());
-    while ($meaningData = mysql_fetch_assoc($meaningQuery)){
-        switch($meaningData['name']){
-            case 'visit_status': $visit_status = $meaningData['meaning']; break;
-            case 'visit_type':$visit_type = $meaningData['meaning']; break;
-            case 'time': $time_visit = $meaningData['meaning']; break;
-        }
-    }
-    
+
+
+#meaning
+switch($visit_status){
+    case 1: $visit_status = 'ใหม่'; break;
+    case 2: $visit_status = 'เยี่ยมต่อ'; break;
+    case 3: $visit_status = 'ปิดเยี่ยมบ้าน'; break;
+}
+
+switch($visit_type){
+    case 1: $visit_type = 'Home visit care'; break;
+    case 2: $visit_type = 'Geriatric case'; break;
+    case 3: $visit_type = 'Palliative case'; break;
+}
+switch($time_visit){
+    case 1: $time_visit = 'ภาคเช้า (9.00-12.00 น)'; break;
+    case 2: $time_visit = 'ภาคบ่าย (13.00-16.00 น)'; break; 
+}
 ?>
