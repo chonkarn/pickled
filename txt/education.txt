@@ -1,8 +1,8 @@
-﻿<option style='background-color: #B3E2C5'>-- ระดับการศึกษา --</option>
-<option value="0">ประถมศึกษา</option>
-<option value="1">มัธยมศึกษา</option>
-<option value="2">ปวส / ปวท</option>
-<option value="3">ปริญญาตรี</option>
-<option value="4">ปริญญาโท</option>
-<option value="5">ปริญญาเอก</option>
-<option value="else">อื่นๆ</option>
+﻿ระดับการศึกษา
+1	ประถมศึกษา
+2	มัธยมศึกษา
+3	ปวส / ปวท
+4	ปริญญาตรี
+5	ปริญญาโท
+6	ปริญญาเอก
+else	อื่นๆ

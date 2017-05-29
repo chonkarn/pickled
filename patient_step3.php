@@ -4,7 +4,6 @@
             <label class="uk-form-label" for="form-horizontal-text">วินิจฉัยหลัก</label>
             <select name="mainproblem[]" class="ui search selection dropdown uk-width-1-2@m" id="select-mainproblem">
                 <option value="">พิมพ์ชื่อ หรือรหัส</option>
-                
             </select>
         </div>
         <div class="uk-margin">

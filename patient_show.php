@@ -12,18 +12,33 @@ $connect = mysql_connect($servername, $username, $password) or die(mysql_error()
 mysql_select_db($dbname) or die(mysql_error());
 mysql_query("set character set utf8");  
 
-# Patientinfo
-$patient_hn = $_GET['hn'];
+$hn = $_GET['hn'];
 $hnSQL = "SELECT * FROM patientinfo 
-WHERE patientinfo.patient_hn LIKE '$patient_hn'";
+WHERE patientinfo.patient_hn LIKE '$hn'";
 $result = mysql_db_query($dbname, $hnSQL) or die (mysql_error());
 $row = mysql_fetch_array($result);
 
-$patient_visit_status;
-$patient_visit_type;
+$visit_status = $row['patient_visit_status'];
+$visit_type = $row['patient_visit_type'];
+
 $patient_name = $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname'];
-if($row['patient_gender'] == 'F'){ $patient_gender = 'หญิง'; }
+$patient_fname = $row['patient_name'];
+$patient_lname = $row['patient_surname'];
+if($row['patient_gender'] == '2'){ $patient_gender = 'หญิง'; }
 else { $patient_gender = 'ชาย'; }
+$patient_id = $row['patient_id'];
+$patient_status = $row['patient_status'];
+$patient_religion = $row['patient_religion'];
+$patient_occupation = $row['patient_occupation'];
+$patient_education = $row['patient_education'];
+
+# Healthinsure
+$insure = $row['insure'];
+$insureSQL = "SELECT * FROM healthinsure 
+WHERE insure_id = '$insure'";
+$insureQuery = mysql_db_query($dbname, $insureSQL) or die (mysql_error());
+$insureData = mysql_fetch_array($insureQuery);
+$healthinsure = $insureData['insure_name'];
 
 # Date
 date_default_timezone_set("Asia/Bangkok");
@@ -41,32 +56,33 @@ if($patient_dateofbirth < date("d")){$age_day = $patient_dateofbirth;}
 else if($patient_dateofbirth > date("d")){$age_day = date("d");}
 else {$patient_dateofbirth = 0;}
 
-#
-$patient_status = $row['patient_status'];
-$patient_religion = $row['patient_religion'];
-$patient_occupation = $row['patient_occupation'];
-$patient_education = $row['patient_education'];
-$insure = $row['insure'];
-
 # Address
 $patient_addr = $row['patient_add_no'];
-$patient_add_no;
-$patient_add_mhoo;
-$patient_add_village;
-$patient_add_soi;
-$patient_add_road;
-$patient_add_subdis;
-$patient_add_dis;
-$patient_add_province;
-$patient_add_zip;
+$patient_add_no = $row['patient_add_no'];
+$patient_add_mhoo = $row['patient_add_mhoo'];
+$patient_add_village = $row['patient_add_village'];
+$patient_add_soi = $row['patient_add_soi'];
+$patient_add_road = $row['patient_add_road'];
+$patient_add_subdis = $row['patient_add_subdis'];
+$patient_add_dis = $row['patient_add_dis'];
+$patient_add_province = $row['patient_add_province'];
+$patient_add_zip = $row['patient_add_zip'];
 
+# Tel
 $patient_no_home = $row['patient_no_home'];
 $patient_no_mobile = $row['patient_no_mobile'];
 $patient_no_work = $row['patient_no_work'];
 
-$patient_doctor_owner = $row['patient_doctor_owner'];
+# Doctor
+$doctor_owner_id = $row['patient_doctor_owner'];
 $patient_doctor_visit = $row['patient_doctor_visit'];
+$doctorSQL = "SELECT * FROM tbuser 
+WHERE user = '$doctor_owner_id'";
+$doctorQuery = mysql_db_query($dbname, $doctorSQL) or die (mysql_error());
+$doctorData = mysql_fetch_array($doctorQuery);
+$doctor_owner = $doctorData['f_user']." ".$doctorData['l_user']." (".$doctorData['user'].")";
 
+# Health
 $surgery = $row['surgery'];
 $allergic = $row['allergic'];
 $alternative = $row['alternative'];
@@ -97,5 +113,7 @@ $next_visit = date("d M", strtotime($next_visit_date));
 $relate_name = $row['relate_name'];
 $relate_tel = $row['relate_tel'];
 $relate_def = $row['relate_def'];
+
+include 'meaning.php';
 
 ?>

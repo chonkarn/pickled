@@ -38,10 +38,8 @@
 
                         <!--CARD-MENU-->
                         <div class="mdl-card__menu">
-                            <a href="patient_checkhn.php">
-                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--green">
-                                <i class="material-icons">add</i>
-                            </button>
+                            <a href="patient_checkhn.php" title="เพิ่มผู้ป่วยใหม่" uk-tooltip>
+                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--green"><i class="material-icons">add</i></button>
                             </a>
                         </div>
 
@@ -60,8 +58,8 @@
                                     <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                         <thead>
                                             <tr>
-                                                <th>รูปภาพ</th>
-                                                <th class="uk-table-link"><a href="#" class="uk-button-text uk-text-bold">HN <span uk-icon="icon: arrow-up"></span></a>
+                                                <!--<th>รูปภาพ</th>-->
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">HN <span uk-icon="icon: arrow-up"></span></a>
                                                 </th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">สถานะ</a></th>
@@ -85,9 +83,11 @@
                                                     else $row['patient_visit_status'] = "เยี่ยมต่อ";
                                             ?>
                                                 <tr>
-                                                    <td>
-                                                        <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
-                                                    </td>
+                                                    <!--
+                                                        <td>
+                                                            <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
+                                                        </td>
+                                                    -->
                                                     <td>
                                                         <span class="th-label">HN: </span>
                                                         <?php echo $row['patient_hn']?>
@@ -130,12 +130,8 @@
                                     <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                         <thead>
                                             <tr>
-                                                <th>รูปภาพ</th>
-                                                <th class="uk-table-link">
-                                                    <a href="#" class="uk-button-text uk-text-bold" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">
-                                                        HN <span uk-icon="icon: arrow-up"></span>
-                                                    </a>
-                                                </th>
+                                                <!--<th>รูปภาพ</th>-->
+                                                <th class="uk-table-link"><a href="#" class="uk-button-text">HN <span uk-icon="icon: arrow-up"></span></a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">สถานะ</a></th>
                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมแล้ว (ครั้ง)</a></th>
@@ -154,9 +150,11 @@
                                                 $row['patient_visit_status'] = "ปิดเยี่ยมบ้าน";
                                         ?>
                                             <tr>
+                                                <!--
                                                 <td>
                                                     <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
                                                 </td>
+                                                -->
                                                 <td>
                                                     <span class="th-label">HN: </span>
                                                     <?php echo $row['patient_hn']?>
@@ -231,8 +229,8 @@
                                 <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                     <thead>
                                         <tr>
-                                            <th>รูปภาพ</th>
-                                            <th class="uk-table-link"><a href="#" class="uk-button-text uk-text-bold" onclick="sortTable(1,'patient_own_closed','sort2')" id="sort2">HN <span uk-icon="icon: arrow-up"></span></a></th>
+                                            <!--                                                <th>รูปภาพ</th>-->
+                                            <th class="uk-table-link"><a href="#" class="uk-button-text">HN <span uk-icon="icon: arrow-up"></span></a></th>
                                             <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                             <th class="uk-table-link"><a href="#" class="uk-button-text">เยี่ยมครั้งล่าสุด</a></th>
                                             <th>แก้ไข</th>
@@ -248,29 +246,31 @@
                                             while($row = mysql_fetch_array($results)) {
                                                $row['summary_status'] = "ยังไม่ได้สรุป";
                                         ?>
-                                    <tr>
-                                        <td>
-                                            <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
-                                        </td>
-                                        <td>
-                                            <span class="th-label">HN: </span>
-                                            <?php echo $row['patient_hn']?>
-                                        </td>
-                                        <td>
-                                            <span class="th-label">ชื่อ-นามสกุล: </span>
-                                            <a href="#" class="uk-button-text text-green">
-                                                <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <span class="th-label">วันที่เยี่ยมบ้าน: </span>
-                                            <?php echo $row['last_visit']?>
-                                        </td>
-                                        <td>
-                                            <a href="#" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
-                                        </td>
-                                    </tr>
-                                    <?php } ?>
+                                        <tr>
+                                            <!--
+                                                <td>
+                                                    <img class="uk-preserve-width uk-border-circle" src="img/avatar-patient.svg" width="40" alt="">
+                                                </td>
+-->
+                                            <td>
+                                                <span class="th-label">HN: </span>
+                                                <?php echo $row['patient_hn']?>
+                                            </td>
+                                            <td>
+                                                <span class="th-label">ชื่อ-นามสกุล: </span>
+                                                <a href="#" class="uk-button-text text-green">
+                                                    <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <span class="th-label">วันที่เยี่ยมบ้าน: </span>
+                                                <?php echo $row['last_visit']?>
+                                            </td>
+                                            <td>
+                                                <a href="#" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
                                 </table>
                             </div>
                             <div class="mdl-card__actions mdl-card--border uk-text-right">
@@ -282,8 +282,12 @@
             </main>
         </div>
 
-        <!--sort-->
-        <script src="js/table_sort.js"></script>
+        <!--table sort-->
+        <script src="lib/tablesort/tablesort.js"></script>
+        <script>
+            $('table').tablesort()
+        </script>
+
     </body>
 
 </html>

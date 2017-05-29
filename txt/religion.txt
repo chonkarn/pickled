@@ -1,5 +1,5 @@
-﻿<option style='background-color: #B3E2C5'>-- ศาสนา --</option>
-<option value="1">พุทธ</option>
-<option value="2">คริสต์</option>
-<option value="3">อิสลาม</option>
-<option value="else">อื่นๆ</option>
+﻿ศาสนา
+1	พุทธ
+2	คริสต์
+3	อิสลาม
+else	อื่นๆ

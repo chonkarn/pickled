@@ -13,55 +13,61 @@
     mysql_select_db($dbname) or die(mysql_error());
     mysql_query("set character set utf8"); 
     
+    # GET
     $patient_hn = $_GET['hn'];
-    $hnSQL = "SELECT * FROM patientinfo 
-    INNER JOIN summary ON summary.patient_hn = patientinfo.patient_hn
-    INNER JOIN tbuser ON patientinfo.patient_doctor_owner = tbuser.user
-    WHERE patientinfo.patient_hn LIKE '$patient_hn'";
-
-    $result = mysql_db_query($dbname, $hnSQL) or die (mysql_error());
-    $row = mysql_fetch_array($result); 
+    $calendar_id = $_GET['calendar_id'];
     
-    $patient_name = $row["patient_p_name"]." ".$row["patient_name"]." ".$row["patient_surname"];
-    $num_visit = $row["num_visit"];
-    $visit_date = $row["last_visit"];
+    # POST
+    if(isset($_POST['summary_status'])){
+        $summary_status = $_POST['summary_status'];
+    }
+    $reason_cancel = $_POST['reason_cancel'];
+    $reason_visit = $_POST['reason_visit'];
+    // med
+    $basic_act = $_POST['basic_act'];
+    $basic_act_dress = $_POST['basic_act_dress'];
+    $basic_act_eat = $_POST['basic_act_eat'];
+    $basic_act_ambu = $_POST['basic_act_ambu'];
+    $basic_act_toilet = $_POST['basic_act_toilet'];
+    $basic_act_hygine = $_POST['basic_act_hygine'];
+    $instru_act = $_POST['instru_act'];
+    $instru_act_shop = $_POST['instru_act_shop'];
+    $instru_act_house = $_POST['instru_act_house'];
+    $instru_act_med = $_POST['instru_act_med'];
+    $instru_act_fin = $_POST['instru_act_fin'];
+    $instru_act_tech = $_POST['instru_act_tech'];
+    $nutrition_status = $_POST['nutrition_status'];
+    $home_risk = $_POST['home_risk'];
+    $home_place = $_POST['home_place'];
+    $caregiver_burden = $_POST['caregiver_burden'];
+    $main_caregiver = $_POST['main_caregiver'];
+    $healthinsure = $_POST['healthinsure'];
     
     #update data
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $visit_status = $_POST['visit_status'];
-    $sumSQL = "UPDATE summary SET visit_status = '$visit_status'
-    WHERE patient_hn = '$patient_hn'";
+    $sumSQL = "UPDATE summary SET summary_edit_status = '2',
+        summary_status = '$summary_status',
+        reason_cancel = '$reason_cancel',
+        reason_visit = '$reason_visit',
+        basic_act_problem = '$basic_act_problem',
+        instru_act = '$instru_act',
+        instru_act_problem = '$instru_act_problem'
+        nutrition_status = '$nutrition_status',
+        home_risk = '$home_risk',
+        home_place = '$home_place',
+        caregiver_burden = '$caregiver_burden',
+        main_caregiver = '$main_caregiver',
+        healthinsure = '$healthinsure'
+        WHERE calendar_id = '$calendar_id'";
     $conn->query($sumSQL);
+    mysql_db_query($dbname, $sumSQL) or die (mysql_error());
+    mysql_close();
+    
+    header("location: summary.php");
 ?>
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
-
-        <!--jQuery-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-        <!--mdl-->
-        <link rel="stylesheet" href="lib/mdl/material.min.css">
-        <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
-        <script src="lib/mdl/material.min.js"></script>
-
-        <!--semantic-ui-->
-        <link rel="stylesheet" href="lib/semantic-ui/dist/semantic.min.css">
-        <script src="lib/semantic-ui/dist/semantic.min.js"></script>
-
-        <!--uikit-->
-        <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
-        <script src="lib/uikit/js/uikit.min.js"></script>
-        <script src="lib/uikit/js/uikit-icons.min.js"></script>
-
-        <!--icon-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-        <!--custom css-->
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/font.css">
+        <?php include "head.html"?>
     </head>
 
     <body>

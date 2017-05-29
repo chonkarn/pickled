@@ -3,13 +3,10 @@
     <div class="uk-margin">
         <label class="uk-form-label">เหตุผลการเยี่ยมบ้าน</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason" checked> Assessment</label>
-            <label class="uk-margin-right">
-                                            <input class="uk-radio" type="radio" name="reason"> Illness management</label>
-            <label class="uk-margin-right">
-                                            <input class="uk-radio" type="radio" name="reason"> Palliative</label>
-            <label class="uk-margin-right">
-                                            <input class="uk-radio" type="radio" name="reason"> Post hospitalized</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason_visit" value="1" checked> Assessment</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason_visit" value="2"> Illness management</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason_visit" value="3"> Palliative</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason_visit" value="4"> Post hospitalized</label>
         </div>
     </div>
     <div class="uk-margin">
@@ -19,7 +16,7 @@
                 $docterSQL = "SELECT user,f_user,l_user FROM tbuser ORDER BY user ASC";
                 $docterQuery = mysql_query($docterSQL) or die(mysql_error()."[".$docterSQL."]");
             ?>
-                <select name="doctor[]" class="ui search multiple selection dropdown uk-width-1-2@m" multiple="" id="selecter">
+            <select name="doctor[]" class="ui search multiple selection dropdown uk-width-1-2@m" multiple="" id="selecter">
                 <option value="">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
                 <?php 
                     while ($docterRow = mysql_fetch_array($docterQuery)) {
@@ -29,7 +26,6 @@
             </select>
         </div>
     </div>
-
     <div class="uk-margin">
         <label class="uk-form-label">ยาที่ใช้ปัจจุบันและยาที่ซื้อกินเอง</label>
         <div class="uk-form-controls uk-form-controls-text">
@@ -40,12 +36,8 @@
                 </div>
                 <div>
                     <label class="uk-margin-right uk-text-bold">ลักษณะ</label>
-                    <label class="uk-margin-right">
-                                                    <input class="uk-radio" type="radio" name="unit" checked> ยาเม็ด
-                                                </label>
-                    <label class="uk-margin-right">
-                                                    <input class="uk-radio" type="radio" name="unit"> ยาน้ำ
-                                                </label>
+                    <label class="uk-margin-right"><input class="uk-radio" type="radio" name="unit" checked> ยาเม็ด</label>
+                    <label class="uk-margin-right"><input class="uk-radio" type="radio" name="unit"> ยาน้ำ</label>
                 </div>
                 <div>
                     <label class="uk-margin-right uk-text-bold">โดส</label>
@@ -59,24 +51,15 @@
             <div class="uk-grid">
                 <div class="uk-width-auto">
                     <label class="uk-margin-right uk-text-bold">วิธีใช้ยา</label>
-                    <label class="uk-margin-right">
-                                                    <input class="uk-radio" type="radio" name="method" checked> ก่อนอาหาร</label>
-                    <label class="uk-margin-right">
-                                                    <input class="uk-radio" type="radio" name="method"> หลังอาหาร</label>
+                    <label class="uk-margin-right"><input class="uk-radio" type="radio" name="method" checked> ก่อนอาหาร</label>
+                    <label class="uk-margin-right"><input class="uk-radio" type="radio" name="method"> หลังอาหาร</label>
                 </div>
                 <div>
                     <label class="uk-margin-right uk-text-bold">ช่วงเวลา</label>
-                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> เช้า
-                                                </label>
-                    <label class="uk-margin-right">
-                                                    <input class="uk-checkbox" type="checkbox"> กลางวัน
-                                                </label>
-                    <label class="uk-margin-right">
-                                                    <input class="uk-checkbox" type="checkbox"> เย็น
-                                                </label>
-                    <label class="uk-margin-right">
-                                                    <input class="uk-checkbox" type="checkbox"> ก่อนนอน
-                                                </label>
+                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> เช้า</label>
+                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> กลางวัน</label>
+                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> เย็น</label>
+                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> ก่อนนอน</label>
                 </div>
             </div>
         </div>
@@ -91,18 +74,18 @@
     <div class="uk-margin">
         <label class="uk-form-label">Basic activities of daily living</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right"><input class="uk-radio " type="radio" name="basic" checked> Yes</label>
-            <label><input class="uk-radio" type="radio" name="basic"> No</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="1" name="basic_act" checked> Yes</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="0" name="basic_act"> No</label>
         </div>
     </div>
     <div class="uk-margin">
         <div class="uk-form-controls">
             <label class="uk-margin-right uk-text-bold">Problem</label>
-            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Dressing</label>
-            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Eating</label>
-            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Ambulating</label>
-            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Toileting</label>
-            <input class="uk-checkbox" type="checkbox"> Hygine
+            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_dress" value="1"> Dressing</label>
+            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_eat" value="2"> Eating</label>
+            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_ambu" value="3"> Ambulating</label>
+            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_toilet" value="4"> Toileting</label>
+            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_hygine" value="5"> Hygine</label>
         </div>
     </div>
     <div class="uk-margin">
@@ -110,19 +93,18 @@
         <div class="uk-form-controls uk-form-controls-text">
             <div class="uk-grid">
                 <div class="uk-width-1-1">
-                    <label class="uk-margin-right"><input class="uk-radio " type="radio" name="instrument" checked> Yes</label>
-                    <label><input class="uk-radio" type="radio" name="instrument"> No</label>
+                    <label class="uk-margin-right"><input class="uk-radio " type="radio" name="instru_act" checked> Yes</label>
+                    <label><input class="uk-radio" type="radio" name="instru_act"> No</label>
                 </div>
             </div>
             <div class="uk-margin">
                 <div class="uk-width-1-1">
                     <label class="uk-margin-right"><b>Problem</b></label>
-                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Shopping</label>
-                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Houskeeping</label>
-                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Medication</label>
-                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Financial</label>
-                    <input class="uk-checkbox" type="checkbox"> Transpoting / Technology
-                    <br>
+                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" value="1" name="instru_act_shop"> Shopping</label>
+                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" value="2" name="instru_act_house"> Houskeeping</label>
+                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" value="3" name="instru_act_med"> Medication</label>
+                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" value="4" name="instru_act_fin"> Financial</label>
+                    <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" value="5" name="instru_act_tech"></label> Transpoting / Technology
                 </div>
             </div>
         </div>
@@ -132,9 +114,9 @@
     <div class="uk-margin">
         <label class="uk-form-label">Nutritional status</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="nutrition" checked> Healthy</label>
-            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="nutrition"> Obesity</label>
-            <input class="uk-radio" type="radio" name="nutrition"> Malnutrition
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="1" name="nutrition_status" checked> Healthy</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="2" name="nutrition_status"> Obesity</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="3" name="nutrition_status"> Malnutrition</label>
         </div>
     </div>
 
@@ -142,22 +124,14 @@
     <div class="uk-margin">
         <label class="uk-form-label">Risk</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right"><input class="uk-radio " type="radio" name="risk" checked> Yes</label>
-            <label><input class="uk-radio" type="radio" name="risk"> No</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="1" name="home_risk" checked> Yes</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="0" name="home_risk"> No</label>
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label">Place at risk</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <select class="uk-select uk-width-1-2@s uk-form-small">
-                <option>เลือก Place at risk</option>
-                <option>1 สัปดาห์</option>
-                <option>2 สัปดาห์</option>
-                <option>3 สัปดาห์</option>
-                <option>1 เดือน</option>
-                <option>2 เดือน</option>
-                <option>3 เดือน</option>
-            </select>
+             <input class="uk-input uk-form-small" name="home_place" placeholder="">
         </div>
     </div>
 
@@ -165,28 +139,20 @@
     <div class="uk-margin">
         <label class="uk-form-label">Caregiver burden</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="caregiver" checked> Yes</label>
-            <label><input class="uk-radio" type="radio" name="caregiver"> No</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="1" name="caregiver_burden" checked> Yes</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="0" name="caregiver_burden"> No</label>
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label">Main caregiver</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <select class="uk-select uk-width-1-2@s uk-form-small">
-                <option>เลือก Main caregiver</option>
-                <option>1 สัปดาห์</option>
-                <option>2 สัปดาห์</option>
-                <option>3 สัปดาห์</option>
-                <option>1 เดือน</option>
-                <option>2 เดือน</option>
-                <option>3 เดือน</option>
-            </select>
+            <input class="uk-input uk-form-small" name="main_caregiver" placeholder="">
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label">สิทธิ์การรักษา</label>
         <div class="uk-form-controls">
-            <select name="healthinsure" class="ui search selection dropdown uk-width-1-2@s" id="select-healthinsure">
+            <select class="ui search selection dropdown uk-width-1-2@s" id="select-healthinsure" name="healthinsure">
                 <?php
                     $healthinsureSQL = "SELECT insure_id, insure_name FROM healthinsure ORDER BY insure_id ASC";
                     $healthinsureQuery = mysql_query($healthinsureSQL) or die(mysql_error()."[".$healthinsureSQL."]");

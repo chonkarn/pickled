@@ -1,14 +1,14 @@
-﻿<option style='background-color: #B3E2C5'>-- อาชีพ --</option>
-<option value="1">นักเรียน/นักศึกษา</option>
-<option value="2">รับราชการ</option>
-<option value="3">รัฐวิสาหกิจ</option>
-<option value="4">พนักงานมหาวิทยาลัย</option>
-<option value="5">พนักงานบริษัท</option>
-<option value="6">รับจ้าง</option>
-<option value="7">ค้าขาย</option>
-<option value="8">เกษตรกร</option>
-<option value="9">แม่บ้าน/ว่างงาน</option>
-<option value="10">ธุรกิจส่วนตัว</option>
-<option value="11">นักบวช</option>
-<option value="12">เกษียณอายุ</option>
-<option value= "else">อื่นๆ</option>
+﻿อาชีพ
+1	นักเรียน/นักศึกษา
+2	รับราชการ
+3	รัฐวิสาหกิจ
+4	พนักงานมหาวิทยาลัย
+5	พนักงานบริษัท
+6	รับจ้าง
+7	ค้าขาย
+8	เกษตรกร
+9	แม่บ้าน/ว่างงาน
+10	ธุรกิจส่วนตัว
+11	นักบวช
+12	เกษียณอายุ
+else	อื่นๆ

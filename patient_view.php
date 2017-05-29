@@ -3,18 +3,18 @@
     <dd><?php echo $patient_hn ?></dd>
 
     <dt>สถานะการเยี่ยมบ้าน</dt>
-    <dd>?
-<!--        เยี่ยมต่อ-->
+    <dd><?php echo $patient_visit_status ?>
+        <!-- เยี่ยมต่อ -->
     </dd>
 
     <dt>ประเภทการเยี่ยมบ้าน</dt>
-    <dd>?
-<!--        Home visit care-->
+    <dd><?php echo $patient_visit_type ?>
+        <!-- Home visit care -->
     </dd>
 
     <dt>แพทย์เจ้าของไข้</dt>
-    <dd>?
-<!--        นพ.ประสงค์ ทรงธรรม (013651)-->
+    <dd><?php echo $patient_doctor_owner ?>
+        <!-- นพ.ประสงค์ ทรงธรรม (013651) -->
     </dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
@@ -86,10 +86,8 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.202290236063!2d100.52447731529752!3d13.76667120065673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2994da99aa1fd%3A0xc4dd9b398f456bcf!2z4LmC4Lij4LiH4Lie4Lii4Liy4Lia4Liy4Lil4Lij4Liy4Lih4Liy4LiY4Li04Lia4LiU4Li1!5e0!3m2!1sth!2sth!4v1455191320193" width="500" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
     </dd>
 
-    <hr>
-
-    <h1 class="mdl-typography--title mdl-color-text--green">ส่วนที่ 2 ข้อมูลสุขภาพ</h1>
-    <h3 class="mdl-typography--title">ประวัติการรักษา</h3>
+    <h4 class="uk-heading-divider">ส่วนที่ 2 ข้อมูลสุขภาพ</h4>
+    <h5 class="uk-heading-bullet">ประวัติการรักษา</h5>
 
     <dt>การผ่าตัด</dt>
     <dd>เคยผ่าตัด ไส้ติ่ง</dd>
@@ -100,7 +98,7 @@
     <dt>แพทย์ทางเลือก</dt>
     <dd>ไม่มี</dd>
 
-    <h3 class="mdl-typography--title">พฤติกรรมเสี่ยงในปัจจุบัน</h3>
+    <h5 class="uk-heading-bullet">พฤติกรรมเสี่ยงในปัจจุบัน</h5>
     <dt>สุรา</dt>
     <dd>
         เลิกดื่มแล้ว และ ไม่มีปัญหาเกี่ยวกับการดื่ม
@@ -109,7 +107,7 @@
     <dt>บุหรี่</dt>
     <dd>ไม่เคยสูบ</dd>
 
-    <h3 class="mdl-typography--title">ประวัติครอบครัว</h3>
+    <h5 class="uk-heading-bullet">ประวัติครอบครัว</h5>
 
     <dt>สถานะทางการเงิน</dt>
     <dd>ไม่มีปัญหา</dd>
@@ -122,9 +120,7 @@
         </ul>
     </dd>
 
-    <hr>
-
-    <h1 class="mdl-typography--title mdl-color-text--green">ส่วนที่ 3 สรุปข้อมูลปัญหาผู้ป่วย</h1>
+    <h4 class="uk-heading-divider">ส่วนที่ 3 สรุปข้อมูลปัญหาผู้ป่วย</h4>
 
     <dt>รหัสการวินิจฉัยปัญหา</dt>
     <dd>

@@ -66,14 +66,21 @@
                                         -->
 
                                         <?php
-                                            $results = mysql_query("
+                                            $results1 = mysql_query("
                                                 SELECT * FROM summary 
                                                 INNER JOIN patientinfo ON summary.patient_hn = patientinfo.patient_hn
-                                                
+                                                WHERE summary.summary_edit_status BETWEEN 1 AND 2
+                                                ORDER BY calendar_id ASC;
                                             ");
                                         
-                                            while($row = mysql_fetch_array($results)) {
-                                               $row['summary_status'] = "ยังไม่ได้สรุป";
+                                            while($row = mysql_fetch_array($results1)) {
+                                                if($row['summary_edit_status'] == 1){
+                                                    $row['summary_edit_status'] = "ยังไม่ได้สรุป";
+                                                }
+                                                else if($row['summary_edit_status'] == 2){
+                                                    $row['summary_edit_status'] = "สรุปบางส่วน";
+                                                }
+                                                
                                         ?>
                                             <tr>
                                                 <td>
@@ -85,7 +92,7 @@
                                                 </td>
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
-                                                    <a href="<?php echo "patient_profile.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green">
+                                                    <a href="<?php echo "summary_view.php?hn=".$row['patient_hn']."&calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green">
                                                         <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                     </a>
                                                 </td>
@@ -99,11 +106,11 @@
                                                 </td>
 
                                                 <td>
-                                                    <span class="th-label">สถานะ: </span>
-                                                    <?php echo $row['patient_visit_status']?>
+                                                    <span class="th-label">สถานะกรอกข้อมูล: </span>
+                                                    <?php echo $row['summary_edit_status']?>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo "summary_form.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    <a href="<?php echo "summary_form.php?hn=".$row['patient_hn']."&calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -130,14 +137,17 @@
                                             </tr>
                                         </thead>
                                         <?php
-                                            $results = mysql_query("
+                                            $results2 = mysql_query("
                                                 SELECT * FROM summary 
                                                 INNER JOIN patientinfo ON summary.patient_hn = patientinfo.patient_hn
-                                                WHERE summary.summary_status = 2
+                                                WHERE summary.summary_edit_status = 3
+                                                ORDER BY calendar_id ASC;
                                             ");
                                         
-                                            while($row = mysql_fetch_array($results)) {
-                                               $row['patient_visit_status'] = "สรุปแล้ว";
+                                            while($row = mysql_fetch_array($results2)) {
+                                                if($row['summary_edit_status'] == 3){
+                                                    $row['summary_edit_status'] = "สรุปแล้ว";
+                                                }
                                         ?>
                                             <tr>
                                                 <td>
@@ -149,7 +159,7 @@
                                                 </td>
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
-                                                    <a href="<?php echo " summary_view.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green">
+                                                    <a href="<?php echo "summary_form.php?hn=".$row['patient_hn']."&calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green">
                                                         <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                     </a>
                                                 </td>
@@ -164,11 +174,11 @@
                                                 </td>
 
                                                 <td>
-                                                    <span class="th-label">สถานะ: </span>
-                                                    <?php echo $row['patient_visit_status']?>
+                                                    <span class="th-label">สถานะกรอกข้อมูล: </span>
+                                                    <?php echo $row['summary_edit_status']?>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo " summary_form.php?hn=".$row['patient_hn']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    <a href="<?php echo "summary_form.php?hn=".$row['patient_hn']."&calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>

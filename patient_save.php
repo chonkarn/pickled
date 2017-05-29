@@ -14,56 +14,152 @@
     mysql_query("set character set utf8"); 
     
     $patient_hn = $_GET['hn'];
-    $hnSQL = "SELECT * FROM patientinfo 
-    INNER JOIN summary ON summary.patient_hn = patientinfo.patient_hn
-    INNER JOIN tbuser ON patientinfo.patient_doctor_owner = tbuser.user
-    WHERE patientinfo.patient_hn LIKE '$patient_hn'";
+//    $type = $_GET['type'];
+    
+    $id = $_POST['id-card'];
+    $pname = $_POST['pname'] ;
+    $fname = $_POST['fname'] ;
+    $lname = $_POST['lname'] ;
+    if(isset($_POST['gender'])){ $gender = $_POST['gender']; }
+    
+    # birthday
+//    $bday = $_POST['bday'];
+    $bmonth = $_POST['bmonth'];
+//    $byear = $_POST['byear'];
+    
+    $status = $_POST['status'];
+    $religion = $_POST['religion'];
+    $occupation = $_POST['occupation'];
+    $education = $_POST['education'];
+    $healthinsure = $_POST['insure'];
+    
+    # address
+    $add_no = $_POST['add_no'];
+    $add_mhoo = $_POST['add_mhoo'];
+    $add_village = $_POST['add_village'];
+    $add_soi = $_POST['add_soi'];
+    $add_road = $_POST['add_road'];
+    $add_subdis = $_POST['add_subdis'];
+    $add_dis = $_POST['add_dis'];
+    $add_province = $_POST['add_province'];
+    $add_zip = $_POST['add_zip'];
+    
+    # telephone
+    $tel_home = $_POST['tel_home'];
+    $tel_mobile = $_POST['tel_mobile'];
+    $tel_work = $_POST['tel_work'];
+    
+    # relation
+    $relate_name = $_POST['relate_name'];
+    $relate_des = $_POST['relate_des'];
+    $relate_tel = $_POST['relate_tel'];
+    
+    $doctor_owner = $_POST['doctor-owner'];
+    
+    # health info
+    $surgery = $_POST['surgery'];
+    $surgery_input = $_POST['surgery_input'];
+    $allergic = $_POST['allergic'];
+    $allergic_input = $_POST['allergic_input'];
+    $alternative = $_POST['alternative'];
+    $alternative_input = $_POST['alternative_input'];
+    $alcohol = $_POST['alcohol'];
+    if(isset($_POST['alcohol_input'])) { $alcohol_input = 1; }
+    else { $alcohol_input = 0; }
+    $cigarette = $_POST['cigarette'];
+    $cigarette_amout = $_POST['cigarette_amout'];
+    $cigarette_period = $_POST['cigarette_period'];
+    
+    if(isset($_POST['money'])) { $money = 1; }
+    else { $money = 0; }
+    
+    if(isset($_POST['hypertansion'])) { $hypertansion = 1; }
+    else { $hypertansion = 0; }
+    
+    if(isset($_POST['diabetes_mellitus'])) { $diabetes_mellitus = 1; }
+    else { $diabetes_mellitus = 0; }
+    
+    if(isset($_POST['dyslipidemia'])) { $dyslipidemia = 1; }
+    else { $dyslipidemia = 0; }
+    
+    if(isset($_POST['stroke'])) { $stroke = 1; }
+    else { $stroke = 0; }
+    
+    if(isset($_POST['cad'])) { $cad = 1; }
+    else { $cad = 0; }
+    
+    if(isset($_POST['cancer'])) { $cancer = 1; }
+    else { $cancer = 0; }
+    
+    if(isset($_POST['other'])) { $other = 1; }
+    else { $other = 0; }
 
-    $result = mysql_db_query($dbname, $hnSQL) or die (mysql_error());
-    $row = mysql_fetch_array($result); 
+    //$main
+    //$problem
     
-    $patient_name = $row["patient_p_name"]." ".$row["patient_name"]." ".$row["patient_surname"];
-    $num_visit = $row["num_visit"];
-    $visit_date = $row["last_visit"];
+    # update data
+     $conn = new mysqli($servername, $username, $password, $dbname);
     
-    #update data
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    $visit_status = $_POST['visit_status'];
-    $sumSQL = "UPDATE summary SET visit_status = '$visit_status'
-    WHERE patient_hn = '$patient_hn'";
-    $conn->query($sumSQL);
+    //patient_dateofbirth = '$bday',
+    //patient_yearofbirth = '$byear',
+     $sumSQL = "UPDATE patientinfo SET patient_id = '$id',
+        patient_p_name='$pname',
+        patient_name='$fname',
+        patient_surname='$lname',
+        patient_gender='$gender',
+
+        patient_monthofbirth = '$bmonth',
+        
+        patient_status = '$status',
+        patient_religion = '$religion',
+        patient_occupation = '$occupation',
+        patient_education = '$education',
+        insure = '$healthinsure',
+        patient_add_no = '$add_no',
+        patient_add_mhoo='$add_mhoo',
+        patient_add_village='$add_village',
+        patient_add_soi='$add_soi',
+        patient_add_road='$add_road',
+        patient_add_subdis='$add_subdis',
+        patient_add_dis='$add_dis',
+        patient_add_province='$add_province',
+        patient_add_zip='$add_zip',
+        patient_no_home = '$tel_home',
+        patient_no_mobile = '$tel_mobile',
+        patient_no_work = '$tel_work',
+        patient_doctor_owner = '$doctor_owner',
+        surgery = '$surgery',
+        surgery_input = '$surgery_input',
+        allergic = '$allergic',
+        allergic_input = '$allergic_input',
+        alternative = '$alternative',
+        alternative_input = '$alternative_input',
+        alcohol = '$alcohol',
+        alcohol_input = '$alcohol_input',
+        cigarette = '$cigarette',
+        cigarette_amout = '$cigarette_amout',
+        cigarette_period = '$cigarette_period',
+        money = '$money',
+        hypertansion = '$hypertansion',
+        diabetes_mellitus = '$diabetes_mellitus',
+        dyslipidemia = '$dyslipidemia',
+        stroke = '$stroke',
+        cad = '$cad',
+        cancer = '$cancer',
+        other = '$other'
+     
+        WHERE patient_hn = '$patient_hn'";
     
-    #header("location: patient.php");
+     $conn->query($sumSQL);
+    
+    mysql_db_query($dbname, $sumSQL) or die (mysql_error());
+    mysql_close();
+    
+    header("location: patient.php");
 ?>
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
-
-        <!--jQuery-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-        <!--mdl-->
-        <link rel="stylesheet" href="lib/mdl/material.min.css">
-        <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
-        <script src="lib/mdl/material.min.js"></script>
-
-        <!--semantic-ui-->
-        <link rel="stylesheet" href="lib/semantic-ui/dist/semantic.min.css">
-        <script src="lib/semantic-ui/dist/semantic.min.js"></script>
-
-        <!--uikit-->
-        <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
-        <script src="lib/uikit/js/uikit.min.js"></script>
-        <script src="lib/uikit/js/uikit-icons.min.js"></script>
-
-        <!--icon-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-        <!--custom css-->
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/font.css">
+        <?php include "head.html"?>
     </head>
 
     <body>

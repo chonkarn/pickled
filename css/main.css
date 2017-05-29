@@ -87,8 +87,7 @@ dialog {
         display: none;
     }
     #header-logo {
-        margin-right: 0;
-        margin: auto;
+        margin-left: 35%;
     }
 }
 
@@ -122,6 +121,9 @@ table thead tr th {
 
 /* --------------- form --------------- */
 
+.dl-horizontal {
+    line-height: 25px;
+}
 .dl-horizontal dt {
     float: left;
     min-width: 20%;
@@ -129,7 +131,7 @@ table thead tr th {
 }
 
 .dl-horizontal dd {
-    margin: 10px;
+    margin: 20px;
     margin-left: 25%;
 }
 

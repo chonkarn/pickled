@@ -34,14 +34,15 @@
 
                     <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                           
                             
                             <form class="uk-form-horizontal" action="patient_checkhn_db.php" method="post">
                                 <h4 class="uk-heading-divider">ตรวจสอบเลขที่โรงพยาบาล</h4>
                                 <div class="uk-margin">
                                     <label class="uk-form-label">เลขที่โรงพยาบาล</label>
-                                    <div class="uk-form-controls uk-form-controls-text">
-                                        <input class="uk-input uk-width-medium uk-form-small" type="number" placeholder="กรอกตัวเลข 7 หลัก" name="hn">
+                                    <div class="uk-form-controls">
+                                        <div class="ui mini input uk-width-1-3@s">
+                                            <input type="number" placeholder="กรอกเลขที่โรงพยาบาล" name="hn">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="uk-margin">
@@ -52,7 +53,7 @@
                                     <label class="uk-form-label">ประเภทการเยี่ยมบ้าน
                                 </label>
                                     <div class="uk-form-controls uk-form-controls-text">
-                                        <label class="uk-margin-right"><input class="uk-radio" type="radio" name="type" checked value="1"> Home visit care</label>
+                                        <label class="uk-margin-right"><input class="uk-radio" type="radio" name="type" value="1" checked> Home visit care</label>
                                         <label class="uk-margin-right"><input class="uk-radio" type="radio" name="type" value="2"> Geriatric case</label>
                                         <label class="uk-margin-right"><input class="uk-radio" type="radio" name="type" value="3"> Palliative case</label>
                                     </div>
@@ -61,7 +62,6 @@
                                     <button type="submit" class="uk-button uk-button-default button-green">เริ่มกรอกข้อมูล</button>
                                 </div>
                             </form>
-                            
                         </div>
                     </div>
                 </div>
@@ -72,6 +72,7 @@
         <!--custom js-->
         <script src="js/select.js"></script>
         <script src="js/stepper.js"></script>
+        <script src="js/validation.js"></script>
 
     </body>
 

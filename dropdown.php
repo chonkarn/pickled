@@ -12,19 +12,19 @@ function droptext($value){
 
 function droploop($value){
     if ($value == "day"){
-        $txt = "-- วัน --";
+//        $txt = "-- วัน --";
         $condition=1;
         $loop=$condition+30;
-        echo "<option >{$txt}</option>";
+//        echo "<option >{$txt}</option>";
     for ($condition;$condition<=$loop;$condition++){
        echo "<option value=\"{$condition}\">{$condition}</option>";
     }
     }
     else {
-            $txt = "-- ปี --";
+//            $txt = "-- ปี --";
             $condition=2559;
             $loop=2459;
-        echo "<option >{$txt}</option>";
+//        echo "<option >{$txt}</option>";
     for ($condition;$condition>=$loop;$condition--){
        echo "<option value=\"{$condition}\">{$condition}</option>";
     }
