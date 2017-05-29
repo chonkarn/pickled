@@ -93,7 +93,7 @@
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
                                                     <a href="<?php echo "summary_view.php?hn=".$row['patient_hn']."&calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green">
-                                                        <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                                        <?php echo $row['patient_pname']." ".$row['patient_fname']." ".$row['patient_lname']?>
                                                     </a>
                                                 </td>
                                                 <td>
@@ -102,7 +102,7 @@
                                                 </td>
                                                 <td>
                                                     <span class="th-label">เยี่ยมครั้งสุดท้าย: </span>
-                                                    <?php echo $row['last_visit']?>
+                                                    <?php echo $row['last_visit_date']?>
                                                 </td>
 
                                                 <td>
@@ -160,7 +160,7 @@
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
                                                     <a href="<?php echo "summary_form.php?hn=".$row['patient_hn']."&calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green">
-                                                        <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                                        <?php echo $row['patient_pname']." ".$row['patient_fname']." ".$row['patient_lname']?>
                                                     </a>
                                                 </td>
 
@@ -170,7 +170,7 @@
                                                 </td>
                                                 <td>
                                                     <span class="th-label">เยี่ยมครั้งสุดท้าย: </span>
-                                                    <?php echo $row['last_visit']?>
+                                                    <?php echo $row['last_visit_date']?>
                                                 </td>
 
                                                 <td>

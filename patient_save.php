@@ -14,24 +14,23 @@
     mysql_query("set character set utf8"); 
     
     $patient_hn = $_GET['hn'];
-//    $type = $_GET['type'];
     
-    $id = $_POST['id-card'];
+    $patient_id = $_POST['patient_id'];
     $pname = $_POST['pname'] ;
     $fname = $_POST['fname'] ;
     $lname = $_POST['lname'] ;
     if(isset($_POST['gender'])){ $gender = $_POST['gender']; }
     
     # birthday
-//    $bday = $_POST['bday'];
+    $bday = $_POST['bday'];
     $bmonth = $_POST['bmonth'];
-//    $byear = $_POST['byear'];
+    $byear = $_POST['byear'];
     
     $status = $_POST['status'];
     $religion = $_POST['religion'];
     $occupation = $_POST['occupation'];
     $education = $_POST['education'];
-    $healthinsure = $_POST['insure'];
+    $insure = $_POST['insure'];
     
     # address
     $add_no = $_POST['add_no'];
@@ -51,8 +50,8 @@
     
     # relation
     $relate_name = $_POST['relate_name'];
-    $relate_des = $_POST['relate_des'];
     $relate_tel = $_POST['relate_tel'];
+    $relate_def = $_POST['relate_def'];
     
     $doctor_owner = $_POST['doctor-owner'];
     
@@ -67,32 +66,21 @@
     if(isset($_POST['alcohol_input'])) { $alcohol_input = 1; }
     else { $alcohol_input = 0; }
     $cigarette = $_POST['cigarette'];
-    $cigarette_amout = $_POST['cigarette_amout'];
-    $cigarette_period = $_POST['cigarette_period'];
+    if(!isset($_POST['cigarette_amount'])) { $cigarette_amount = NULL; }
+    if(!isset($_POST['cigarette_period'])) { $cigarette_period = NULL; }
     
-    if(isset($_POST['money'])) { $money = 1; }
-    else { $money = 0; }
+    if(isset($_POST['money'])) { $money = 1; } else { $money = 0; }
+    if(isset($_POST['hypertansion'])) { $hypertansion = 1; } else { $hypertansion = 0; }
+    if(isset($_POST['diabetes_mellitus'])) { $diabetes_mellitus = 1; } else { $diabetes_mellitus = 0; }
+    if(isset($_POST['dyslipidemia'])) { $dyslipidemia = 1; } else { $dyslipidemia = 0; }
+    if(isset($_POST['stroke'])) { $stroke = 1; } else { $stroke = 0; }
+    if(isset($_POST['cad'])) { $cad = 1; } else { $cad = 0; }
     
-    if(isset($_POST['hypertansion'])) { $hypertansion = 1; }
-    else { $hypertansion = 0; }
+    if(isset($_POST['cancer'])) { $cancer = 1; } else { $cancer = 0; }
+    if(!isset($_POST['cancer_input'])) { $cancer_input = NULL; }
     
-    if(isset($_POST['diabetes_mellitus'])) { $diabetes_mellitus = 1; }
-    else { $diabetes_mellitus = 0; }
-    
-    if(isset($_POST['dyslipidemia'])) { $dyslipidemia = 1; }
-    else { $dyslipidemia = 0; }
-    
-    if(isset($_POST['stroke'])) { $stroke = 1; }
-    else { $stroke = 0; }
-    
-    if(isset($_POST['cad'])) { $cad = 1; }
-    else { $cad = 0; }
-    
-    if(isset($_POST['cancer'])) { $cancer = 1; }
-    else { $cancer = 0; }
-    
-    if(isset($_POST['other'])) { $other = 1; }
-    else { $other = 0; }
+    if(isset($_POST['other'])) { $other = 1; } else { $other = 0; }
+    if(!isset($_POST['other_input'])) { $other_input = NULL; }
 
     //$main
     //$problem
@@ -100,21 +88,19 @@
     # update data
      $conn = new mysqli($servername, $username, $password, $dbname);
     
-    //patient_dateofbirth = '$bday',
-    //patient_yearofbirth = '$byear',
-     $sumSQL = "UPDATE patientinfo SET patient_id = '$id',
-        patient_p_name='$pname',
-        patient_name='$fname',
-        patient_surname='$lname',
+     $sumSQL = "UPDATE patientinfo SET patient_id = '$patient_id',
+        patient_pname='$pname',
+        patient_fname='$fname',
+        patient_lname='$lname',
         patient_gender='$gender',
-
-        patient_monthofbirth = '$bmonth',
-        
+        patient_bday= '$bday',
+        patient_bmonth = '$bmonth',
+        patient_byear = '$byear',
         patient_status = '$status',
         patient_religion = '$religion',
         patient_occupation = '$occupation',
         patient_education = '$education',
-        insure = '$healthinsure',
+        healthinsure = '$insure',
         patient_add_no = '$add_no',
         patient_add_mhoo='$add_mhoo',
         patient_add_village='$add_village',
@@ -124,9 +110,9 @@
         patient_add_dis='$add_dis',
         patient_add_province='$add_province',
         patient_add_zip='$add_zip',
-        patient_no_home = '$tel_home',
-        patient_no_mobile = '$tel_mobile',
-        patient_no_work = '$tel_work',
+        patient_tel_home = '$tel_home',
+        patient_tel_mobile = '$tel_mobile',
+        patient_tel_work = '$tel_work',
         patient_doctor_owner = '$doctor_owner',
         surgery = '$surgery',
         surgery_input = '$surgery_input',
@@ -137,7 +123,7 @@
         alcohol = '$alcohol',
         alcohol_input = '$alcohol_input',
         cigarette = '$cigarette',
-        cigarette_amout = '$cigarette_amout',
+        cigarette_amount = '$cigarette_amount',
         cigarette_period = '$cigarette_period',
         money = '$money',
         hypertansion = '$hypertansion',
@@ -146,8 +132,10 @@
         stroke = '$stroke',
         cad = '$cad',
         cancer = '$cancer',
-        other = '$other'
-     
+        cancer_input = '$cancer_input',
+        other = '$other',
+        other_input = '$other_input'
+        
         WHERE patient_hn = '$patient_hn'";
     
      $conn->query($sumSQL);
@@ -155,7 +143,7 @@
     mysql_db_query($dbname, $sumSQL) or die (mysql_error());
     mysql_close();
     
-    header("location: patient.php");
+    header("location: patient_profile.php?hn=".$patient_hn);
 ?>
 
     <head>

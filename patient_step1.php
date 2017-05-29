@@ -1,33 +1,33 @@
 <div class="uk-form-horizontal">
+    <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
     <div class="uk-margin">
         <label class="uk-form-label">รหัสโรงพยาบาล</label>
         <div class="uk-form-controls uk-form-controls-text">
             <div class="ui input">
-                <input type="text" name="hn" placeholder="HN" value="<?php echo $hn ?>">
+                <input type="text" name="hn" placeholder="HN" value="<?php echo $patient_hn ?>">
             </div>
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label">สถานะเยี่ยมบ้าน</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <?php echo $visit_status ?>
+            <?php echo $patient_visit_status ?>
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label">ประเภทการเยี่ยมบ้าน</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <?php echo $visit_type ?>
+            <?php echo $patient_visit_type ?>
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label">เลขบัตรประชาชน</label>
         <div class="uk-form-controls">
             <div class="ui input">
-                <input type="text" name="id-card" placeholder="โปรดระบุ" value="<?php echo $patient_id ?>">
+                <input type="text" name="patient_id" placeholder="โปรดระบุ" value="<?php echo $patient_id ?>">
             </div>
         </div>
     </div>
-
     <div class="uk-margin">
         <label class="uk-form-label">ชื่อ-นามสกุล</label>
         <div class="uk-form-controls">
@@ -35,14 +35,14 @@
                 <div class="fields">
                     <div class="field">
                         <?php
-                        $pnameSQL = "SELECT * FROM pname ";
-                        $pnameQuery = mysql_query($pnameSQL) or die(mysql_error());
-                    ?>
-                            <select class="ui search selection dropdown" name="doctor-owner">
-                            <option value="">คำนำหน้า</option>
+                            $pnameSQL = "SELECT * FROM pname ";
+                            $pnameQuery = mysql_query($pnameSQL) or die(mysql_error());
+                        ?>
+                            <select class="ui search selection dropdown" name="pname">
+                            <option value="<?php echo $patient_pname ?>">คำนำหน้า</option>
                             <?php 
                                 while ($row = mysql_fetch_array($pnameQuery)) {
-                                    echo "<option value='".$row['pname_id']."'>".$row['pname_val']."</option>";
+                                    echo "<option value='".$row['pname_val']."'>".$row['pname_val']."</option>";
                                 }
                             ?>        
                         </select>
@@ -55,21 +55,6 @@
                     </div>
                 </div>
             </div>
-            <!--
-            <div class="uk-grid uk-grid-small">
-                <div class="uk-width-1-6@s">
-                    <select class="ui search dropdown" name="pname" id="pname"></select>
-                </div>
-                <div class="uk-width-1-4@s">
-                    <label class="uk-form-label"><small> ชื่อ</small></label>
-                    <input class="uk-input uk-form-small" type="text" placeholder="" name="fname">
-                </div>
-                <div class="uk-width-1-3@s">
-                    <label class="uk-form-label"><small> นามสกุล</small></label>
-                    <input class="uk-input uk-form-small" type="text" placeholder="" name="lname">
-                </div>
-            </div>
--->
         </div>
     </div>
     <div class="uk-margin">
@@ -83,13 +68,14 @@
         <label class="uk-form-label">วันเกิด</label>
         <div class="uk-form-controls uk-form-controls-text">
             <select name="bday" class="ui search selection dropdown">
-                <option value="">วัน</option>
+                <option value="<?php echo $patient_bday ?>">วัน</option>
                 <?php 
                     $day = "day";
                     droploop($day);
                 ?>
             </select> /
             <select class="ui search dropdown" name="bmonth" id="bmonth">
+                <option value="<?php echo $patient_bmonth ?>">เดือน</option>
                 <?php 
                     $month_file = file_get_contents("txt/month.txt");
                     $rows = explode("\n", $month_file);
@@ -99,14 +85,13 @@
                         $info[$row]['value'] = $row_data[0];
                         $info[$row]['name'] = $row_data[1];
                 ?>
-                <option value="">เดือน</option>
                 <option value="<?php echo $info[$row]['value']; ?>">
                     <?php echo $info[$row]['name']; ?>
                 </option>
                 <?php } ?>
             </select> /
             <select name="byear" class="ui search selection dropdown">
-                <option value="">ปี</option>
+                <option value="<?php echo $patient_byear ?>">ปี</option>
                 <?php 
                     $year = "year";
                     droploop($year);
@@ -118,17 +103,15 @@
         <label class="uk-form-label">สถานภาพ</label>
         <div class="uk-form-controls">
             <select class="ui search dropdown" name="status" id="status">
+                <option value="<?php echo $patient_status ?>">สถานภาพ</option>
                 <?php 
                     $status_file = file_get_contents("txt/status.txt");
                     $rows = explode("\n", $status_file);
                     array_shift($rows);
                     foreach($rows as $row => $data) {
-                        $row_data = explode("\t", $data);
-                        $info[$row]['value'] = $row_data[0];
-                        $info[$row]['name'] = $row_data[1];
+                        $info[$row]['name'] = $data;
                 ?>
-                <option value="">สถานภาพ</option>
-                <option value="<?php echo $info[$row]['value']; ?>">
+                <option value="<?php echo $info[$row]['name']; ?>">
                     <?php echo $info[$row]['name']; ?>
                 </option>
                 <?php } ?>
@@ -139,18 +122,16 @@
         <label class="uk-form-label">ศาสนา</label>
         <div class="uk-form-controls">
             <select class="ui search dropdown" name="religion" id="religion" onchange="inputhidden(re)">
+                <option value="<?php echo $patient_religion ?>">ศาสนา</option>
                 <?php 
                     $religion_file = file_get_contents("txt/religion.txt");
                     $rows = explode("\n", $religion_file);
                     array_shift($rows);
                     foreach($rows as $row => $data) {
-                        $row_data = explode("\t", $data);
-                        $info[$row]['value'] = $row_data[0];
-                        $info[$row]['name'] = $row_data[1];
+                        $info[$row]['name'] = $data;
                 ?>
-                <option value="">ศาสนา</option>
-                <option value="<?php echo $info[$row]['value']; ?>">
-                    <?php echo $info[$row]['name']; ?>
+                <option value="<?php echo $info[$row]['name']; ?>">
+                    <?php echo $info[$row]['name'] ?>
                 </option>
                 <?php } ?>
             </select>
@@ -163,16 +144,14 @@
         <label class="uk-form-label">ระดับการศึกษา</label>
         <div class="uk-form-controls">
             <select class="ui search dropdown" name="education" id="education" onchange="inputhidden(edu)">
+                <option value="<?php echo $patient_education ?>">ระดับการศึกษา</option>
                 <?php 
                     $education_file = file_get_contents("txt/education.txt");
                     $rows = explode("\n", $education_file);
                     array_shift($rows);
                     foreach($rows as $row => $data) {
-                        $row_data = explode("\t", $data);
-                        $info[$row]['value'] = $row_data[0];
-                        $info[$row]['name'] = $row_data[1];
+                        $info[$row]['name'] = $data;
                 ?>
-                <option value="">ระดับการศึกษา</option>
                 <option value="<?php echo $info[$row]['value']; ?>">
                     <?php echo $info[$row]['name']; ?>
                 </option>
@@ -187,16 +166,14 @@
         <label class="uk-form-label">อาชีพ</label>
         <div class="uk-form-controls">
             <select class="ui search dropdown" name="occupation" id="occupation" onchange="inputhidden(occ)">
+                <option value="<?php echo $patient_occupation ?>">อาชีพ</option>
                 <?php 
                     $occupation_file = file_get_contents("txt/occupation.txt");
                     $rows = explode("\n", $occupation_file);
                     array_shift($rows);
                     foreach($rows as $row => $data) {
-                        $row_data = explode("\t", $data);
-                        $info[$row]['value'] = $row_data[0];
-                        $info[$row]['name'] = $row_data[1];
+                        $info[$row]['name'] = $data;
                 ?>
-                <option value="">อาชีพ</option>
                 <option value="<?php echo $info[$row]['value']; ?>">
                     <?php echo $info[$row]['name']; ?>
                 </option>
@@ -217,6 +194,7 @@
                 $result = mysql_query($query) or die(mysql_error()."[".$query."]");
             ?>
                 <select class="ui search selection dropdown" name="insure" id="select-insure">
+                     <option value="<?php echo $healthinsure ?>">พิมพ์สิทธิการรักษา</option>
                 <?php 
                     while ($row = mysql_fetch_array($result)) {
                         echo "<option value='".$row['insure_id']."'>".$row['insure_name']." (".$row['insure_id'].")"."</option>";
@@ -225,75 +203,92 @@
             </select>
         </div>
     </div>
-    <hr>
+
     <h5 class="uk-heading-bullet">ข้อมูลการติดต่อ</h5>
+
     <div class="uk-margin">
         <label class="uk-form-label">ที่อยู่</label>
-        <div class="uk-form-control">
         <div class="uk-form-controls">
-            <div class="uk-grid uk-grid-small">
-                <div class="uk-width-1-6">
-                    <label class="uk-form-label"><small> บ้านเลขที่</small></label>
-                    <input class="uk-input uk-form-small" type="text" placeholder="" name="add_no">
-                </div>
-                <div class="uk-width-1-6">
-                    <label class="uk-form-label"><small>หมู่ที่</small></label>
-                    <input class="uk-input uk-form-width-small uk-form-small" type="number" name="add_mhoo" placeholder="">
-                </div>
-                <div class="uk-width-1-6">
-                    <label class="uk-form-label"><small>อาคาร/หมู่บ้าน</small></label>
-                    <input class="uk-input uk-form-small" type="text" name="add_village" placeholder="">
-                </div>
-                <div class="uk-width-1-5">
-                    <label class="uk-form-label"><small>  ซอย</small></label>
-                    <input class="uk-input uk-form-small" type="text" name="add_soi" placeholder="">
-                </div>
-                <div class="uk-width-1-4">
-                    <label class="uk-form-label"><small>ถนน</small></label>
-                    <input class="uk-input uk-form-small" type="text" placeholder="" name="add_road">
-                </div>
-                <div class="uk-width-1-5">
-                    <label class="uk-form-label"><small>แขวง/ตำบล</small></label>
-                    <input class="uk-input uk-form-small" type="text" placeholder="" name="add_subdis">
-                </div>
-                <div class="uk-width-1-5">
-                    <label class="uk-form-label"><small> เขต/อำเภอ</small></label>
-                    <input class="uk-input uk-form-small" type="text" placeholder="" name="add_dis">
-                </div>
-                <div class="uk-width-1-4">
-                    <label class="uk-form-label"><small>จังหวัด</small></label>
-                    <input class="uk-input uk-form-small" type="text" placeholder="" name="add_province">
-                </div>
-                <div class="uk-width-1-6">
-                    <label class="uk-form-label"><small>รหัสไปรษณีย์</small></label>
-                    <input class="uk-input uk-form-small" type="number" placeholder="" name="add_zip">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label">เบอร์โทรติดต่อ</label>
-        <div class="uk-form-control">
             <div class="ui mini form">
                 <div class="fields">
                     <div class="field">
-                        <input type="text" name="tel_home" placeholder="โทรศัพท์บ้าน" value="<?php echo $patient_no_home ?>">
+                        <input type="text" name="add_no" placeholder="บ้านเลขที่" value="<?php echo $add_no ?>">
                     </div>
                     <div class="field">
-                        <input type="text" name="tel_mobile" placeholder="โทรศัพท์เคลื่อนที่" value="<?php echo $patient_no_mobile ?>">
+                        <input type="text" name="add_mhoo" placeholder="หมู่ที่" value="<?php echo $add_mhoo ?>">
                     </div>
                     <div class="field">
-                        <input type="text" name="tel_work" placeholder="โทรศัพท์ที่ทำงาน" value="<?php echo $patient_no_work ?>">
+                        <input type="text" name="add_village" placeholder="อาคาร/หมู่บ้าน" value="<?php echo $add_village ?>">
+                    </div>
+                    <div class="field">
+                        <input type="text" name="add_soi" placeholder="ซอย" value="<?php echo $add_soi ?>">
+                    </div>
+                    <div class="field">
+                        <input type="text" name="add_road" placeholder="ถนน" value="<?php echo $add_road ?>">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="uk-margin">
+            <div class="uk-form-controls">
+                <div class="ui mini form">
+                    <div class="fields">
+                        <div class="field">
+                            <input type="text" name="add_subdis" placeholder="แขวง/ตำบล" value="<?php echo $add_subdis ?>">
+                        </div>
+                        <div class="field">
+                            <input type="text" name="add_dis" placeholder="เขต/อำเภอ" value="<?php echo $add_dis ?>">
+                        </div>
+                        <div class="field">
+                            <select class="ui search dropdown" name="add_province">
+                                <option value="<?php echo $add_province ?>">จังหวัด</option>
+                                <?php 
+                                    $province_file = file_get_contents("txt/province.txt");
+                                    $rows = explode("\n", $province_file);
+                                    array_shift($rows);
+                                    foreach($rows as $row => $data) {
+                                        $info[$row]['name'] = $data;
+                                ?>
+                                <option value="<?php echo $info[$row]['name']; ?>">
+                                    <?php echo $info[$row]['name']; ?>
+                                </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <input type="text" name="add_zip" placeholder="ไปรษณีย์" value="<?php echo $add_zip ?>">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <hr>
+
+    <div class="uk-margin">
+        <label class="uk-form-label">เบอร์โทรติดต่อ</label>
+        <div class="uk-form-controls">
+            <div class="ui mini form">
+                <div class="fields">
+                    <div class="field">
+                        <input type="text" name="tel_home" placeholder="โทรศัพท์บ้าน" value="<?php echo $patient_tel_home ?>">
+                    </div>
+                    <div class="field">
+                        <input type="text" name="tel_mobile" placeholder="โทรศัพท์เคลื่อนที่" value="<?php echo $patient_tel_mobile ?>">
+                    </div>
+                    <div class="field">
+                        <input type="text" name="tel_work" placeholder="โทรศัพท์ที่ทำงาน" value="<?php echo $patient_tel_work ?>">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <h5 class="uk-heading-bullet">ครอบครัว</h5>
+
     <div class="uk-margin">
         <label class="uk-form-label">ข้อมูลญาติ</label>
-        <div class="uk-form-control">
+        <div class="uk-form-controls">
             <div class="ui mini form">
                 <div class="fields">
                     <div class="field">
@@ -309,7 +304,24 @@
             </div>
         </div>
     </div>
-    <h5 class="uk-heading-divider">แพทย์ผู้ดูแล</h5>
+
+    <div class="uk-margin">
+        <label class="uk-form-label">แผนผังครอบครัว</label>
+        <div class="uk-form-controls">
+            <div class="test-upload uk-placeholder uk-text-center">
+                <span uk-icon="icon: cloud-upload"></span>
+                <span class="uk-text-middle">ลากไฟล์รูปภาพมาที่ช่องนี้ หรือ</span>
+                <div uk-form-custom>
+                    <input type="file" multiple>
+                    <span class="uk-link">เลือก 1 รูปภาพ</span>
+                </div>
+            </div>
+            <progress id="progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+        </div>
+    </div>
+
+    <h5 class="uk-heading-bullet">แพทย์ผู้ดูแล</h5>
+
     <div class="uk-margin">
         <label class="uk-form-label">แพทย์เจ้าของไข้</label>
         <div class="uk-form-controls">
@@ -320,7 +332,7 @@
                 $result = mysql_query($query) or die(mysql_error()."[".$query."]");
             ?>
                 <select class="ui search selection dropdown" name="doctor-owner">
-                    <option value="">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
+                    <option value="<?php echo $doctor_owner ?>">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
                 <?php 
                     while ($row = mysql_fetch_array($result)) {
                         echo "<option value='".$row['user']."'>".$row['f_user']." ".$row['l_user']." (".$row['user'].")"."</option>";
@@ -330,3 +342,67 @@
         </div>
     </div>
 </div>
+
+<script>
+    (function($) {
+
+        var bar = $("#progressbar")[0];
+
+        UIkit.upload('.test-upload', {
+
+            url: '',
+            multiple: true,
+
+            beforeSend: function() {
+                console.log('beforeSend', arguments);
+            },
+            beforeAll: function() {
+                console.log('beforeAll', arguments);
+            },
+            load: function() {
+                console.log('load', arguments);
+            },
+            error: function() {
+                console.log('error', arguments);
+            },
+            complete: function() {
+                console.log('complete', arguments);
+            },
+
+            loadStart: function(e) {
+                console.log('loadStart', arguments);
+
+                bar.removeAttribute('hidden');
+                bar.max = e.total;
+                bar.value = e.loaded;
+            },
+
+            progress: function(e) {
+                console.log('progress', arguments);
+
+                bar.max = e.total;
+                bar.value = e.loaded;
+
+            },
+
+            loadEnd: function(e) {
+                console.log('loadEnd', arguments);
+
+                bar.max = e.total;
+                bar.value = e.loaded;
+            },
+
+            completeAll: function() {
+                console.log('completeAll', arguments);
+
+                setTimeout(function() {
+                    bar.setAttribute('hidden', 'hidden');
+                }, 1000);
+
+                alert('Upload Completed');
+            }
+        });
+
+    })(jQuery);
+
+</script>

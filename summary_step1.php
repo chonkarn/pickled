@@ -10,22 +10,12 @@
         </div>
     </div>
     <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text">ทีมแพทย์เยี่ยมบ้าน</label>
-        <div class="uk-form-controls">
-            <?php
-                $docterSQL = "SELECT user,f_user,l_user FROM tbuser ORDER BY user ASC";
-                $docterQuery = mysql_query($docterSQL) or die(mysql_error()."[".$docterSQL."]");
-            ?>
-            <select name="doctor[]" class="ui search multiple selection dropdown uk-width-1-2@m" multiple="" id="selecter">
-                <option value="">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
-                <?php 
-                    while ($docterRow = mysql_fetch_array($docterQuery)) {
-                        echo "<option value='".$docterRow['user']."'>".$docterRow['f_user']." ".$docterRow['l_user']." (".$docterRow['user'].")"."</option>";
-                    }
-                ?>   
-            </select>
+        <label class="uk-form-label">ยาที่ใช้ปัจจุบันและยาที่ซื้อกินเอง</label>
+        <div class="uk-form-controls uk-form-controls-text">
+            <textarea name="med" class="uk-textarea uk-width-1-2@m" rows="3" placeholder="โปรดระบุ..."></textarea>
         </div>
     </div>
+    <!--
     <div class="uk-margin">
         <label class="uk-form-label">ยาที่ใช้ปัจจุบันและยาที่ซื้อกินเอง</label>
         <div class="uk-form-controls uk-form-controls-text">
@@ -69,23 +59,24 @@
             <button class="uk-button uk-button-default uk-button-small button-green">+ เพิ่มยาที่ใช้</button>
         </div>
     </div>
+-->
 
     <h5 class="uk-heading-bullet">Impairment / Immobility</h5>
     <div class="uk-margin">
         <label class="uk-form-label">Basic activities of daily living</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="1" name="basic_act" checked> Yes</label>
-            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="0" name="basic_act"> No</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="1" name="basic_act" id="basic_act_yes" checked> Yes</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" value="0" name="basic_act" id="basic_act_no"> No</label>
         </div>
     </div>
     <div class="uk-margin">
         <div class="uk-form-controls">
             <label class="uk-margin-right uk-text-bold">Problem</label>
-            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_dress" value="1"> Dressing</label>
-            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_eat" value="2"> Eating</label>
-            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_ambu" value="3"> Ambulating</label>
-            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_toilet" value="4"> Toileting</label>
-            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_hygine" value="5"> Hygine</label>
+            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_dress"> Dressing</label>
+            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_eat"> Eating</label>
+            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_ambu"> Ambulating</label>
+            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_toilet"> Toileting</label>
+            <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_hygine"> Hygine</label>
         </div>
     </div>
     <div class="uk-margin">
@@ -131,7 +122,7 @@
     <div class="uk-margin">
         <label class="uk-form-label">Place at risk</label>
         <div class="uk-form-controls uk-form-controls-text">
-             <input class="uk-input uk-form-small" name="home_place" placeholder="">
+            <input class="uk-input uk-form-small" name="home_place" placeholder="">
         </div>
     </div>
 

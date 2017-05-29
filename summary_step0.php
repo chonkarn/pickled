@@ -86,10 +86,9 @@
                     array_shift($rows);
                     foreach($rows as $row => $data) {
                         $row_data = explode("\t", $data);
-                        $info[$row]['value'] = $row_data[0];
-                        $info[$row]['name'] = $row_data[1];
+                        $info[$row]['name'] = $data;
                 ?>               
-                <option value="<?php echo $info[$row]['value']; ?>">
+                <option value="<?php echo $info[$row]['name']; ?>">
                     <?php echo $info[$row]['name']; ?>
                 </option>
                 <?php } ?>

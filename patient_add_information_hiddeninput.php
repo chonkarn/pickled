@@ -19,10 +19,10 @@
         height: 100px;
         width: 100px;
     }
+
 </style>
 
 <script>
-    
     function inputhidden(value) {
         var value = value;
         var y = "_input";
@@ -33,8 +33,7 @@
             document.getElementById(value).style.visibility = 'visible';
             value = value.concat(z);
             document.getElementById(value).style.visibility = 'visible';
-        }
-        else {
+        } else {
             value = value.concat(y);
             document.getElementById(value).style.visibility = 'hidden';
             value = value.concat(z);
@@ -42,69 +41,100 @@
         }
     }
 
-    function alcohol_check() {
-        if (document.getElementById("alcohol-1").checked == true) {
-            document.getElementById("div_alcohol").style.visibility = 'hidden';
-        }
-        else {
-            document.getElementById("div_alcohol").style.visibility = 'visible';
+    function cancer_check() {
+        if (document.getElementById("cancer").checked == true) {
+            document.getElementById("cancer_input").disabled = false;
+        } else {
+            document.getElementById("cancer_input").disabled = true;
         }
     }
 
+    function other_check() {
+        if (document.getElementById("other").checked == true) {
+            document.getElementById("other_input").disabled = false;
+        } else {
+            document.getElementById("other_input").disabled = true;
+        }
+    }
+
+    //    function alcohol_check() {
+    //        if (document.getElementById("alcohol-1").checked == true) {
+    //            document.getElementById("div_alcohol").style.visibility = 'hidden';
+    //        }
+    //        else {
+    //            document.getElementById("div_alcohol").style.visibility = 'visible';
+    //        }
+    //    }
+
+    function alcohol_check() {
+        if (document.getElementById("alcohol-1").checked == true) {
+            document.getElementById("alcohol_input").disabled = true;
+        } else {
+            document.getElementById("alcohol_input").disabled = false;
+        }
+    }
+
+    //    function cigarette_check() {
+    //        if (document.getElementById("cigarette-1").checked == true) {
+    //            document.getElementById("div_cigarette").style.visibility = 'hidden';
+    //        }
+    //        else {
+    //            document.getElementById("div_cigarette").style.visibility = 'visible';
+    //        }
+    //    }
+
     function cigarette_check() {
         if (document.getElementById("cigarette-1").checked == true) {
-            document.getElementById("div_cigarette").style.visibility = 'hidden';
-        }
-        else {
-            document.getElementById("div_cigarette").style.visibility = 'visible';
+            document.getElementById("cigarette_amount").disabled = true;
+            document.getElementById("cigarette_period").disabled = true;
+        } else {
+            document.getElementById("cigarette_amount").disabled = false;
+            document.getElementById("cigarette_period").disabled = false;
         }
     }
 
     function surgery_check() {
         if (document.getElementById("surgery-1").checked == true) {
-            document.getElementById("div_surgery").style.visibility = 'hidden';
-        }
-        else {
-            document.getElementById("div_surgery").style.visibility = 'visible';
+            document.getElementById("surgery_input").style.visibility = 'hidden';
+        } else {
+            document.getElementById("surgery_input").style.visibility = 'visible';
         }
     }
 
     function allgeric_check() {
         if (document.getElementById("allgeric-1").checked == true) {
-            document.getElementById("div_allgeric").style.visibility = 'hidden';
-        }
-        else {
-            document.getElementById("div_allgeric").style.visibility = 'visible';
+            document.getElementById("allergic_input").style.visibility = 'hidden';
+        } else {
+            document.getElementById("allergic_input").style.visibility = 'visible';
         }
     }
 
     function alternative_check() {
         if (document.getElementById("alternative-1").checked == true) {
-            document.getElementById("div_alternative").style.visibility = 'hidden';
-        }
-        else {
-            document.getElementById("div_alternative").style.visibility = 'visible';
+            document.getElementById("alternative_input").style.visibility = 'hidden';
+        } else {
+            document.getElementById("alternative_input").style.visibility = 'visible';
         }
     }
-    
+
     //add input
     var count = 2;
-    $(document).ready(function () {
+    $(document).ready(function() {
         //delete
-        $("#deleteDiv").click(function(){
-        $("#problems").remove();
-    });
-    
-    //
+        $("#deleteDiv").click(function() {
+            $("#problems").remove();
+        });
+
+        //
         var value = "#problem";
         var main = "#main";
         testt(main);
         testt(value);
-        $("#addRelate").click(function () {
+        $("#addRelate").click(function() {
             var cloning;
             if (count < 4) {
                 //clone label "ข้อมูลญาติคนที่"
-//                $("#relate_label").clone().appendTo("#relate");
+                //                $("#relate_label").clone().appendTo("#relate");
                 var div = document.getElementById("relate_label");
                 var clone = div.cloneNode(true);
                 clone.id = "clone" + count;
@@ -112,21 +142,20 @@
                 var xx = document.getElementById("relate");
                 xx.appendChild(clone);
                 //clone input
-                cloning = $("#relate_input").clone().attr("id","relate_input"+count);
+                cloning = $("#relate_input").clone().attr("id", "relate_input" + count);
 
                 $("#relate_label div.relate_name").find("input:text").val("").end;
                 cloning.appendTo("#relate");
-            }
-            else {
+            } else {
                 document.getElementById("addRelate").value = "เพิ่มได้แค่3คน";
                 document.getElementById("addRelate").disabled = true;
             }
-             $("#" + cloneTest + " span").html(count);
+            $("#" + cloneTest + " span").html(count);
             count++;
         });
-        
+
         var c = 2;
-        $("#addProblems").click(function () {
+        $("#addProblems").click(function() {
             var input;
             if (c < 21) {
                 //clone label
@@ -142,37 +171,35 @@
                 input.attr("id", oname);
                 var newname = "problem" + c;
                 var newDel = "deleteDiv" + c;
-                input.find("input:text").attr("name",newname);
-                input.find("input:text").attr("id", newname).on("keydown", function (event) {
+                input.find("input:text").attr("name", newname);
+                input.find("input:text").attr("id", newname).on("keydown", function(event) {
                     if (event.keyCode === $.ui.keyCode.TAB && $(this).autocomplete("instance").menu.active) {
                         event.preventDefault();
                     }
                 }).autocomplete({
-                    source: function (request, response) {
+                    source: function(request, response) {
                         if (request.term.length < 4) {
                             $.getJSON("autocomplete_search_less4.php", {
                                 term: extractLast(request.term)
                             }, response);
-                        }
-                        else {
+                        } else {
                             $.getJSON("autocomplete_search_more4.php", {
                                 term: extractLast(request.term)
                             }, response);
                         }
-                    }
-                    , focus: function () {
+                    },
+                    focus: function() {
                         return false;
                     }
                 });
-                input.find("input:button").attr("id",newDel).click(function(){
-                    $("#"+newname).remove();
-                    $("#"+test).remove();
-                    $("#"+newDel).remove();
+                input.find("input:button").attr("id", newDel).click(function() {
+                    $("#" + newname).remove();
+                    $("#" + test).remove();
+                    $("#" + newDel).remove();
                     c--;
                 });
                 input.find("input:text").val("").end().appendTo("#problems");
-            }
-            else {
+            } else {
                 document.getElementById("addProblems").value = "เพิ่มได้แค่20ปัญหา";
                 document.getElementById("addProblems").disabled = true;
             }
@@ -180,7 +207,7 @@
             c++;
         });
     });
-    
+
     //autocom
     function split(val) {
         return val.split(/,\s*/);
@@ -191,26 +218,26 @@
     }
 
     function testt(value) {
-        $(value).on("keydown", function (event) {
+        $(value).on("keydown", function(event) {
             if (event.keyCode === $.ui.keyCode.TAB && $(this).autocomplete("instance").menu.active) {
                 event.preventDefault();
             }
         }).autocomplete({
-            source: function (request, response) {
+            source: function(request, response) {
                 if (request.term.length < 4) {
                     $.getJSON("autocomplete_search_less4.php", {
                         term: extractLast(request.term)
                     }, response);
-                }
-                else {
+                } else {
                     $.getJSON("autocomplete_search_more4.php", {
                         term: extractLast(request.term)
                     }, response);
                 }
-            }
-            , focus: function () {
+            },
+            focus: function() {
                 return false;
             }
         });
     }
+
 </script>

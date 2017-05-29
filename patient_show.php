@@ -12,84 +12,89 @@ $connect = mysql_connect($servername, $username, $password) or die(mysql_error()
 mysql_select_db($dbname) or die(mysql_error());
 mysql_query("set character set utf8");  
 
-$hn = $_GET['hn'];
-$hnSQL = "SELECT * FROM patientinfo 
-WHERE patientinfo.patient_hn LIKE '$hn'";
-$result = mysql_db_query($dbname, $hnSQL) or die (mysql_error());
-$row = mysql_fetch_array($result);
+# Patient HN
+$patient_hn = $_GET['hn'];
+$patientSQL = "SELECT * FROM patientinfo WHERE patientinfo.patient_hn LIKE '$patient_hn'";
+$patientQuery = mysql_db_query($dbname, $patientSQL) or die (mysql_error());
+$row = mysql_fetch_array($patientQuery);
 
-$visit_status = $row['patient_visit_status'];
-$visit_type = $row['patient_visit_type'];
+$patient_visit_status = $row['patient_visit_status'];
+$patient_visit_type = $row['patient_visit_type'];
 
-$patient_name = $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname'];
-$patient_fname = $row['patient_name'];
-$patient_lname = $row['patient_surname'];
-if($row['patient_gender'] == '2'){ $patient_gender = 'หญิง'; }
-else { $patient_gender = 'ชาย'; }
+# Patient name
+$patient_pname = $row['patient_pname'];
+$patient_fname = $row['patient_fname'];
+$patient_lname = $row['patient_lname'];
+$patient_name = $patient_pname." ".$patient_fname." ".$patient_lname;
+
 $patient_id = $row['patient_id'];
+$patient_gender = $row['patient_gender'];
 $patient_status = $row['patient_status'];
 $patient_religion = $row['patient_religion'];
 $patient_occupation = $row['patient_occupation'];
 $patient_education = $row['patient_education'];
 
+# Date
+date_default_timezone_set("Asia/Bangkok");
+$patient_bday = $row['patient_bday'];
+$patient_bmonth = $row['patient_bmonth'];
+$patient_byear = $row['patient_byear'];
+$patient_birthday = $patient_bday." ".$patient_bmonth." ".$patient_byear;
+
+# Age
+$age_year = date("Y") - ($patient_byear - 543) -1;
+
+if($patient_bmonth < date("m")){$age_month = $patient_bmonth;}
+else if($patient_bmonth > date("m")){$age_month = 12 - date("m");}
+else {$age_month = $patient_bmonth - 1;}
+
+if($patient_birthday < date("d")){$age_day = $patient_birthday;}
+else if($patient_birthday > date("d")){$age_day = date("d");}
+else {$patient_birthday = 0;}
+
 # Healthinsure
-$insure = $row['insure'];
-$insureSQL = "SELECT * FROM healthinsure 
-WHERE insure_id = '$insure'";
+$insure_id = $row['healthinsure'];
+$insureSQL = "SELECT * FROM healthinsure WHERE insure_id = '$insure_id'";
 $insureQuery = mysql_db_query($dbname, $insureSQL) or die (mysql_error());
 $insureData = mysql_fetch_array($insureQuery);
 $healthinsure = $insureData['insure_name'];
 
-# Date
-date_default_timezone_set("Asia/Bangkok");
-$patient_birthday;
-$patient_dateofbirth = $row['patient_dateofbirth'];
-$patient_monthofbirth = $row['patient_monthofbirth'];
-$patient_yearofbirth = $row['patient_yearofbirth'];
-$age_year = date("Y") - ($patient_yearofbirth - 543) -1;
-
-if($patient_monthofbirth < date("m")){$age_month = $patient_monthofbirth;}
-else if($patient_monthofbirth > date("m")){$age_month = 12 - date("m");}
-else {$age_month = $patient_monthofbirth - 1;}
-
-if($patient_dateofbirth < date("d")){$age_day = $patient_dateofbirth;}
-else if($patient_dateofbirth > date("d")){$age_day = date("d");}
-else {$patient_dateofbirth = 0;}
-
 # Address
 $patient_addr = $row['patient_add_no'];
-$patient_add_no = $row['patient_add_no'];
-$patient_add_mhoo = $row['patient_add_mhoo'];
-$patient_add_village = $row['patient_add_village'];
-$patient_add_soi = $row['patient_add_soi'];
-$patient_add_road = $row['patient_add_road'];
-$patient_add_subdis = $row['patient_add_subdis'];
-$patient_add_dis = $row['patient_add_dis'];
-$patient_add_province = $row['patient_add_province'];
-$patient_add_zip = $row['patient_add_zip'];
+$add_no = $row['patient_add_no'];
+$add_mhoo = $row['patient_add_mhoo'];
+$add_village = $row['patient_add_village'];
+$add_soi = $row['patient_add_soi'];
+$add_road = $row['patient_add_road'];
+$add_subdis = $row['patient_add_subdis'];
+$add_dis = $row['patient_add_dis'];
+$add_province = $row['patient_add_province'];
+$add_zip = $row['patient_add_zip'];
 
 # Tel
-$patient_no_home = $row['patient_no_home'];
-$patient_no_mobile = $row['patient_no_mobile'];
-$patient_no_work = $row['patient_no_work'];
+$patient_tel_home = $row['patient_tel_home'];
+$patient_tel_mobile = $row['patient_tel_mobile'];
+$patient_tel_work = $row['patient_tel_work'];
 
 # Doctor
 $doctor_owner_id = $row['patient_doctor_owner'];
-$patient_doctor_visit = $row['patient_doctor_visit'];
-$doctorSQL = "SELECT * FROM tbuser 
-WHERE user = '$doctor_owner_id'";
+$doctor_visit_id = $row['patient_doctor_visit'];
+$doctorSQL = "SELECT * FROM tbuser WHERE user = '$doctor_owner_id'";
 $doctorQuery = mysql_db_query($dbname, $doctorSQL) or die (mysql_error());
 $doctorData = mysql_fetch_array($doctorQuery);
-$doctor_owner = $doctorData['f_user']." ".$doctorData['l_user']." (".$doctorData['user'].")";
+$doctor_owner = $doctorData['f_user']." ".$doctorData['l_user']." <small>(".$doctorData['user'].")</small>";
 
 # Health
 $surgery = $row['surgery'];
+$surgery_input = $row['surgery_input'];
 $allergic = $row['allergic'];
+$allergic_input = $row['allergic_input'];
 $alternative = $row['alternative'];
+$alternative_input = $row['alternative_input'];
 $alcohol = $row['alcohol'];
 $alcohol_input= $row['alcohol_input'];
 $cigarette = $row['cigarette'];
-$cigarette_amout = $row['cigarette_amout'];
+$cigarette_amount = $row['cigarette_amount'];
 $cigarette_period = $row['cigarette_period'];
 
 $money = $row['money'];
@@ -104,12 +109,16 @@ $other = $row['other'];
 $main = $row['main'];
 $problem = $row['problem'];
 
+# visit date
 $num_visit = $row['num_visit'];
-$last_visit_date = $row['last_visit'];
-$next_visit_date = $row['next_visit'];
-$last_visit = date("d M", strtotime($last_visit_date));
-$next_visit = date("d M", strtotime($next_visit_date));
 
+$last_visit_date = $row['last_visit_date'];
+$last_visit = date("d/m/Y", strtotime($last_visit_date));
+
+$next_visit_date = $row['next_visit_date'];
+$next_visit = date("d/m/Y", strtotime($next_visit_date));
+
+# relating person
 $relate_name = $row['relate_name'];
 $relate_tel = $row['relate_tel'];
 $relate_def = $row['relate_def'];

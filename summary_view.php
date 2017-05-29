@@ -1,5 +1,3 @@
-
-
 <dl class="dl-horizontal">
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
 
@@ -10,7 +8,7 @@
 
     <dt>รหัสโรงพยาบาล</dt>
     <dd>HN
-        <?php echo $patient_hn ?>
+        <?php echo $hn ?>
     </dd>
 
     <dt>แพทย์เจ้าของไข้</dt>

@@ -4,7 +4,7 @@
 	session_start();
 	if($_SESSION['id'] == "")
 	{
-		header( "location:login.php");
+		header("location:login.php");
 		exit();
 	}
 ?>
@@ -96,7 +96,7 @@
                                                     <td>
                                                         <span class="th-label">ชื่อ-นามสกุล: </span>
                                                         <a class="uk-button-text text-green" href="<?php echo " patient_profile.php?hn=".$row['patient_hn'] ?>">
-                                                            <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                                            <?php echo $row['patient_pname']." ".$row['patient_fname']." ".$row['patient_lname']?>
                                                         </a>
                                                     </td>
                                                     <td>
@@ -109,11 +109,11 @@
                                                     </td>
                                                     <td>
                                                         <span class="th-label">เยี่ยมครั้งสุดท้าย: </span>
-                                                        <?php echo $row['last_visit']?>
+                                                        <?php echo $row['last_visit_date']?>
                                                     </td>
                                                     <td>
                                                         <span class="th-label">เยี่ยมครั้งต่อไป: </span>
-                                                        <?php echo $row['next_visit']?>
+                                                        <?php echo $row['next_visit_date']?>
                                                     </td>
                                                     <td>
                                                         <a href="<?php echo " patient_form.php?hn=".$row['patient_hn'] ?>" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
@@ -160,7 +160,7 @@
                                                 </td>
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
-                                                    <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
+                                                    <?php echo $row['patient_pname']." ".$row['patient_fname']." ".$row['patient_lname']?>
                                                 </td>
                                                 <td>
                                                     <span class="th-label">สถานะ: </span>
@@ -172,11 +172,11 @@
                                                 </td>
                                                 <td>
                                                     <span class="th-label">เยี่ยมครั้งสุดท้าย: </span>
-                                                    <?php echo $row['last_visit']?>
+                                                    <?php echo $row['last_visit_date']?>
                                                 </td>
                                                 <td>
                                                     <span class="th-label">เยี่ยมครั้งต่อไป: </span>
-                                                    <?php echo $row['next_visit']?>
+                                                    <?php echo $row['next_visit_date']?>
                                                 </td>
                                                 <td>
                                                     <a href="#" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>

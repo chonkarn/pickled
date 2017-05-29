@@ -1,9 +1,9 @@
 <h4 class="uk-heading-divider">ส่วนที่ 2 รายละเอียดปัญหา</h4>
-<div class="uk-form-horizontal uk-margin-large">
+<div class="uk-form-horizontal">
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">Biological problem</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="Biological problem..."></textarea>
+            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="โปรดระบุ..."></textarea>
         </div>
     </div>
 
@@ -183,9 +183,7 @@
         </div>
     </div>
     <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Written command
-                                        <span class="uk-text-warning">*</span>
-                                    </label>
+        <label class="uk-form-label" for="form-horizontal-select">Written command <span class="uk-text-warning">*</span></label>
         <div class="uk-form-controls">
             <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
 
@@ -193,9 +191,7 @@
         </div>
     </div>
     <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Writing
-                                        <span class="uk-text-warning">*</span>
-                                    </label>
+        <label class="uk-form-label" for="form-horizontal-select">Writing <span class="uk-text-warning">*</span></label>
         <div class="uk-form-controls">
             <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="">
 
@@ -211,13 +207,13 @@
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text"> Psychological and Social peroblem</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder=" Psychological and Social peroblem..."></textarea>
+            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="โปรดระบุ..."></textarea>
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">Other problem</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="Other problem..."></textarea>
+            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="โปรดระบุ..."></textarea>
         </div>
     </div>
 
@@ -225,13 +221,13 @@
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">Assessment and Plan</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="Assessment and Plan..."></textarea>
+            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="โปรดระบุ..."></textarea>
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label" for="form-horizontal-text">Goal</label>
         <div class="uk-form-controls">
-            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="Goal..."></textarea>
+            <textarea class="uk-textarea uk-width-1-2@m" rows="3" placeholder="โปรดระบุ..."></textarea>
         </div>
     </div>
 </div>

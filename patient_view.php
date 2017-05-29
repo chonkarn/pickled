@@ -1,73 +1,82 @@
-<dl class="dl-horizontal mdl-typography--subhead">
+<dl class="dl-horizontal">
     <dt>รหัสโรงพยาบาล</dt>
     <dd><?php echo $patient_hn ?></dd>
 
     <dt>สถานะการเยี่ยมบ้าน</dt>
-    <dd><?php echo $patient_visit_status ?>
-        <!-- เยี่ยมต่อ -->
-    </dd>
+    <dd><?php echo $patient_visit_status ?></dd>
 
     <dt>ประเภทการเยี่ยมบ้าน</dt>
-    <dd><?php echo $patient_visit_type ?>
-        <!-- Home visit care -->
-    </dd>
+    <dd><?php echo $patient_visit_type ?></dd>
 
     <dt>แพทย์เจ้าของไข้</dt>
-    <dd><?php echo $patient_doctor_owner ?>
-        <!-- นพ.ประสงค์ ทรงธรรม (013651) -->
-    </dd>
+    <dd><?php echo $doctor_owner ?></dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
 
     <dt>เลขที่บัตรประชาชน</dt>
-    <dd>3 6442 33000 27 8</dd>
+    <dd><?php echo $patient_id ?></dd>
 
     <dt>ชื่อ-นามสกุล</dt>
-    <dd>นาง มาลิณี เกียรติขจร</dd>
+    <dd><?php echo $patient_name ?></dd>
 
     <dt>ที่อยู่ปัจจุบัน</dt>
-    <dd>เลขที่ 270 หมู่ที่ 1 อาคาร/หมู่บ้าน สุขนคร ซอย สามัคคี ถนน พระรามหก แขวง/ตำบล ทุ่งพญาไท เขต/อำเภอ ราชเวที จังหวัด กรุงเทพมหานคร 10400</dd>
+    <dd>
+        <span class="uk-margin-right"><b>บ้านเลขที่</b> <?php echo $add_no ?></span>
+        <span class="uk-margin-right"><b>หมู่ที่</b> <?php echo $add_mhoo ?></span>
+        <span class="uk-margin-right"><b>อาคาร/หมู่บ้าน</b> <?php echo $add_village ?></span>
+        <span class="uk-margin-right"><b>ซอย</b> <?php echo $add_soi ?></span>
+        <span class="uk-margin-right"><b>ถนน</b> <?php echo $add_road ?></span>
+        <span class="uk-margin-right"><b>แขวง/ตำบล</b> <?php echo $add_subdis ?></span>
+        <span class="uk-margin-right"><b>เขต/อำเภอ</b> <?php echo $add_dis ?></span>
+        <span class="uk-margin-right"><b>จังหวัด</b> <?php echo $add_province ?></span>
+        <span class="uk-margin-right"><b>รหัสไปรษณีย์</b> <?php echo $add_zip ?></span>
+    </dd>
 
     <dt>เพศ</dt>
-    <dd><i class="fa fa-venus"></i> หญิง</dd>
+    <dd><?php echo $patient_gender ?></dd>
 
     <dt>วัน เดือน ปีเกิด</dt>
-    <dd>13 มีนาคม พ.ศ.2498</dd>
+    <dd>
+        <?php echo $patient_birthday ?>
+    </dd>
 
     <dt>อายุ</dt>
-    <dd>60 ปี 10 เดือน</dd>
-
-    <dt>โทรศัพท์มือถือ</dt>
-    <dd><i class="fa fa-phone"></i> 096 452 1596</dd>
-
-    <dt>โทรศัพท์ที่ทำงาน</dt>
-    <dd>-</dd>
+    <dd>
+        <?php echo $age_year." ปี ".$age_month." เดือน ".$age_day." วัน" ?>
+    </dd>
 
     <dt>โทรศัพท์ที่บ้าน</dt>
-    <dd><i class="fa fa-phone"></i> 02 644 9042</dd>
+    <dd><i class="material-icons">phone</i> <?php echo $patient_tel_home ?></dd>
 
+    
+    <dt>โทรศัพท์มือถือ</dt>
+    <dd><i class="material-icons">phone</i> <?php echo $patient_tel_mobile ?></dd>
+
+    <dt>โทรศัพท์ที่ทำงาน</dt>
+    <dd><i class="material-icons">phone</i> <?php echo $patient_tel_work ?></dd>
+    
     <dt>สถานภาพ</dt>
-    <dd>สมรส</dd>
+    <dd><?php echo $patient_status ?></dd>
 
     <dt>ศาสนา</dt>
-    <dd>พุทธ</dd>
+    <dd><?php echo $patient_religion ?></dd>
 
     <dt>ระดับการศึกษา</dt>
-    <dd>มัธยมศึกษาตอนต้น</dd>
+    <dd><?php echo $patient_education ?></dd>
 
     <dt>อาชีพ</dt>
-    <dd>แม่บ้าน/ว่างงาน</dd>
+    <dd><?php echo $patient_occupation ?></dd>
 
     <dt>สิทธิการรักษา</dt>
-    <dd>เบิกได้</dd>
+    <dd><?php echo $healthinsure ?></dd>
 
     <hr>
 
     <dt>ข้อมูลญาติที่ติดต่อได้</dt>
     <dd>
         <b>ญาติคนที่ 1:</b>
-        <br> ชื่อ-นามสกุล: นาง กนกวรรณ เกียรติขจร เกี่ยวข้องเป็น ลูกสาว
-        <br> เบอร์ติดต่อ: <i class="fa fa-phone"></i> 095 965 4523
+        <br> ชื่อ-นามสกุล: <?php echo $relate_name ?> เกี่ยวข้องเป็น <?php echo $ralete_def ?>
+        <br> เบอร์ติดต่อ: <i class="material-icons">phone</i> <?php echo $relate_tel ?>
         <hr>
         <b>ญาติคนที่ 2:</b>
         <br> ชื่อ-นามสกุล: นาง ปราณี เกียรติขจร เกี่ยวข้องเป็น น้องสาว
@@ -80,11 +89,6 @@
     <dd><img src="img/familytree.jpg" style="border: 1px solid #ccc;" width=""></dd>
 
     <hr>
-
-    <dt>แผนที่บ้าน</dt>
-    <dd>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.202290236063!2d100.52447731529752!3d13.76667120065673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2994da99aa1fd%3A0xc4dd9b398f456bcf!2z4LmC4Lij4LiH4Lie4Lii4Liy4Lia4Liy4Lil4Lij4Liy4Lih4Liy4LiY4Li04Lia4LiU4Li1!5e0!3m2!1sth!2sth!4v1455191320193" width="500" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
-    </dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 2 ข้อมูลสุขภาพ</h4>
     <h5 class="uk-heading-bullet">ประวัติการรักษา</h5>
@@ -114,27 +118,27 @@
 
     <dt>ประวัติโรคในครอบครัว</dt>
     <dd>
-        <ul class="mdl-typography--subhead">
+        <ol>
             <li>Hypertension</li>
             <li>Stroke</li>
-        </ul>
+        </ol>
     </dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 3 สรุปข้อมูลปัญหาผู้ป่วย</h4>
 
     <dt>รหัสการวินิจฉัยปัญหา</dt>
     <dd>
-        <ul class="mdl-typography--subhead">
+        <ol>
             <li>B07 Viral warts</li>
-            <li>E117 Non-insulin-dependent diabetes mellitus ,with multiple complications
-            </li>
-        </ul>
+            <li>E117 Non-insulin-dependent diabetes mellitus ,with multiple complications</li>
+        </ol>
     </dd>
 
     <hr>
 
-    <dt> ผู้บันทึกข้อมูล </dt>
+    <dt>ผู้บันทึกข้อมูล</dt>
     <dd>
-        นพ.ประสงค์ ทรงธรรม (013651) เมื่อวันที่ 24/09/2559
+        <?php echo $user ?>
+<!--        นพ.ประสงค์ ทรงธรรม (013651) เมื่อวันที่ 24/09/2559-->
     </dd>
 </dl>

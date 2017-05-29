@@ -1,5 +1,7 @@
 <div class="uk-form-horizontal">
-    <h4 class="uk-heading-divider">รหัสการวินิจฉัยปัญหาผู้ป่วย</h4>
+    <h4 class="uk-heading-divider">ส่วนที่ 3 สรุปปัญหา</h4>
+    <h5 class="uk-heading-bullet">รหัสการวินิจฉัยปัญหาผู้ป่วย</h5>
+    
     <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-text">วินิจฉัยหลัก</label>
             <select name="mainproblem[]" class="ui search selection dropdown uk-width-1-2@m" id="select-mainproblem">
