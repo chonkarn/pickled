@@ -52,7 +52,7 @@
         <label class="uk-text-muted"><input class="uk-radio" type="radio" name="basic_act" disabled> No</label>
         <hr>
         <label class="uk-margin-right"><b>Problem</b></label>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Dressing</label>
+        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($basic_act_dress == 1){ echo "checked"; }else{ echo "disabled"; } ?> /> Dressing</label>
         <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Eating</label>
         <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Ambulating</label>
         <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"> Toileting</label>

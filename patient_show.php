@@ -123,6 +123,6 @@ $relate_name = $row['relate_name'];
 $relate_tel = $row['relate_tel'];
 $relate_def = $row['relate_def'];
 
-//include 'meaning.php';
+include 'meaning.php';
 
 ?>

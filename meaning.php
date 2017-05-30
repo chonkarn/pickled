@@ -47,9 +47,4 @@ switch($patient_bmonth){
     case 12: $patient_bmonth = 'ธันวาคม'; break;
 }
 
-switch($time_visit){
-    case 1: $time_visit = 'ภาคเช้า (9.00-12.00 น)'; break;
-    case 2: $time_visit = 'ภาคบ่าย (13.00-16.00 น)'; break; 
-}
-
 ?>

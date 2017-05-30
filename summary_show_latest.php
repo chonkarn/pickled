@@ -46,6 +46,9 @@ $reason_cancel = $sumData['reason_cancel'];
 $reason_visit = $sumData['reason_visit'];
 $med = $sumData['med'];
 #
+$basic_act_dress=$sumData['basic_act_dress'];
+
+
 $home_risk	 = $sumData['home_risk'];
 $home_place = $sumData['home_place'];
 $caregiver_burden = $sumData['caregiver_burden'];

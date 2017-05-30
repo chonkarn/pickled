@@ -104,8 +104,8 @@
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                                 <div class="mdl-tabs__tab-bar">
-                                    <a href="#summary-panel" class="mdl-tabs__tab is-active">สรุปเยี่ยมบ้าน</a>
-                                    <a href="#profile-panel" class="mdl-tabs__tab">ข้อมูลผู้ป่วย</a>
+                                    <a href="#profile-panel" class="mdl-tabs__tab is-active">ข้อมูลผู้ป่วย</a>
+                                    <a href="#summary-panel" class="mdl-tabs__tab ">สรุปเยี่ยมบ้าน</a>
                                 </div>
                                 <!--/.mdl-tabs__tab-bar-->
                                 <div class="mdl-tabs__panel is-active" id="summary-panel">
