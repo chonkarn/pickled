@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2017 at 01:23 AM
+-- Generation Time: May 30, 2017 at 04:53 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.5.38
 
@@ -34,29 +34,19 @@ CREATE TABLE `calendar_info` (
   `patient_hn` int(10) NOT NULL,
   `patient_visit_status` int(1) NOT NULL,
   `patient_visit_type` int(1) NOT NULL,
+  `patient_doctor_owner` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `sum_chk` int(1) NOT NULL,
-  `commemt` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `app_status` int(1) NOT NULL DEFAULT '0'
+  `comment` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `app_status` int(1) NOT NULL DEFAULT '0',
+  `num_visit` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `calendar_info`
 --
 
-INSERT INTO `calendar_info` (`Id_app`, `Id_own_calen`, `dmy`, `time_calen`, `patient_hn`, `patient_visit_status`, `patient_visit_type`, `sum_chk`, `commemt`, `app_status`) VALUES
-(52, 'admin', '2017-04-27', 1, 8745632, 1, 1, 0, '', 0),
-(53, 'admin', '2017-04-24', 1, 7896542, 1, 3, 0, '', 0),
-(54, 'admin', '2017-04-19', 0, 1236015, 0, 1, 0, '', 0),
-(55, 'admin', '2017-04-10', 0, 1236015, 0, 1, 0, '', 0),
-(56, 'admin', '2017-04-11', 1, 6598745, 0, 1, 0, '', 0),
-(57, 'admin', '2017-04-25', 1, 8745632, 1, 1, 0, '', 0),
-(58, 'admin', '2017-04-25', 0, 57496119, 1, 1, 0, '', 0),
-(59, 'admin', '2017-05-09', 1, 57496119, 1, 1, 0, '', 0),
-(60, 'admin', '2017-05-01', 0, 57496119, 1, 1, 0, '', 0),
-(61, 'admin', '2017-05-18', 0, 7896542, 1, 3, 0, '', 0),
-(62, 'admin', '2017-05-03', 1, 5551234, 0, 1, 0, '', 0),
-(63, 'admin', '2017-05-10', 1, 4856988, 0, 2, 0, '', 0),
-(64, 'admin', '2017-05-10', 0, 4856988, 0, 2, 0, '', 0);
+INSERT INTO `calendar_info` (`Id_app`, `Id_own_calen`, `dmy`, `time_calen`, `patient_hn`, `patient_visit_status`, `patient_visit_type`, `patient_doctor_owner`, `sum_chk`, `comment`, `app_status`, `num_visit`) VALUES
+(92, '013651', '2017-05-31', 0, 5874158, 0, 0, '013651', 0, '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -75,34 +65,10 @@ CREATE TABLE `calendar_members_status` (
 --
 
 INSERT INTO `calendar_members_status` (`Id_app`, `Id_members`, `members_status`) VALUES
-(52, '010741', 0),
-(52, '011115', 0),
-(53, '011109', 0),
-(53, '011113', 0),
-(53, '012350', 0),
-(54, '013653', 0),
-(54, '013829', 0),
-(55, '013652', 0),
-(55, '013655', 0),
-(56, '003393', 0),
-(56, '013651', 0),
-(56, '013654', 0),
-(57, '013652', 0),
-(57, '013653', 0),
-(57, '013654', 0),
-(58, '013654', 0),
-(59, '013653', 0),
-(59, '013655', 0),
-(60, '013654', 0),
-(61, '013652', 0),
-(61, '013654', 0),
-(62, '013655', 0),
-(62, 'admin', 0),
-(63, '013652', 0),
-(63, '013654', 0),
-(63, '013655', 0),
-(64, '010741', 0),
-(64, '013654', 0);
+(92, '002925', 0),
+(92, '005133', 0),
+(92, '013651', 1),
+(92, '013654', 0);
 
 -- --------------------------------------------------------
 
@@ -39932,21 +39898,21 @@ INSERT INTO `icd10` (`icd10_id`, `icd10_name`, `icd10_keyword`) VALUES
 
 CREATE TABLE `patientinfo` (
   `patient_hn` int(7) NOT NULL,
-  `patient_visit_status` int(1) DEFAULT NULL,
+  `patient_visit_status` int(1) NOT NULL DEFAULT '1',
   `patient_visit_type` int(1) DEFAULT NULL,
   `patient_id` varchar(13) COLLATE utf8_unicode_ci NOT NULL,
   `patient_p_name` varchar(100) CHARACTER SET utf8 DEFAULT NULL,
-  `patient_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `patient_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `patient_surname` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `patient_gender` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `patient_dateofbirth` int(2) DEFAULT NULL,
-  `patient_monthofbirth` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
-  `patient_yearofbirth` int(4) DEFAULT NULL,
+  `patient_bday` int(2) DEFAULT NULL,
+  `patient_bmonth` int(2) DEFAULT NULL,
+  `patient_byear` int(4) DEFAULT NULL,
   `patient_status` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
   `patient_religion` varchar(15) CHARACTER SET utf8 DEFAULT NULL,
   `patient_occupation` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `patient_education` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `insure` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `healthinsure` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `patient_add_no` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
   `patient_add_mhoo` varchar(10) CHARACTER SET utf8 NOT NULL,
   `patient_add_village` varchar(30) CHARACTER SET utf8 NOT NULL,
@@ -39956,19 +39922,22 @@ CREATE TABLE `patientinfo` (
   `patient_add_dis` varchar(30) CHARACTER SET utf8 NOT NULL,
   `patient_add_province` varchar(30) CHARACTER SET utf8 NOT NULL,
   `patient_add_zip` int(4) NOT NULL,
-  `patient_no_home` varchar(30) CHARACTER SET utf8 NOT NULL,
-  `patient_no_mobile` varchar(10) CHARACTER SET utf8 NOT NULL,
-  `patient_no_work` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `patient_tel_home` varchar(30) CHARACTER SET utf8 NOT NULL,
+  `patient_tel_mobile` varchar(10) CHARACTER SET utf8 NOT NULL,
+  `patient_tel_work` varchar(10) CHARACTER SET utf8 NOT NULL,
   `patient_doctor_owner` varchar(50) CHARACTER SET utf8 NOT NULL,
   `patient_doctor_visit` varchar(50) CHARACTER SET utf8 NOT NULL,
   `surgery` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `surgery_input` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
   `allergic` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `allergic_input` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
   `alternative` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `alternative_input` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
   `alcohol` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
   `alcohol_input` int(1) NOT NULL,
   `cigarette` varchar(4) COLLATE utf8_unicode_ci NOT NULL,
-  `cigarette_amout` int(3) NOT NULL,
-  `cigarette_period` int(3) NOT NULL,
+  `cigarette_amount` int(3) DEFAULT NULL,
+  `cigarette_period` int(3) DEFAULT NULL,
   `money` int(1) NOT NULL,
   `hypertansion` int(1) NOT NULL,
   `diabetes_mellitus` int(1) NOT NULL,
@@ -39980,31 +39949,54 @@ CREATE TABLE `patientinfo` (
   `main` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
   `problem` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `num_visit` int(2) NOT NULL,
-  `last_visit` date NOT NULL,
-  `next_visit` date NOT NULL,
+  `last_visit_date` date DEFAULT NULL,
+  `next_visit_date` date DEFAULT NULL,
   `relate_name` varchar(60) COLLATE utf8_unicode_ci NOT NULL,
   `relate_tel` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `relate_def` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+  `relate_def` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `cancer_input` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `other_input` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `genogram` varchar(120) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `patientinfo`
 --
 
-INSERT INTO `patientinfo` (`patient_hn`, `patient_visit_status`, `patient_visit_type`, `patient_id`, `patient_p_name`, `patient_name`, `patient_surname`, `patient_gender`, `patient_dateofbirth`, `patient_monthofbirth`, `patient_yearofbirth`, `patient_status`, `patient_religion`, `patient_occupation`, `patient_education`, `insure`, `patient_add_no`, `patient_add_mhoo`, `patient_add_village`, `patient_add_soi`, `patient_add_road`, `patient_add_subdis`, `patient_add_dis`, `patient_add_province`, `patient_add_zip`, `patient_no_home`, `patient_no_mobile`, `patient_no_work`, `patient_doctor_owner`, `patient_doctor_visit`, `surgery`, `allergic`, `alternative`, `alcohol`, `alcohol_input`, `cigarette`, `cigarette_amout`, `cigarette_period`, `money`, `hypertansion`, `diabetes_mellitus`, `dyslipidemia`, `stroke`, `cad`, `cancer`, `other`, `main`, `problem`, `num_visit`, `last_visit`, `next_visit`, `relate_name`, `relate_tel`, `relate_def`) VALUES
-(1234567, 0, 2, '1302369563214', 'นาย', 'มานะ', 'มั่นคงยิ่ง', 'M', 0, '', 0, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 5, '2017-05-01', '2017-05-15', '', '', ''),
-(1236015, 0, 1, '1369584512545', 'นาย', 'อาทิตย์', 'ไกรสุนทร', 'M', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', 'admin', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 6, '2017-02-26', '0000-00-00', '', '', ''),
-(3621569, 0, 1, '1136953654123', 'นาย', 'ศุภมงคล', 'เชิดชูจึง', 'M', 12, '8', 2536, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 11210, '', '', '', '001525', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 6, '2017-05-05', '2017-05-10', '', '', ''),
-(3625694, 2, 1, '136236953625', 'นางสาว', 'เหมือนฝัน', 'สุดแสน', 'F', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 5, '2016-12-04', '2017-02-23', '', '', ''),
-(3699875, 1, 1, '1136953654123', 'นางสาว', 'ศุภควดี', 'รอดกลาง', 'F', 27, '11', 2536, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', ''),
-(4636958, 0, 2, '1130369546745', 'นาย', 'อาทิตย์', 'กรรินทร์', 'M', 0, '', 0, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 9, '2017-05-01', '2017-05-24', '', '', ''),
-(4856988, 2, 2, '', 'นาง', 'มาลินี', 'เกียรติขจร', 'F', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', 'admin', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 1, '2016-07-25', '2017-04-20', '', '', ''),
-(5551234, 2, 1, '1209700588820', 'นางสาว', 'ชนกานต์', 'รุ่งเจริญพร', 'F', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 5, '2016-12-04', '2017-02-23', '', '', ''),
-(5632695, 2, 1, '1236547521112', 'นางสาว', 'น้ำเพชร', 'เรืองสุวรรณ', 'F', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '013651', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 5, '2016-12-04', '2017-02-23', '', '', ''),
-(6598745, 0, 1, '', 'นาย', 'อินทร์ฟาน', 'อู๋สกุล', 'M', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', 'admin', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', ''),
-(7896542, 1, 3, '', 'นาย', 'ก้องภพ', 'หิรันต์นคร', 'M', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', 'admin', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '0000-00-00', '2017-02-23', '', '', ''),
-(9463269, 0, 1, '3622152369541', 'นาย', 'อภัย', 'มาณีสวัสดิ', 'M', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', 'bdta', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', ''),
-(9876546, 1, 1, '1695654136958', 'นางสาว', 'สุวรรณมาลี', 'รักศักดิ์ศรี', 'F', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', 'bdta', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 3, '2017-05-01', '2017-05-08', '', '', '');
+INSERT INTO `patientinfo` (`patient_hn`, `patient_visit_status`, `patient_visit_type`, `patient_id`, `patient_p_name`, `patient_name`, `patient_surname`, `patient_gender`, `patient_bday`, `patient_bmonth`, `patient_byear`, `patient_status`, `patient_religion`, `patient_occupation`, `patient_education`, `healthinsure`, `patient_add_no`, `patient_add_mhoo`, `patient_add_village`, `patient_add_soi`, `patient_add_road`, `patient_add_subdis`, `patient_add_dis`, `patient_add_province`, `patient_add_zip`, `patient_tel_home`, `patient_tel_mobile`, `patient_tel_work`, `patient_doctor_owner`, `patient_doctor_visit`, `surgery`, `surgery_input`, `allergic`, `allergic_input`, `alternative`, `alternative_input`, `alcohol`, `alcohol_input`, `cigarette`, `cigarette_amount`, `cigarette_period`, `money`, `hypertansion`, `diabetes_mellitus`, `dyslipidemia`, `stroke`, `cad`, `cancer`, `other`, `main`, `problem`, `num_visit`, `last_visit_date`, `next_visit_date`, `relate_name`, `relate_tel`, `relate_def`, `cancer_input`, `other_input`, `genogram`) VALUES
+(1234567, 2, 1, '1102123696541', 'นาง', 'พรพิมล', 'วงศ์ศรัทธา', '1', 6, 6, 2515, '2', '1', '2', '3', 'ข้าราชการป', '16/66', '6', 'สุขวัลย์นคร', '24', 'ประชาราษฎร์', 'ดอนเมือง', 'ดอนเมือง', 'กรุงเทพมหานคร\r\n', 10210, '029632654', '0994561258', '', '001525', '', '1', '', '1', '', '1', '', '1', 0, '1', 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', '', '', 0, '2017-05-01', '2017-05-29', '', '', '', '', '', ''),
+(1234568, 1, 1, '1236321563123', 'นาง', 'ขวัญใจ', 'ใจรักษ์', '2', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '1', '', '1', '', '1', '', '1', 0, '1', 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', '', '', 0, NULL, NULL, '', '', '', '', '', ''),
+(1235665, 2, 1, '113652654125', 'นาย', 'เจตน์', 'โชติช่วง', '1', 15, 0, 2505, '', '', '', '', '1100', '', '', '', '', '', '', '', '', 0, '', '', '', '000028', '', '1', '', '1', '', '1', '', '1', 0, '1', 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', '', '', 0, '0000-00-00', '2017-05-31', 'มะลิ วันนา', '0994645153', 'พี่สาว', NULL, NULL, ''),
+(1236015, 2, 3, '1369584512545', 'นาย', 'อาทิตย์', 'ไกรสุนทร', '1', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 6, '2017-02-26', '0000-00-00', '', '', '', NULL, NULL, ''),
+(3265321, 1, 1, '1123696325456', 'นาง', 'มาลัย', 'สมใจนึก', '2', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '  <small>()</small>', '', '2', 'ไส้ติ่ง', '1', '', '1', '', '1', 0, '1', 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', '', '', 0, NULL, NULL, '', '', '', '', '', ''),
+(3265412, 2, 1, '1302369563214', 'นาย', 'มานะ', 'มั่นคงยิ่ง', '1', 0, 0, 2505, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 10400, '', '', '', '001525', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 5, '2017-05-01', '2017-05-15', '', '', '', NULL, NULL, ''),
+(3621569, 2, 1, '1123695895456', 'นาย', 'ศุภมงคล', 'เชิดชูจึง', '1', 12, 8, 2536, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 11210, '', '', '', '001525', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 6, '2017-05-05', '2017-05-10', '', '', '', NULL, NULL, ''),
+(3623696, 1, 1, '', 'นาย', 'สมพร', 'มานะยิ่ง', '1', 0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '1', '', '1', '', '1', '', '1', 0, '1', 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', '', '', 0, NULL, NULL, '', '', '', '', '', ''),
+(3625694, 2, 1, '136236953625', 'นางสาว', 'เหมือนฝัน', 'สุดแสน', '2', NULL, NULL, 2501, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 10400, '', '', '', '001525', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 5, '2016-12-04', '2017-02-23', '', '', '', NULL, NULL, ''),
+(3699875, 1, 1, '1136953654123', 'นางสาว', 'ศุภควดี', 'รอดกลาง', '2', 27, 11, 2536, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', '', NULL, NULL, ''),
+(4636958, 2, 2, '1130369546745', 'นาย', 'อาทิตย์', 'กรรินทร์', '1', 0, 0, 2510, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 10400, '', '', '', '001525', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 9, '2017-05-01', '2017-05-24', '', '', '', NULL, NULL, ''),
+(4856988, 2, 2, '1136959654123', 'นาง', 'มาลินี', 'เกียรติขจร', '2', NULL, NULL, 2503, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 10400, '', '', '', '001525', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 1, '2016-07-25', '2017-04-20', '', '', '', NULL, NULL, ''),
+(5155210, 2, 1, '1103256321459', 'นาง', 'กนกวิภา', 'มานะเจริญ', '1', 31, 5, 2500, '2', '1', '2', '2', '1100', '5/15', '5', 'สุขนคร', 'สามัคคี', '', 'ทุ่งพญาไท', 'ราชเทวี', 'กรุงเทพมหานคร', 10400, '', '', '', '001525', '', '2', 'ไส้ติ่ง', '1', '', '1', '', '1', 0, '1', 0, 0, 0, 0, 0, 0, 0, 0, '0', '0', '', '', 5, '2017-05-01', '2017-05-15', '', '', '', NULL, NULL, ''),
+(5551234, 2, 1, '1209700588820', 'นางสาว', 'ชนกานต์', 'รุ่งเจริญพร', 'F', NULL, NULL, 2489, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 5, '2016-12-04', '2017-02-23', '', '', '', NULL, NULL, ''),
+(5632695, 2, 1, '1236547521112', 'นางสาว', 'น้ำเพชร', 'เรืองสุวรรณ', 'F', NULL, NULL, 2500, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '013651', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 5, '2016-12-04', '2017-02-23', '', '', '', NULL, NULL, ''),
+(5874158, 0, 0, '3216654125632', 'นาย', 'เหมันต์', 'ธนไพบูรณ์', 'M', 0, 0, 2500, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 0, '', '', '', '013651', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', 'a00,z00', 6, '2017-05-01', '2017-05-15', '', '', '', NULL, NULL, ''),
+(5965485, 2, 2, '1136212362123', 'นาง', 'รุ่งทิพย์', 'ก่อเกียรติ', 'M', 0, 0, 2499, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 3, '2017-05-01', '2017-05-15', '', '', '', NULL, NULL, ''),
+(5987452, 2, 2, '3693261202564', 'นาง', 'มาลิณี ', 'เกียรติขจร', 'F', 0, 0, 2506, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 5, '2017-05-01', '2017-05-24', '', '', '', NULL, NULL, ''),
+(6158489, 2, 2, '1103261202564', 'นาง', 'ชญานิศ', 'พลฑา', 'F', 0, 0, 2506, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 7, '2017-05-01', '2017-05-24', '', '', '', NULL, NULL, ''),
+(6166212, 2, 2, '1136521474123', 'นาย', 'เจตน์', 'มานะยิ่ง', 'F', 16, 6, 2500, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '5/15', '5', 'สุขนคร', 'สามัคคี', '', 'ทุ่งพญาไท', 'ราชเทวี', 'กรุงเทพมหานคร', 0, '', '', '', '001525', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 5, '2017-05-01', '2017-05-15', '', '', '', NULL, NULL, ''),
+(6215845, 2, 2, '1136547451254', 'นาย', 'รุ่งโรจน์', 'เรืองรอง', 'M', 0, 0, 2488, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 4, '2016-07-12', '2017-05-15', '', '', '', NULL, NULL, ''),
+(6258459, 2, 1, '1136269221652', 'นาย', 'ชัชพิสิทธิ์', ' กาวิโล', 'M', 3, 1, 2537, '-- สถานภาพ --', '-- ศาสนา --', '-- อาชีพ --', '-- ระดับการศึกษา --', '', '', '', '', '', '', '', '', '', 11210, '', '', '', '001525', '', '', '', '', '', '', '', 'NO', 0, 'NO', 0, 0, 0, 0, 0, 0, 0, 0, '0', '', '', '', 8, '2017-05-05', '2017-05-10', '', '', '', NULL, NULL, ''),
+(6598745, 3, 3, '1136953265985', 'นาย', 'อินทร์ฟาน', 'อู๋สกุล', 'M', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', '', NULL, NULL, ''),
+(7854485, 2, 1, '1136953263141', 'นางสาว', 'วิยดา', 'เครื่องดี', 'F', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 6, '2017-05-01', '2017-05-23', '', '', '', NULL, NULL, ''),
+(7896542, 3, 3, '1136456985214', 'นาย', 'ก้องภพ', 'หิรันต์นคร', 'M', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '0000-00-00', '2017-02-23', '', '', '', NULL, NULL, ''),
+(8512365, 2, 1, '1695651441654', 'นาย', 'ธนโชติ', 'มหาทรัพย์', 'M', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 9, '2017-05-03', '2017-05-31', '', '', '', NULL, NULL, ''),
+(8963215, 3, 3, '3369521421545', 'นาย', 'วิบูรณ์', 'ธนโชติไพศาล', 'M', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 6, '2016-07-12', '2017-02-23', '', '', '', NULL, NULL, ''),
+(9463269, 1, 1, '3622152369541', 'นาย', 'อภัย', 'มาณีสวัสดิ', 'M', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', '', NULL, NULL, ''),
+(9632587, 1, 1, '1234567891234', 'นาง', 'มะลิ', 'วันนา', 'F', NULL, NULL, NULL, NULL, NULL, NULL, '', '', '11/12', '2', '', '', '', '', '', 'กรุงเทพมหานคร', 10400, '029654236', '0996541236', '', '001525', '001525, 013651', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', '', NULL, NULL, ''),
+(9785356, 2, 1, '1136969561452', 'นาง', 'เพียรจิต', 'จงใจรักษ์', 'F', 15, 5, 2500, 'สมรส', 'พุทธ', 'แม่บ้าน/ว่างงาน', 'มัธยมศึกษาตอนต้น', '', '270', '1', 'สุขนคร', 'สามัคคี', 'พระราม 6', 'ทุ่งพญาไท', 'ราชเทวี', 'กรุงเทพมหานคร', 10400, '026449042', '096521596', '', '001525', '001525, 013651', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 5, '2016-07-12', '2017-05-15', '', '', '', NULL, NULL, ''),
+(9875552, 2, 1, '1132532145123', 'นาง', 'กรกวรรณ', 'สวัสดี', '2', 26, 6, NULL, '3', '1', '6', '2', '1300', '11/1', '5', '', '', '', '', '', 'กรุงเทพมหานคร', 10210, '029632123', '', '', '', '', '1', '', '1', '', '1', '', '1', 0, '1', 0, 0, 1, 0, 0, 0, 0, 0, '0', '0', '', '', 0, '0000-00-00', '0000-00-00', '', '', '', NULL, NULL, ''),
+(9876546, 2, 1, '1695654136958', 'นางสาว', 'สุวรรณมาลี', 'รักศักดิ์ศรี', 'F', NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '001525', '', '', '', '', '', '', '', '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', 3, '2017-05-01', '2017-05-08', '', '', '', NULL, NULL, ''),
+(56323654, 1, 1, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '', '', NULL, '', '', '', '', '', '', '', 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', NULL, NULL, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, NULL, NULL, '', '', '', NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -40021,19 +40013,19 @@ CREATE TABLE `patient_relative` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `p_name`
+-- Table structure for table `pname`
 --
 
-CREATE TABLE `p_name` (
-  `pname_id` varchar(5) NOT NULL,
-  `pname_val` varchar(18) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `pname` (
+  `pname_id` varchar(5) CHARACTER SET utf8 NOT NULL,
+  `pname_val` varchar(18) CHARACTER SET utf8 DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `p_name`
+-- Dumping data for table `pname`
 --
 
-INSERT INTO `p_name` (`pname_id`, `pname_val`) VALUES
+INSERT INTO `pname` (`pname_id`, `pname_val`) VALUES
 ('1', 'นาย'),
 ('10', 'พล.ต.ต'),
 ('100', 'พ.จ.อ.หญิง'),
@@ -40122,7 +40114,7 @@ INSERT INTO `p_name` (`pname_id`, `pname_val`) VALUES
 ('176', 'Dr.'),
 ('18', 'พ.ต.ต.'),
 ('19', 'พ.ต.ต. หญิง'),
-('2', 'นางสาว'),
+('2', 'นาง'),
 ('20', 'ร.ต.อ.'),
 ('21', 'ร.ต.อ. หญิง'),
 ('22', 'ร.ต.ท.'),
@@ -40214,11 +40206,153 @@ INSERT INTO `p_name` (`pname_id`, `pname_val`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `summary`
+--
+
+CREATE TABLE `summary` (
+  `calendar_id` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `patient_hn` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `visit_status` int(1) NOT NULL,
+  `visit_type` int(1) NOT NULL,
+  `summary_status` int(1) NOT NULL,
+  `summary_edit_status` int(1) NOT NULL DEFAULT '1',
+  `reason_cancel` int(1) NOT NULL,
+  `reason_visit` int(1) NOT NULL,
+  `med` longtext COLLATE utf8_unicode_ci,
+  `basic_act` int(1) NOT NULL,
+  `basic_act_dress` int(1) NOT NULL DEFAULT '0',
+  `basic_act_eat` int(1) NOT NULL DEFAULT '0',
+  `basic_act_ambu` int(1) NOT NULL DEFAULT '0',
+  `basic_act_toilet` int(1) NOT NULL DEFAULT '0',
+  `basic_act_hygine` int(1) NOT NULL DEFAULT '0',
+  `instru_act` int(1) NOT NULL,
+  `instru_act_shop` int(11) NOT NULL DEFAULT '0',
+  `instru_act_house` int(1) NOT NULL DEFAULT '0',
+  `instru_act_med` int(1) NOT NULL DEFAULT '0',
+  `instru_act_fin` int(1) NOT NULL DEFAULT '0',
+  `instru_act_tech` int(1) NOT NULL DEFAULT '0',
+  `nutrition_status` int(11) NOT NULL,
+  `home_risk` int(1) NOT NULL,
+  `home_place` int(11) NOT NULL,
+  `caregiver_burden` int(1) NOT NULL,
+  `main_caregiver` int(11) NOT NULL,
+  `healthinsure` int(11) NOT NULL,
+  `pre_drug` int(1) NOT NULL,
+  `pre_drug_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `non_drug` int(1) NOT NULL,
+  `non_drug_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `diet_sup` int(1) NOT NULL,
+  `diet_sup_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `med_com` int(1) NOT NULL,
+  `med_com_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `manage_assess` int(1) NOT NULL,
+  `manage_assess_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `manage_pain` int(1) NOT NULL,
+  `manage_pain_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `manage_med` int(11) NOT NULL,
+  `manage_med_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `manage_procedure` int(11) NOT NULL,
+  `manage_procedure_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `manage_fammeet` int(1) NOT NULL,
+  `manage_fammeet_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `manage_social` int(1) NOT NULL,
+  `manage_social_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `manage_psycho` int(1) NOT NULL,
+  `manage_psycho_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `manage_rehab` int(1) NOT NULL,
+  `manage_rehab_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `manage_choice` int(1) NOT NULL,
+  `manage_choice_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `manage_dying` int(1) NOT NULL,
+  `manage_dying_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `manage_other` int(1) NOT NULL,
+  `manage_other_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `bio_problem` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `bp` int(11) NOT NULL,
+  `hr` int(11) NOT NULL,
+  `rr` int(11) NOT NULL,
+  `oxygen` int(11) NOT NULL,
+  `heent` int(1) NOT NULL,
+  `heent_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `heart` int(1) NOT NULL,
+  `heart_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `lungs` int(1) NOT NULL,
+  `lungs_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `abdomen` int(1) NOT NULL,
+  `abdomen_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `extremities` int(1) NOT NULL,
+  `extremities_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `neuro` int(1) NOT NULL,
+  `neuro_text` text COLLATE utf8_unicode_ci NOT NULL,
+  `pps` int(11) NOT NULL,
+  `gds` int(11) NOT NULL,
+  `mini_time` int(11) NOT NULL,
+  `mini_place` int(11) NOT NULL,
+  `mini_reg` int(11) NOT NULL,
+  `mini_cal` int(11) NOT NULL,
+  `mini_recall` int(11) NOT NULL,
+  `mini_naming` int(11) NOT NULL,
+  `mini_repetition` int(11) NOT NULL,
+  `mini_verbal` int(11) NOT NULL,
+  `mini_written` int(11) NOT NULL,
+  `mini_writing` int(11) NOT NULL,
+  `mini_vis` int(11) NOT NULL,
+  `mini_psycho` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `mini_other` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `summary_plan` longtext COLLATE utf8_unicode_ci,
+  `summary_goal` longtext COLLATE utf8_unicode_ci,
+  `icd10_main` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `icd10_problem` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `suggestion` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `next_visit` int(1) NOT NULL,
+  `next_visit_date` date NOT NULL,
+  `next_visit_time` int(1) NOT NULL,
+  `reason_close` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `summary`
+--
+
+INSERT INTO `summary` (`calendar_id`, `patient_hn`, `visit_status`, `visit_type`, `summary_status`, `summary_edit_status`, `reason_cancel`, `reason_visit`, `med`, `basic_act`, `basic_act_dress`, `basic_act_eat`, `basic_act_ambu`, `basic_act_toilet`, `basic_act_hygine`, `instru_act`, `instru_act_shop`, `instru_act_house`, `instru_act_med`, `instru_act_fin`, `instru_act_tech`, `nutrition_status`, `home_risk`, `home_place`, `caregiver_burden`, `main_caregiver`, `healthinsure`, `pre_drug`, `pre_drug_text`, `non_drug`, `non_drug_text`, `diet_sup`, `diet_sup_text`, `med_com`, `med_com_text`, `manage_assess`, `manage_assess_text`, `manage_pain`, `manage_pain_text`, `manage_med`, `manage_med_text`, `manage_procedure`, `manage_procedure_text`, `manage_fammeet`, `manage_fammeet_text`, `manage_social`, `manage_social_text`, `manage_psycho`, `manage_psycho_text`, `manage_rehab`, `manage_rehab_text`, `manage_choice`, `manage_choice_text`, `manage_dying`, `manage_dying_text`, `manage_other`, `manage_other_text`, `bio_problem`, `bp`, `hr`, `rr`, `oxygen`, `heent`, `heent_text`, `heart`, `heart_text`, `lungs`, `lungs_text`, `abdomen`, `abdomen_text`, `extremities`, `extremities_text`, `neuro`, `neuro_text`, `pps`, `gds`, `mini_time`, `mini_place`, `mini_reg`, `mini_cal`, `mini_recall`, `mini_naming`, `mini_repetition`, `mini_verbal`, `mini_written`, `mini_writing`, `mini_vis`, `mini_psycho`, `mini_other`, `summary_plan`, `summary_goal`, `icd10_main`, `icd10_problem`, `suggestion`, `next_visit`, `next_visit_date`, `next_visit_time`, `reason_close`) VALUES
+('73', '5155210', 1, 1, 1, 3, 0, 0, '', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', '', 0, 0, 0, 0, 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', 0, '2017-05-15', 0, 0),
+('74', '6166212', 2, 1, 1, 2, 0, 1, '55', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', '', 0, 0, 0, 0, 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', 0, '2017-05-15', 0, 0),
+('75', '5155210', 1, 1, 1, 3, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', '', 0, 0, 0, 0, 0, '', 0, '', 0, '', 0, '', 0, '', 0, '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '', '', '', '', 0, '2017-06-07', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbmeaning`
+--
+
+CREATE TABLE `tbmeaning` (
+  `id` int(1) NOT NULL,
+  `name` varchar(120) COLLATE utf8_unicode_ci NOT NULL,
+  `meaning` varchar(120) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tbmeaning`
+--
+
+INSERT INTO `tbmeaning` (`id`, `name`, `meaning`) VALUES
+(1, 'time', 'ภาคเช้า (9.00-12.00 น)'),
+(1, 'visit_status', 'ใหม่'),
+(1, 'visit_type', 'Home visit care'),
+(2, 'time', 'ภาคบ่าย (13.00-16.00 น)'),
+(2, 'visit_status', 'เยี่ยมต่อ'),
+(2, 'visit_type', 'Geriatric case'),
+(3, 'visit_status', 'ปิดเยี่ยมบ้าน'),
+(3, 'visit_type', 'Palliative case');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbuser`
 --
 
 CREATE TABLE `tbuser` (
-  `user` varchar(13) CHARACTER SET tis620 NOT NULL,
+  `user` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `f_user` varchar(50) CHARACTER SET utf8 NOT NULL,
   `l_user` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `passwd` varchar(40) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
@@ -40233,7 +40367,7 @@ CREATE TABLE `tbuser` (
 --
 
 INSERT INTO `tbuser` (`user`, `f_user`, `l_user`, `passwd`, `id_position`, `question`, `answer`, `photo`) VALUES
-('013651', 'นพ.สรวิศ', 'บุญญฐี', '81dc9bdb52d04dc20036dbd8313ed055', '2', 0, '', ''),
+('013651', 'นพ.สรวิศ', 'บุญญฐี', '81dc9bdb52d04dc20036dbd8313ed055', '1', 0, '', 'user.png'),
 ('000028', 'ผศ.ประสิทธิ์', 'กี่สุขพันธ์', '0ef30c9c9906aefc31d62dde8bb9ded3', '1', 0, '', ''),
 ('001428', 'รศ.ปราณี', 'พลังวชิรา', '89380f9b4aef215a2e6c96a5a60f0500', '1', 0, '', ''),
 ('003370', 'ผศ.สายพิณ', 'หัตถีรัตน์', '478abd40d0d332d012da6dddd52c1f52', '1', 0, '', ''),
@@ -40260,40 +40394,53 @@ INSERT INTO `tbuser` (`user`, `f_user`, `l_user`, `passwd`, `id_position`, `ques
 ('007684', 'พญ.อัญญพร', 'สุทัศน์วรวุฒิ', '898e1d0661c355addbad179859a7740c', '1', 0, '', ''),
 ('012773', 'นพ.วีรชัย', 'สัจจเทพ', '2e071be0e058ea7d7305cb96cf8ecdd6', '1', 0, '', ''),
 ('012873', 'นพ.จาตุรนต์', 'ตั้งสังวรธรรมะ', 'e2267ee77309f3bc6a3efa1763878d92', '1', 0, '', ''),
-('013654', 'นพ.ภาคภูมิ', 'รู้คงประเสริฐ', 'b3b1fdc912f8fa8567393197349b4b8d', '2', 0, '', ''),
-('013653', 'พญ.ชเนตตา', 'หัตตา', '5f48829f8cfe8549882bb01fbf5d5081', '2', 0, '', ''),
-('013652', 'พญ.ศิริกัญญา', 'พัฒนาประทีป', '81dc9bdb52d04dc20036dbd8313ed055', '2', 0, '', ''),
-('013655', 'นพ.อนิรุทธ์', 'ชัยสมบูรณ์พันธ์', '8eb03de93bb2b721262a0cd9b741c53f', '2', 0, '', ''),
-('013829', 'พญ.ปุณพรรณ', 'กมลมุนีโชติ', '1d7a5b44c9a8229ae7a13e29a0f87c0a', '2', 0, '', ''),
-('012349', 'นพ.เขมชาติ', 'พิกุล', '1d8807f37858383d6949e280b5335e8f', '2', 0, '', ''),
-('009961', 'นพ.พัชรพล', 'พัชรพจนากรณ์', 'c956af6562ba02f8ff364c4386a21f61', '2', 0, '', ''),
-('012352', 'นพ.อานนท์', 'สาธรวิริยะพงศ์', 'b21b83ef6df1c3d7fd78e044e5af3a3b', '2', 0, '', ''),
-('012350', 'พญ.พลอย', 'พงษ์วิทยภานุ', '602cc7c77a1fec983b7cba549807243c', '2', 0, '', ''),
-('012351', 'พญ.กติกา', 'เลี้ยงสกุล', '228894cf902c9c0d7038072276bb59c1', '2', 0, '', ''),
-('011098', 'นพ.กฤตบุญ', 'ธรรมเจริญสถิต', '51270d03fa8dd9ad596472d3865b745e', '2', 0, '', ''),
-('011106', 'นพ.ณัฐพล', 'พรรณเชษฐ์', '41384c2f894e186df856a45de1d59044', '2', 0, '', ''),
-('011107', 'นพ.พนธกร', 'เหมะจันทร', 'd621b40d0ece365e53b3450a678eb687', '2', 0, '', ''),
-('011097', 'พญ.ภัควิภา', 'เริ่มยินดี', '000954be70559fa72eafaac55649eb76', '2', 0, '', ''),
-('011109', 'พญ.เรือนขวัญ', 'กัณหสิงห์', '7dfbe6c8e8b7879ac3a3195b360ccbe8', '2', 0, '', ''),
-('011111', 'พญ.วิบูลย์ศรี', 'พุทธเจริญ', 'f101ea5397bbd6fa03af0d1ab3269503', '2', 0, '', ''),
-('011113', 'พญ.ศิริวรรณ', 'จิตตปราณีรัชต์', '771e582606e3ae2e9721988797e9dcf2', '2', 0, '', ''),
-('011115', 'นพ.อภิชัย', 'วรรธนะพิศิษฐ์', '889a3b4d001df0de6d5fb29129628985', '2', 0, '', ''),
-('011345', 'พญ.กรภัทร์', 'ระลึกฤาเดช', '55f9fca2d7fa571758941b256a10f64e', '2', 0, '', ''),
-('010741', 'ปิยภัทร', 'บุญสำเร็จ', '6628e16fc19f6a04f38112b559ec465e', '3', 0, '', ''),
-('001741', 'ศรีจันทร์', 'กัณหาสาลี', 'd69cea3448d492b8509570c902281040', '3', 0, '', ''),
-('004076', 'พรพิมล', 'โอเจริญ', 'b3a18bddaecf3c4c8bc1bf8f78f17b97', '3', 0, '', ''),
-('002925', 'ประภัสสร', 'จันทร์พรมมา', '5c30337a406293d72a2b928bbe706c4b', '4', 0, '', ''),
-('005601', 'นิสิต', 'เที่ยงสมพงษ์', '9cbbf43eb99b55304e3dab06f0a84e02', '6', 0, '', ''),
-('007264', 'กฤษณา', 'กิตติชัย', '76abe5bbd1f8f6e478148f61fe9933e9', '5', 0, '', ''),
-('123456', 'ทดสอบ', 'การพิมพ์', '80740da0cbbbd5cea8074125c215af66', '2', 0, '', ''),
-('chkr', 'ชนกานต์', 'รุ่งเจริญพร', '81dc9bdb52d04dc20036dbd8313ed055', '0', 1, 'สมุทรปราการ', 'doll.svg'),
-('025852', 'นพ.ประสงค์', 'ทรงธรรม', '025852', '2', 0, '', ''),
-('bdta', 'บัณฑิตา', 'กุลธรรมมานนท์', '912ec803b2ce49e4a541068d495ab570', '0', 1, 'กทม', 'crab.svg'),
-('001525', 'นพ.ประสงค์', 'ทรงธรรม', '8c00dee24c9878fea090ed070b44f1ab', '2', 1, 'กทม', 'doctor-male.svg');
+('013654', 'นพ.ภาคภูมิ', 'รู้คงประเสริฐ', 'b3b1fdc912f8fa8567393197349b4b8d', '1', 0, '', ''),
+('013653', 'พญ.ชเนตตา', 'หัตตา', '5f48829f8cfe8549882bb01fbf5d5081', '1', 0, '', ''),
+('013652', 'พญ.ศิริกัญญา', 'พัฒนาประทีป', '81dc9bdb52d04dc20036dbd8313ed055', '1', 0, '', ''),
+('013655', 'นพ.อนิรุทธ์', 'ชัยสมบูรณ์พันธ์', '8eb03de93bb2b721262a0cd9b741c53f', '1', 0, '', ''),
+('013829', 'พญ.ปุณพรรณ', 'กมลมุนีโชติ', '1d7a5b44c9a8229ae7a13e29a0f87c0a', '1', 0, '', ''),
+('012349', 'นพ.เขมชาติ', 'พิกุล', '1d8807f37858383d6949e280b5335e8f', '1', 0, '', ''),
+('009961', 'นพ.พัชรพล', 'พัชรพจนากรณ์', 'c956af6562ba02f8ff364c4386a21f61', '1', 0, '', ''),
+('012352', 'นพ.อานนท์', 'สาธรวิริยะพงศ์', 'b21b83ef6df1c3d7fd78e044e5af3a3b', '1', 0, '', ''),
+('012350', 'พญ.พลอย', 'พงษ์วิทยภานุ', '602cc7c77a1fec983b7cba549807243c', '1', 0, '', ''),
+('012351', 'พญ.กติกา', 'เลี้ยงสกุล', '228894cf902c9c0d7038072276bb59c1', '1', 0, '', ''),
+('011098', 'นพ.กฤตบุญ', 'ธรรมเจริญสถิต', '51270d03fa8dd9ad596472d3865b745e', '1', 0, '', ''),
+('011106', 'นพ.ณัฐพล', 'พรรณเชษฐ์', '41384c2f894e186df856a45de1d59044', '1', 0, '', ''),
+('011107', 'นพ.พนธกร', 'เหมะจันทร', 'd621b40d0ece365e53b3450a678eb687', '1', 0, '', ''),
+('011097', 'พญ.ภัควิภา', 'เริ่มยินดี', '000954be70559fa72eafaac55649eb76', '1', 0, '', ''),
+('011109', 'พญ.เรือนขวัญ', 'กัณหสิงห์', '7dfbe6c8e8b7879ac3a3195b360ccbe8', '1', 0, '', ''),
+('011111', 'พญ.วิบูลย์ศรี', 'พุทธเจริญ', 'f101ea5397bbd6fa03af0d1ab3269503', '1', 0, '', ''),
+('011113', 'พญ.ศิริวรรณ', 'จิตตปราณีรัชต์', '771e582606e3ae2e9721988797e9dcf2', '1', 0, '', ''),
+('011115', 'นพ.อภิชัย', 'วรรธนะพิศิษฐ์', '889a3b4d001df0de6d5fb29129628985', '1', 0, '', ''),
+('011345', 'พญ.กรภัทร์', 'ระลึกฤาเดช', '55f9fca2d7fa571758941b256a10f64e', '1', 0, '', ''),
+('010741', 'ปิยภัทร', 'บุญสำเร็จ', '6628e16fc19f6a04f38112b559ec465e', '1', 0, '', ''),
+('001741', 'ศรีจันทร์', 'กัณหาสาลี', 'd69cea3448d492b8509570c902281040', '1', 0, '', ''),
+('004076', 'พรพิมล', 'โอเจริญ', 'b3a18bddaecf3c4c8bc1bf8f78f17b97', '1', 0, '', ''),
+('002925', 'ประภัสสร', 'จันทร์พรมมา', '5c30337a406293d72a2b928bbe706c4b', '1', 0, '', ''),
+('005601', 'นิสิต', 'เที่ยงสมพงษ์', '9cbbf43eb99b55304e3dab06f0a84e02', '1', 0, '', ''),
+('007264', 'กฤษณา', 'กิตติชัย', '76abe5bbd1f8f6e478148f61fe9933e9', '1', 0, '', ''),
+('062426', 'ชนกานต์', 'รุ่งเจริญพร', '827ccb0eea8a706c4c34a16891f84e7b', '0', 1, 'สมุทรปราการ', 'user.png'),
+('086071', 'ศรีสมร', 'อมรภัย', '81dc9bdb52d04dc20036dbd8313ed055', '2', 0, '', '');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `calendar_info`
+--
+ALTER TABLE `calendar_info`
+  ADD PRIMARY KEY (`Id_app`),
+  ADD UNIQUE KEY `Id_app` (`Id_app`),
+  ADD KEY `patient_doctor_owner` (`patient_doctor_owner`),
+  ADD KEY `patient_doctor_owner_2` (`patient_doctor_owner`);
+
+--
+-- Indexes for table `calendar_members_status`
+--
+ALTER TABLE `calendar_members_status`
+  ADD PRIMARY KEY (`Id_app`,`Id_members`),
+  ADD KEY `Id_app` (`Id_app`);
 
 --
 -- Indexes for table `healthinsure`
@@ -40314,10 +40461,22 @@ ALTER TABLE `patientinfo`
   ADD PRIMARY KEY (`patient_hn`);
 
 --
--- Indexes for table `p_name`
+-- Indexes for table `pname`
 --
-ALTER TABLE `p_name`
+ALTER TABLE `pname`
   ADD PRIMARY KEY (`pname_id`);
+
+--
+-- Indexes for table `summary`
+--
+ALTER TABLE `summary`
+  ADD UNIQUE KEY `calendar_id` (`calendar_id`);
+
+--
+-- Indexes for table `tbmeaning`
+--
+ALTER TABLE `tbmeaning`
+  ADD PRIMARY KEY (`id`,`name`);
 
 --
 -- Indexes for table `tbuser`
@@ -40326,6 +40485,15 @@ ALTER TABLE `tbuser`
   ADD PRIMARY KEY (`user`),
   ADD UNIQUE KEY `user` (`user`);
 
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `calendar_info`
+--
+ALTER TABLE `calendar_info`
+  MODIFY `Id_app` int(14) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

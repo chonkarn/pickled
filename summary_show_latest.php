@@ -22,7 +22,7 @@
     $patientQuery = mysql_db_query($dbname, $patientSQL) or die (mysql_error());
     $patientData = mysql_fetch_array($patientQuery);
     
-    $patient_name = $patientData["patient_pname"]." ".$patientData["patient_fname"]." ".$patientData["patient_lname"];
+    $patient_name = $patientData["patient_p_name"]." ".$patientData["patient_name"]." ".$patientData["patient_surname"];
     
     #tbuser
     $doctor_owner_id = $calendarData['patient_doctor_owner'];

@@ -42,7 +42,6 @@
                                     <div class="uk-margin-bottom"> <small class="uk-text-muted">อายุ</small>
                                         <br>
                                         <?php echo $age_year." ปี ".$age_month." เดือน ".$age_day." วัน" ?>
-                                        <!-- 60 ปี 1 เดือน 2 วัน-->
                                     </div>
                                     <small class="uk-text-muted">เพศ</small>
                                     <br>
@@ -55,6 +54,8 @@
                                     </div>
                                     <small class="uk-text-muted">ประเภทการเยี่ยมบ้าน</small>
                                     <br>
+                                    <?php echo $patient_visit_type ?>
+<!--
                                     <label>
                                     <input class="uk-radio" type="radio" name="visit-category" checked> Home visit case
                                 </label>
@@ -66,6 +67,7 @@
                                     <label class="uk-text-muted">
                                     <input class="uk-radio" type="radio" name="visit-category" disabled> Palliative case
                                 </label>
+-->
                                 </div>
                                 <div class="uk-width-1-6@m">
                                     <div class="uk-margin-bottom">
@@ -91,7 +93,7 @@
                                   เยี่ยมบ้านครั้งต่อไป
                                     </small>
                                         <br>
-                                        <?php echo $next_visit ?>
+                                        <?php if( $next_visit == NULL){ echo "-"; }else {echo $next_visit; }  ?>
                                         <!--4/7/2559 <small>(เช้า)</small>-->
                                     </div>
                                 </div>
@@ -108,7 +110,7 @@
                                     <a href="#summary-panel" class="mdl-tabs__tab ">สรุปเยี่ยมบ้าน</a>
                                 </div>
                                 <!--/.mdl-tabs__tab-bar-->
-                                <div class="mdl-tabs__panel is-active" id="summary-panel">
+                                <div class="mdl-tabs__panel" id="summary-panel">
                                     <div class="uk-margin uk-margin-top">
                                         <div class="uk-text-left uk-float-left uk-width-1-2 ui small form">
                                             <div id="multi-summary" class="ui compact selection dropdown">
@@ -135,7 +137,7 @@
                                             </div>
                                         </div>
                                         <div class="uk-text-right">
-                                            <a href="summary_print.php" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์สรุปเยี่ยมบ้านนี้" uk-tooltip>
+                                            <a href="summary_print.php?hn=" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์สรุปเยี่ยมบ้านนี้" uk-tooltip>
                                                 <i class="material-icons">print</i>
                                             </a>
                                             <a href="summary_form.php" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขสรุปเยี่ยมบ้านนี้" uk-tooltip>
@@ -145,17 +147,17 @@
                                     </div>
                                     <div class="uk-margin-medium-top">
                                         <?php
-                                        include 'summary_view.php'; 
+                                        include 'summary_viewall.php'; 
                                     ?>
                                     </div>
                                 </div>
                                 <!--/#summary-panel-->
-                                <div class="mdl-tabs__panel" id="profile-panel">
+                                <div class="mdl-tabs__panel is-active" id="profile-panel">
                                     <div class="uk-float-right">
-                                        <a href="patient_print.php" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์ข้อมูลผู้ป่วย" uk-tooltip>
+                                        <a href="<?php echo "patient_print.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์ข้อมูลผู้ป่วย" uk-tooltip>
                                             <i class="material-icons">print</i>
                                         </a>
-                                        <a href="patient_form.php" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขข้อมูลผู้ป่วย" uk-tooltip>
+                                        <a href="<?php echo "patient_form.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขข้อมูลผู้ป่วย" uk-tooltip>
                                             <i class="material-icons">edit</i>
                                         </a>
                                     </div>

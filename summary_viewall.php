@@ -1,47 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<?php 
-    session_start();
-	if($_SESSION['id'] == "") {
-		header( "location:login.php");
-		exit();
-	}
-    include 'dbname.php';
-    mysql_connect($servername, $username, $password) or die(mysql_error());
-    mysql_select_db($dbname) or die(mysql_error());
-    mysql_query("set character set utf8"); 
-    
-    $patient_hn = $_GET['hn'];
-    $calendar_id = $_GET['calendar_id'];
-    
-    include "summary_show.php";
-?>
-
-<head>
-    <?php 
-        include "head.html";
-    ?>
-    <link rel="stylesheet" href="css/stepper.css">
-</head>
-
-<body>
-    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-
-        <?php include "header.html"?>
-
-        <main class="mdl-layout__content mdl-color--grey-100">
-            <div class="mdl-grid demo-content">
-
-                <!--breadcrumb-->
-                <ul class="uk-breadcrumb breadcrumb">
-                    <li><a href="summary.php" class="uk-button-text"><i class="material-icons breadcrumb-icons">folder_shared</i> สรุปเยี่ยมบ้าน</a></li>
-                    <li>ดูสรุปเยี่ยมบ้าน</li>
-                </ul>
-
-                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-                    <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col mdl-color-text--black">
-                    <dl class="dl-horizontal">
+<dl class="dl-horizontal">
+    <?php echo $calendar_id ?>
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
     
     <dt>ชื่อผู้ป่วย</dt>
@@ -56,7 +14,7 @@
 
     <dt>แพทย์เจ้าของไข้</dt>
     <dd>
-        <?php echo $doctor_owner ?>
+        <?php echo $doctor_owner ?><br>
     </dd>
 
     <dt>ทีมแพทย์เยี่ยมบ้าน</dt>
@@ -68,13 +26,13 @@
     </dd>
 
     <dt>วันที่ไปเยี่ยม</dt>
-    <dd><?php echo $date_visit ?></dd>
+    <dd><?php echo $date_visit ?></dd><br>
 
     <dt>เวลาที่ไปเยี่ยม</dt>
-    <dd><?php echo $time_visit ?></dd>
+    <dd><?php echo $time_visit ?></dd><br>
 
     <dt>เยี่ยมบ้านครั้งที่</dt>
-    <dd><?php echo $num_visit ?></dd>
+    <dd><?php echo $num_visit ?></dd><br>
 
     <dt>เหตุผลการเยี่ยมบ้าน</dt>
     <dd>
@@ -130,7 +88,7 @@
     </dd>
 
     <dt>Place at risk</dt>
-    <dd><?php echo $home_place ?></dd>
+    <dd><?php echo $home_place ?></dd><br>
 
     <h5 class="uk-heading-bullet">Social support</h5>
     <dt>Caregiver burden</dt>
@@ -140,11 +98,11 @@
     </dd>
 
     <dt>Main caregiver</dt>
-    <dd><?php echo $main_caregiver ?></dd>
+    <dd><?php echo $main_caregiver ?><br></dd>
 
     <dt>สิทธิ์การรักษา</dt>
     <dd>
-        <?php echo $healthinsure ?>
+        <?php echo $healthinsure ?><br>
     </dd>
 
     <h5 class="uk-heading-bullet">Medication</h5>
@@ -265,49 +223,49 @@
     <h5 class="uk-heading-bullet">Score assessment</h5>
 
     <dt>PPS</dt>
-    <dd><?php echo $pps ?></dd>
+    <dd><?php echo $pps ?><br></dd>
 
     <dt>Geriatric depression scale</dt>
-    <dd><?php echo $gds ?></dd>
+    <dd><?php echo $gds ?><br></dd>
 
     <h5 class="uk-heading-bullet">Mini mental state examination</h5>
 
     <dt>Orientation to time</dt>
-    <dd><?php echo $mini_time ?></dd>
+    <dd><?php echo $mini_time ?><br></dd>
 
     <dt>Orientation to place</dt>
-    <dd><?php echo $mini_place ?></dd>
+    <dd><?php echo $mini_place ?><br></dd>
 
     <dt>Registration</dt>
-    <dd><?php echo $mini_reg ?></dd>
+    <dd><?php echo $mini_reg ?><br></dd>
 
     <dt>Attention / Calculation</dt>
-    <dd><?php echo $mini_cal ?></dd>
+    <dd><?php echo $mini_cal ?><br></dd>
 
     <dt>Recall</dt>
-    <dd><?php echo $mini_recall ?></dd>
+    <dd><?php echo $mini_recall ?><br></dd>
 
     <dt>Naming</dt>
-    <dd><?php echo $mini_naming ?></dd>
+    <dd><?php echo $mini_naming ?><br></dd>
 
     <dt>Repetition</dt>
-    <dd><?php echo $mini_repetition ?></dd>
+    <dd><?php echo $mini_repetition ?><br></dd>
 
     <dt>Verbal command</dt>
-    <dd><?php echo $mini_verbal ?></dd>
+    <dd><?php echo $mini_verbal ?><br></dd>
 
     <dt>Written command</dt>
-    <dd><?php echo $mini_written ?></dd>
+    <dd><?php echo $mini_written ?><br></dd>
 
     <dt>Writing</dt>
-    <dd><?php echo $mini_writing ?></dd>
+    <dd><?php echo $mini_writing ?><br></dd>
 
     <dt>Visuoconstruction</dt>
-    <dd><?php echo $mini_vis ?></dd>
+    <dd><?php echo $mini_vis ?><br></dd>
 
     <dt>Psychological<br>and Social peroblem</dt>
     <dd><br>
-        <?php echo $summary_plan ?><br>
+        <?php echo $summary_plan ?><br><br>
     </dd>
 
     <dt>Other problem</dt>
@@ -357,17 +315,3 @@
         <span class="text-green">วันที่ 31 พฤษภาคม 2560</span>
     </dd>
 </dl>
-
-                </div>
-                </div></div>
-            <!--/.demo-content-->
-        </main>
-    </div>
-
-    <!--custom js-->
-    <script src="js/select.js"></script>
-    <script src="js/stepper.js"></script>
-
-</body>
-
-</html>

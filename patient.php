@@ -72,11 +72,9 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                            $results = mysql_query("
-                                                SELECT * FROM patientinfo 
+                                            $results = mysql_query("SELECT * FROM patientinfo 
                                                 WHERE patient_doctor_owner = '$user' 
-                                                AND (patient_visit_status = 1 OR patient_visit_status = 2) 
-                                            ");
+                                                AND (patient_visit_status = 1 OR patient_visit_status = 2)");
                                             
                                                 while($row = mysql_fetch_array($results)) {
                                                     if ($row['patient_visit_status'] == 1)
@@ -91,7 +89,7 @@
                                                         <td>
                                                             <span class="th-label">ชื่อ-นามสกุล: </span>
                                                             <a href="<?php echo " patient_profile.php?hn=".$row['patient_hn'] ?>">
-                                                                <?php echo $row['patient_pname']." ".$row['patient_fname']." ".$row['patient_lname']?>
+                                                                <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                             </a>
                                                         </td>
                                                         <td>
@@ -150,7 +148,7 @@
                                                     <td>
                                                         <span class="th-label">ชื่อ-นามสกุล: </span>
                                                         <a href="<?php echo " patient_profile.php?hn=".$row['patient_hn']; ?>">
-                                                            <?php echo $row['patient_pname']." ".$row['patient_fname']." ".$row['patient_lname']?>
+                                                            <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                         </a>
                                                     </td>
                                                     <td>

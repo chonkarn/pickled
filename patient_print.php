@@ -7,6 +7,8 @@
 		header( "location:login.php");
 		exit();
 	}
+    
+    $patient_hn = $_GET['hn'];
 ?>
 
     <head>

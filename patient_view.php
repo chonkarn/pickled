@@ -9,7 +9,7 @@
     <dd><?php echo $patient_visit_type ?></dd>
 
     <dt>แพทย์เจ้าของไข้</dt>
-    <dd><?php echo $doctor_owner ?></dd>
+    <dd><?php echo $doctor_owner ?><br></dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
 
@@ -56,39 +56,42 @@
     <dd><i class="material-icons">phone</i> <?php echo $patient_tel_work ?></dd>
     
     <dt>สถานภาพ</dt>
-    <dd><?php echo $patient_status ?></dd>
+    <dd><?php echo $patient_status ?><br></dd>
 
     <dt>ศาสนา</dt>
-    <dd><?php echo $patient_religion ?></dd>
+    <dd><?php echo $patient_religion ?><br></dd>
 
     <dt>ระดับการศึกษา</dt>
-    <dd><?php echo $patient_education ?></dd>
+    <dd><?php echo $patient_education ?><br></dd>
 
     <dt>อาชีพ</dt>
-    <dd><?php echo $patient_occupation ?></dd>
+    <dd><?php echo $patient_occupation ?><br></dd>
 
     <dt>สิทธิการรักษา</dt>
-    <dd><?php echo $healthinsure ?></dd>
+    <dd><?php echo $healthinsure ?><br></dd>
 
-    <hr>
 
     <dt>ข้อมูลญาติที่ติดต่อได้</dt>
     <dd>
-        <b>ญาติคนที่ 1:</b>
-        <br> ชื่อ-นามสกุล: <?php echo $relate_name ?> เกี่ยวข้องเป็น <?php echo $ralete_def ?>
-        <br> เบอร์ติดต่อ: <i class="material-icons">phone</i> <?php echo $relate_tel ?>
+<!--        <b>ญาติคนที่ 1:</b><br> -->
+        <label class="uk-margin-right"><b>ชื่อ-นามสกุล </b><?php echo $relate_name ?> </label>
+        
+        <label class="uk-margin-right"><b>เกี่ยวข้องเป็น </b><?php echo $relate_def ?></label>
+        
+        
+         <label class="uk-margin-right"><i class="material-icons">phone</i><b>เบอร์โทรศัพท์ </b> <?php echo $relate_tel ?></label>
+<!--
         <hr>
         <b>ญาติคนที่ 2:</b>
         <br> ชื่อ-นามสกุล: นาง ปราณี เกียรติขจร เกี่ยวข้องเป็น น้องสาว
         <br> เบอร์ติดต่อ: <i class="fa fa-phone"></i> 094 456 1234
+-->
     </dd>
 
-    <hr>
 
     <dt>แผนผังครอบครัว</dt>
     <dd><img src="img/familytree.jpg" style="border: 1px solid #ccc;" width=""></dd>
 
-    <hr>
 
     <h4 class="uk-heading-divider">ส่วนที่ 2 ข้อมูลสุขภาพ</h4>
     <h5 class="uk-heading-bullet">ประวัติการรักษา</h5>

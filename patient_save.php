@@ -89,9 +89,9 @@
      $conn = new mysqli($servername, $username, $password, $dbname);
     
      $sumSQL = "UPDATE patientinfo SET patient_id = '$patient_id',
-        patient_pname='$pname',
-        patient_fname='$fname',
-        patient_lname='$lname',
+        patient_p_name='$pname',
+        patient_name='$fname',
+        patient_surname='$lname',
         patient_gender='$gender',
         patient_bday= '$bday',
         patient_bmonth = '$bmonth',

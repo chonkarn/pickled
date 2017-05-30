@@ -22,9 +22,9 @@ $patient_visit_status = $row['patient_visit_status'];
 $patient_visit_type = $row['patient_visit_type'];
 
 # Patient name
-$patient_pname = $row['patient_pname'];
-$patient_fname = $row['patient_fname'];
-$patient_lname = $row['patient_lname'];
+$patient_pname = $row['patient_p_name'];
+$patient_fname = $row['patient_name'];
+$patient_lname = $row['patient_surname'];
 $patient_name = $patient_pname." ".$patient_fname." ".$patient_lname;
 
 $patient_id = $row['patient_id'];
@@ -116,13 +116,17 @@ $last_visit_date = $row['last_visit_date'];
 $last_visit = date("d/m/Y", strtotime($last_visit_date));
 
 $next_visit_date = $row['next_visit_date'];
-$next_visit = date("d/m/Y", strtotime($next_visit_date));
+if($next_visit_date == NULL){
+    $next_visit = "-";
+}else {
+    $next_visit = date("d/m/Y", strtotime($next_visit_date));
+}
 
 # relating person
 $relate_name = $row['relate_name'];
 $relate_tel = $row['relate_tel'];
 $relate_def = $row['relate_def'];
 
-include 'meaning.php';
+include 'meaning_patient.php';
 
 ?>

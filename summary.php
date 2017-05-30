@@ -85,7 +85,7 @@
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
                                                     <a href="<?php echo "summary_view.php?hn=".$row['patient_hn']."&calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green">
-                                                        <?php echo $row['patient_pname']." ".$row['patient_fname']." ".$row['patient_lname']?>
+                                                        <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                     </a>
                                                 </td>
                                                 <td>
@@ -145,7 +145,7 @@
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
                                                     <a href="<?php echo " summary_form.php?hn=".$row['patient_hn']." &calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green">
-                                                        <?php echo $row['patient_pname']." ".$row['patient_fname']." ".$row['patient_lname']?>
+                                                        <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                     </a>
                                                 </td>
 
@@ -163,7 +163,7 @@
                                                     <?php echo $row['summary_edit_status']?>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo " summary_form.php?hn=".$row['patient_hn']." &calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    <a href="<?php echo "summary_form.php?hn=".$row['patient_hn']." &calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>

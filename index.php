@@ -79,7 +79,7 @@
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
                                                     <a href="<?php echo "patient_profile.php?hn=".$row['patient_hn']; ?>">
-                                                        <?php echo $row['patient_pname']." ".$row['patient_fname']." ".$row['patient_lname']?>
+                                                        <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                     </a>
                                                 </td>
                                                 <td>
@@ -116,21 +116,16 @@
                                     <h4>นัดหมายเยี่ยมบ้านสัปดาห์นี้</h4>
                                     <h5 class="uk-heading-bullet uk-margin-small">วันนี้</h5>
                                     <ul class="uk-list uk-list-divider">
-                                        <li>List item 1</li>
-                                        <li>List item 2</li>
-                                        <li>List item 3</li>
+                                        <li>ไม่มีนัดหมาย</li>
                                     </ul>
                                     <h5 class="uk-heading-bullet uk-margin-small">พรุ่งนี้</h5>
                                     <ul class="uk-list uk-list-divider">
-                                        <li>List item 1</li>
-                                        <li>List item 2</li>
-                                        <li>List item 3</li>
+                                        <li>ภาคเช้า นาง พรพิมล วงศ์ศรัทธา</li>
+                                        <li>ภาคเช้า นาย เหมันต์ ธนไพบูรณ์</li>
                                     </ul>
                                     <h5 class="uk-heading-bullet uk-margin-small">สัปดาห์นี้</h5>
                                     <ul class="uk-list uk-list-divider">
-                                        <li>List item 1</li>
-                                        <li>List item 2</li>
-                                        <li>List item 3</li>
+                                        <li>ไม่มีนัดหมาย</li>
                                     </ul>
                                 </div>
                             </div>
@@ -167,7 +162,7 @@
                                                 <td>
                                                     <span class="th-label">ชื่อ-นามสกุล: </span>
                                                     <a href="#">
-                                                        <?php echo $row['patient_pname']." ".$row['patient_fname']." ".$row['patient_lname']?>
+                                                        <?php echo $row['patient_p_name']." ".$row['patient_name']." ".$row['patient_surname']?>
                                                     </a>
                                                 </td>
                                                 <td>
