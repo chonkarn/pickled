@@ -1,0 +1,17 @@
+<?php include'calendar_more_appointment_modal.php';?>
+<a href="#<?php echo $tagformodal;?>" uk-toggle>
+<div class="uk-grid-small uk-flex-middle pm-past" uk-grid>
+                <div class="uk-width-auto"> <span uk-icon="icon: check"></span> </div>
+                <div class="uk-width-expand"> <b><?php echo $fetchquery_patient['patient_p_name'].$fetchquery_patient['patient_name']." ".$fetchquery_patient['patient_surname'];
+                 ;?><small><?php echo $newrow['patient_hn'];?></small></b>
+                    <p class="uk-text-meta uk-margin-remove-top">
+<!--                        echo $get_med_final['f_user']." ".$get_med_final['l_user']."(".$get_med_final['user'].")";-->
+                        <?php echo $get_med_final['f_user']." ".$get_med_final['l_user'];?>
+                 <small>
+                     <?php "(".$get_med_final['user'].")";?>
+                        </small> </p>
+                </div>
+                <div class="uk-float-right"> 13.00 - 16.00 น (บ่าย) </div>
+            </div>
+</a>
+

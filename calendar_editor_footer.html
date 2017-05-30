@@ -1,0 +1,36 @@
+<div class="uk-modal-footer">
+    <div class="uk-align-left uk-margin-remove-vertical">
+        <?php $del = $row['Id_app'];$tagforhref = $del;$tagforhrefsharp = "#".$del;?>
+        <a href="<?php echo $tagforhrefsharp;?>" uk-icon="icon: trash" title="ลบนัดหมายผิดพลาด" uk-tooltip="pos: right" uk-toggle></a>
+        <div id="<?php echo $tagforhref;?>" uk-modal="center: true">
+            <div class="uk-modal-dialog">
+                <button class="uk-modal-close-default" type="button" uk-close></button>
+<!--                <form method="post" action="calendar_editor_footer_del.php">-->
+                <?php 
+                $linktodel = "calendar_editor_footer_del.php?id_app=".$del;
+                    ?>
+                <div class=" uk-modal-body">
+                    <h5>ต้องการลบนัดหมายวันที่ <?php echo $datechecklink;?>
+                                                                        <b><?php echo $print['patient_p_name'].$print['patient_name']." ".$print['patient_surname'];?> <small>(<?php echo $hn;?>)</small></b></h5>
+<!--                     เพราะ-->
+<!--                        <input class="uk-input uk-form-small uk-form-width-medium" placeholder="เหตุผล..."> -->
+                </div>
+                <div class="uk-modal-footer ">
+                    <div class="uk-align-right"> <a class="uk-button uk-button-default uk-button-small">ยกเลิก</a> <a class="uk-button uk-button-default uk-button-small button-green" href="<?php echo $linktodel;?>">ลบ</a> </div>
+                </div>
+<!--                </form>    -->
+                <!--/.uk-modal-body-->
+                
+                
+                
+                
+                <!--/.uk-modal-footer-->
+            </div>
+            <!--/.uk-modal-dialog-->
+        </div>
+    </div>
+    <?php 
+    $linktoedit = "calendar_edit.php?id_app=".$del;
+    ?>
+    <div class="uk-align-right uk-margin-remove-vertical"> <a class="uk-button uk-button-default uk-button-small button-green" uk- type="button" href="<?php echo $linktoedit;?>">แก้ไข</a> </div>
+</div>

@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 <?php
+    
+    if (isset($_GET['Message'])) {
+//    include 'calendar_to_sum_yn.html';
+        $sum_id = $_GET["sum_id"];
+        $sum_hn = $_GET["sum_hn"];
+    include 'calendar_to_sum.php';
+}
     // create calendar
     include 'create_calen.php';
     
@@ -10,11 +17,14 @@
 	session_start();
 	if($_SESSION['id'] == "")
 	{
+//        $previous = "calendar.php";
+//		header( "location:login.php?goback=".$previous);
 		header( "location:login.php");
 		exit();
 	}
     mysql_connect("localhost", "hvmsdb","1234") or die(mysql_error());
     mysql_select_db("homevisit") or die(mysql_error());
+    
 ?>
 
 <head>
@@ -36,7 +46,6 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/calendar.css">
-    
     
 </head>
 
@@ -101,7 +110,12 @@
                         <div class="mdl-card__menu">
                             <ul class="uk-iconnav">
                                 <li>
-                                    <a href="calendar_notify.php" class=" mdl-badge mdl-badge--overlap" data-badge="2" title="แจ้งเตือน" uk-tooltip>
+                                    <?php 
+                                    $noti = "SELECT Count(members_status) AS notify FROM calendar_members_status WHERE Id_members=".$_SESSION['id']." AND members_status=0";
+                                    $noti_q = mysql_query($noti) or die(mysql_error()."[".$query."]");
+                                    $noti_fetch = mysql_fetch_assoc($noti_q);
+                                    ?>
+                                    <a href="calendar_notify.php" class=" mdl-badge mdl-badge--overlap" data-badge="<?php echo $noti_fetch["notify"];?>" title="แจ้งเตือน" uk-tooltip>
                                         <i class="material-icons">notifications</i>
                                     </a>
                                 </li>
@@ -195,27 +209,7 @@
                                                 </div>
                                             </div>
                                         </li>
-                                        <!--
-                                        <li class="uk-open">
-                                            <h3 class="uk-accordion-title">7 มีนาคม 2560</h3>
-                                            <div class="uk-accordion-content">
-                                                <div class="uk-grid-small uk-flex-middle pm-past" uk-grid>
-                                                    <div class="uk-width-auto">
-                                                        <span uk-icon="icon: check"></span>
-                                                    </div>
-                                                    <div class="uk-width-expand">
-                                                        <b>นาย ชูชาติ มณีโชติ <small>(7463256)</small></b>
-                                                        <p class="uk-text-meta uk-margin-remove-top">
-                                                            นพ.อภิชัย วรรธนะพิศิษฐ์ <small>(011115)</small>
-                                                        </p>
-                                                    </div>
-                                                    <div class="uk-float-right">
-                                                        13.00 - 16.00 น (บ่าย)
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
--->
+                                       
                                         <li class="uk-open">
                                             <h3 class="uk-accordion-title uk-heading-bullet">วันศุกร์ที่ 24 มีนาคม</h3>
                                             <div class="uk-accordion-content">
@@ -233,64 +227,6 @@
                                                         13.00 - 16.00 น (บ่าย)
                                                     </div>
                                                 </div>
-                                                <!--
-                                                <div class="uk-grid-small uk-flex-middle am-past" uk-grid>
-                                                    <div class="uk-width-auto">
-                                                        <span uk-icon="icon: check"></span>
-                                                    </div>
-                                                    <div class="uk-width-expand">
-                                                        <b>นาง เพียรจิต จงใจรักษ์ <small>(6213261)</small></b>
-                                                        <p class="uk-text-meta uk-margin-remove-top">
-                                                            นพ.ประสงค์ ทรงธรรม <small>(0113650)</small>
-                                                        </p>
-                                                    </div>
-                                                    <div class="uk-float-right">
-                                                        9:00 - 12.00 น (เช้า)
-                                                    </div>
-                                                </div>
-                                                <div class="uk-grid-small uk-flex-middle am-past" uk-grid>
-                                                    <div class="uk-width-auto">
-                                                        <span uk-icon="icon: check"></span>
-                                                    </div>
-                                                    <div class="uk-width-expand">
-                                                        <b>นาง รุ่งทิพย์ ก่อเกียรติ <small>(5965485)</small></b>
-                                                        <p class="uk-text-meta uk-margin-remove-top">
-                                                            พญ.ปุณพรรณ กมลมุนีโชติ <small>(013829)</small>
-                                                        </p>
-                                                    </div>
-                                                    <div class="uk-float-right">
-                                                        9:00 - 12.00 น (เช้า)
-                                                    </div>
-                                                </div>
-                                                <div class="uk-grid-small uk-flex-middle pm-past" uk-grid>
-                                                    <div class="uk-width-auto">
-                                                        <span uk-icon="icon: check"></span>
-                                                    </div>
-                                                    <div class="uk-width-expand">
-                                                        <b>นาง มาลิณี เขียนทอง<small>(6543215)</small></b>
-                                                        <p class="uk-text-meta uk-margin-remove-top">
-                                                            พญ.ปุณพรรณ กมลมุนีโชติ <small>(013829)</small>
-                                                        </p>
-                                                    </div>
-                                                    <div class="uk-float-right">
-                                                        13.00 - 16.00 น (บ่าย)
-                                                    </div>
-                                                </div>
-                                                <div class="uk-grid-small uk-flex-middle pm-past" uk-grid>
-                                                    <div class="uk-width-auto">
-                                                        <span uk-icon="icon: check"></span>
-                                                    </div>
-                                                    <div class="uk-width-expand">
-                                                        <b>นาย ชัชชัย สมรภูมิ <small>(6932651)</small></b>
-                                                        <p class="uk-text-meta uk-margin-remove-top">
-                                                            นพ.ประพันธ์ ประสิทธิกุล <small>(013626)</small>
-                                                        </p>
-                                                    </div>
-                                                    <div class="uk-float-right">
-                                                        13.00 - 16.00 น (บ่าย)
-                                                    </div>
-                                                </div>
--->
                                             </div>
                                             <!--/.uk-accordion-content-->
                                         </li>
@@ -306,10 +242,29 @@
                         </div>
                         <!--/.uk-modal-->
                         
+<!--
+                        <script type="text/javascript">
+	function SetHTML3(check,type) {
+		if(check==true) document.getElementById(type).style.display = "";
+		else            document.getElementById(type).style.display = "none";
+	}
+</script>
+
+<input type="checkbox" CHECKED onClick="SetHTML3(this.checked,'a3')">
+<input type="checkbox" onClick="SetHTML3(this.checked,'b3')">
+<input type="checkbox" onClick="SetHTML3(this.checked,'c3')">
+
+<span id='a3'> <b> Anything can go here </b></span>
+<span id='b3' style="display:none"> <b> ...like an image... <img src="http://www.skytopia.com/ar.png"> </b></span>
+<span id="c3" style="display:none"> <b> ...<a href="http://www.skytopia.com">or a link</a> </b></span>
+-->
                         
-                        
-                            <?php include'calendar_month.html'; ?>
-                        
+                            <?php 
+                            include'calendar_month.php'; 
+                            $calendar = new Calendar();
+                            echo $calendar->show();
+                             $calendar->month();
+                            ?>
                     </div>
                 </div>
                 <!--/.mdl-card-->

@@ -74,9 +74,10 @@ mysql_select_db("homevisit") or die(mysql_error());
                                 <label class="uk-form-label" for="form-horizontal-text">ชื่อผู้ป่วย</label>
                                 <div class="uk-form-controls">
                                    <?php
-                                        
-
-                                        $query = "SELECT patient_hn,patient_p_name,patient_name,patient_surname FROM patientinfo ORDER BY patient_hn DESC";
+                                        $med = $_SESSION['id'];
+                                        $position = $_SESSION["position"];
+                                        if ($position == 2) $query = "SELECT patient_hn,patient_p_name,patient_name,patient_surname FROM patientinfo ORDER BY patient_hn DESC ";
+                                        else $query = "SELECT patient_hn,patient_p_name,patient_name,patient_surname FROM patientinfo WHERE patient_doctor_owner=$med ORDER BY patient_hn DESC ";
                                         $result = mysql_query($query) or die(mysql_error()."[".$query."]");
                                         ?>
 
@@ -88,19 +89,13 @@ mysql_select_db("homevisit") or die(mysql_error());
                                         }
                                     ?>        
                                         </select>
-                                
-<!--
-                                    <a class=" uk-icon-button" href="calendar_add_patient.html">
-                                        <span uk-icon="icon: list; ratio: 1"></span>
-                                    </a>
--->
                                 </div>
                             </div>
 
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-select">วันที่เยี่ยม</label>
                                 <div class="uk-form-controls">
-                                    <input class="uk-input uk-width-medium" type="date" name="datepicker" value="<?php echo $_GET['date'];?>"> 
+                                    <input class="uk-input uk-width-medium" type="date" name="datepicker" value="<?php echo $_GET['date'];?>">
                                 </div>
                             </div>
 
@@ -130,15 +125,9 @@ mysql_select_db("homevisit") or die(mysql_error());
                                         }
                                     ?>        
                                         </select>
-<!--
-                                    <a class=" uk-icon-button" href="calendar_add_doctor.html">
-                                        <span uk-icon="icon: list; ratio: 1"></span>
-                                    </a>
--->
                                 </div>
                             </div>
                             <div class="uk-text-right">
-<!--                                <a class="uk-button uk-button-default button-green">บันทึก</a>-->
                                 <button>บันทึก </button>
                             </div>
                         </form>

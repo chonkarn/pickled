@@ -6,10 +6,10 @@ if(isset($_GET['visit-time'])){
         $time = $_GET['visit-time'];
            }
 $id = $_SESSION['id'];
-echo $id;
 $copied = array();
 $copied = $_GET['doctor'];
-
+$id_app = $_GET['id_app'];
+//echo $id_app;
 //foreach ($copied as $selectedOption)
 //    echo $selectedOption."\n";
 $getpre = explode("-",$dmy);
@@ -27,7 +27,6 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-
 // transaction management
 //turn autocommit off
 mysqli_autocommit($link, false);
@@ -38,10 +37,10 @@ mysqli_query($link,"SET NAMES UTF8");
 mysqli_query($link,"SET character_set_results=utf8");
 mysqli_query($link,"SET character_set_client=utf8");
 mysqli_query($link,"SET character_set_connection=utf8");
-$add_app = "INSERT INTO calendar_info SET ";
-$add_app = $add_app."Id_own_calen ='$id',dmy='$dmy',time_calen='$time',patient_hn='$patient',patient_visit_status='$status',patient_visit_type='$type',patient_doctor_owner='$patient_doctor_owner',sum_chk=0";
+$add_app = "UPDATE calendar_info SET ";
+$add_app = $add_app."Id_own_calen ='$id',dmy='$dmy',time_calen='$time',patient_hn='$patient',patient_visit_status='$status',patient_visit_type='$type',patient_doctor_owner='$patient_doctor_owner',sum_chk=0 WHERE Id_app = '$id_app'";
 $result = mysqli_query($link, $add_app);
-$app_id = mysqli_insert_id($link); //get autoincrement
+//$app_id = mysqli_insert_id($link); //get autoincrement
 // queries errores
 if (!$result) {
 	$flag = false;
@@ -55,12 +54,13 @@ if ($flag) {
 	mysqli_rollback($link);
     echo "All queries were rolled back";
 } 
-mysqli_close($link);
-
+mysqli_autocommit($link, true);
 // send request to member
+$delAll = "DELETE FROM calendar_members_status WHERE Id_app=$id_app";
+mysqli_query($link,$delAll) or die(mysqli_error()."[".$delAll."]");
 $request="";
 foreach ($copied as $selectedOption){
-    $request = $request."INSERT INTO calendar_members_status (Id_app,Id_members) VALUES ('$app_id','$selectedOption');"; 
+    $request = $request."INSERT INTO calendar_members_status (Id_app,Id_members) VALUES ('$id_app','$selectedOption');"; 
 }
 $link = mysqli_connect("localhost", "hvmsdb", "1234", "homevisit");
     mysqli_query($link,"SET NAMES UTF8");
@@ -79,5 +79,6 @@ $link = mysqli_connect("localhost", "hvmsdb", "1234", "homevisit");
     } 
         
     
+mysqli_close($link);
 
 ?>

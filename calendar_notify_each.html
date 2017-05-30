@@ -1,0 +1,42 @@
+<li>
+    <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-auto"> <span uk-icon="icon: commenting"></span> </div>
+        <div class="uk-width-expand">
+            <?php 
+                                                                $day = explode("-",$row['dmy']);
+                                                                switch($day[1]){
+                                                                        case 01 : $thaimonth = "มกราคม"; break;    
+                                                                        case 02 : $thaimonth = "กุมภาพันธ์"; break;    
+                                                                        case 03 : $thaimonth = "มีนาคม"; break;    
+                                                                        case 04 : $thaimonth = "เมษายน"; break;    
+                                                                        case 05 : $thaimonth = "พฤษภาคม"; break;
+                                                                        case 06 : $thaimonth = "มิถุนายน"; break;
+                                                                        case 07 : $thaimonth = "กรกฎาคม"; break;
+                                                                        case 08 : $thaimonth = "สิงหาคม"; break;
+                                                                        case 09 : $thaimonth = "กันยายน"; break;
+                                                                        case 10 : $thaimonth = "ตุลาคม"; break;
+                                                                        case 11 : $thaimonth = "พฤศจิกายน"; break;
+                                                                        case 12 : $thaimonth = "ธันวาคม"; break;
+                                                                }
+                                                                $day[0] +=543;
+                                                                //patient management
+                                                                $select_patient_info = "SELECT patient_doctor_owner,patient_p_name,patient_name,patient_surname,patient_visit_status,patient_visit_type,patient_doctor_owner,problem FROM patientinfo WHERE patient_hn =".$row['patient_hn'];
+                                                                mysqli_query($link,"SET NAMES UTF8");
+                                                                mysqli_query($link,"SET character_set_results=utf8");
+                                                                mysqli_query($link,"SET character_set_client=utf8");
+                                                                mysqli_query($link,"SET character_set_connection=utf8");
+                                                                $query_patient = mysqli_query($link,$select_patient_info);
+                                                                $fetchquery_patient = mysqli_fetch_array($query_patient);
+                                                                
+                                                                ?>
+                <h5 class="uk-margin-remove-bottom">นัดหมายวันที่ <?php echo $day[2]." ".$thaimonth." ".$day[0];?> 
+                                                                    <b><?php echo $fetchquery_patient['patient_p_name'].$fetchquery_patient['patient_name']." ".$fetchquery_patient['patient_surname'];?> <small>(HN <?php echo $row['patient_hn'];?>)</small></b>
+                                                                </h5> </div>
+        <?php $tagformodal = "show-hn".$row['Id_app'];?>
+        <div class="uk-float-right"> <a href="#<?php echo $tagformodal;?>" class="uk-button uk-button-text" uk-toggle>รอการตอบรับ <span class="text-yellow">&#11044;</span></a> </div>
+    </div>
+</li>
+<?php include'calendar_more_appointment_modal.php';?>
+
+
+

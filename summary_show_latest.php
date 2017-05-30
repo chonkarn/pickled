@@ -1,9 +1,9 @@
 <?php
     $patient_hn = $_GET['hn'];
-    $mySQL = "SELECT * FROM calendar_info WHERE calendar_info.patient_hn LIKE '$patient_hn'";
+    $mySQL = "SELECT MAX(Id_app) AS x FROM calendar_info WHERE calendar_info.patient_hn LIKE '$patient_hn'";
     $myQuery = mysql_db_query($dbname, $mySQL) or die (mysql_error());
     $myrow = mysql_fetch_array($myQuery);
-    $calendar_id = $myrow['Id_app'];
+    $calendar_id = $myrow['x'];
 
     #calendar_info
     $calendarSQL = "SELECT * FROM calendar_info WHERE calendar_info.Id_app LIKE '$calendar_id'";
@@ -34,7 +34,7 @@
     $doctor_owner = $doctorData['f_user']." ".$doctorData['l_user'];
 
     #summary
-    $sumSQL = "SELECT * FROM summary WHERE patient_hn='$patient_hn' AND calendar_id='$calendar_id'";
+    $sumSQL = "SELECT * FROM summary WHERE patient_hn='$patient_hn' AND calendar_id='$calendar_id' ";
     $sumQuery = mysql_db_query($dbname, $sumSQL) or die (mysql_error());
     $sumData = mysql_fetch_array($sumQuery);
 
@@ -91,5 +91,7 @@ $summary_goal = $sumData['summary_goal'];
 $icd10_main = $sumData['icd10_main'];
 $icd10_problem = $sumData['icd10_problem'];
 $suggestion = $sumData['suggestion'];
+
+include "meaning.php";
 
 ?>

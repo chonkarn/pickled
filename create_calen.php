@@ -1,29 +1,10 @@
-<!DOCTYPE html>
-<html>
-<?php 
-    mysql_connect("localhost", "hvmsdb","1234") or die(mysql_error());
-    mysql_select_db("homevisit") or die(mysql_error());
-    ?>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
-    <!--mdl-->
-    <link rel="stylesheet" href="lib/mdl/material.min.css">
-    <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
-    <!--uikit-->
-    <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
-    <!--icon-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <!--custom css-->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/font.css">
-    <link rel="stylesheet" href="css/calendar.css"> </head>
 <?php
+
 function create_calen($monday){
     
     $val = $monday;
     $monday = $monday + 5;
+    // tag for string
     $same2 = "</li>";
     $pt2 = "id=";
     $col = "\"";
@@ -31,15 +12,28 @@ function create_calen($monday){
     $pt4 = "</div>";
     $first = "<ul class=\"day\">";
     $last = "</ul>";
+    // month
     $currentmonth = date("m");
+    $currentmonthNo = date("n");
+    //string format
     $checkapp = "2017-".$currentmonth."-";
-    $query = "SELECT * FROM calendar_info ";
+    //query
+    $select_calendarintfo = "SELECT * FROM calendar_info ";
     $link = mysqli_connect("localhost", "hvmsdb", "1234", "homevisit");
-    $r = mysqli_query($link, $query);
+    $query_calendarinfo = mysqli_query($link, $select_calendarintfo);
       
-    
+    // condition for day in month
+    $dayinmonth = 31;
+        if ($currentmonthNo == 1 || $currentmonthNo == 3 || $currentmonthNo == 5 || $currentmonthNo == 7 || $currentmonthNo == 8 || $currentmonthNo == 10 || $currentmonthNo == 12)
+            $dayinmonth = $dayinmonth;
+        else if ($currentmonthNo == 4 || $currentmonthNo == 6 || $currentmonthNo == 9 || $currentmonthNo == 11)
+            $dayinmonth = 30;
+        else {
+            if (date("L") == 1) $dayommonth = 29;
+            else $dayinmonth = 28;
+        }
      
-                while ($val < $monday && $val <32){
+                while ($val < $monday && $val <= $dayinmonth){
            
                 if ($val == date("d")) 
                     $pt = "<div class=\"date today\" name=";
@@ -48,26 +42,37 @@ function create_calen($monday){
             if ($val < 10) {$checkapp = "2017-".$currentmonth."-0";}    
             $d = "d"+$val;
             $checkapp = $checkapp.$val;
-//            $same = "<li class=\"day\" >";
-//            $same = $same.$checkapp."';\" >";
             $same = "<li id=\"test\" class=\"day\" onclick=\"location.href='calendar_add.php?date=";
             $same = $same.$checkapp."';\" >";
             
             
             echo $same;
             echo $pt.$col.$d.$col.$pt2.$col.$d.$col.$pt3.$val.$pt4;
-            
-                while ($row = mysqli_fetch_assoc($r))
+                    $twoline = 1;
+                while ($row = mysqli_fetch_assoc($query_calendarinfo) )
                 {
-//                    echo $checkapp." ".$row['dmy'];
-                    if ($checkapp === $row['dmy']){
+                    if ($twoline <3){
+                      if ($checkapp === $row['dmy']){
                         include 'date_event.html';
-
+                        $twoline++;
+                    }  
                     }
-                        
+                    
                 }
-                mysqli_data_seek($r, 0);
-      
+                    if ($twoline >= 3  ){
+                        echo $twoline;
+//                        $twoline = $twoline-2;
+                        include 'calendar_more_appointment.php';
+                        $tagforviewmore = "show-more".$row['Id_app'];
+                        $atagbegin = "<a href=\"#".$tagforviewmore."\" class=\"event-more\" uk-toggle><small>";
+                        $ataglast = "</small></a>";    
+                        echo $atagbegin."+".$twoline."นัดหมาย".$ataglast;  
+                        
+                    }
+                    
+                /* seek to row no. 0 */
+                mysqli_data_seek($query_calendarinfo, 0);
+                $twoline = 0;
                 
             echo $same2;
             $checkapp = "2017-".$currentmonth."-";
@@ -79,20 +84,4 @@ function create_calen($monday){
     
 }
 
-?>  
-
-    <body>
-        <!--jquery-->
-        <!--<script src="js/jquery-3.1.1.min.js"></script>-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <!--js mdl-->
-        <script src="lib/mdl/material.min.js"></script>
-        <script src="lib/mdl-stepper/stepper.min.js"></script>
-        <!--js uikit-->
-        <script src="lib/uikit/js/uikit.min.js"></script>
-        <script src="lib/uikit/js/uikit-icons.min.js"></script>
-        <!--custom js-->
-        <script src="js/stepper-nonlinear.js"></script>
-    </body>
-
-</html>
+?>
