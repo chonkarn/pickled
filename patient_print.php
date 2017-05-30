@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <?php
-	session_start();
-	if($_SESSION['id'] == "")
-	{
-		header( "location:login.php");
-		exit();
-	}
+//	session_start();
+//	if($_SESSION['id'] == "")
+//	{
+//		header( "location:login.php");
+//		exit();
+//	}
     
     $patient_hn = $_GET['hn'];
+    
+    include "patient_show.php";
 ?>
 
     <head>
