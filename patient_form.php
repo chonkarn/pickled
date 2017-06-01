@@ -38,20 +38,20 @@
                             </ul>
                             <ul class="uk-switcher">
                                 <li>
-                                    <?php include 'patient_step1.php' ?>
+                                    <?php include 'patient_form_step1.php' ?>
                                     <div class="uk-align-right">
                                         <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next" id="next-btn1">ถัดไป <span uk-icon="chevron-right"></span></a>
                                     </div>
                                 </li>
                                 <li>
-                                    <?php include 'patient_step2.php' ?>
+                                    <?php include 'patient__form_step2.php' ?>
                                     <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn2"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                     <div class="uk-align-right">
                                         <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next" id="next-btn2">ถัดไป <span uk-icon="chevron-right"></span></a>
                                     </div>
                                 </li>
                                 <li>
-                                    <?php include 'patient_step3.php' ?>
+                                    <?php include 'patient_form_step3.php' ?>
                                     <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn3"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                     <div class="uk-align-right">
                                         <button type="submit" class="uk-button uk-button-default button-green">บันทึก</button>
