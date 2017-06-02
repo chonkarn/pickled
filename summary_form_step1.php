@@ -20,13 +20,16 @@
     <div class="uk-margin">
         <label class="uk-form-label">Basic activities of daily living</label>
         <div class="uk-form-controls uk-form-controls-text">
+<!--
             <label class="uk-margin-right"><input class="uk-radio" type="radio" value="1" name="basic_act" id="basic_act_yes" checked> Yes</label>
             <label class="uk-margin-right"><input class="uk-radio" type="radio" value="0" name="basic_act" id="basic_act_no"> No</label>
+-->
+            <input class="uk-checkbox" type="checkbox" name="basic_act"> มีปัญหา
         </div>
     </div>
     <div class="uk-margin">
         <div class="uk-form-controls">
-            <label class="uk-margin-right uk-text-bold">Problem</label>
+            <label class="uk-margin-right uk-text-bold">เลือกปัญหา</label>
             <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_dress"> Dressing</label>
             <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_eat"> Eating</label>
             <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" name="basic_act_ambu"> Ambulating</label>
@@ -39,13 +42,16 @@
         <div class="uk-form-controls uk-form-controls-text">
             <div class="uk-grid">
                 <div class="uk-width-1-1">
+<!--
                     <label class="uk-margin-right"><input class="uk-radio " type="radio" name="instru_act" checked> Yes</label>
                     <label><input class="uk-radio" type="radio" name="instru_act"> No</label>
+-->
+                    <input class="uk-checkbox" type="checkbox" name="instru_act"> มีปัญหา
                 </div>
             </div>
             <div class="uk-margin">
                 <div class="uk-width-1-1">
-                    <label class="uk-margin-right"><b>Problem</b></label>
+                    <label class="uk-margin-right uk-text-bold">เลือกปัญหา</label>
                     <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" value="1" name="instru_act_shop"> Shopping</label>
                     <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" value="2" name="instru_act_house"> Houskeeping</label>
                     <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" value="3" name="instru_act_med"> Medication</label>
@@ -70,8 +76,11 @@
     <div class="uk-margin">
         <label class="uk-form-label">Risk</label>
         <div class="uk-form-controls uk-form-controls-text">
+<!--
             <label class="uk-margin-right"><input class="uk-radio" type="radio" value="1" name="home_risk" checked> Yes</label>
             <label class="uk-margin-right"><input class="uk-radio" type="radio" value="0" name="home_risk"> No</label>
+-->
+            <input class="uk-checkbox" type="checkbox" name="home_risk"> มีปัญหา
         </div>
     </div>
     <div class="uk-margin">
@@ -85,8 +94,11 @@
     <div class="uk-margin">
         <label class="uk-form-label">Caregiver burden</label>
         <div class="uk-form-controls uk-form-controls-text">
+<!--
             <label class="uk-margin-right"><input class="uk-radio" type="radio" value="1" name="caregiver_burden" checked> Yes</label>
             <label class="uk-margin-right"><input class="uk-radio" type="radio" value="0" name="caregiver_burden"> No</label>
+-->
+            <input class="uk-checkbox" type="checkbox" name="caregiver_burden"> มีปัญหา
         </div>
     </div>
     <div class="uk-margin">
@@ -171,142 +183,5 @@
             </div>
         </div>
     </div>
-    <h5 class="uk-heading-bullet">Management</h5>
-    <div class="uk-margin">
-        <div class="uk-form-controls">
-
-            <div class="uk-grid">
-                <div class="uk-width-1-3@s">
-                    <input class="uk-checkbox" type="checkbox"> Assessment
-                </div>
-                <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls">
-            <div class="uk-grid">
-                <div class="uk-width-1-3@s">
-                    <input class="uk-checkbox" type="checkbox"> Pain & Symptom management
-                </div>
-                <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls">
-            <div class="uk-grid">
-                <div class="uk-width-1-3@s">
-                    <input class="uk-checkbox" type="checkbox"> Medication management
-                </div>
-                <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small " placeholder="คำอธิบายเพิ่มเติม...">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls">
-            <div class="uk-grid">
-                <div class="uk-width-1-3@s">
-                    <input class="uk-checkbox" type="checkbox"> Procedure
-                </div>
-                <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls">
-            <div class="uk-grid">
-                <div class="uk-width-1-3@s">
-                    <input class="uk-checkbox" type="checkbox"> Family meeting
-                </div>
-                <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls">
-            <div class="uk-grid">
-                <div class="uk-width-1-3@s uk-text-truncate">
-                    <input class="uk-checkbox" type="checkbox"> Social support & Health insurance
-                </div>
-                <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls">
-            <div class="uk-grid">
-                <div class="uk-width-1-3@s">
-                    <input class="uk-checkbox" type="checkbox"> Psychological care
-                </div>
-                <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <div class="uk-form-controls">
-            <div class="uk-grid">
-                <div class="uk-width-1-3@s">
-                    <input class="uk-checkbox" type="checkbox"> Rehabilitation
-                </div>
-                <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text"></label>
-        <div class="uk-form-controls">
-            <div class="uk-grid">
-                <div class="uk-width-1-3@s">
-                    <input class="uk-checkbox" type="checkbox"> Advance direction choice
-                </div>
-                <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text"></label>
-        <div class="uk-form-controls">
-            <div class="uk-grid">
-                <div class="uk-width-1-3@s uk-text-truncate">
-                    <input class="uk-checkbox" type="checkbox"> Dying<br>
-                    <small>Funeral plan / Grief bereavement care</small>
-                </div>
-                <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text"></label>
-        <div class="uk-form-controls">
-            <div class="uk-grid">
-                <div class="uk-width-1-3@s">
-                    <input class="uk-checkbox" type="checkbox"> Other specify
-                </div>
-                <div class="uk-width-1-2@s">
-                    <input class="uk-input uk-form-small" placeholder="คำอธิบายเพิ่มเติม...">
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </div>

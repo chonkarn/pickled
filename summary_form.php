@@ -77,7 +77,7 @@
                                     <?php include 'summary_form_step3.php' ?>
                                     <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn3"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                     <div class="uk-align-right">
-                                        <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next" id="next-btn3">ถัดไป <span uk-icon="chevron-right"></span></a>
+                                        <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next" id="next-btn3">บันทึกก่อนประชุมเยี่ยมบ้าน</a>
                                     </div>
                                 </li>
                                 <li>

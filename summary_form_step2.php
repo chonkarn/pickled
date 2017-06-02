@@ -131,75 +131,21 @@
 
     <h5 class="uk-heading-bullet">Mini mental state examination</h5>
     <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Orientation to time</label>
+        <label class="uk-form-label" for="form-horizontal-select">Mini-cog</label>
         <div class="uk-form-controls">
-            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_time">
+            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_cog">
         </div>
     </div>
     <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Orientation to place</label>
+        <label class="uk-form-label" for="form-horizontal-select">Cube test</label>
         <div class="uk-form-controls">
-            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_place">
+            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="cube_test">
         </div>
     </div>
     <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Registration</label>
+        <label class="uk-form-label" for="form-horizontal-select">Clock drawing test</label>
         <div class="uk-form-controls">
-            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_reg">
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Attention / Calculation <span class="uk-text-warning">*</span></label>
-        <div class="uk-form-controls">
-            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_cal">
-
-            <span class="uk-text-muted uk-text-meta">(ไม่ต้องลงข้อมูล ถ้าหากผู้ป่วยไม่ได้เรียนหนังสือ)</span>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Recall</label>
-        <div class="uk-form-controls">
-            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_recall">
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Naming</label>
-        <div class="uk-form-controls">
-            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_naming">
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Repetition</label>
-        <div class="uk-form-controls">
-            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_repetition">
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Verbal command</label>
-        <div class="uk-form-controls">
-            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_verbal">
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Written command <span class="uk-text-warning">*</span></label>
-        <div class="uk-form-controls">
-            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_written">
-
-            <span class="uk-text-muted uk-text-meta">(ไม่ต้องลงข้อมูล ถ้าหากผู้ป่วยไม่ได้เรียนหนังสือ)</span>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Writing <span class="uk-text-warning">*</span></label>
-        <div class="uk-form-controls">
-            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_writing">
-
-            <span class="uk-text-muted uk-text-meta">(ไม่ต้องลงข้อมูล ถ้าหากผู้ป่วยไม่ได้เรียนหนังสือ)</span>
-        </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-select">Visuoconstruction</label>
-        <div class="uk-form-controls">
-            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="mini_vis">
+            <input class="uk-input uk-form-width-small uk-form-small" type="number" placeholder="" name="clock_drawing_test">
         </div>
     </div>
     <div class="uk-margin">
