@@ -1,17 +1,5 @@
 <?php
 
-    session_start();
-if($_SESSION['id'] == "")
-{
-    header( "location:login.php");
-    exit();
-}
-$user = $_SESSION['id'];
-include 'dbname.php';
-$connect = mysql_connect($servername, $username, $password) or die(mysql_error());
-mysql_select_db($dbname) or die(mysql_error());
-mysql_query("set character set utf8"); 
-
 # Patient HN
 $patient_hn = $_GET['hn'];
 $patientSQL = "SELECT * FROM patientinfo WHERE patientinfo.patient_hn LIKE '$patient_hn'";
@@ -78,7 +66,6 @@ $patient_tel_work = $row['patient_tel_work'];
 
 # Doctor
 $doctor_owner_id = $row['patient_doctor_owner'];
-$doctor_visit_id = $row['patient_doctor_visit'];
 $doctorSQL = "SELECT * FROM tbuser WHERE user = '$doctor_owner_id'";
 $doctorQuery = mysql_db_query($dbname, $doctorSQL) or die (mysql_error());
 $doctorData = mysql_fetch_array($doctorQuery);
@@ -92,12 +79,12 @@ $allergic_input = $row['allergic_input'];
 $alternative = $row['alternative'];
 $alternative_input = $row['alternative_input'];
 $alcohol = $row['alcohol'];
-$alcohol_input= $row['alcohol_input'];
+$alcohol_problem = $row['alcohol_problem'];
 $cigarette = $row['cigarette'];
 $cigarette_amount = $row['cigarette_amount'];
 $cigarette_period = $row['cigarette_period'];
 
-$money = $row['money'];
+$money_problem = $row['money_problem'];
 $hypertansion = $row['hypertansion'];
 $diabetes_mellitus = $row['diabetes_mellitus'];
 $dyslipidemia = $row['dyslipidemia'];

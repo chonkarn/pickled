@@ -68,9 +68,9 @@
 
     function alcohol_check() {
         if (document.getElementById("alcohol-1").checked == true) {
-            document.getElementById("alcohol_input").disabled = true;
+            document.getElementById("alcohol_problem").disabled = true;
         } else {
-            document.getElementById("alcohol_input").disabled = false;
+            document.getElementById("alcohol_problem").disabled = false;
         }
     }
 

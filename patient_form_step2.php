@@ -2,26 +2,10 @@
     <h4 class="uk-heading-divider">ส่วนที่ 2 รายละเอียดของปัญหา</h4>
     <h5 class="uk-heading-bullet">ประวัติการรักษา</h5>
 
-    <!--
     <div class="uk-margin">
         <label class="uk-form-label">การผ่าตัด</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right" for="surgery-1" onclick="surgery_check()"><input type="radio" id="surgery-1" class="uk-radio" name="surgery" value="1" checked> ไม่มี</label>
-            <label class="uk-margin-right" for="surgery-2" onclick="surgery_check()"><input type="radio" id="surgery-2" class="uk-radio" name="surgery" value="2"> มี</label>
-        </div>
-        <div class="uk-form-controls uk-form-controls-text" id="div_surgery" style="visibility:hidden;">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" name="surgery_input">
-                <label class="mdl-textfield__label" for="fname">ระบุ</label>
-            </div>
-        </div>
-    </div>
--->
-
-    <div class="uk-margin">
-        <label class="uk-form-label">การผ่าตัด</label>
-        <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right" for="surgery-1" onclick="surgery_check()"><input type="radio" id="surgery-1" class="uk-radio" name="surgery" value="1" checked> ไม่มี</label>
+            <label class="uk-margin-right" for="surgery-1" onclick="surgery_check()"><input type="radio" id="surgery-1" class="uk-radio" name="surgery" value="1"> ไม่มี</label>
             <label class="uk-margin-right" for="surgery-2" onclick="surgery_check()"><input type="radio" id="surgery-2" class="uk-radio" name="surgery" value="2"> มี</label>
             <div class="ui small input focus">
                 <input type="text" style="visibility:hidden;" id="surgery_input" name="surgery_input" placeholder="โปรดระบุ">
@@ -32,7 +16,7 @@
     <div class="uk-margin">
         <label class="uk-form-label">การแพ้ยา / แพ้อาหาร</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right" for="allgeric-1" onclick="allgeric_check()"><input type="radio" id="allgeric-1" class="uk-radio" name="allergic" value="1" checked> ไม่มี</label>
+            <label class="uk-margin-right" for="allgeric-1" onclick="allgeric_check()"><input type="radio" id="allgeric-1" class="uk-radio" name="allergic" value="1"> ไม่มี</label>
             <label class="uk-margin-right" for="allgeric-2" onclick="allgeric_check()"><input type="radio" id="allgeric-2" class="uk-radio" name="allergic" value="2"> มี</label>
             <div class="ui small input focus">
                 <input type="text" style="visibility:hidden;" id="allergic_input" name="allergic_input" placeholder="โปรดระบุ">
@@ -56,15 +40,15 @@
     <div class="uk-margin">
         <label class="uk-form-label">สุรา</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right" for="alcohol-1" onclick="alcohol_check()"><input type="radio" id="alcohol-1" class="uk-radio" name="alcohol" value="1" checked> <span class="mdl-radio__label">ไม่เคยดื่ม</span></label>
-            <label class="uk-margin-right" for="alcohol-2" onclick="alcohol_check()"><input type="radio" id="alcohol-2" class="uk-radio" name="alcohol" value="2"> <span class="mdl-radio__label">ดื่มอยู่</span></label>
-            <label class="uk-margin-right" for="alcohol-3" onclick="alcohol_check()"><input type="radio" id="alcohol-3" class="uk-radio" name="alcohol" value="3"> <span class="mdl-radio__label">เลิกดื่มแล้ว</span></label>
+            <label class="uk-margin-right" for="alcohol-1" onclick="alcohol_check()"><input type="radio" id="alcohol-1" class="uk-radio" name="alcohol" value="1"> ไม่เคยดื่ม</label>
+            <label class="uk-margin-right" for="alcohol-2" onclick="alcohol_check()"><input type="radio" id="alcohol-2" class="uk-radio" name="alcohol" value="2"> ดื่มอยู่</label>
+            <label class="uk-margin-right" for="alcohol-3" onclick="alcohol_check()"><input type="radio" id="alcohol-3" class="uk-radio" name="alcohol" value="3"> เลิกดื่มแล้ว</label>
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label">ปัญหาการดื่มสุรา</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <input type="checkbox" class="uk-checkbox" name="alcohol_input" id="alcohol_input" disabled> มีปัญหา <small>(ในกรณีดื่มอยู่ หรือเลิกดื่มแล้ว)</small>
+            <input type="checkbox" class="uk-checkbox" name="alcohol_problem" id="alcohol_problem" disabled> มีปัญหา <small>(ในกรณีดื่มอยู่ หรือเลิกดื่มแล้ว)</small>
         </div>
     </div>
 
@@ -91,7 +75,7 @@
     <div class="uk-margin">
         <label class="uk-form-label"> สถานะทางการเงิน </label>
         <div class="uk-form-controls uk-form-controls-text">
-            <input class="uk-checkbox" type="checkbox" id="money" name="money"> มีปัญหา
+            <input class="uk-checkbox" type="checkbox" id="money_problem" name="money_problem"> มีปัญหา
         </div>
     </div>
     <div class="uk-margin">

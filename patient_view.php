@@ -97,10 +97,25 @@
     <h5 class="uk-heading-bullet">ประวัติการรักษา</h5>
 
     <dt>การผ่าตัด</dt>
-    <dd>เคยผ่าตัด ไส้ติ่ง</dd>
+    <dd>
+        <?php 
+        if($surgery == NULL){
+            echo "-";
+        }else {
+            echo $surgery." ".$surgery_input;
+        }
+        ?>
+    </dd>
 
     <dt>การแพ้ยา/แพ้อาหาร</dt>
-    <dd>ไม่มี</dd>
+    <dd><?php 
+        if($allergic == NULL){
+            echo "ไม่มีข้อมูล";
+        }
+        else {
+            echo $allergic." ".$allergic_input;
+        }
+        ?></dd>
 
     <dt>แพทย์ทางเลือก</dt>
     <dd>ไม่มี</dd>

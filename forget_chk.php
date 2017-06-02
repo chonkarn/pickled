@@ -12,7 +12,6 @@ if(!$objResult)
 	    header("location:forget_pwd_step1_usr_notfound.html");
 	}
 	else {
-//        patient_show.php?hn=".$hn
         header("location:forget_pwd_step2_question.php?question=".$question."&username=".$username);
     }
 	mysql_close(); 

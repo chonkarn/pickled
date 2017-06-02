@@ -60,8 +60,8 @@
     <div class="uk-margin">
         <label class="uk-form-label">เพศ</label>
         <div class="uk-form-controls">
-            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="gender" value="1" checked> ชาย</label>
-            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="gender" value="2"> หญิง</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="gender" value="1" <?php if($patient_gender==1){ echo "checked"; } ?> /> ชาย</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="gender" value="2" <?php if($patient_gender==2){ echo "checked"; } ?> /> หญิง</label>
         </div>
     </div>
     <div class="uk-margin">

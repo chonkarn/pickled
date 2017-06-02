@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html>
-
+    
 <?php 
-    include 'patient_show.php';
+    session_start();
+    if($_SESSION['id'] == "")
+    {
+        header( "location:login.php");
+        exit();
+    }
+    $user = $_SESSION['id'];
+    include 'dbname.php';
+    $connect = mysql_connect($servername, $username, $password) or die(mysql_error());
+    mysql_select_db($dbname) or die(mysql_error());
+    mysql_query("set character set utf8"); 
+    
+    include 'patient_view_db.php';
     include "head.html"; 
     include 'patient_add_information_hiddeninput.php';
     include 'patient_step1_variable_manage.html';
@@ -44,7 +56,7 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <?php include 'patient__form_step2.php' ?>
+                                    <?php include 'patient_form_step2.php' ?>
                                     <a href="#" class="uk-button uk-button-default" uk-switcher-item="previous" id="prev-btn2"><span uk-icon="chevron-left"></span> ย้อนกลับ</a>
                                     <div class="uk-align-right">
                                         <a href="#" class="uk-button uk-button-default button-green" uk-switcher-item="next" id="next-btn2">ถัดไป <span uk-icon="chevron-right"></span></a>

@@ -1,16 +1,22 @@
 <!DOCTYPE html>
 <html>
+    
 <?php
-//	session_start();
-//	if($_SESSION['id'] == "")
-//	{
-//		header( "location:login.php");
-//		exit();
-//	}
+
+    session_start();
+    if($_SESSION['id'] == "")
+    {
+        header( "location:login.php");
+        exit();
+    }
+    $user = $_SESSION['id'];
+    include 'dbname.php';
+    $connect = mysql_connect($servername, $username, $password) or die(mysql_error());
+    mysql_select_db($dbname) or die(mysql_error());
+    mysql_query("set character set utf8"); 
     
     $patient_hn = $_GET['hn'];
-    
-    include "patient_show.php";
+    include "patient_view_db.php";
 ?>
 
     <head>
