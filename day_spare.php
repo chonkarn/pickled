@@ -278,7 +278,7 @@
                                 <div class="uk-modal-footer ">
                                     <div class="uk-align-right">
                                         <a class="uk-button uk-button-default uk-button-small">ยกเลิก</a>
-                                        <a class="uk-button uk-button-default uk-button-small button-green" href="summary_step1.php">สรุปผล</a>
+                                        <a class="uk-button uk-button-default uk-button-small button-green" href="summary_form_step1.php">สรุปผล</a>
                                     </div>
                                 </div>
                                 <!--/.uk-modal-footer-->
