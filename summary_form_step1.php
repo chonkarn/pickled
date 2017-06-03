@@ -3,7 +3,7 @@
     <div class="uk-margin">
         <label class="uk-form-label">เหตุผลการเยี่ยมบ้าน</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason_visit" value="1" checked> Assessment</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason_visit" value="1" /> Assessment</label>
             <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason_visit" value="2"> Illness management</label>
             <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason_visit" value="3"> Palliative</label>
             <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason_visit" value="4"> Post hospitalized</label>

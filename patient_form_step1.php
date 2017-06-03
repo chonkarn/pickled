@@ -3,9 +3,7 @@
     <div class="uk-margin">
         <label class="uk-form-label">รหัสโรงพยาบาล</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <div class="ui input">
-                <input type="text" name="hn" placeholder="HN" value="<?php echo $patient_hn ?>">
-            </div>
+            <?php echo $patient_hn ?>
         </div>
     </div>
     <div class="uk-margin">

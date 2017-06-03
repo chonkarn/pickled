@@ -99,11 +99,12 @@
     <dt>การผ่าตัด</dt>
     <dd>
         <?php 
-        if($surgery == NULL){
-            echo "-";
-        }else {
-            echo $surgery." ".$surgery_input;
-        }
+            if($surgery == NULL){
+                echo "-";
+            }
+            else {
+                echo $surgery." ".$surgery_input;
+            }
         ?>
     </dd>
 
