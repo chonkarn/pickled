@@ -16,7 +16,7 @@
     mysql_query("set character set utf8"); 
 
     include 'patient_view_db.php';
-    include 'summary_show_latest.php';
+    include 'summary_view_latest_db.php';
     include 'meaning.php';
 ?>
 
@@ -63,7 +63,7 @@
                                 <div class="uk-width-1-4@m">
                                     <div class="uk-margin-bottom"> <small class="uk-text-muted">แพทย์เจ้าของไข้</small>
                                         <br>
-                                        <?php echo $doctor_owner ?>
+                                        <?php echo $doctor_owner." (".$doctor_owner_id.")"  ?>
                                     </div>
                                     <small class="uk-text-muted">ประเภทการเยี่ยมบ้าน</small>
                                     <br>
@@ -108,6 +108,20 @@
                                         <br>
                                         <?php if( $next_visit == NULL){ echo "-"; }else {echo $next_visit; }  ?>
                                         <!--4/7/2559 <small>(เช้า)</small>-->
+                                    </div>
+                                </div>
+                                <div class="uk-width-1-6@m">
+                                    <div class="uk-margin-bottom"> <small class="uk-text-muted">
+                                   โทรศัพท์บ้าน
+                                    </small>
+                                        <br><i class="material-icons">phone</i>
+                                        <?php echo $patient_tel_home ?>
+                                    </div>
+                                    <div class="uk-margin-bottom"> <small class="uk-text-muted">
+                                   โทรศัพท์มือถือ
+                                    </small>
+                                        <br><i class="material-icons">phone</i>
+                                        <?php echo $patient_tel_mobile ?>
                                     </div>
                                 </div>
                             </div>
@@ -160,7 +174,7 @@
                                     </div>
                                     <div class="uk-margin-medium-top">
                                         <?php
-                                        include 'summary_viewall.php'; 
+                                        include 'summary_view_latest.php'; 
                                     ?>
                                     </div>
                                 </div>

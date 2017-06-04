@@ -1,47 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<?php 
-    session_start();
-	if($_SESSION['id'] == "") {
-		header( "location:login.php");
-		exit();
-	}
-    include 'dbname.php';
-    mysql_connect($servername, $username, $password) or die(mysql_error());
-    mysql_select_db($dbname) or die(mysql_error());
-    mysql_query("set character set utf8"); 
-    
-    $patient_hn = $_GET['hn'];
-    $calendar_id = $_GET['calendar_id'];
-    
-    include "summary_view_db.php";
-?>
-
-<head>
-    <?php 
-        include "head.html";
-    ?>
-    <link rel="stylesheet" href="css/stepper.css">
-</head>
-
-<body>
-    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-
-        <?php include "header.html"?>
-
-        <main class="mdl-layout__content mdl-color--grey-100">
-            <div class="mdl-grid demo-content">
-
-                <!--breadcrumb-->
-                <ul class="uk-breadcrumb breadcrumb">
-                    <li><a href="summary.php" class="uk-button-text"><i class="material-icons breadcrumb-icons">folder_shared</i> สรุปเยี่ยมบ้าน</a></li>
-                    <li>ดูสรุปเยี่ยมบ้าน</li>
-                </ul>
-
-                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-                    <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col mdl-color-text--black">
-                    <dl class="dl-horizontal">
+<dl class="dl-horizontal">
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
     
     <dt>ชื่อผู้ป่วย</dt>
@@ -372,18 +329,3 @@
 -->
     </dd>
 </dl>
-
-                    </div>
-                </div>
-            </div>
-            <!--/.demo-content-->
-        </main>
-    </div>
-
-    <!--custom js-->
-    <script src="js/select.js"></script>
-    <script src="js/stepper.js"></script>
-
-</body>
-
-</html>

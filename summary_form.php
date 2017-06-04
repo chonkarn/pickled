@@ -15,7 +15,7 @@
     $patient_hn = $_GET['hn'];
     $calendar_id = $_GET['calendar_id'];
     
-    include "summary_show.php";
+    include "summary_view_db.php";
 ?>
 
 <head>
@@ -97,8 +97,8 @@
     </div>
 
     <!--custom js-->
-    <script src="js/select.js"></script>
     <script src="js/stepper.js"></script>
+    <script src="js/dropdown.js"></script>
 
 </body>
 

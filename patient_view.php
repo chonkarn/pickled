@@ -79,7 +79,7 @@
         <label class="uk-margin-right"><b>เกี่ยวข้องเป็น </b><?php echo $relate_def ?></label>
         
         
-         <label class="uk-margin-right"><i class="material-icons">phone</i><b>เบอร์โทรศัพท์ </b> <?php echo $relate_tel ?></label>
+         <label class="uk-margin-right"><b>เบอร์โทรศัพท์ </b><i class="material-icons">phone</i> <?php echo $relate_tel ?></label>
 <!--
         <hr>
         <b>ญาติคนที่ 2:</b>
