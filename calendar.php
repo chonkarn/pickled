@@ -119,11 +119,13 @@
                                         <i class="material-icons">notifications</i>
                                     </a>
                                 </li>
+<!--
                                 <li>
                                     <a href="#print-calendar" title="พิมพ์สรุปก่อนประชุม" uk-tooltip uk-toggle>
                                         <i class="material-icons">print</i>
                                     </a>
                                 </li>
+-->
                                 <li>
                                     <a href="calendar_add.php" title="เพิ่มนัดหมาย" uk-tooltip>
                                         <i class="material-icons">add</i>
@@ -132,132 +134,7 @@
                             </ul>
                         </div>
 
-                        <!--PRINT MODAL-->
-                        <div id="print-calendar" uk-modal="center: true">
-
-                            <div class="uk-modal-dialog ">
-                                <button class="uk-modal-close-default" type="button" uk-close></button>
-                                <div class="uk-modal-body">
-                                    <h4 class="uk-heading-divider">พิมพ์สรุปผลเยี่ยมบ้านล่าสุดของผู้ป่วย ในเดือนมีนาคม 2560</h4>
-                                    <form class="uk-form">
-                                        <div class="uk-margin-small">
-                                            <label>
-                                            <input class="uk-radio" type="radio" name="print-week" > ทั้งหมด
-                                        </label>
-                                        </div>
-                                        <div class="uk-margin-small">
-                                            <label>
-                                            <input class="uk-radio" type="radio" name="print-week"> 27 กุมภาพันธ์ - 3 มีนาคม
-                                        </label>
-                                        </div>
-                                        <div class="uk-margin-small">
-                                            <label>
-                                        <input class="uk-radio " type="radio" name="print-week"> 6 มีนาคม - 10 มีนาคม
-                                            </label>
-                                        </div>
-                                        <div class="uk-margin-small">
-                                            <label>
-                                        <input class="uk-radio " type="radio" name="print-week"> 13 มีนาคม - 17 มีนาคม 
-                                            </label>
-                                        </div>
-                                        <div class="uk-margin-small">
-                                            <label>
-                                        <input class="uk-radio " type="radio" name="print-week" checked> 20 มีนาคม - 24 มีนาคม <small>(สัปดาห์หน้า)</small>
-                                            </label>
-                                        </div>
-                                        <div class="uk-margin-small">
-                                            <label>
-                                        <input class="uk-radio " type="radio" name="print-week"> 27 มีนาคม - 31 มีนาคม
-                                            </label>
-                                        </div>
-                                    </form>
-                                </div>
-                                <!--/.uk-modal-body-->
-                                <div class="uk-modal-footer">
-                                    <div class="uk-align-right ">
-                                        <a href="#week-appointment" class="uk-button uk-button-default uk-button-small button-green" uk-toggle>เลือก</a>
-                                    </div>
-                                </div>
-                                <!--/.uk-modal-footer-->
-                            </div>
-                        </div>
-                        <!--/.uk-modal-->
-
-                        <!--show list Modal-->
-                        <div id="week-appointment" uk-modal="center: true">
-                            <div class="uk-modal-dialog">
-                                <div class=" uk-modal-body">
-                                    <button class="uk-modal-close-default" type="button" uk-close></button>
-                                    <h4 class="uk-heading-divider">รายชื่อผู้ป่วยของวันที่ 20 - 24 มีนาคม</h4>
-                                    <ul uk-accordion="multiple: true">
-                                        <li class="uk-open">
-                                            <h5 class="uk-accordion-title uk-heading-bullet">วันพุธที่ 22 มีนาคม</h5>
-                                            <div class="uk-accordion-content">
-                                                <div class="uk-grid-small uk-flex-middle am-past" uk-grid>
-                                                    <div class="uk-width-auto">
-                                                        <span uk-icon="icon: check"></span>
-                                                    </div>
-                                                    <div class="uk-width-expand">
-                                                        <b>นาง มาณี ประชาไท <small>(HN 4683265)</small></b>
-                                                        <p class="uk-text-meta uk-margin-remove-top">
-                                                            นพ.ประสงค์ ทรงธรรม <small>(013655)</small>
-                                                        </p>
-                                                    </div>
-                                                    <div class="uk-float-right">
-                                                        9.00 - 12.00 น (เช้า)
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                       
-                                        <li class="uk-open">
-                                            <h3 class="uk-accordion-title uk-heading-bullet">วันศุกร์ที่ 24 มีนาคม</h3>
-                                            <div class="uk-accordion-content">
-                                                <div class="uk-grid-small uk-flex-middle pm-past" uk-grid>
-                                                    <div class="uk-width-auto">
-                                                        <span uk-icon="icon: check"></span>
-                                                    </div>
-                                                    <div class="uk-width-expand">
-                                                        <b>นาง ชญานิศ พลฑา <small>(HN 6118489)</small></b>
-                                                        <p class="uk-text-meta uk-margin-remove-top">
-                                                            นพ.ประสงค์ ทรงธรรม <small>(013655)</small>
-                                                        </p>
-                                                    </div>
-                                                    <div class="uk-float-right">
-                                                        13.00 - 16.00 น (บ่าย)
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/.uk-accordion-content-->
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="uk-modal-footer">
-                                    <div class="uk-align-right ">
-                                        <a href="#week-appointment" class="uk-button uk-button-default uk-button-small button-green" uk-toggle>พิมพ์สรุป</a>
-                                    </div>
-                                </div>
-                                <!--/.uk-modal-footer-->
-                            </div>
-                        </div>
-                        <!--/.uk-modal-->
                         
-<!--
-                        <script type="text/javascript">
-	function SetHTML3(check,type) {
-		if(check==true) document.getElementById(type).style.display = "";
-		else            document.getElementById(type).style.display = "none";
-	}
-</script>
-
-<input type="checkbox" CHECKED onClick="SetHTML3(this.checked,'a3')">
-<input type="checkbox" onClick="SetHTML3(this.checked,'b3')">
-<input type="checkbox" onClick="SetHTML3(this.checked,'c3')">
-
-<span id='a3'> <b> Anything can go here </b></span>
-<span id='b3' style="display:none"> <b> ...like an image... <img src="http://www.skytopia.com/ar.png"> </b></span>
-<span id="c3" style="display:none"> <b> ...<a href="http://www.skytopia.com">or a link</a> </b></span>
--->
                         
                             <?php 
                             include'calendar_month.php'; 

@@ -159,7 +159,7 @@ mysql_select_db("homevisit") or die(mysql_error());
                 keepOnScreen: 'true',
                 allowTab: 'true',
                 showOnFocus: 'true',
-                fullTextSearch: 'exact',
+                fullTextSearch: 'exact'
             });
 
     </script>

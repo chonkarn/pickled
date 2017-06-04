@@ -33,39 +33,31 @@
                                                                     <b><?php echo $fetchquery_patient['patient_p_name'].$fetchquery_patient['patient_name']." ".$fetchquery_patient['patient_surname'];?> <small>(HN <?php echo $row['patient_hn'];?>)</small></b>
                                                                 </h5> </div>
         <?php $tagformodal = "show-hn".$row['Id_app'];?>
-        <div class="uk-float-right">
-                                                                <a href="#<?php echo $tagformodal;?>"  class="uk-button uk-button-text" uk-toggle>รอการตอบรับ <span class="text-yellow">&#11044;</span></a>
-                                                                <!--THIS IS A MODAL-->
-                                                                <div id="<?php echo $tagformodal;?>" uk-modal="center: true">
-                                                                    <div class="uk-modal-dialog">
-                                                                        <button class="uk-modal-close-default" type="button" uk-close></button>
-
-                                                                        <div class=" uk-modal-body">
-                                                                            <h4><?php echo $fetchquery_patient['patient_p_name'].$fetchquery_patient['patient_name']." ".$fetchquery_patient['patient_surname'];?> <small>(HN <?php echo $row['patient_hn'];?>)</small></h4>
-
-                                                                            <form class="uk-form-horizontal " action="calendar_notify_each_db.php" method="post">
-                                                                                <div class=" uk-margin-small">
-                                                                                    <label class="uk-form-label">สถานะเยี่ยมบ้าน</label>
-                                                                                    <div class="uk-form-controls uk-form-controls-text">
-                                                                                        ใหม่
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="uk-margin-small">
-                                                                                    <label class="uk-form-label">ประเภทการเยี่ยมบ้าน</label>
-                                                                                    <div class="uk-form-controls uk-form-controls-text">
-                                                                                        Home visit care
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="uk-margin-small">
-                                                                                    <label class="uk-form-label">วันเวลาที่เยี่ยม</label>
-                                                                                    <div class="uk-form-controls uk-form-controls-text">
-                                                                                        <?php echo $row['dmy'];?> 
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="uk-margin-small">
-                                                                                    <label class="uk-form-label">แพทย์เจ้าของไข้</label>
-                                                                                    <div class="uk-form-controls uk-form-controls-text">
-                                                                                         <?php
+            <div class="uk-float-right"> <a href="#<?php echo $tagformodal;?>" class="uk-button uk-button-text" uk-toggle>รอการตอบรับ <span class="text-yellow">&#11044;</span></a>
+                <!--THIS IS A MODAL-->
+                <div id="<?php echo $tagformodal;?>" uk-modal="center: true">
+                    <div class="uk-modal-dialog">
+                        <button class="uk-modal-close-default" type="button" uk-close></button>
+                        <div class=" uk-modal-body">
+                            <h4><?php echo $fetchquery_patient['patient_p_name'].$fetchquery_patient['patient_name']." ".$fetchquery_patient['patient_surname'];?> <small>(HN <?php echo $row['patient_hn'];?>)</small></h4>
+                            <div class=" uk-margin-small">
+                                    <label class="uk-form-label">สถานะเยี่ยมบ้าน</label>
+                                    <div class="uk-form-controls uk-form-controls-text"> ใหม่ </div>
+                                </div>
+                                <div class="uk-margin-small">
+                                    <label class="uk-form-label">ประเภทการเยี่ยมบ้าน</label>
+                                    <div class="uk-form-controls uk-form-controls-text"> Home visit care </div>
+                                </div>
+                                <div class="uk-margin-small">
+                                    <label class="uk-form-label">วันเวลาที่เยี่ยม</label>
+                                    <div class="uk-form-controls uk-form-controls-text">
+                                        <?php echo $row['dmy'];?>
+                                    </div>
+                                </div>
+                                <div class="uk-margin-small">
+                                    <label class="uk-form-label">แพทย์เจ้าของไข้</label>
+                                    <div class="uk-form-controls uk-form-controls-text">
+                                        <?php
                     //med own
                     $med_own = $fetchquery_patient['patient_doctor_owner'];
                     $get_med_own = "SELECT f_user,l_user,user FROM tbuser WHERE user = '$med_own'";
@@ -76,13 +68,13 @@
                     $get_med = mysqli_query($link,$get_med_own);
                     $get_med_final = mysqli_fetch_array($get_med);
                     echo $get_med_final['f_user']." ".$get_med_final['l_user']."(".$get_med_final['user'].")";
-                ?> 
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="uk-margin-small">
-                                                                                    <label class="uk-form-label">ทีมแพทย์เยี่ยมบ้าน</label>
-                                                                                    <div class="uk-form-controls uk-form-controls-text">
-                                                                                        <?php 
+                ?>
+                                    </div>
+                                </div>
+                                <div class="uk-margin-small">
+                                    <label class="uk-form-label">ทีมแพทย์เยี่ยมบ้าน</label>
+                                    <div class="uk-form-controls uk-form-controls-text">
+                                        <?php 
 
                               //doctor management
             $id_app = $row['Id_app'];
@@ -109,38 +101,46 @@
                 }
                     echo "<br>";
                         ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr>
-                                                                                <div class="uk-margin-small">
-                                                                                    <label class="uk-form-label">สรุปข้อมูลปัญหาผู้ป่วย</label>
-                                                                                    <div class="uk-form-controls uk-form-controls-text">
-                                                                                        <ol>
-                                                                                            <li> I10 <small>Essential (primary) hypertension</small></li>
-                                                                                            <li> E117 <small>Non-insulin-dependent diabetes mellitus, with multiple complications</small></li>
-                                                                                        </ol>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <hr>
-                                                                                <div class="uk-margin">
-                                                                                    <label class="uk-form-label">เข้าร่วมทีมเยี่ยมบ้านหรือไม่?</label>
-                                                                                    <div class="uk-form-controls uk-form-controls-text">
-                                                                                        <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason" value="0"> อาจจะ</label>
-                                                                                        <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason" value="1"> เข้าร่วม</label>
-                                                                                        <label class="uk-margin-right"><input class="uk-radio" type="radio" name="reason" value="2"> ปฏิเสธ</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                        <div class="uk-modal-footer">
-                                                                            <div class="uk-align-right uk-margin-remove-vertical">
-                                                                                <button class="uk-button uk-button-green uk-button-small" uk- type="button">บันทึก</button>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--/.uk-modal-footer-->
-                                                                    </div>
-                                                                </div>
-                                                                <!--/.uk-modal--></div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="uk-margin-small">
+                                    <label class="uk-form-label">สรุปข้อมูลปัญหาผู้ป่วย </label>
+                                    <div class="uk-form-controls uk-form-controls-text">
+                                        <ol>
+                                            <?php 
+                        $problems = explode(",",$fetchquery_patient["problem"]);
+                        foreach ($problems as $icd10){
+                        $qicd10 = "SELECT * FROM icd10 WHERE icd10_id='$icd10'";
+                        $qicd10_val = mysqli_query($link,$qicd10);
+                        $qicd10_test = mysqli_fetch_assoc($qicd10_val);
+                        echo "<li> ".$icd10." <small>".$qicd10_test["icd10_name"]."</small></li>";
+
+                        }
+                        ?>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <hr>
+                               <?php 
+                   
+                    if ($checkpermission === "permit"){
+                        if (date("n") < $thaimonth) @include 'calendar_summit.html';
+                        else if (date("n") == $thaimonth && date("d") < $days[2]) @include 'calendar_summit.html';  
+                        else  @include 'calendar_summary.php';    
+                    }
+                    if ($row['Id_own_calen'] === $_SESSION['id']) {
+//                        include 'calendar_more_appointment_modal.php';
+                        include 'calendar_editor_footer.html';
+                          
+                    }
+                      
+                    
+                ?>
+                        </div>
+                        <!--/.uk-modal-footer-->
+                    </div>
+                </div>
+                <!--/.uk-modal-->
+            </div>
 </li>
-
-

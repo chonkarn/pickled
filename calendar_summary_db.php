@@ -9,7 +9,7 @@ if ($sum_cancel == null) $sum_cancel = "";
 $insert = "UPDATE calendar_info SET sum_chk ='$answer'";
 $cancel = " ,comment='$sum_cancel'";
 $whereclause = " WHERE Id_app='$sum_id'";
-$link = mysqli_connect("localhost", "hvmsdb", "1234", "homevisit") or die("ติดต่อไม่ได้เว้ย");
+$link = mysqli_connect("localhost", "hvmsdb", "1234", "homevisit") or die("ติดต่อไม่ได้");
  mysqli_query($link,"SET NAMES UTF8");
     mysqli_query($link,"SET character_set_results=utf8");
     mysqli_query($link,"SET character_set_client=utf8");
@@ -18,7 +18,9 @@ if ($answer == 1) {
     $insert = $insert.$whereclause;
 //    mysql_db_query($dbname,$sql20) or die (mysql_error());
     $r = mysqli_query($link,$insert) or die(mysqli_error()."[".$insert."]");
-    header("location:".$goback."?Message=".$answer."&sum_id=".$sum_id."&sum_hn=".$sum_hn);
+    if ($goback === "calendar.php") header("location:".$goback."?Message=".$answer."&sum_id=".$sum_id."&sum_hn=".$sum_hn);
+    else header("location:".$goback."&Message=".$answer."&sum_id=".$sum_id."&sum_hn=".$sum_hn);
+    
 }
 else {
     $insert = $insert.$cancel.$whereclause;

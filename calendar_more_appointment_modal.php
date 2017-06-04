@@ -40,7 +40,7 @@
                 {
                     
                     $tired = $sleep['Id_members'];
-                    
+                    if ($tired === $_SESSION['id']) $id_status = $sleep['members_status'];
                         if ($sleep['members_status']== 1) $s = "<br><span class=\"text-green\">&#11044;</span>";
                         else if ($sleep['members_status']== 0) $s = "<br><span class=\"text-yellow\">&#11044;</span>";
                         else $s = "<br><span class=\"text-red\">&#11044;</span>";
@@ -106,7 +106,8 @@
                     }
                     if ($row['Id_own_calen'] === $_SESSION['id']) {
 //                        include 'calendar_more_appointment_modal.php';
-                        include 'calendar_editor_footer.html';
+//                        if ($id_status != 1) 
+                            include 'calendar_editor_footer.html';
                           
                     }
                       
