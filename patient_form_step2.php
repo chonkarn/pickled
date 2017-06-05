@@ -5,8 +5,8 @@
     <div class="uk-margin">
         <label class="uk-form-label">การผ่าตัด</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right" for="surgery-1" onclick="surgery_check()"><input type="radio" id="surgery-1" class="uk-radio" name="surgery" value="1"> ไม่มี</label>
-            <label class="uk-margin-right" for="surgery-2" onclick="surgery_check()"><input type="radio" id="surgery-2" class="uk-radio" name="surgery" value="2"> มี</label>
+            <label class="uk-margin-right" for="surgery-1" onclick="surgery_check()"><input type="radio" id="surgery-1" class="uk-radio" name="surgery" value="1" <?php if($surgery==1){echo "checked"; } ?> /> ไม่มี</label>
+            <label class="uk-margin-right" for="surgery-2" onclick="surgery_check()"><input type="radio" id="surgery-2" class="uk-radio" name="surgery" value="2" <?php if($surgery==2){echo "checked"; } ?> /> มี</label>
             <div class="ui small input focus">
                 <input type="text" style="visibility:hidden;" id="surgery_input" name="surgery_input" placeholder="โปรดระบุ">
             </div>
@@ -27,8 +27,8 @@
     <div class="uk-margin">
         <label class="uk-form-label"> แพทย์ทางเลือก </label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right" for="alternative-1" onclick="alternative_check()"><input type="radio" id="alternative-1" class="uk-radio" name="alternative" value="1" checked> <span class="mdl-radio__label">ไม่มี</span> </label>
-            <label class="uk-margin-right" for="alternative-2" onclick="alternative_check()"><input type="radio" id="alternative-2" class="uk-radio" name="alternative" value="2"> <span class="mdl-radio__label">มี</span> </label>
+            <label class="uk-margin-right" for="alternative-1" onclick="alternative_check()"><input type="radio" id="alternative-1" class="uk-radio" name="alternative" value="1" <?php if($alternative==1){echo "checked"; } ?> /> ไม่มี</label>
+            <label class="uk-margin-right" for="alternative-2" onclick="alternative_check()"><input type="radio" id="alternative-2" class="uk-radio" name="alternative" value="2" <?php if($alternative==1){echo "checked"; } ?> /> มี </label>
             <div class="ui small input focus">
                 <input type="text" style="visibility:hidden;" id="alternative_input" name="alternative_input" placeholder="โปรดระบุ">
             </div>
@@ -55,7 +55,7 @@
     <div class="uk-margin">
         <label class="uk-form-label">บุหรี่</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <label class="uk-margin-right" onclick="cigarette_check()" for="cigarette-1"><input class="uk-radio" id="cigarette-1" type="radio" name="cigarette" value="1" checked> ไม่เคยสูบ</label>
+            <label class="uk-margin-right" onclick="cigarette_check()" for="cigarette-1"><input class="uk-radio" id="cigarette-1" type="radio" name="cigarette" value="1" /> ไม่เคยสูบ</label>
             <label class="uk-margin-right" onclick="cigarette_check()" for="cigarette-2"><input class="uk-radio" id="cigarette-2" type="radio" name="cigarette" value="2"> สูบอยู่</label>
             <label class="uk-margin-right" onclick="cigarette_check()" for="cigarette-3"><input class="uk-radio" id="cigarette-3" type="radio" name="cigarette" value="3"> เลิกสูบแล้ว</label>
         </div>

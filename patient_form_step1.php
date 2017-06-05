@@ -3,7 +3,7 @@
     <div class="uk-margin">
         <label class="uk-form-label">รหัสโรงพยาบาล</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <?php echo $patient_hn ?>
+            HN <?php echo $patient_hn ?>
         </div>
     </div>
     <div class="uk-margin">

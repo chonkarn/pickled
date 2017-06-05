@@ -69,7 +69,6 @@
                                                 while($row = mysql_fetch_array($results)) {
                                                     if ($row['patient_visit_status'] == 1)
                                                         $row['patient_visit_status'] = "ใหม่" ;
-                                                    else $row['patient_visit_status'] = "เยี่ยมต่อ";
                                             ?>
                                             <tr>
                                                 <td>

@@ -1,16 +1,27 @@
 <!DOCTYPE html>
 <html>
-<?php
-	session_start();
-	if($_SESSION['id'] == "")
-	{
+
+<?php 
+    session_start();
+	if($_SESSION['id'] == "") {
 		header( "location:login.php");
 		exit();
 	}
+    include 'dbname.php';
+    mysql_connect($servername, $username, $password) or die(mysql_error());
+    mysql_select_db($dbname) or die(mysql_error());
+    mysql_query("set character set utf8"); 
+    
+    $patient_hn = $_GET['hn'];
+    $calendar_id = $_GET['calendar_id'];
+    
+    include "summary_view_db.php";
 ?>
 
     <head>
-        <?php include "head.html"; ?>
+        <?php 
+            include "head.html"; 
+        ?>
     </head>
 
     <body>
@@ -28,7 +39,9 @@
                                 <p class="mdl-typography--title">Department of Family Medicine</p>
                             </div>
                         </div>
-                        <?php include 'summary_view.php' ?>
+                        
+                        <?php include 'summary_viewdata.php' ?>
+
                     </div>
                 </div>
                 <!--/.mdl-card-->

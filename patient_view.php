@@ -75,11 +75,8 @@
     <dd>
 <!--        <b>ญาติคนที่ 1:</b><br> -->
         <label class="uk-margin-right"><b>ชื่อ-นามสกุล </b><?php echo $relate_name ?> </label>
-        
         <label class="uk-margin-right"><b>เกี่ยวข้องเป็น </b><?php echo $relate_def ?></label>
-        
-        
-         <label class="uk-margin-right"><b>เบอร์โทรศัพท์ </b><i class="material-icons">phone</i> <?php echo $relate_tel ?></label>
+        <label class="uk-margin-right"><b>เบอร์โทรศัพท์ </b><i class="material-icons">phone</i> <?php echo $relate_tel ?></label>
 <!--
         <hr>
         <b>ญาติคนที่ 2:</b>

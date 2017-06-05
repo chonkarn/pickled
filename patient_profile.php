@@ -38,15 +38,9 @@
 
                     <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col mdl-color-text--black">
-                            <h4 class="uk-heading-divider">HN
-                                <?php echo $patient_hn ?>
-                            </h4>
+                            
+                            <h4 class="uk-heading-divider">HN <?php echo $patient_hn ?></h4>
                             <div class="uk-grid uk-grid-collapse">
-                                <!--
-                                <div class="uk-width-1-6@m">
-                                    <img class="padding-right-20" src="">
-                                </div>
-                            -->
                                 <div class="uk-width-1-4@m">
                                     <div class="uk-margin-bottom"> <small class="uk-text-muted">ชื่อ-นามสกุล</small>
                                         <br>
@@ -68,19 +62,6 @@
                                     <small class="uk-text-muted">ประเภทการเยี่ยมบ้าน</small>
                                     <br>
                                     <?php echo $patient_visit_type ?>
-<!--
-                                    <label>
-                                    <input class="uk-radio" type="radio" name="visit-category" checked> Home visit case
-                                </label>
-                                    <br>
-                                    <label class="uk-text-muted">
-                                    <input class="uk-radio" type="radio" name="visit-category" disabled> Geriatric case
-                                </label>
-                                    <br>
-                                    <label class="uk-text-muted">
-                                    <input class="uk-radio" type="radio" name="visit-category" disabled> Palliative case
-                                </label>
--->
                                 </div>
                                 <div class="uk-width-1-6@m">
                                     <div class="uk-margin-bottom">
@@ -164,10 +145,10 @@
                                             </div>
                                         </div>
                                         <div class="uk-text-right">
-                                            <a href="summary_print.php?hn=" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์สรุปเยี่ยมบ้านนี้" uk-tooltip>
+                                            <a href="<?php echo "summary_print.php?hn=".$patient_hn."$calendar_id=".$calendar_id ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์สรุปเยี่ยมบ้านนี้" uk-tooltip>
                                                 <i class="material-icons">print</i>
                                             </a>
-                                            <a href="summary_form.php" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขสรุปเยี่ยมบ้านนี้" uk-tooltip>
+                                            <a href="<?php echo "summary_form.php?hn=".$patient_hn."$calendar_id=".$calendar_id ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขสรุปเยี่ยมบ้านนี้" uk-tooltip>
                                                 <i class="material-icons">edit</i>
                                             </a>
                                         </div>
@@ -179,6 +160,7 @@
                                     </div>
                                 </div>
                                 <!--/#summary-panel-->
+                                
                                 <div class="mdl-tabs__panel is-active" id="profile-panel">
                                     <div class="uk-float-right">
                                         <a href="<?php echo "patient_print.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์ข้อมูลผู้ป่วย" uk-tooltip>
