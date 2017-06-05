@@ -15,9 +15,12 @@
     mysql_select_db($dbname) or die(mysql_error());
     mysql_query("set character set utf8"); 
 
-    include 'patient_view_db.php';
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    mysqli_query($conn, "SET NAMES UTF8");
+    
+    include 'patient_viewdata_db.php';
     include 'summary_view_latest_db.php';
-    include 'meaning.php';
+    include 'meaning_patient.php';
 ?>
 
     <head>
@@ -48,7 +51,7 @@
                                     </div>
                                     <div class="uk-margin-bottom"> <small class="uk-text-muted">อายุ</small>
                                         <br>
-                                        <?php echo $age_year." ปี ".$age_month." เดือน ".$age_day." วัน" ?>
+                                        <?php echo $patient_age ?>
                                     </div>
                                     <small class="uk-text-muted">เพศ</small>
                                     <br>
@@ -171,7 +174,7 @@
                                         </a>
                                     </div>
                                     <div class="uk-margin-top">
-                                        <?php include 'patient_view.php' ?>
+                                        <?php include 'patient_viewdata.php' ?>
                                     </div>
                                 </div>
                                 <!--/#profile-panel-->

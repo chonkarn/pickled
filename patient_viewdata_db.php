@@ -27,18 +27,16 @@ date_default_timezone_set("Asia/Bangkok");
 $patient_bday = $row['patient_bday'];
 $patient_bmonth = $row['patient_bmonth'];
 $patient_byear = $row['patient_byear'];
-$patient_birthday = $patient_bday." ".$patient_bmonth." ".$patient_byear;
-
+# A.D.
+$patient_byear_ad = $patient_byear - 543;
+$patient_birthday = $patient_bday."-".$patient_bmonth."-".$patient_byear_ad;
 # Age
-$age_year = date("Y") - ($patient_byear - 543) -1;
-
-if($patient_bmonth < date("m")){$age_month = $patient_bmonth;}
-else if($patient_bmonth > date("m")){$age_month = 12 - date("m");}
-else {$age_month = $patient_bmonth - 1;}
-
-if($patient_birthday < date("d")){$age_day = $patient_birthday;}
-else if($patient_birthday > date("d")){$age_day = date("d");}
-else {$patient_birthday = 0;}
+$bday = new DateTime($patient_birthday);
+$today = new DateTime('00:00:00'); // use this for the current date
+$diff = $today->diff($bday);
+$patient_age = $diff->y." ปี ".$diff->m." เดือน ".$diff->d." วัน";
+# Birthday
+$patient_birthday = $patient_bday." ".$patient_bmonth." ".$patient_byear;
 
 # Healthinsure
 $insure_id = $row['healthinsure'];
@@ -100,7 +98,11 @@ $problem = $row['problem'];
 $num_visit = $row['num_visit'];
 
 $last_visit_date = $row['last_visit_date'];
-$last_visit = date("d/m/Y", strtotime($last_visit_date));
+if($last_visit_date == NULL){
+    $last_visit = "-";
+}else {
+    $last_visit = date("d/m/Y", strtotime($last_visit_date));
+}
 
 $next_visit_date = $row['next_visit_date'];
 if($next_visit_date == NULL){
@@ -113,7 +115,5 @@ if($next_visit_date == NULL){
 $relate_name = $row['relate_name'];
 $relate_tel = $row['relate_tel'];
 $relate_def = $row['relate_def'];
-
-include 'meaning_patient.php';
 
 ?>

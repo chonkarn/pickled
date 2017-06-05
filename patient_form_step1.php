@@ -15,7 +15,9 @@
     <div class="uk-margin">
         <label class="uk-form-label">ประเภทการเยี่ยมบ้าน</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <?php echo $patient_visit_type ?>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="patient_visit_type" value="1" <?php if($patient_visit_type==1){echo "checked";} ?> /> Home visit care</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="patient_visit_type" value="2" <?php if($patient_visit_type==2){echo "checked";} ?> /> Geriatric case</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="patient_visit_type" value="3" <?php if($patient_visit_type==3){echo "checked";} ?> /> Palliative case</label>
         </div>
     </div>
     <div class="uk-margin">
@@ -58,8 +60,8 @@
     <div class="uk-margin">
         <label class="uk-form-label">เพศ</label>
         <div class="uk-form-controls">
-            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="gender" value="1" <?php if($patient_gender==1){ echo "checked"; } ?> /> ชาย</label>
-            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="gender" value="2" <?php if($patient_gender==2){ echo "checked"; } ?> /> หญิง</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="gender" value="1" <?php if($patient_gender==1){echo "checked";} ?> /> ชาย</label>
+            <label class="uk-margin-right"><input class="uk-radio" type="radio" name="gender" value="2" <?php if($patient_gender==2){echo "checked";} ?> /> หญิง</label>
         </div>
     </div>
     <div class="uk-margin">

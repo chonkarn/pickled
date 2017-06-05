@@ -8,7 +8,7 @@
         <?php
             $icd10SQL = "SELECT icd10_id, icd10_name, icd10_keyword FROM icd10 ORDER BY icd10_id ASC LIMIT 500";
             $icd10Query = mysql_query($icd10SQL) or die(mysql_error()."[".$icd10SQL."]");
-            ?>
+        ?>
         <select name="mainproblem[]" class="ui search selection dropdown uk-width-1-2@m" id="select-mainproblem">
             <option value="">พิมพ์รหัสหรือชื่อของโรคและอาการ</option>
             <?php 
