@@ -22,7 +22,7 @@ if ($flag) {
     echo "All queries were executed successfully";
 } else { //concurrency
 	mysqli_rollback($link);
-    echo "All queries were rolled back";
+    echo '<script>alert("ลบไม่สำเร็จ (มีผู้ใช้งานใช้ข้อมูลอยู่ก่อนแล้ว)")</script>';
 } 
 mysqli_autocommit($link, true);
 header("location:calendar.php");
