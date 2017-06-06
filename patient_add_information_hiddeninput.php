@@ -28,7 +28,7 @@
         var y = "_input";
         var z = "_label";
         var x = document.getElementById(value).value;
-        if (x === "else") {
+        if (x === "อื่นๆ") {
             value = value.concat(y);
             document.getElementById(value).style.visibility = 'visible';
             value = value.concat(z);

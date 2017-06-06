@@ -8,8 +8,13 @@
     mysqli_query($link,"SET character_set_connection=utf8");
     $show = mysqli_query($link,$qq);
 //admin page variable
-    if ($row["chief"] == 1 ) $row["chief"] = "หัวหน้าแพทย์";
-        else $row["chief"] = "";
+    if ($row["chief"] == 1 ) {
+        $row["chief"] = "หัวหน้าแพทย์"; 
+        if (date('n') == $row["chief_month"] && date('o') == $row["chief_year"])  {$chief_name = "(หัวหน้าแพทย์เยี่ยมบ้านประจำเดือน)";
+                                               $right = 1;}
+        else {$chief_name="";$right=0;}
+    }
+else {$row["chief"] = "";}
     switch ($row["chief_month"]){
             case 1 : $row["chief_month"] = "มกราคม"; break;    
             case 2 : $row["chief_month"] = "กุมภาพันธ์"; break;    

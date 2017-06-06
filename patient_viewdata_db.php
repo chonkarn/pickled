@@ -31,10 +31,13 @@ $patient_byear = $row['patient_byear'];
 $patient_byear_ad = $patient_byear - 543;
 $patient_birthday = $patient_bday."-".$patient_bmonth."-".$patient_byear_ad;
 # Age
+if ($patient_bday != null || $patient_bmonth != null || $patient_byear != null){
 $bday = new DateTime($patient_birthday);
 $today = new DateTime('00:00:00'); // use this for the current date
 $diff = $today->diff($bday);
-$patient_age = $diff->y." ปี ".$diff->m." เดือน ".$diff->d." วัน";
+$patient_age = $diff->y." ปี ".$diff->m." เดือน ".$diff->d." วัน";    
+}
+
 # Birthday
 $patient_birthday = $patient_bday." ".$patient_bmonth." ".$patient_byear;
 

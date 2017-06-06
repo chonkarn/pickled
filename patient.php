@@ -29,14 +29,32 @@
                         <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--112-col-desktop">
 
                             <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                                <h4 class="uk-heading-divider">ค้นหาผู้ป่วยเยี่ยมบ้านทั้งหมด</h4>
+                                
+                                <h4 class="uk-heading-divider">ค้นหาผู้ใช้งานในระบบ</h4>
                                 <div class="uk-grid">
+                                    
                                     <div class="mdl-layout-spacer"></div>
-                                    <div class="ui icon input small">
-                                        <input type="text" placeholder="ค้นหารหัส หรือ ชื่อ-นามสกุล...">
-                                        <i class="circular search link icon"></i>
+                                    <form action="patient_searh.php" method="post">
+                                    <div class="ui icon input large">
+<!--                                        <input type="text" placeholder="ค้นหาด้วยรหัสหรือชื่อ-นามสกุล..."> <i class="circular search link icon"></i> </div>-->
+                                        <input list="doctor" name="search_patient" placeholder="ค้นหาจากรหัส / ชื่อ-นามสกุล"><input type="submit" value = "ค้นหา">
                                     </div>
-                                    <div class="mdl-layout-spacer"></div>
+                                    <?php
+                                        
+                                        $query = "SELECT patient_hn,patient_p_name,patient_name,patient_surname FROM patientinfo ORDER BY patient_hn DESC";
+                                        $result = mysql_query($query) or die(mysql_error()."[".$query."]");
+                                        ?>
+                                    <datalist id="doctor" name="doctor">
+                                         <?php 
+                                        while ($ro = mysql_fetch_array($result))
+                                        {
+                                            $line = $ro['patient_hn']." ".$ro['patient_p_name'].$ro['patient_name']." ".$ro['patient_surname'];
+                                             echo "<option value='".$line."'></option>";
+                                        }
+                                    ?>   
+                                    </datalist>
+                                    </form>
+                                        <div class="mdl-layout-spacer"></div>
                                 </div>
                             </div>
                         </div>

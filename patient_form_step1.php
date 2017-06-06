@@ -9,7 +9,13 @@
     <div class="uk-margin">
         <label class="uk-form-label">สถานะเยี่ยมบ้าน</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <?php echo $patient_visit_status ?>
+            <?php
+            switch($patient_visit_status){
+                case 1: echo "ใหม่"; break;
+                case 2: echo "เยี่ยมต่อ"; break;
+                case 3: echo "ปิดเยี่ยมบ้าน"; break;
+            }
+     ?>
         </div>
     </div>
     <div class="uk-margin">
@@ -152,7 +158,7 @@
                     foreach($rows as $row => $data) {
                         $info[$row]['name'] = $data;
                 ?>
-                <option value="<?php echo $info[$row]['value']; ?>">
+                <option value="<?php echo $info[$row]['name']; ?>">
                     <?php echo $info[$row]['name']; ?>
                 </option>
                 <?php } ?>
@@ -174,7 +180,7 @@
                     foreach($rows as $row => $data) {
                         $info[$row]['name'] = $data;
                 ?>
-                <option value="<?php echo $info[$row]['value']; ?>">
+                <option value="<?php echo $info[$row]['name']; ?>">
                     <?php echo $info[$row]['name']; ?>
                 </option>
                 <?php } ?>

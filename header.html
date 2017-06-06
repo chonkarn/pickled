@@ -35,7 +35,7 @@
             <div class="demo-avatar-dropdown">
                 <span class="mdl-color-text--white">
                     <?php echo $row["f_user"]." ".$row["l_user"]; ?><br>
-                    <small><?php echo $row["id_position"]; ?></small>
+                    <small><?php echo $row["id_position"].'<br>'.$chief_name; ?></small>
                 </span>
                 <div class="mdl-layout-spacer"></div>
                 <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
@@ -43,11 +43,13 @@
                 </button>
                 <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
                     <li class="mdl-menu__item"><a href="user_profile.php">แก้ไขข้อมูลส่วนตัว</a></li>
-                    <li class="mdl-menu__item"><a href="keyword.php">จัดการรหัสของโรค</a></li>
+<!--                    <li class="mdl-menu__item"><a href="keyword.php">จัดการรหัสของโรค</a></li>-->
                     <li class="mdl-menu__item"><a href="logout.php"><i class="material-icons" style="font-size: 14px;">exit_to_app</i> ออกจากระบบ</a></li>
                 </ul>
             </div>
         </header>
+        
+        
 
         <nav class="demo-navigation mdl-navigation mdl-color--grey-200">
             <a class="mdl-navigation__link mdl-color-text--grey-900" href="index.php">
