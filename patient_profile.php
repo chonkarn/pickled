@@ -169,9 +169,13 @@
                                         <a href="<?php echo "patient_print.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์ข้อมูลผู้ป่วย" uk-tooltip>
                                             <i class="material-icons">print</i>
                                         </a>
-                                        <a href="<?php echo "patient_form.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขข้อมูลผู้ป่วย" uk-tooltip>
-                                            <i class="material-icons">edit</i>
-                                        </a>
+                                        <?php if($right == 1) {
+    
+                                            echo '<a href="<?php echo "patient_form.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขข้อมูลผู้ป่วย" uk-tooltip>'
+                                                    .'<i class="material-icons">edit</i>'
+                                                .'</a>';
+                                            }?>
+                                        
                                     </div>
                                     <div class="uk-margin-top">
                                         <?php include 'patient_viewdata.php' ?>
