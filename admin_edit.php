@@ -153,7 +153,7 @@
                                                      echo '>2560</option>'.
                                                 '<option value=2018';
                                                 if ($myrow["chief_year"]==2018) echo " selected";
-                                                     echo '>2561</option>'.
+                                                     echo '>2018</option>'.
                                                 '</select>'.
                                                 '</div>'.
                                             '</div></div>';
@@ -185,35 +185,24 @@
                                                 <input class="uk-input uk-form-small" id="form-stacked-text" type="password" name="newpwd2" placeholder="พิมพ์รหัสผ่านใหม่อีกครั้ง"> </div>
                                         </div>
 
-                                           <input class="uk-input uk-form-small" id="form-stacked-text" type="text" value="<?php echo $myrow["user"]; ?>" name="user_id" style="visibility:hidden">
-                                            
-                                            <input type="submit" class="uk-button uk-button-default button-green uk-align-right uk-margin-remove" value="บันทึก">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="demo-cards mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
-                            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
-                                <div class="mdl-card__supporting-text mdl-color-text--grey-1200">
-                                    <form name="myForm" onsubmit="return validateForm()" class="uk-form-horizontal" method="post" action="admin_change_pwd.php">
-                                        <h4 id="pwd" class="uk-heading-divider">รหัสผ่าน</h4>
-                                        <h5 class="uk-heading-bullet uk-margin-small">เปลี่ยนรหัสผ่าน</h5>
+                                        <h5 class="uk-heading-bullet uk-margin-small">คำถามเพื่อรีเซตรหัสผ่าน</h5>
                                         <div class="uk-margin">
-                                            <label class="uk-form-label">รหัสผ่านใหม่</label>
+                                            <label class="uk-form-label">คำถาม</label>
                                             <div class="uk-form-controls uk-form-controls-text">
-                                                <input class="uk-input uk-form-small" id="form-stacked-text" type="password" name="newpwd" placeholder="พิมพ์รหัสผ่านใหม่">
-<!--                                                <small>อย่างน้อย 6 ตัวอักขระ</small>-->
+                                                <select class="uk-input uk-form-small" id="question" name="question" type="text" placeholder="คำถาม">
+                                                    <?php droptext("txt/question.txt"); ?>
+                                                </select>
                                             </div>
-                                        </div>
-                                        <div class="uk-margin">
-                                            <label class="uk-form-label">ยืนยันรหัสผ่านใหม่</label>
-                                            <div class="uk-form-controls uk-form-controls-text">
-                                                <input class="uk-input uk-form-small" id="form-stacked-text" type="password" name="newpwd2" placeholder="พิมพ์รหัสผ่านใหม่อีกครั้ง"> </div>
-                                        </div>
-
-                                           <input class="uk-input uk-form-small" id="form-stacked-text" type="text" value="<?php echo $myrow["user"]; ?>" name="user_id" style="visibility:hidden">
+                                            <div class="uk-margin">
+                                                <label class="uk-form-label">คำตอบ</label>
+                                                <div class="uk-form-controls uk-form-controls-text">
+                                                    <input class="uk-input uk-form-small" id="answer" name="answer" type="text" value="<?php echo $row["answer"]; ?>"> </div>
+                                            </div>
+                                            
+                                                <input class="uk-input uk-form-small" id="form-stacked-text" type="text" value="<?php echo $myrow["user"]; ?>" name="user_id" style="visibility:hidden">
                                             
                                             <input type="submit" class="uk-button uk-button-default button-green uk-align-right uk-margin-remove" value="บันทึก">
+                                        </div>
                                     </form>
                                 </div>
                             </div>
