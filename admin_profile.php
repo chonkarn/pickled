@@ -22,6 +22,23 @@
 
     <head>
         <?php include "head.html";?>
+        <script>
+        function chief_check(){
+           if (document.getElementById("chief").checked == true){
+               document.getElementById("chief_input").style.visibility = 'visible';
+           }else {
+               document.getElementById("chief_input").style.visibility = 'hidden';
+           }
+        }
+            function validateForm() {
+                var x = document.forms["myForm"]["newpwd"].value;
+                var y = document.forms["myForm"]["newpwd2"].value;
+                if (x != y) {
+                    alert("รหัสผ่านไม่ตรงกัน");
+                    return false;
+                }
+            }
+        </script>
     </head>
 
     <body>
@@ -57,7 +74,7 @@
                                     <div class="uk-margin">
                                         <label class="uk-form-label">ตำแหน่ง</label>
                                         <div class="uk-form-controls uk-form-controls-text">
-                                           <input class="uk-input uk-form-small" type="text" value=" <?php echo $row['id_position'] ?>" name="user_position">
+                                           <label class="uk-form-label" ><?php echo $row['id_position'] ?></label>
                                         </div>
                                     </div>
                                     <input type="submit" class="uk-button uk-button-default button-green uk-align-right uk-margin-remove" value="บันทึก">
@@ -70,42 +87,30 @@
                     <div class="demo-cards mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
                         <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                             <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                                <form class="uk-form-horizontal" method="post" action="user_profile_pwd.php">
-                                    <h4 id="pwd" class="uk-heading-divider">รหัสผ่าน</h4>
-                                    <h5 class="uk-heading-bullet uk-margin-small">เปลี่ยนรหัสผ่าน</h5><div class="uk-margin">
-                                        <label class="uk-form-label">รหัสผ่านเดิม</label>
-                                        <div class="uk-form-controls uk-form-controls-text">
-                                            <input class="uk-input uk-form-small" id="form-stacked-text" type="password" value="" placeholder="พิมพ์รหัสผ่านเดิม"> </div>
-                                    </div>
-                                    <div class="uk-margin">
-                                        <label class="uk-form-label">รหัสผ่านใหม่</label>
-                                        <div class="uk-form-controls uk-form-controls-text">
-                                            <input class="uk-input uk-form-small" id="form-stacked-text" type="password" name="newpwd" placeholder="พิมพ์รหัสผ่านใหม่"> 
-                                            <small>อย่างน้อย 6 ตัวอักขระ</small> 
-                                        </div>
-                                    </div>
-                                    <div class="uk-margin">
-                                        <label class="uk-form-label">ยืนยันรหัสผ่านใหม่</label>
-                                        <div class="uk-form-controls uk-form-controls-text">
-                                            <input class="uk-input uk-form-small" id="form-stacked-text" type="password" name="newpwd2" placeholder="พิมพ์รหัสผ่านใหม่อีกครั้ง"> </div>
-                                    </div>
-                                    
-                                    <h5 class="uk-heading-bullet uk-margin-small">คำถามเพื่อรีเซตรหัสผ่าน</h5>
-                                    <div class="uk-margin">
-                                        <label class="uk-form-label">คำถาม</label>
-                                        <div class="uk-form-controls uk-form-controls-text">
-                                            <select class="uk-input uk-form-small" id="question" name="question" type="text" placeholder="คำถาม"> 
-                                                <?php droptext("txt/question.txt"); ?>
-                                            </select>
+                                <form name="myForm" onsubmit="return validateForm()" class="uk-form-horizontal" method="post" action="admin_change_pwd.php">
+                                        <h4 id="pwd" class="uk-heading-divider">รหัสผ่าน</h4>
+                                        <h5 class="uk-heading-bullet uk-margin-small">เปลี่ยนรหัสผ่าน</h5>
+                                        <div class="uk-margin">
+                                            <label class="uk-form-label">รหัสผ่านใหม่</label>
+                                            <div class="uk-form-controls uk-form-controls-text">
+                                                <input class="uk-input uk-form-small" id="form-stacked-text" type="password" name="newpwd" placeholder="พิมพ์รหัสผ่านใหม่">
+<!--                                                <small>อย่างน้อย 6 ตัวอักขระ</small>-->
+                                            </div>
                                         </div>
                                         <div class="uk-margin">
-                                            <label class="uk-form-label">คำตอบ</label>
+                                            <label class="uk-form-label">ยืนยันรหัสผ่านใหม่</label>
                                             <div class="uk-form-controls uk-form-controls-text">
-                                                <input class="uk-input uk-form-small" id="answer" name="answer" type="text" value="<?php echo $row["answer"]; ?>"> </div>
+                                                <input class="uk-input uk-form-small" id="form-stacked-text" type="password" name="newpwd2" placeholder="พิมพ์รหัสผ่านใหม่อีกครั้ง"> </div>
                                         </div>
-                                        <a href="index.php" class="uk-button uk-button-default button-green uk-align-right uk-margin-remove">บันทึก</a>
-                                    </div>
-                                </form>
+
+                                       
+                                            
+                                                <input class="uk-input uk-form-small" id="form-stacked-text" type="text" value="<?php echo $myrow["user"]; ?>" name="user_id" style="visibility:hidden">
+                                                <input class="uk-input uk-form-small" id="form-stacked-text" type="text" value="<?php echo $myrow["id_position"]; ?>" name="id_position" style="visibility:hidden">
+                                            
+                                            <input type="submit" class="uk-button uk-button-default button-green uk-align-right uk-margin-remove" value="บันทึก">
+                                        </div>
+                                    </form>
                             </div>
                         </div>
                     </div>

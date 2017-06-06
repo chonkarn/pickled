@@ -56,10 +56,10 @@ $user = $_SESSION['id'];
     $password = "1234";
     $dbname = "homevisit";
     $conn = new mysqli($servername, $username, $password, $dbname);
-    $sql = "UPDATE tbuser SET  f_user = '$newname' , l_user = '$newlname' , photo = '$filename' WHERE user = '$user';";
+    $sql = "UPDATE tbuser SET  f_user = '$newname' , l_user = '$newlname'  WHERE user = '$user';";
     $conn->set_charset("utf8");   
     if ($conn->query($sql) === TRUE) {
-        header("location:user_profile.php");;
+        header("location:admin_profile.php");;
     } else {
         echo "Error updating record: " . $conn->error;
     }

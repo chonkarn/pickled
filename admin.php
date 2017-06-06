@@ -31,14 +31,36 @@
                         <ul class="uk-breadcrumb breadcrumb">
                             <li><span href="#"></span><i class="material-icons breadcrumb-icons">folder_shared</i> รายชื่อผู้ใช้งาน</li>
                         </ul>
+                        
                         <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                             <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+                                
                                 <h4 class="uk-heading-divider">ค้นหาผู้ใช้งานในระบบ</h4>
                                 <div class="uk-grid">
+                                    
                                     <div class="mdl-layout-spacer"></div>
+                                    <form action="admin_searh.php" method="post">
                                     <div class="ui icon input small">
-                                        <input type="text" placeholder="ค้นหาด้วยรหัสหรือชื่อ-นามสกุล..."> <i class="circular search link icon"></i> </div>
-                                    <div class="mdl-layout-spacer"></div>
+<!--                                        <input type="text" placeholder="ค้นหาด้วยรหัสหรือชื่อ-นามสกุล..."> <i class="circular search link icon"></i> </div>-->
+                                        <input list="doctor" name="search_doc" placeholder="ค้นหาจากรหัส / ชื่อ-นามสกุล"><input type="submit" value = "ค้นหา">
+                                    </div>
+                                    <?php
+                                        
+
+                                        $query = "SELECT user,f_user,l_user FROM tbuser ORDER BY user DESC";
+                                        $result = mysql_query($query) or die(mysql_error()."[".$query."]");
+                                        ?>
+                                    <datalist id="doctor" name="doctor">
+                                         <?php 
+                                        while ($ro = mysql_fetch_array($result))
+                                        {
+                                            $line = $ro['user']." ".$ro['f_user']." ".$ro['l_user'];
+                                             echo "<option value='".$line."'></option>";
+                                        }
+                                    ?>   
+                                    </datalist>
+                                    </form>
+                                        <div class="mdl-layout-spacer"></div>
                                 </div>
                             </div>
                         </div>

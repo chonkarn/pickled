@@ -185,19 +185,7 @@
                                                 <input class="uk-input uk-form-small" id="form-stacked-text" type="password" name="newpwd2" placeholder="พิมพ์รหัสผ่านใหม่อีกครั้ง"> </div>
                                         </div>
 
-                                        <h5 class="uk-heading-bullet uk-margin-small">คำถามเพื่อรีเซตรหัสผ่าน</h5>
-                                        <div class="uk-margin">
-                                            <label class="uk-form-label">คำถาม</label>
-                                            <div class="uk-form-controls uk-form-controls-text">
-                                                <select class="uk-input uk-form-small" id="question" name="question" type="text" placeholder="คำถาม">
-                                                    <?php droptext("txt/question.txt"); ?>
-                                                </select>
-                                            </div>
-                                            <div class="uk-margin">
-                                                <label class="uk-form-label">คำตอบ</label>
-                                                <div class="uk-form-controls uk-form-controls-text">
-                                                    <input class="uk-input uk-form-small" id="answer" name="answer" type="text" value="<?php echo $row["answer"]; ?>"> </div>
-                                            </div>
+                                       
                                             
                                                 <input class="uk-input uk-form-small" id="form-stacked-text" type="text" value="<?php echo $myrow["user"]; ?>" name="user_id" style="visibility:hidden">
                                             
