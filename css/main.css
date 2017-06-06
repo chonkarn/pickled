@@ -135,7 +135,7 @@ table thead tr th {
 .dl-horizontal dd {
     margin: 20px;
     margin-left: 23%;
-    width: 80%;
+    width: 79%;
 }
 
 @media screen and (max-width: 760px) {

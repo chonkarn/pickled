@@ -9,7 +9,7 @@
     <dd><?php echo $patient_visit_type ?></dd>
 
     <dt>แพทย์เจ้าของไข้</dt>
-    <dd><?php echo $doctor_owner ?><br></dd>
+    <dd><?php echo $doctor_owner." (".$doctor_owner_id.")" ?><br></dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
 
@@ -42,7 +42,7 @@
 
     <dt>อายุ</dt>
     <dd>
-        <?php echo $age_year." ปี ".$age_month." เดือน ".$age_day." วัน" ?>
+        <?php echo $patient_age ?>
     </dd>
 
     <dt>โทรศัพท์ที่บ้าน</dt>
@@ -134,10 +134,13 @@
 
     <dt>ประวัติโรคในครอบครัว</dt>
     <dd>
+        
+<!--
         <ol>
             <li>Hypertension</li>
             <li>Stroke</li>
         </ol>
+-->
     </dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 3 สรุปข้อมูลปัญหาผู้ป่วย</h4>
@@ -145,16 +148,34 @@
     <dt>รหัสการวินิจฉัยปัญหา</dt>
     <dd>
         <ol>
+            <?php 
+                $problems = explode(",", $problem);
+                foreach ($problems as $icd10){
+                    $qicd10 = "SELECT * FROM icd10 WHERE icd10_id='$icd10'";
+                    $qicd10_val = mysqli_query($conn, $qicd10);
+                    $qicd10_test = mysqli_fetch_assoc($qicd10_val);
+                    echo "<li><b>".$icd10."</b> ".$qicd10_test["icd10_name"]."</li>";
+                }
+            ?>    
+        </ol>
+<!--
+        <ol>
             <li>B07 Viral warts</li>
             <li>E117 Non-insulin-dependent diabetes mellitus ,with multiple complications</li>
         </ol>
+-->
     </dd>
 
     <hr>
 
     <dt>ผู้บันทึกข้อมูล</dt>
     <dd>
-        <?php echo $user ?>
-<!--        นพ.ประสงค์ ทรงธรรม (013651) เมื่อวันที่ 24/09/2559-->
+        <?php 
+            $tbuserSQL = "SELECT * FROM tbuser WHERE user='$user'";
+            $tbuserQuery = mysqli_query($conn, $tbuserSQL);
+            $tbuserData = mysqli_fetch_assoc($tbuserQuery);
+            echo $tbuserData['f_user']." ".$tbuserData['l_user']." (".$tbuserData['user'].") เมื่อวันที่ "
+        ?>
+        <!--นพ.ประสงค์ ทรงธรรม (013651) เมื่อวันที่ 24/09/2559-->
     </dd>
 </dl>

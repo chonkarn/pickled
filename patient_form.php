@@ -14,7 +14,7 @@
     mysql_select_db($dbname) or die(mysql_error());
     mysql_query("set character set utf8"); 
     
-    include 'patient_view_db.php';
+    include 'patient_viewdata_db.php';
     include "head.html"; 
     include 'patient_add_information_hiddeninput.php';
     include 'patient_step1_variable_manage.html';

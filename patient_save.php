@@ -19,7 +19,9 @@
     $pname = $_POST['pname'] ;
     $fname = $_POST['fname'] ;
     $lname = $_POST['lname'] ;
-    if(isset($_POST['gender'])){ $gender = $_POST['gender']; }
+    if(isset($_POST['gender'])){ 
+        $gender = $_POST['gender']; 
+    }
     
     # birthday
     $bday = $_POST['bday'];
