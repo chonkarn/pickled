@@ -6,11 +6,20 @@ include 'dbname.php';
     mysql_query("set character set utf8"); 
 
     $username = $_POST['user'];
-$password = $username;
+$password = md5($username);
 $f_user = $_POST['f_user'];
 $l_user = $_POST['l_user'];
 $id_position = $_POST['id_position'];
-
+if (isset($_POST['chief'])) {
+    $chief = 1;
+    $chief_month = $_POST['chief_month'];
+    $chief_year = $_POST['chief_year'];
+}
+else {
+    $chief = 0;
+    $chief_month = 0;
+    $chief_year = "0000";
+}
     
 
 
@@ -22,7 +31,10 @@ $id_position = $_POST['id_position'];
         f_user = '$f_user',
         l_user = '$l_user',
         passwd = '$password',
-        id_position= '$id_position'";
+        id_position= '$id_position',
+        chief = '$chief',
+        chief_month = '$chief_month',
+        chief_year = '$chief_year'";
     
      $conn->query($sumSQL);
     

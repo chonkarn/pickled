@@ -113,8 +113,11 @@ function return_date ($val){
 
 }
 
-function month (){
-   $select_calendarintfo = "SELECT * FROM calendar_info ";
+function month ($onlyme){
+    $id_onlyme = $_SESSION['id'];
+    if ($onlyme === $_SESSION['id']) $onlyme = " where Id_own_calen =".$id_onlyme;
+    else $onlyme = "";
+   $select_calendarintfo = "SELECT * FROM calendar_info ".$onlyme;
     $link = mysqli_connect("localhost", "hvmsdb", "1234", "homevisit");
     $query_calendarinfo = mysqli_query($link, $select_calendarintfo);    
 

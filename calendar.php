@@ -22,8 +22,7 @@
 		header( "location:login.php");
 		exit();
 	}
-    mysql_connect("localhost", "hvmsdb","1234") or die(mysql_error());
-    mysql_select_db("homevisit") or die(mysql_error());
+    
     
 ?>
 
@@ -46,6 +45,17 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/font.css">
     <link rel="stylesheet" href="css/calendar.css">
+   <script>
+    function alcohol_check() {
+        if (document.getElementById("alcohol-1").checked == true) {
+            document.getElementById("alcohol_problem").disabled = true;
+            window.location.href = "calendar.php?test=why";
+        } else {
+            document.getElementById("alcohol_problem").disabled = false;
+            <?php $test = "no"?>
+        }
+    }
+    </script>
     
 </head>
 
@@ -134,13 +144,38 @@
                             </ul>
                         </div>
 
-                        
+                      <div class="uk-margin">
+        <label class="uk-form-label">สุรา</label>
+        <div class="uk-form-controls uk-form-controls-text">
+            <label class="uk-margin-right" for="alcohol-1" onclick="alcohol_check()"><input type="radio" id="alcohol-1" class="uk-radio" name="alcohol" value="1"> ไม่เคยดื่ม</label>
+            <label class="uk-margin-right" for="alcohol-2" onclick="alcohol_check()"><input type="radio" id="alcohol-2" class="uk-radio" name="alcohol" value="2"> ดื่มอยู่</label>
+            <label class="uk-margin-right" for="alcohol-3" onclick="alcohol_check()"><input type="radio" id="alcohol-3" class="uk-radio" name="alcohol" value="3"> เลิกดื่มแล้ว</label>
+        </div>
+    </div>
+    <div class="uk-margin">
+        <label class="uk-form-label">ปัญหาการดื่มสุรา</label>
+        <div class="uk-form-controls uk-form-controls-text">
+            <input type="checkbox" class="uk-checkbox" name="alcohol_problem" id="alcohol_problem" disabled> มีปัญหา <small>(ในกรณีดื่มอยู่ หรือเลิกดื่มแล้ว)</small>
+        </div>
+    </div>
+                        <?php
+if(isset($_POST))
+{
+  print_r($_POST);
+}
+?>
+<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+  <input type="text" name="data" value="1" />
+  <input type="submit" value="Submit" />
+</form>
                         
                             <?php 
+                        echo $test;
                             include'calendar_month.php'; 
                             $calendar = new Calendar();
                             echo $calendar->show();
-                             $calendar->month();
+                            $month = "";
+                             $calendar->month($month);
                             ?>
                     </div>
                 </div>

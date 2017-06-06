@@ -69,7 +69,7 @@
 
                                         <?php 
                                         $doctor_data = mysql_query(" SELECT * FROM tbuser 
-                                                    WHERE id_position BETWEEN 1 AND 2
+                                                    WHERE id_position = 1 
                                                     ORDER BY user ASC");
                                         $doctor_count = mysql_num_rows($doctor_data);
                                     ?>
@@ -84,6 +84,8 @@
                                                         <th class="uk-table-link"><a href="#" class="uk-button-text text-green">รหัสประจำตัว <span uk-icon="icon: arrow-down"></span></a></th>
                                                         <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                                         <th class="uk-table-link"><a href="#" class="uk-button-text">ตำแหน่ง</a></th>
+                                                        <th class="uk-table-link"><a href="#" class="uk-button-text">ตำแหน่งพิเศษ</a></th>
+                                                        <th class="uk-table-link"><a href="#" class="uk-button-text">เดือนและปีที่ได้รับสิทธิ์พิเศษ</a></th>
                                                         <th>แก้ไข</th>
                                                     </tr>
                                                 </thead>
@@ -112,7 +114,13 @@
                                                             </td>
                                                             <td>
                                                                 <span class="th-label">ตำแหน่ง: </span>
-                                                                <?php echo $row['id_position'] ?>
+                                                                <?php echo $row['id_position']; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $row['chief'];?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $row['chief_month']." ".$row["chief_year"];?>
                                                             </td>
                                                             <td>
                                                                 <a href="<?php echo 'admin_edit.php?myuser='.$row['user'] ?>" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
@@ -129,7 +137,7 @@
                                         <?php
                                         $staff_data = mysql_query("
                                             SELECT * FROM tbuser 
-                                            WHERE NOT id_position BETWEEN 1 AND 2
+                                            WHERE id_position BETWEEN 2 AND 3
                                             ORDER BY user ASC
                                         ");
                                         $staff_count = mysql_num_rows($staff_data);
