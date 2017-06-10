@@ -314,15 +314,15 @@
     <div class="uk-margin">
         <label class="uk-form-label">แผนผังครอบครัว</label>
         <div class="uk-form-controls">
-            <div class="test-upload uk-placeholder uk-text-center">
+          <input type="file" name="genogram">
+            <!-- <div class="test-upload uk-placeholder uk-text-center">
                 <span uk-icon="icon: cloud-upload"></span>
                 <span class="uk-text-middle">ลากไฟล์รูปภาพมาที่ช่องนี้ หรือ</span>
                 <div uk-form-custom>
                     <input type="file" name="genogram" id="genogram">
                     <span class="uk-link">เลือก 1 รูปภาพ</span>
                 </div>
-            </div>
-            <!-- <progress id="progressbar" class="uk-progress" value="0" max="100" hidden></progress> -->
+            </div> -->
         </div>
     </div>
 

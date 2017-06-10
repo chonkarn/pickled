@@ -35,7 +35,7 @@ if ($patient_bday != null || $patient_bmonth != null || $patient_byear != null){
 $bday = new DateTime($patient_birthday);
 $today = new DateTime('00:00:00'); // use this for the current date
 $diff = $today->diff($bday);
-$patient_age = $diff->y." ปี ".$diff->m." เดือน ".$diff->d." วัน";    
+$patient_age = $diff->y." ปี ".$diff->m." เดือน ".$diff->d." วัน";
 }
 
 # Birthday
@@ -59,6 +59,9 @@ $add_subdis = $row['patient_add_subdis'];
 $add_dis = $row['patient_add_dis'];
 $add_province = $row['patient_add_province'];
 $add_zip = $row['patient_add_zip'];
+
+# Genogram
+$genogram = $row['genogram'];
 
 # Tel
 $patient_tel_home = $row['patient_tel_home'];

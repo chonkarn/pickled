@@ -56,7 +56,19 @@
     $relate_def = $_POST['relate_def'];
 
 		# genogram
+		# upload img
 		$genogram = $_POST['genogram'];
+		$ext = pathinfo(basename($_FILES['genogram']['name']), PATHINFO_EXTENSION);
+		$geno_img = 'genogram_hn'.$patient_hn.".".$ext;
+		$geno_path = 'img/geno/';
+		$geno_upload_path = $geno_path.$geno_img;
+		# uploading
+		$geno_comp = move_uploaded_file($_FILES['genogram'][tmp_name], $geno_upload_path);
+		if($geno_comp == FALSE){
+			echo "ไม่สามารถอัปโหลดรูปแผนผังครอบครัว";
+			exit();
+		}
+		$genogram = $geno_img;
 
     # doctor
     $doctor_owner = $_POST['doctor-owner'];
