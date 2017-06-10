@@ -46,11 +46,11 @@
                         ?>
                             <select class="ui search selection dropdown" name="pname">
                             <option value="<?php echo $patient_pname ?>">คำนำหน้า</option>
-                            <?php 
+                            <?php
                                 while ($row = mysql_fetch_array($pnameQuery)) {
                                     echo "<option value='".$row['pname_val']."'>".$row['pname_val']."</option>";
                                 }
-                            ?>        
+                            ?>
                         </select>
                     </div>
                     <div class="field">
@@ -75,14 +75,14 @@
         <div class="uk-form-controls uk-form-controls-text">
             <select name="bday" class="ui search selection dropdown">
                 <option value="<?php echo $patient_bday ?>">วัน</option>
-                <?php 
+                <?php
                     $day = "day";
                     droploop($day);
                 ?>
             </select> /
             <select class="ui search dropdown" name="bmonth" id="bmonth">
                 <option value="<?php echo $patient_bmonth ?>">เดือน</option>
-                <?php 
+                <?php
                     $month_file = file_get_contents("txt/month.txt");
                     $rows = explode("\n", $month_file);
                     array_shift($rows);
@@ -98,7 +98,7 @@
             </select> /
             <select name="byear" class="ui search selection dropdown">
                 <option value="<?php echo $patient_byear ?>">ปี</option>
-                <?php 
+                <?php
                     $year = "year";
                     droploop($year);
                 ?>
@@ -110,7 +110,7 @@
         <div class="uk-form-controls">
             <select class="ui search dropdown" name="status" id="status">
                 <option value="<?php echo $patient_status ?>">สถานภาพ</option>
-                <?php 
+                <?php
                     $status_file = file_get_contents("txt/status.txt");
                     $rows = explode("\n", $status_file);
                     array_shift($rows);
@@ -129,7 +129,7 @@
         <div class="uk-form-controls">
             <select class="ui search dropdown" name="religion" id="religion" onchange="inputhidden(re)">
                 <option value="<?php echo $patient_religion ?>">ศาสนา</option>
-                <?php 
+                <?php
                     $religion_file = file_get_contents("txt/religion.txt");
                     $rows = explode("\n", $religion_file);
                     array_shift($rows);
@@ -151,7 +151,7 @@
         <div class="uk-form-controls">
             <select class="ui search dropdown" name="education" id="education" onchange="inputhidden(edu)">
                 <option value="<?php echo $patient_education ?>">ระดับการศึกษา</option>
-                <?php 
+                <?php
                     $education_file = file_get_contents("txt/education.txt");
                     $rows = explode("\n", $education_file);
                     array_shift($rows);
@@ -173,7 +173,7 @@
         <div class="uk-form-controls">
             <select class="ui search dropdown" name="occupation" id="occupation" onchange="inputhidden(occ)">
                 <option value="<?php echo $patient_occupation ?>">อาชีพ</option>
-                <?php 
+                <?php
                     $occupation_file = file_get_contents("txt/occupation.txt");
                     $rows = explode("\n", $occupation_file);
                     array_shift($rows);
@@ -194,18 +194,18 @@
         <label class="uk-form-label">สิทธิการรักษา</label>
         <div class="uk-form-controls">
             <?php
-                $query = "SELECT insure_id, insure_name 
-                    FROM healthinsure 
+                $query = "SELECT insure_id, insure_name
+                    FROM healthinsure
                     ORDER BY insure_id ASC";
                 $result = mysql_query($query) or die(mysql_error()."[".$query."]");
             ?>
                 <select class="ui search selection dropdown" name="insure" id="select-insure">
                      <option value="<?php echo $healthinsure ?>">พิมพ์สิทธิการรักษา</option>
-                <?php 
+                <?php
                     while ($row = mysql_fetch_array($result)) {
                         echo "<option value='".$row['insure_id']."'>".$row['insure_name']." (".$row['insure_id'].")"."</option>";
                     }
-                ?>        
+                ?>
             </select>
         </div>
     </div>
@@ -249,7 +249,7 @@
                         <div class="field">
                             <select class="ui search dropdown" name="add_province">
                                 <option value="<?php echo $add_province ?>">จังหวัด</option>
-                                <?php 
+                                <?php
                                     $province_file = file_get_contents("txt/province.txt");
                                     $rows = explode("\n", $province_file);
                                     array_shift($rows);
@@ -318,11 +318,11 @@
                 <span uk-icon="icon: cloud-upload"></span>
                 <span class="uk-text-middle">ลากไฟล์รูปภาพมาที่ช่องนี้ หรือ</span>
                 <div uk-form-custom>
-                    <input type="file" multiple>
+                    <input type="file" name="genogram" id="genogram">
                     <span class="uk-link">เลือก 1 รูปภาพ</span>
                 </div>
             </div>
-            <progress id="progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+            <!-- <progress id="progressbar" class="uk-progress" value="0" max="100" hidden></progress> -->
         </div>
     </div>
 
@@ -332,83 +332,19 @@
         <label class="uk-form-label">แพทย์เจ้าของไข้</label>
         <div class="uk-form-controls">
             <?php
-                $query = "SELECT user,f_user,l_user 
-                    FROM tbuser 
+                $query = "SELECT user,f_user,l_user
+                    FROM tbuser
                     ORDER BY user ASC";
                 $result = mysql_query($query) or die(mysql_error()."[".$query."]");
             ?>
                 <select class="ui search selection dropdown" name="doctor-owner">
                     <option value="<?php echo $doctor_owner ?>">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
-                <?php 
+                <?php
                     while ($row = mysql_fetch_array($result)) {
                         echo "<option value='".$row['user']."'>".$row['f_user']." ".$row['l_user']." (".$row['user'].")"."</option>";
                     }
-                ?>        
+                ?>
                 </select>
         </div>
     </div>
 </div>
-
-<script>
-    (function($) {
-
-        var bar = $("#progressbar")[0];
-
-        UIkit.upload('.test-upload', {
-
-            url: '',
-            multiple: true,
-
-            beforeSend: function() {
-                console.log('beforeSend', arguments);
-            },
-            beforeAll: function() {
-                console.log('beforeAll', arguments);
-            },
-            load: function() {
-                console.log('load', arguments);
-            },
-            error: function() {
-                console.log('error', arguments);
-            },
-            complete: function() {
-                console.log('complete', arguments);
-            },
-
-            loadStart: function(e) {
-                console.log('loadStart', arguments);
-
-                bar.removeAttribute('hidden');
-                bar.max = e.total;
-                bar.value = e.loaded;
-            },
-
-            progress: function(e) {
-                console.log('progress', arguments);
-
-                bar.max = e.total;
-                bar.value = e.loaded;
-
-            },
-
-            loadEnd: function(e) {
-                console.log('loadEnd', arguments);
-
-                bar.max = e.total;
-                bar.value = e.loaded;
-            },
-
-            completeAll: function() {
-                console.log('completeAll', arguments);
-
-                setTimeout(function() {
-                    bar.setAttribute('hidden', 'hidden');
-                }, 1000);
-
-                alert('Upload Completed');
-            }
-        });
-
-    })(jQuery);
-
-</script>

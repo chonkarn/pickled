@@ -15,11 +15,11 @@
         die(mysql_error());
     }
     mysql_select_db("homevisit");
-    mysql_query("set character set utf8");  
-    
+    mysql_query("set character set utf8");
+
     $results = mysql_query("SELECT * FROM tbuser WHERE user = '$user'");
     $row = mysql_fetch_array($results);
-    
+
         $myuser = $_GET['myuser'];
     $myquery = mysql_query("SELECT * FROM tbuser WHERE user = '$myuser'");
     $myrow = mysql_fetch_array($myquery);
@@ -60,19 +60,20 @@
                         <ul class="uk-breadcrumb breadcrumb">
                             <li><a href="#"><i class="material-icons breadcrumb-icons">account_circle</i> <?php echo $myrow['f_user']." ".$myrow['l_user']." (".$myrow['user'].")" ?></a></li>
                         </ul>
-                            
+
                         <div class="demo-cards mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
                             <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                                 <div class="mdl-card__supporting-text mdl-color-text--grey-600">
                                     <h4 class="uk-heading-divider">ข้อมูลส่วนตัว</h4>
                                     <form class="uk-form-horizontal" method="post" action="admin_edit_position.php" enctype="multipart/form-data">
-                                        
+
                                         <div class="uk-margin">
                                             <label class="uk-form-label">ชื่อ</label>
                                             <div class="uk-form-controls uk-form-controls-text">
                                                 <input class="uk-input uk-form-small" id="form-stacked-text" type="text" value="<?php echo $myrow["f_user"]; ?>" name="user_name">
                                             </div>
                                         </div>
+
                                         <div class="uk-margin">
                                             <label class="uk-form-label">นามสกุล</label>
                                             <div class="uk-form-controls uk-form-controls-text">
@@ -80,11 +81,12 @@
                                                 <input class="uk-input uk-form-small" id="form-stacked-text" type="text" value="<?php echo $myrow["user"]; ?>" name="user_id" style="visibility:hidden">
                                             </div>
                                         </div>
+
                                         <div class="uk-margin">
                                             <label class="uk-form-label">ตำแหน่ง</label>
                                             <div class="uk-form-controls uk-form-controls-text">
                                             <select name="position_id">
-                                            <?php 
+                                            <?php
                                             mysqli_data_seek($show,0);
                                             while ($print = mysqli_fetch_array($show)){
                                                 echo '<option value='.$print["position_id"];
@@ -95,7 +97,8 @@
                                             </select>
                                             </div>
                                         </div>
-                                        <?php 
+
+                                        <?php
                                         if ( $myrow["id_position"] == "1") {
                                             echo '<div class="uk-margin">'.
                                             '<label class="uk-form-label">ตำแหน่งพิเศษ</label>'.
@@ -106,7 +109,7 @@
                                             '<div id="chief_input"';
                                                  if ($myrow["chief"] == 1 )    echo ' style="visibility:visible">';
                                             else echo ' style="visibility:hidden">';
-                                                 echo   '<br>ประจำเดือน : <select name="chief_month" placeholder="โปรดระบุ" >'.
+                                                 echo   '<br>ประจำเดือน: <select name="chief_month" placeholder="โปรดระบุ" >'.
                                                 '<option value=1';
                                                 if ($myrow["chief_month"]==1) echo " selected";
                                                      echo '>มกราคม</option>'.
@@ -144,7 +147,7 @@
                                                 if ($myrow["chief_month"]==12) echo " selected";
                                                      echo '>ธันวาคม</option>'.
                                             '</select>'.
-                                                '<br>ประจำปี : <select name="chief_year">'.
+                                                '<br>ประจำปี: <select name="chief_year">'.
                                                 '<option value=2016';
                                                 if ($myrow["chief_year"]==2016) echo " selected";
                                                      echo '>2559</option>'.
@@ -185,10 +188,10 @@
                                                 <input class="uk-input uk-form-small" id="form-stacked-text" type="password" name="newpwd2" placeholder="พิมพ์รหัสผ่านใหม่อีกครั้ง"> </div>
                                         </div>
 
-                                       
-                                            
+
+
                                                 <input class="uk-input uk-form-small" id="form-stacked-text" type="text" value="<?php echo $myrow["user"]; ?>" name="user_id" style="visibility:hidden">
-                                            
+
                                             <input type="submit" class="uk-button uk-button-default button-green uk-align-right uk-margin-remove" value="บันทึก">
                                         </div>
                                     </form>

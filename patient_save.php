@@ -11,29 +11,29 @@
     include 'dbname.php';
     mysql_connect($servername, $username, $password) or die(mysql_error());
     mysql_select_db($dbname) or die(mysql_error());
-    mysql_query("set character set utf8"); 
-    
+    mysql_query("set character set utf8");
+
     $patient_hn = $_GET['hn'];
-    
+
     $patient_id = $_POST['patient_id'];
     $pname = $_POST['pname'] ;
     $fname = $_POST['fname'] ;
     $lname = $_POST['lname'] ;
-    if(isset($_POST['gender'])){ 
-        $gender = $_POST['gender']; 
+    if(isset($_POST['gender'])){
+        $gender = $_POST['gender'];
     }
-    
+
     # birthday
     $bday = $_POST['bday'];
     $bmonth = $_POST['bmonth'];
     $byear = $_POST['byear'];
-    
+
     $status = $_POST['status'];
     $religion = $_POST['religion'];
     $occupation = $_POST['occupation'];
     $education = $_POST['education'];
     $insure = $_POST['insure'];
-    
+
     # address
     $add_no = $_POST['add_no'];
     $add_mhoo = $_POST['add_mhoo'];
@@ -44,19 +44,23 @@
     $add_dis = $_POST['add_dis'];
     $add_province = $_POST['add_province'];
     $add_zip = $_POST['add_zip'];
-    
+
     # telephone
     $tel_home = $_POST['tel_home'];
     $tel_mobile = $_POST['tel_mobile'];
     $tel_work = $_POST['tel_work'];
-    
+
     # relation
     $relate_name = $_POST['relate_name'];
     $relate_tel = $_POST['relate_tel'];
     $relate_def = $_POST['relate_def'];
-    
+
+		# genogram
+		$genogram = $_POST['genogram'];
+
+    # doctor
     $doctor_owner = $_POST['doctor-owner'];
-    
+
     # health info
     $surgery = $_POST['surgery'];
     $surgery_input = $_POST['surgery_input'];
@@ -70,26 +74,26 @@
     $cigarette = $_POST['cigarette'];
     if(!isset($_POST['cigarette_amount'])) { $cigarette_amount = NULL; }
     if(!isset($_POST['cigarette_period'])) { $cigarette_period = NULL; }
-    
+
     if(isset($_POST['money'])) { $money = 1; } else { $money = 0; }
     if(isset($_POST['hypertansion'])) { $hypertansion = 1; } else { $hypertansion = 0; }
     if(isset($_POST['diabetes_mellitus'])) { $diabetes_mellitus = 1; } else { $diabetes_mellitus = 0; }
     if(isset($_POST['dyslipidemia'])) { $dyslipidemia = 1; } else { $dyslipidemia = 0; }
     if(isset($_POST['stroke'])) { $stroke = 1; } else { $stroke = 0; }
     if(isset($_POST['cad'])) { $cad = 1; } else { $cad = 0; }
-    
+
     if(isset($_POST['cancer'])) { $cancer = 1; } else { $cancer = 0; }
     if(!isset($_POST['cancer_input'])) { $cancer_input = NULL; }
-    
+
     if(isset($_POST['other'])) { $other = 1; } else { $other = 0; }
     if(!isset($_POST['other_input'])) { $other_input = NULL; }
 
     //$main
     //$problem
-    
+
     # update data
      $conn = new mysqli($servername, $username, $password, $dbname);
-    
+
      $sumSQL = "UPDATE patientinfo SET patient_id = '$patient_id',
         patient_p_name='$pname',
         patient_name='$fname',
@@ -118,6 +122,7 @@
         relate_name = '$relate_name',
         relate_tel = '$relate_tel',
         relate_def = '$relate_def',
+				genogram = '$genogram',
         patient_doctor_owner = '$doctor_owner',
         surgery = '$surgery',
         surgery_input = '$surgery_input',
@@ -140,14 +145,14 @@
         cancer_input = '$cancer_input',
         other = '$other',
         other_input = '$other_input'
-        
+
         WHERE patient_hn = '$patient_hn'";
-    
+
      $conn->query($sumSQL);
-    
+
     mysql_db_query($dbname, $sumSQL) or die (mysql_error());
     mysql_close();
-    
+
     header("location: patient.php");
 ?>
 

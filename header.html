@@ -5,18 +5,11 @@
         die(mysql_error());
     }
     mysql_select_db("homevisit");
-    mysql_query("set character set utf8");  
+    mysql_query("set character set utf8");
     $results = mysql_query("SELECT * FROM tbuser WHERE user = '$user'");
     $row = mysql_fetch_array($results);
 
     include 'id_position.php';
-
-    if($row["photo"] == ""){
-        $photo = "img/flaticon/avatar-doctor.svg";
-    }
-    else {
-        $photo = "img/".$row["photo"];
-    }
 ?>
     <header class="demo-header mdl-layout__header mdl-color--primary">
         <div class="mdl-layout__header-row">
@@ -48,8 +41,8 @@
                 </ul>
             </div>
         </header>
-        
-        
+
+
 
         <nav class="demo-navigation mdl-navigation mdl-color--grey-200">
             <a class="mdl-navigation__link mdl-color-text--grey-900" href="index.php">

@@ -2,7 +2,7 @@
 <html>
 
 <?php
-    
+
     session_start();
     if($_SESSION['id'] == "")
     {
@@ -13,11 +13,11 @@
     include 'dbname.php';
     $connect = mysql_connect($servername, $username, $password) or die(mysql_error());
     mysql_select_db($dbname) or die(mysql_error());
-    mysql_query("set character set utf8"); 
+    mysql_query("set character set utf8");
 
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     mysqli_query($conn, "SET NAMES UTF8");
-    
+
     include 'patient_viewdata_db.php';
     include 'summary_view_latest_db.php';
     include 'meaning_patient.php';
@@ -41,7 +41,7 @@
 
                     <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col mdl-color-text--black">
-                            
+
                             <h4 class="uk-heading-divider">HN <?php echo $patient_hn ?></h4>
                             <div class="uk-grid uk-grid-collapse">
                                 <div class="uk-width-1-4@m">
@@ -158,24 +158,25 @@
                                     </div>
                                     <div class="uk-margin-medium-top">
                                         <?php
-                                        include 'summary_view_latest.php'; 
+                                        include 'summary_view_latest.php';
                                     ?>
                                     </div>
                                 </div>
                                 <!--/#summary-panel-->
-                                
+
                                 <div class="mdl-tabs__panel is-active" id="profile-panel">
                                     <div class="uk-float-right">
                                         <a href="<?php echo "patient_print.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์ข้อมูลผู้ป่วย" uk-tooltip>
                                             <i class="material-icons">print</i>
                                         </a>
-                                        <?php if($right == 1) {
-    
+                                        <?php
+                                            if($right == 1) {
+                                              // โค้ดตรงนี้ทำให้บึ้มในห้องสอบ
                                             echo '<a href="<?php echo "patient_form.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขข้อมูลผู้ป่วย" uk-tooltip>'
-                                                    .'<i class="material-icons">edit</i>'
-                                                .'</a>';
-                                            }?>
-                                        
+                                                    .'<i class="material-icons">edit</i>'.'</a>';
+                                            }
+                                        ?>
+
                                     </div>
                                     <div class="uk-margin-top">
                                         <?php include 'patient_viewdata.php' ?>

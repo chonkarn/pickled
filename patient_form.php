@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-    
-<?php 
+
+<?php
     session_start();
     if($_SESSION['id'] == "")
     {
@@ -12,10 +12,10 @@
     include 'dbname.php';
     $connect = mysql_connect($servername, $username, $password) or die(mysql_error());
     mysql_select_db($dbname) or die(mysql_error());
-    mysql_query("set character set utf8"); 
-    
+    mysql_query("set character set utf8");
+
     include 'patient_viewdata_db.php';
-    include "head.html"; 
+    include "head.html";
     include 'patient_add_information_hiddeninput.php';
     include 'patient_step1_variable_manage.html';
 ?>
@@ -41,7 +41,7 @@
 
                 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
 
-                    <form action="<?php echo "patient_save.php?hn=".$patient_hn; ?>" method="post">
+                    <form action="<?php echo "patient_save.php?hn=".$patient_hn; ?>" method="post" enctype="multipart/form-data">
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                             <ul class="uk-subnav uk-subnav-pill stepper" uk-switcher>
                                 <li id="step1" class="step three active"><a href="#" title="ข้อมูลทั่วไป" uk-tooltip>1</a></li>

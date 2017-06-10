@@ -13,7 +13,7 @@
         die(mysql_error());
     }
     mysql_select_db("homevisit");
-    mysql_query("set character set utf8");  
+    mysql_query("set character set utf8");
     $results = mysql_query("SELECT * FROM tbuser WHERE user = '$user'");
     $row = mysql_fetch_array($results);
 ?>
@@ -31,33 +31,35 @@
                         <ul class="uk-breadcrumb breadcrumb">
                             <li><span href="#"></span><i class="material-icons breadcrumb-icons">folder_shared</i> รายชื่อผู้ใช้งาน</li>
                         </ul>
-                        
+
                         <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop">
                             <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                                
+
                                 <h4 class="uk-heading-divider">ค้นหาผู้ใช้งานในระบบ</h4>
                                 <div class="uk-grid">
-                                    
+
                                     <div class="mdl-layout-spacer"></div>
                                     <form action="admin_searh.php" method="post">
-                                    <div class="ui icon input small">
-<!--                                        <input type="text" placeholder="ค้นหาด้วยรหัสหรือชื่อ-นามสกุล..."> <i class="circular search link icon"></i> </div>-->
-                                        <input list="doctor" name="search_doc" placeholder="ค้นหาจากรหัส / ชื่อ-นามสกุล"><input type="submit" value = "ค้นหา">
-                                    </div>
-                                    <?php
-                                        
+																				<input class="uk-input uk-form-width-large" list="doctor" name="search_doc" placeholder="ค้นหาจากรหัสโรงพยาบาล หรือ ชื่อ-นามสกุลของผู้ใช้งาน">
+																				<button type="submit" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">search</i></button>
 
+                                    <!-- <div class="ui icon input small">
+                                        <input list="doctor" name="search_doc" placeholder="ค้นหาจากรหัส / ชื่อ-นามสกุล">
+																				<input type="submit" value = "ค้นหา">
+                                    </div> -->
+
+                                    <?php
                                         $query = "SELECT user,f_user,l_user FROM tbuser ORDER BY user DESC";
                                         $result = mysql_query($query) or die(mysql_error()."[".$query."]");
                                         ?>
                                     <datalist id="doctor" name="doctor">
-                                         <?php 
+                                         <?php
                                         while ($ro = mysql_fetch_array($result))
                                         {
                                             $line = $ro['user']." ".$ro['f_user']." ".$ro['l_user'];
                                              echo "<option value='".$line."'></option>";
                                         }
-                                    ?>   
+                                    ?>
                                     </datalist>
                                     </form>
                                         <div class="mdl-layout-spacer"></div>
@@ -72,21 +74,24 @@
                             </div>
                             <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                                 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
-                                    <div class="mdl-tabs__tab-bar"> <a href="#doctor-panel" class="mdl-tabs__tab is-active">แพทย์</a> <a href="#staff-panel" class="mdl-tabs__tab">เจ้าหน้าที่</a> </div>
-                                    <!--/.mdl-tabs__tab-bar-->
+                                    <div class="mdl-tabs__tab-bar">
+																			<a href="#doctor-panel" class="mdl-tabs__tab is-active">แพทย์</a> <a href="#staff-panel" class="mdl-tabs__tab">เจ้าหน้าที่</a>
+																		</div>
+
                                     <div class="mdl-tabs__panel is-active" id="doctor-panel">
-                                        <?php 
-                                        $doctor_data = mysql_query(" SELECT * FROM tbuser 
-                                                    WHERE id_position = 1 
-                                                    ORDER BY user ASC");
-                                        $doctor_count = mysql_num_rows($doctor_data);
-                                    ?>
-                                            <h5 class="uk-margin-top uk-heading-bullet">รายชื่อแพทย์ในภาควิชา (
+
+																				<?php
+		                                        $doctor_data = mysql_query(" SELECT * FROM tbuser
+		                                                    WHERE id_position = 1
+		                                                    ORDER BY user ASC");
+		                                        $doctor_count = mysql_num_rows($doctor_data);
+		                                    ?>
+
+                                        <h5 class="uk-margin-top uk-heading-bullet">รายชื่อแพทย์ในภาควิชา (
                                         <?php echo "$doctor_count" ?> คน)</h5>
                                             <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                                 <thead>
                                                     <tr>
-                                                        <!--                                                <th>รูปภาพ</th>-->
                                                         <th class="uk-table-link"><a href="#" class="uk-button-text text-green">รหัสประจำตัว <span uk-icon="icon: arrow-down"></span></a></th>
                                                         <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                                         <th class="uk-table-link"><a href="#" class="uk-button-text">ตำแหน่ง</a></th>
@@ -100,12 +105,7 @@
                                                     <?php
                                                 while($row = mysql_fetch_array($doctor_data)) {
                                                     include 'id_position.php';
-                                                    if($row["photo"] == "") {
-                                                        $photo = "img/avatar-doctor.svg";
-                                                    }
-                                                    else {
-                                                        $photo = "img/".$row["photo"];
-                                                    } 
+
                                             ?>
                                                         <tr>
                                                             <!--                                                    <td><img class="uk-preserve-width uk-border-circle" src="<?php echo $photo ?>" width="40" alt=""></td>-->
@@ -129,8 +129,8 @@
                                                             <td> <a href="<?php echo 'admin_edit.php?myuser='.$row['user'] ?>" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a> </td>
                                                             <td>
                                                                 <?php $linktodel = "#delete".$row['user'];
-                                                                $modaldel = "delete".$row['user'];?> 
-                                                                <a uk-toggle="target: <?php  echo $linktodel;?>" class="uk-button uk-button-text text-green"><span uk-icon="icon: trash"></span></a> 
+                                                                $modaldel = "delete".$row['user'];?>
+                                                                <a uk-toggle="target: <?php  echo $linktodel;?>" class="uk-button uk-button-text text-green"><span uk-icon="icon: trash"></span></a>
                                                                 </td>
                                                             <div uk-modal="center: true" id="<?php echo  $modaldel;?>">
                                                                 <div class="uk-modal-dialog">
@@ -155,7 +155,7 @@
 
                                         <?php
                                         $staff_data = mysql_query("
-                                            SELECT * FROM tbuser 
+                                            SELECT * FROM tbuser
                                             WHERE id_position BETWEEN 2 AND 3
                                             ORDER BY user ASC
                                         ");
@@ -167,12 +167,11 @@
                                                                     <table class="uk-table uk-table-responsive uk-table-divider uk-table-hover uk-table-justify uk-table-middle uk-table-small">
                                                                         <thead>
                                                                             <tr>
-                                                                                <!--                                                    <th>รูปภาพ</th>-->
                                                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">รหัสประจำตัว <span uk-icon="icon: arrow-down"></span></a></th>
                                                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ชื่อ-นามสกุล</a></th>
                                                                                 <th class="uk-table-link"><a href="#" class="uk-button-text">ตำแหน่ง</a></th>
                                                                                 <th>แก้ไข</th>
-                                                                                
+
                                                         <th>ลบ</th>
                                                                             </tr>
                                                                         </thead>
@@ -180,12 +179,6 @@
                                                                             <?php
                                                     while($row = mysql_fetch_array($staff_data)) {
                                                         include 'id_position.php';
-                                                        if($row["photo"] == "") {
-                                                            $photo = "img/avatar-doctor.svg";
-                                                        }
-                                                        else {
-                                                            $photo = "img/".$row["photo"];
-                                                        }
                                                 ?>
                                                                                 <tr>
                                                                                     <!--                                                        <td><img class="uk-preserve-width uk-border-circle" src="<?php echo $photo ?>" width="40" alt=""></td>-->
@@ -207,8 +200,8 @@
                                                                                     <td><a href="<?php echo 'admin_edit.php?myuser='.$row['user'] ?>" class="uk-button uk-button-text text-green"><span uk-icon="icon: pencil"></span></a></td>
                                                                             <td>
                                                                 <?php $linktodel = "#delete".$row['user'];
-                                                                $modaldel = "delete".$row['user'];?> 
-                                                                <a uk-toggle="target: <?php  echo $linktodel;?>" class="uk-button uk-button-text text-green"><span uk-icon="icon: trash"></span></a> 
+                                                                $modaldel = "delete".$row['user'];?>
+                                                                <a uk-toggle="target: <?php  echo $linktodel;?>" class="uk-button uk-button-text text-green"><span uk-icon="icon: trash"></span></a>
                                                                 </td>
                                                             <div uk-modal="center: true" id="<?php echo  $modaldel;?>">
                                                                 <div class="uk-modal-dialog">
@@ -221,7 +214,7 @@
                 <div class="uk-modal-footer ">
                     <div class="uk-align-right"> <a class="uk-button uk-button-default uk-button-small" href="admin.php">ยกเลิก</a> <a class="uk-button uk-button-default uk-button-small button-green" href="<?php echo $deldel;?>">ลบ</a> </div>
                 </div>
-            </div> </div>    
+            </div> </div>
                                                                             </tr>
                                                                                 <?php } ?>
                                                                         </tbody>

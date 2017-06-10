@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <?php
-    
+
     if (isset($_GET['Message'])) {
 //    include 'calendar_to_sum_yn.html';
         $sum_id = $_GET["sum_id"];
@@ -10,10 +10,10 @@
 }
     // create calendar
     include 'create_calen.php';
-    
+
     //visit meaning
     include 'meaning_visit.php';
-    
+
 	session_start();
 	if($_SESSION['id'] == "")
 	{
@@ -22,39 +22,37 @@
 		header( "location:login.php");
 		exit();
 	}
-    
-    
+
+
 ?>
 
 <head>
-    <meta charset="UTF-8">
+    <!-- <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
 
-    <!--mdl-->
     <link rel="stylesheet" href="lib/mdl/material.min.css">
     <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
 
-    <!--uikit-->
     <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
 
-    <!--icon-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <!--custom css-->
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/font.css">
+    <link rel="stylesheet" href="css/font.css"> -->
+    <?php include 'head.html'; ?>
     <link rel="stylesheet" href="css/calendar.css">
-  
-    
 </head>
 
 <body>
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+
         <?php include "header.html"; ?>
+
         <main class="mdl-layout__content mdl-color--grey-100">
             <div class="mdl-grid demo-content">
 
+                <!-- BREADCRUMB -->
                 <ul class="uk-breadcrumb breadcrumb">
                     <li><span href="#"></span><i class="material-icons breadcrumb-icons">date_range</i>ปฏิทินนัดหมาย</li>
                 </ul>
@@ -71,32 +69,34 @@
                                     <label>
                                             <input class="uk-radio" type="radio" name="radio1" checked> ทั้งหมด
                                         </label>
-                                    
+
                                     <div class="uk-margin-small">
                                         <label>
                                         <input class="uk-radio" type="radio" name="radio1" > เฉพาะฉัน
                                     </label>
                                     </div>
                                     <label>
-                                        <input class="uk-radio" type="radio" name="radio1"> แพทย์ที่ระบุ: 
+                                        <input class="uk-radio" type="radio" name="radio1"> แพทย์ที่ระบุ:
                                     </label>
-                                    <input list="doctor" class="uk-input uk-width-medium uk-form-small" placeholder="ค้นหาจากรหัส / ชื่อ-นามสกุล">
-                                    <?php
-                                        
+                                    <input class="uk-input uk-width-medium uk-form-small" list="doctor" name="search_patient" placeholder="ค้นหาจากรหัสประจำ หรือ ชื่อ-นามสกุลของแพทย์">
+                                    <!-- <input list="doctor" class="uk-input uk-width-medium uk-form-small" placeholder="ค้นหาจากรหัส / ชื่อ-นามสกุล"> -->
 
+                                    <?php
                                         $query = "SELECT user,f_user,l_user FROM tbuser ORDER BY user DESC";
                                         $result = mysql_query($query) or die(mysql_error()."[".$query."]");
-                                        ?>
+                                    ?>
+                                    
                                     <datalist id="doctor" name="doctor">
-                                         <?php 
-                                        while ($ro = mysql_fetch_array($result))
-                                        {
-                                            $line = $ro['user']." ".$ro['f_user']." ".$ro['l_user'];
-                                             echo "<option value='".$line."'></option>";
-                                        }
-                                    ?>   
+                                         <?php
+                                          while ($ro = mysql_fetch_array($result)) {
+                                              $line = $ro['user']." ".$ro['f_user']." ".$ro['l_user'];
+                                               echo "<option value='".$line."'></option>";
+                                          }
+                                        ?>
                                     </datalist>
-                                    <button> ค้นหา </button>
+
+                                    <button type="submit" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">search</i></button>
+                                    <!-- <button> ค้นหา </button> -->
                                 </form>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                         <div class="mdl-card__menu">
                             <ul class="uk-iconnav">
                                 <li>
-                                    <?php 
+                                    <?php
                                     $noti = "SELECT Count(members_status) AS notify FROM calendar_members_status WHERE Id_members=".$_SESSION['id']." AND members_status=0";
                                     $noti_q = mysql_query($noti) or die(mysql_error()."[".$query."]");
                                     $noti_fetch = mysql_fetch_assoc($noti_q);
@@ -134,10 +134,10 @@
                             </ul>
                         </div>
 
-                      
-                            <?php 
+
+                            <?php
                         echo $test;
-                            include'calendar_month.php'; 
+                            include'calendar_month.php';
                             $calendar = new Calendar();
                             echo $calendar->show();
                             $month = "";
@@ -215,11 +215,11 @@
     <!--custom js-->
     <script src="js/stepper-nonlinear.js"></script>
     <script src="js/liblock.js"></script>
-    
-    
-    
-    
-    
+
+
+
+
+
 </body>
 
 </html>
