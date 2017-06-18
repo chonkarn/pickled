@@ -80,7 +80,8 @@
     $allergic_input = $_POST['allergic_input'];
     $alternative = $_POST['alternative'];
     $alternative_input = $_POST['alternative_input'];
-    $alcohol = $_POST['alcohol'];
+
+		$alcohol = $_POST['alcohol'];
     if(isset($_POST['alcohol_input'])) { $alcohol_input = 1; }
     else { $alcohol_input = 0; }
     $cigarette = $_POST['cigarette'];

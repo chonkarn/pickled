@@ -12,7 +12,6 @@
 }
 
 body {
-    background-color: #eee;
     color: #000;
 }
 
@@ -235,8 +234,6 @@ ul.mdl-stepper.mdl-stepper--horizontal {
 .uk-radio[type=radio]:checked {
     background-color: #4caf50;
 }
-
-label .uk-radio[type=radio]:disabled {}
 
 .uk-checkbox[type=checkbox]:checked {
     background-color: #4caf50;

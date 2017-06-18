@@ -14,7 +14,7 @@
         die(mysql_error());
     }
     mysql_select_db("homevisit");
-    mysql_query("set character set utf8");  
+    mysql_query("set character set utf8");
 ?>
 
     <head>
@@ -61,11 +61,11 @@
                                     <tbody>
                                         <?php
                                                 $results = mysql_query("
-                                                    SELECT * FROM patientinfo 
-                                                    WHERE patient_doctor_owner = '$user' 
-                                                    AND (patient_visit_status = 1) 
+                                                    SELECT * FROM patientinfo
+                                                    WHERE patient_doctor_owner = '$user'
+                                                    AND (patient_visit_status = 1)
                                                 ");
-                                            
+
                                                 while($row = mysql_fetch_array($results)) {
                                                     if ($row['patient_visit_status'] == 1)
                                                         $row['patient_visit_status'] = "ใหม่" ;
@@ -109,7 +109,8 @@
                                 <a href="patient.php" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--green">ดูผู้ป่วยทั้งหมด</a>
                             </div>
                         </div>
-                        <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-desktop mdl-grid mdl-grid--no-spacing">
+
+                        <div class="mdl-cell mdl-cell--4-col mdl-grid mdl-grid--no-spacing">
                             <div class=" demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                                 <div class="mdl-card__supporting-text mdl-color-text--grey-900">
                                     <h4>นัดหมายเยี่ยมบ้านสัปดาห์นี้</h4>
@@ -130,7 +131,7 @@
                             </div>
                         </div>
 
-                        <div class="demo-cards mdl-cell mdl-cell--8-col mdl-cell--12-col-tablet mdl-cell--8-col-desktop mdl-grid mdl-grid--no-spacing">
+                        <div class="demo-cards mdl-cell mdl-cell--8-col mdl-grid mdl-grid--no-spacing">
                             <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                                 <div class="mdl-card__supporting-text mdl-color-text--grey-900">
                                     <h4>สรุปเยี่ยมบ้านที่ยังไม่สรุป</h4>
@@ -145,11 +146,11 @@
                                         </thead>
                                         <?php
                                             $results = mysql_query("
-                                                SELECT * FROM summary 
+                                                SELECT * FROM summary
                                                 INNER JOIN patientinfo ON summary.patient_hn = patientinfo.patient_hn
-                                                
+
                                             ");
-                                        
+
                                             while($row = mysql_fetch_array($results)) {
                                                $row['summary_status'] = "ยังไม่ได้สรุป";
                                         ?>

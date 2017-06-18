@@ -90,7 +90,7 @@
                                   เยี่ยมบ้านครั้งต่อไป
                                     </small>
                                         <br>
-                                        <?php if( $next_visit == NULL){ echo "-"; }else {echo $next_visit; }  ?>
+                                        <?php if( $next_visit == NULL){ echo "-"; }else {echo $next_visit; } ?>
                                         <!--4/7/2559 <small>(เช้า)</small>-->
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@
                                             </div>
                                         </div>
                                         <div class="uk-text-right">
-                                            <a href="<?php echo "summary_print.php?hn=".$patient_hn."$calendar_id=".$calendar_id ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์สรุปเยี่ยมบ้านนี้" uk-tooltip>
+                                            <a href="<?php echo "summary_print.php?hn=".$patient_hn."$calendar_id=".$calendar_id ?>" class="mdl-button mdl-button--icon mdl-button--colored" target="_blank" title="พิมพ์สรุปเยี่ยมบ้านนี้" uk-tooltip>
                                                 <i class="material-icons">print</i>
                                             </a>
                                             <a href="<?php echo "summary_form.php?hn=".$patient_hn."$calendar_id=".$calendar_id ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขสรุปเยี่ยมบ้านนี้" uk-tooltip>
@@ -166,7 +166,7 @@
 
                                 <div class="mdl-tabs__panel is-active" id="profile-panel">
                                     <div class="uk-float-right">
-                                        <a href="<?php echo "patient_print.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์ข้อมูลผู้ป่วย" uk-tooltip>
+                                        <a href="<?php echo "patient_print.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" target="_blank" title="พิมพ์ข้อมูลผู้ป่วย" uk-tooltip>
                                             <i class="material-icons">print</i>
                                         </a>
                                         <?php
@@ -195,6 +195,8 @@
 
         <!--custom js-->
         <script src="js/dropdown.js"></script>
+        <script src="js/checkbox.js"></script>
+
     </body>
 
 </html>

@@ -95,7 +95,9 @@ $dyslipidemia = $row['dyslipidemia'];
 $stroke = $row['stroke'];
 $cad = $row['cad'];
 $cancer = $row['cancer'];
+$cancer_input = $row['cancer_input'];
 $other = $row['other'];
+$other_input = $row['other_input'];
 
 $main = $row['main'];
 $problem = $row['problem'];

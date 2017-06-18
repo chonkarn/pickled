@@ -9,7 +9,7 @@
     <dd><?php echo $patient_visit_type ?></dd>
 
     <dt>แพทย์เจ้าของไข้</dt>
-    <dd><?php echo $doctor_owner." (".$doctor_owner_id.")" ?><br></dd>
+    <dd><?php echo $doctor_owner ?><br></dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
 
@@ -37,7 +37,7 @@
 
     <dt>วัน เดือน ปีเกิด</dt>
     <dd>
-        <?php echo $patient_birthday ?>
+        <?php echo $patient_bday." ".$patient_bmonth." พ.ศ. ".$patient_byear ?>
     </dd>
 
     <dt>อายุ</dt>
@@ -46,14 +46,14 @@
     </dd>
 
     <dt>โทรศัพท์ที่บ้าน</dt>
-    <dd><i class="material-icons">phone</i> <?php echo $patient_tel_home ?></dd>
+    <dd><?php if($patient_tel_home){ echo $patient_tel_home;} else { echo "-";} ?></dd>
 
 
     <dt>โทรศัพท์มือถือ</dt>
-    <dd><i class="material-icons">phone</i> <?php echo $patient_tel_mobile ?></dd>
+    <dd><?php if($patient_tel_mobile){ echo $patient_tel_mobile;} else { echo "-";} ?></dd>
 
     <dt>โทรศัพท์ที่ทำงาน</dt>
-    <dd><i class="material-icons">phone</i> <?php echo $patient_tel_work ?></dd>
+    <dd><?php if($patient_tel_work){ echo $patient_tel_work;} else { echo "-";} ?></dd>
 
     <dt>สถานภาพ</dt>
     <dd><?php echo $patient_status ?><br></dd>
@@ -89,8 +89,8 @@
     <dt>แผนผังครอบครัว</dt>
     <dd>
       <a href="<?php echo "img/geno/".$genogram ?>" target="_blank">
-      <img src="<?php echo "img/geno/".$genogram ?>" style="border: 1px solid #ccc;" width="50%">
-    </a>
+        <img src="<?php if($genogram != NULL){ echo "img/geno/".$genogram; }else { echo "ไม่มีแผนผังครอบครัว"; } ?>" style="border: 1px solid #ccc;" width="50%">
+      </a>
     </dd>
 
 
@@ -99,71 +99,70 @@
 
     <dt>การผ่าตัด</dt>
     <dd>
-        <?php
-            if($surgery == 0){
-                echo "ไม่เคยผ่าตัด";
-            }
-            else if($surgery == 1) {
-                echo $surgery." ".$surgery_input;
-            }
-            else {
-              echo "ไม่มีข้อมูล";
-            }
-        ?>
+      <?php
+        switch($surgery){
+          case 1: echo "ไม่เคยผ่าตัด"; break;
+          case 2: echo "เคยผ่าตัด ".$surgery_input; break;
+          default: echo "ไม่มีข้อมูล";
+        }
+      ?>
     </dd>
 
     <dt>การแพ้ยา/แพ้อาหาร</dt>
     <dd>
       <?php
-          if($allergic == 0){
-              echo "ไม่เคยผ่าตัด";
-          }
-          else if($allergic == 1) {
-              echo $allergic." ".$allergic_input;
-          }
-          else {
-            echo "ไม่มีข้อมูล";
-          }
+        switch($allergic){
+          case 1: echo "ไม่มีอาการแพ้"; break;
+          case 2: echo "มีอาการแพ้ ".$allergic_input; break;
+          default: echo "ไม่มีข้อมูล";
+        }
       ?>
       </dd>
 
     <dt>แพทย์ทางเลือก</dt>
     <dd>
       <?php
-          if ($alternative == 0){
-            echo "ไม่มีแพทย์ทางเลือก";
-          }
-          else if ($alternative == 1) {
-              echo $alternative." ".$alternative_input;
-          }
-          else {
-            echo "ไม่มีข้อมูล";
-          }
-        ?>
+        switch($alternative){
+          case 1: echo "ไม่มีแพทย์ทางเลือก"; break;
+          case 2: echo "มีแพทย์ทางเลือก ".$alternative_input; break;
+          default: echo "ไม่มีข้อมูล";
+        }
+      ?>
     </dd>
 
     <h5 class="uk-heading-bullet">พฤติกรรมเสี่ยงในปัจจุบัน</h5>
     <dt>สุรา</dt>
     <dd>
       <?php
-          if($alcohol == NULL){
-              echo "ไม่มีข้อมูล";
-          }
-          else {
-              echo $alcohol." ".$alcohol_problem;
-          }
-        ?>
-        <!-- เลิกดื่มแล้ว และ ไม่มีปัญหาเกี่ยวกับการดื่ม -->
+        switch($alcohol) {
+          case 1: echo "ไม่เคยดื่ม"; break;
+          case 2: echo "ดื่มอยู่"; break;
+          case 3: echo "เลิกดื่มแล้ว"; break;
+          default: echo "ไม่มีข้อมูล";
+        }
+
+        if($alcohol_problem == 0) {
+          echo " และ ไม่มีปัญหาเกี่ยวกับการดื่ม ";
+        } else if($alcohol_problem == 1) {
+          echo " และ มีปัญหาเกี่ยวกับการดื่ม ";
+        }
+      ?>
     </dd>
 
     <dt>บุหรี่</dt>
     <dd>
       <?php
-          if($cigarette == NULL){
-              echo "ไม่มีข้อมูล";
+          if($cigarette == 1) {
+              echo "ไม่สูบบุหรี่";
+          }
+          else if($cigarette == 2) {
+            echo "สูบอยู่ จำนวน ".$cigarette_amount." มวน/วัน เป็นระยะเวลา ".$cigarette_period." ปี";
+          }
+          else if($cigarette == 3) {
+            echo "เลิกสูบแล้ว จำนวน ".$cigarette_amount." มวน/วัน เป็นระยะเวลา ".$cigarette_period." ปี";
           }
           else {
-              echo $cigarette." ".$cigarette_amount." ".$cigarette_period;
+            echo "ไม่มีข้อมูล";
           }
         ?>
     </dd>
@@ -186,19 +185,45 @@
 
     <dt>ประวัติโรคในครอบครัว</dt>
     <dd>
-      <input class="uk-checkbox" type="checkbox" id="hypertension" name="hypertension" value="1"> Hypertension
-      <br><input class="uk-checkbox" type="checkbox" id="diabetes-mellitus" name="diabetes-mellitus"> Diabetes mellitus
-      <br><input class="uk-checkbox" type="checkbox" id="dyslipidemia" name="dyslipidemia"> Dyslipidemia
-      <br><input class="uk-checkbox" type="checkbox" id="stroke" name="stroke" value="1"> Stroke
-      <br><input class="uk-checkbox" type="checkbox" id="cad" name="cad"> CAD
-      <br><input class="uk-checkbox" type="checkbox" id="cancer" name="cancer" onclick="cancer_check()"> Cancer:
-      <div class="ui mini input focus">
-          <input type="text" id="cancer_input" name="cancer_input" placeholder="โปรดระบุ" disabled>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($hypertansion == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+        <label>Hypertension</label>
       </div>
       <br>
-      <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" id="other" onclick="other_check()" name="other"> อื่นๆ: </label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($diabetes_mellitus == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+        <label>Diabetes mellitus</label>
+      </div>
+      <br>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($dyslipidemia == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+        <label>Dyslipidemia</label>
+      </div>
+      <br>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($stroke == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+        <label>Stroke</label>
+      </div>
+      <br>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($cad == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+        <label>CAD</label>
+      </div>
+      <br>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($cancer == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+        <label>Cancer:</label>
+      </div>
       <div class="ui mini input focus">
-          <input type="text" id="other_input" name="other_input" placeholder="โปรดระบุ" disabled>
+          <?php echo $cancer_input ?>
+      </div>
+      <br>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($other == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+        <label>Other:</label>
+      </div>
+      <div class="ui mini input focus">
+          <?php echo $other_input ?>
       </div>
     </dd>
 
@@ -233,7 +258,7 @@
             $tbuserSQL = "SELECT * FROM tbuser WHERE user='$user'";
             $tbuserQuery = mysqli_query($conn, $tbuserSQL);
             $tbuserData = mysqli_fetch_assoc($tbuserQuery);
-            echo $tbuserData['f_user']." ".$tbuserData['l_user']." (".$tbuserData['user'].") เมื่อวันที่ "
+            echo $tbuserData['f_user']." ".$tbuserData['l_user']." (".$tbuserData['user'].")"
         ?>
         <!--นพ.ประสงค์ ทรงธรรม (013651) เมื่อวันที่ 24/09/2559-->
     </dd>

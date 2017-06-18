@@ -32,6 +32,13 @@ switch($patient_religion){
     case 4: $patient_religion = 'อื่นๆ'; break;
 }
 
+switch($patient_religion){
+    case 1: $patient_religion = 'พุทธ'; break;
+    case 2: $patient_religion = 'คริสต์'; break;
+    case 3: $patient_religion = 'อิสลาม'; break;
+    case 4: $patient_religion = 'อื่นๆ'; break;
+}
+
 switch($patient_bmonth){
     case 1: $patient_bmonth = 'มกราคม'; break;
     case 2: $patient_bmonth = 'กุมภาพันธ์'; break;
