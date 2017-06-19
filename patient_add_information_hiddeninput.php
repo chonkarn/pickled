@@ -3,7 +3,7 @@
     .ui-autocomplete-loading {
         background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
     }
-    
+
     .ui-autocomplete {
         max-height: 100px;
         max-width: 525px;
@@ -14,7 +14,7 @@
     /* IE 6 doesn't support max-height
    * we use height instead, but this forces the menu to always be this tall
    */
-    
+
     * html .ui-autocomplete {
         height: 100px;
         width: 100px;
@@ -42,56 +42,75 @@
     }
 
     function cancer_check() {
-        if (document.getElementById("cancer").checked == true) {
-            document.getElementById("cancer_input").disabled = false;
-        } else {
-            document.getElementById("cancer_input").disabled = true;
+        if (document.getElementById("cancer").checked == false) {
+            document.getElementById("cancer_input").style.visibility = 'hidden';
+        }
+        else {
+            document.getElementById("cancer_input").style.visibility = 'visible';
         }
     }
+
+
+    // function cancer_check() {
+    //     if (document.getElementById("cancer").checked == true) {
+    //         document.getElementById("cancer_input").disabled = false;
+    //     } else {
+    //         document.getElementById("cancer_input").disabled = true;
+    //     }
+    // }
 
     function other_check() {
-        if (document.getElementById("other").checked == true) {
-            document.getElementById("other_input").disabled = false;
-        } else {
-            document.getElementById("other_input").disabled = true;
+        if (document.getElementById("other").checked == false) {
+            document.getElementById("other_input").style.visibility = 'hidden';
+        }
+        else {
+            document.getElementById("other_input").style.visibility = 'visible';
         }
     }
 
-    //    function alcohol_check() {
-    //        if (document.getElementById("alcohol-1").checked == true) {
-    //            document.getElementById("div_alcohol").style.visibility = 'hidden';
-    //        }
-    //        else {
-    //            document.getElementById("div_alcohol").style.visibility = 'visible';
-    //        }
-    //    }
+    // function other_check() {
+    //     if (document.getElementById("other").checked == true) {
+    //         document.getElementById("other_input").disabled = false;
+    //     } else {
+    //         document.getElementById("other_input").disabled = true;
+    //     }
+    // }
 
-    function alcohol_check() {
-        if (document.getElementById("alcohol-1").checked == true) {
-            document.getElementById("alcohol_problem").disabled = true;
-        } else {
-            document.getElementById("alcohol_problem").disabled = false;
-        }
-    }
+       function alcohol_check() {
+           if (document.getElementById("alcohol-1").checked == true) {
+               document.getElementById("div_alcohol").style.visibility = 'hidden';
+           }
+           else {
+               document.getElementById("div_alcohol").style.visibility = 'visible';
+           }
+       }
 
-    //    function cigarette_check() {
-    //        if (document.getElementById("cigarette-1").checked == true) {
-    //            document.getElementById("div_cigarette").style.visibility = 'hidden';
-    //        }
-    //        else {
-    //            document.getElementById("div_cigarette").style.visibility = 'visible';
-    //        }
-    //    }
+    // function alcohol_check() {
+    //     if (document.getElementById("alcohol-1").checked == true) {
+    //         document.getElementById("alcohol_problem").disabled = true;
+    //     } else {
+    //         document.getElementById("alcohol_problem").disabled = false;
+    //     }
+    // }
 
-    function cigarette_check() {
-        if (document.getElementById("cigarette-1").checked == true) {
-            document.getElementById("cigarette_amount").disabled = true;
-            document.getElementById("cigarette_period").disabled = true;
-        } else {
-            document.getElementById("cigarette_amount").disabled = false;
-            document.getElementById("cigarette_period").disabled = false;
-        }
-    }
+       function cigarette_check() {
+           if (document.getElementById("cigarette-1").checked == true) {
+               document.getElementById("div_cigarette").style.visibility = 'hidden';
+           }
+           else {
+               document.getElementById("div_cigarette").style.visibility = 'visible';
+           }
+       }
+
+    // function cigarette_check() {
+    //     if (document.getElementById("cigarette-1").checked == true) {
+    //         document.getElementById("cigarette_amount").disabled = true;
+    //         document.getElementById("cigarette_period").disabled = true;
+    //     } else {
+    //         document.getElementById("cigarette_amount").disabled = false;
+    //         document.getElementById("cigarette_period").disabled = false;
+    //     }
+    // }
 
     function surgery_check() {
         if (document.getElementById("surgery-1").checked == true) {

@@ -9,7 +9,7 @@
     <dd><?php echo $patient_visit_type ?></dd>
 
     <dt>แพทย์เจ้าของไข้</dt>
-    <dd><?php echo $doctor_owner ?><br></dd>
+    <dd><?php echo $patient_doctor_owner ?></dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
 
@@ -36,18 +36,13 @@
     <dd><?php echo $patient_gender ?></dd>
 
     <dt>วัน เดือน ปีเกิด</dt>
-    <dd>
-        <?php echo $patient_bday." ".$patient_bmonth." พ.ศ. ".$patient_byear ?>
-    </dd>
+    <dd><?php echo $patient_bday." ".$patient_bmonth." ".$patient_byear ?></dd>
 
     <dt>อายุ</dt>
-    <dd>
-        <?php echo $patient_age ?>
-    </dd>
+    <dd><?php echo $patient_age ?></dd>
 
     <dt>โทรศัพท์ที่บ้าน</dt>
     <dd><?php if($patient_tel_home){ echo $patient_tel_home;} else { echo "-";} ?></dd>
-
 
     <dt>โทรศัพท์มือถือ</dt>
     <dd><?php if($patient_tel_mobile){ echo $patient_tel_mobile;} else { echo "-";} ?></dd>
@@ -56,27 +51,26 @@
     <dd><?php if($patient_tel_work){ echo $patient_tel_work;} else { echo "-";} ?></dd>
 
     <dt>สถานภาพ</dt>
-    <dd><?php echo $patient_status ?><br></dd>
+    <dd><?php echo $patient_status ?></dd>
 
     <dt>ศาสนา</dt>
-    <dd><?php echo $patient_religion ?><br></dd>
+    <dd><?php echo $patient_religion ?></dd>
 
     <dt>ระดับการศึกษา</dt>
-    <dd><?php echo $patient_education ?><br></dd>
+    <dd><?php echo $patient_education ?></dd>
 
     <dt>อาชีพ</dt>
-    <dd><?php echo $patient_occupation ?><br></dd>
+    <dd><?php echo $patient_occupation ?></dd>
 
     <dt>สิทธิการรักษา</dt>
-    <dd><?php echo $healthinsure ?><br></dd>
-
+    <dd><?php echo $insure ?></dd>
 
     <dt>ข้อมูลญาติที่ติดต่อได้</dt>
     <dd>
-<!--        <b>ญาติคนที่ 1:</b><br> -->
+<!-- <b>ญาติคนที่ 1:</b><br> -->
         <label class="uk-margin-right"><b>ชื่อ-นามสกุล </b><?php echo $relate_name ?> </label>
         <label class="uk-margin-right"><b>เกี่ยวข้องเป็น </b><?php echo $relate_def ?></label>
-        <label class="uk-margin-right"><b>เบอร์โทรศัพท์ </b><i class="material-icons">phone</i> <?php echo $relate_tel ?></label>
+        <label class="uk-margin-right"><b>เบอร์โทรศัพท์ </b><?php echo $relate_tel ?></label>
 <!--
         <hr>
         <b>ญาติคนที่ 2:</b>
@@ -85,14 +79,12 @@
 -->
     </dd>
 
-
     <dt>แผนผังครอบครัว</dt>
     <dd>
       <a href="<?php echo "img/geno/".$genogram ?>" target="_blank">
-        <img src="<?php if($genogram != NULL){ echo "img/geno/".$genogram; }else { echo "ไม่มีแผนผังครอบครัว"; } ?>" style="border: 1px solid #ccc;" width="50%">
+        <img src="<?php if($genogram != NULL){ echo "img/geno/".$genogram; } else { echo "ไม่มีแผนผังครอบครัว"; } ?>" style="border: 1px solid #ccc;" max-width="75%">
       </a>
     </dd>
-
 
     <h4 class="uk-heading-divider">ส่วนที่ 2 ข้อมูลสุขภาพ</h4>
     <h5 class="uk-heading-bullet">ประวัติการรักษา</h5>
@@ -136,15 +128,21 @@
       <?php
         switch($alcohol) {
           case 1: echo "ไม่เคยดื่ม"; break;
-          case 2: echo "ดื่มอยู่"; break;
-          case 3: echo "เลิกดื่มแล้ว"; break;
+          case 2: echo "ดื่มอยู่";
+            if($alcohol_problem == 0) {
+              echo " และ ไม่มีปัญหาเกี่ยวกับการดื่ม ";
+            } else if($alcohol_problem == 1) {
+              echo " และ มีปัญหาเกี่ยวกับการดื่ม ";
+            }
+            break;
+          case 3: echo "เลิกดื่มแล้ว";
+            if($alcohol_problem == 0) {
+              echo " และ ไม่มีปัญหาเกี่ยวกับการดื่ม ";
+            } else if($alcohol_problem == 1) {
+              echo " และ มีปัญหาเกี่ยวกับการดื่ม ";
+            }
+            break;
           default: echo "ไม่มีข้อมูล";
-        }
-
-        if($alcohol_problem == 0) {
-          echo " และ ไม่มีปัญหาเกี่ยวกับการดื่ม ";
-        } else if($alcohol_problem == 1) {
-          echo " และ มีปัญหาเกี่ยวกับการดื่ม ";
         }
       ?>
     </dd>
@@ -248,6 +246,7 @@
             <li>E117 Non-insulin-dependent diabetes mellitus ,with multiple complications</li>
         </ol>
 -->
+
     </dd>
 
     <hr>

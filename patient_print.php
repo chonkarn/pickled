@@ -15,6 +15,9 @@
     mysql_select_db($dbname) or die(mysql_error());
     mysql_query("set character set utf8");
 
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    mysqli_query($conn, "SET NAMES UTF8");
+
     $patient_hn = $_GET['hn'];
     include "patient_viewdata_db.php";
     include 'meaning_patient.php';
@@ -26,14 +29,11 @@
 
     <body>
       <div class="mdl-grid mdl-typography--subhead">
-          <div><img class="logo-report" src="img/logo-report.jpg">
-              <p class="mdl-typography--body-2">FAM-MED</p>
-          </div>
-
+          <div><img class="logo-report" src="img/logo-report.jpg"><br>FAM-MED</div>
           <div>
               แบบบันทึกสุขภาพผู้ป่วยและครอบครัว
-              <br> ภาควิชาเวชศาสตร์ครอบครัว คณะแพทยศาสตร์โรงพยาบาลรามาธิบดี
-              <p class="mdl-typography--title">Department of Family Medicine</p>
+              <br> ภาควิชาเวชศาสตร์ครอบครัว คณะแพทยศาสตร์โรงพยาบาลรามาธิบดี<br>
+              Faculty of Medicine Ramathibodi Hospital, Mahidol University
           </div>
       </div>
         <?php include 'patient_viewdata.php' ?>
@@ -58,9 +58,8 @@
                 </div>
             </div>
         </main> -->
-        <script>
-            window.print();
-        </script>
     </body>
-
+    <!-- <script>
+        window.print();
+    </script> -->
 </html>

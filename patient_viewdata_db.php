@@ -16,11 +16,10 @@ $patient_lname = $row['patient_surname'];
 $patient_name = $patient_pname." ".$patient_fname." ".$patient_lname;
 
 $patient_id = $row['patient_id'];
+if($patient_id == NULL) { $patient_id = "-"; }
+
 $patient_gender = $row['patient_gender'];
-$patient_status = $row['patient_status'];
-$patient_religion = $row['patient_religion'];
-$patient_occupation = $row['patient_occupation'];
-$patient_education = $row['patient_education'];
+if($patient_gender == NULL) { $patient_gender = "-"; }
 
 # Date
 date_default_timezone_set("Asia/Bangkok");
@@ -31,22 +30,37 @@ $patient_byear = $row['patient_byear'];
 $patient_byear_ad = $patient_byear - 543;
 $patient_birthday = $patient_bday."-".$patient_bmonth."-".$patient_byear_ad;
 # Age
-if ($patient_bday != null || $patient_bmonth != null || $patient_byear != null){
-$bday = new DateTime($patient_birthday);
-$today = new DateTime('00:00:00'); // use this for the current date
-$diff = $today->diff($bday);
-$patient_age = $diff->y." ปี ".$diff->m." เดือน ".$diff->d." วัน";
+if ($patient_bday != 0 && $patient_bmonth != 0 && $patient_byear != 0){
+  $bday = new DateTime($patient_birthday);
+  $today = new DateTime('00:00:00'); // use this for the current date
+  $diff = $today->diff($bday);
+  $patient_age = $diff->y." ปี ".$diff->m." เดือน ".$diff->d." วัน";
+}
+else {
+  $patient_age = "-";
+  $patient_birthday = "-";
 }
 
-# Birthday
-$patient_birthday = $patient_bday." ".$patient_bmonth." ".$patient_byear;
+$patient_status = $row['patient_status'];
+if($patient_status == NULL) { $patient_status = "-"; }
+
+$patient_religion = $row['patient_religion'];
+if($patient_religion == NULL) { $patient_religion = "-"; }
+
+$patient_occupation = $row['patient_occupation'];
+if($patient_occupation == NULL) { $patient_occupation = "-"; }
+
+$patient_education = $row['patient_education'];
+if($patient_education == NULL) { $patient_education = "-"; }
 
 # Healthinsure
 $insure_id = $row['healthinsure'];
-$insureSQL = "SELECT * FROM healthinsure WHERE insure_id = '$insure_id'";
+$insureSQL = "SELECT * FROM healthinsure WHERE healthinsure.insure_id LIKE '$insure_id'";
 $insureQuery = mysql_db_query($dbname, $insureSQL) or die (mysql_error());
 $insureData = mysql_fetch_array($insureQuery);
-$healthinsure = $insureData['insure_name'];
+$insure = $insureData['insure_name']." (".$insureData['insure_id'].")";
+if($insure == NULL) { $insure = "-"; }
+
 
 # Address
 $patient_addr = $row['patient_add_no'];
@@ -59,6 +73,7 @@ $add_subdis = $row['patient_add_subdis'];
 $add_dis = $row['patient_add_dis'];
 $add_province = $row['patient_add_province'];
 $add_zip = $row['patient_add_zip'];
+if($add_zip == 0){ $add_zip = ""; }
 
 # Genogram
 $genogram = $row['genogram'];
@@ -73,7 +88,7 @@ $doctor_owner_id = $row['patient_doctor_owner'];
 $doctorSQL = "SELECT * FROM tbuser WHERE user = '$doctor_owner_id'";
 $doctorQuery = mysql_db_query($dbname, $doctorSQL) or die (mysql_error());
 $doctorData = mysql_fetch_array($doctorQuery);
-$doctor_owner = $doctorData['f_user']." ".$doctorData['l_user']." <small>(".$doctorData['user'].")</small>";
+$patient_doctor_owner = $doctorData['f_user']." ".$doctorData['l_user']." <small>(".$doctorData['user'].")</small>";
 
 # Health
 $surgery = $row['surgery'];
@@ -121,7 +136,10 @@ if($next_visit_date == NULL){
 
 # relating person
 $relate_name = $row['relate_name'];
+if($relate_name == NULL) { $relate_name = "-"; }
 $relate_tel = $row['relate_tel'];
+if($relate_tel == NULL) { $relate_tel = "-"; }
 $relate_def = $row['relate_def'];
+if($relate_def == NULL) { $relate_def = "-"; }
 
 ?>

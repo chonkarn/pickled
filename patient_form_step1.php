@@ -200,7 +200,7 @@
                 $result = mysql_query($query) or die(mysql_error()."[".$query."]");
             ?>
                 <select class="ui search selection dropdown" name="insure" id="select-insure">
-                     <option value="<?php echo $healthinsure ?>">พิมพ์สิทธิการรักษา</option>
+                     <option value="<?php echo $insure_id ?>" placeholder="<?php echo $insure ?>">พิมพ์สิทธิการรักษา</option>
                 <?php
                     while ($row = mysql_fetch_array($result)) {
                         echo "<option value='".$row['insure_id']."'>".$row['insure_name']." (".$row['insure_id'].")"."</option>";
@@ -233,7 +233,6 @@
                         <input type="text" name="add_road" placeholder="ถนน" value="<?php echo $add_road ?>">
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="uk-margin">
@@ -263,7 +262,7 @@
                             </select>
                         </div>
                         <div class="field">
-                            <input type="text" name="add_zip" placeholder="ไปรษณีย์" value="<?php echo $add_zip ?>">
+                            <input type="text" name="add_zip" placeholder="รหัสไปรษณีย์" value="<?php echo $add_zip ?>">
                         </div>
                     </div>
                 </div>
@@ -314,15 +313,14 @@
     <div class="uk-margin">
         <label class="uk-form-label">แผนผังครอบครัว</label>
         <div class="uk-form-controls">
-          <input type="file" name="genogram">
-            <!-- <div class="test-upload uk-placeholder uk-text-center">
-                <span uk-icon="icon: cloud-upload"></span>
-                <span class="uk-text-middle">ลากไฟล์รูปภาพมาที่ช่องนี้ หรือ</span>
-                <div uk-form-custom>
-                    <input type="file" name="genogram" id="genogram">
-                    <span class="uk-link">เลือก 1 รูปภาพ</span>
-                </div>
-            </div> -->
+          <?php
+            if($genogram != NULL){
+              echo '<img src="img/geno/'.$genogram.'" style="border: 1px solid #ccc;" max-width="75%">';
+            }
+          ?>
+          <br>
+          <input type="file" name="genogram"><br>
+          อัปโหลดรูปภาพที่ขนาดไม่เกิน 5 MB และมีสกุลไฟล์ .jpg / .jpeg / .png / .gif เท่านั้น
         </div>
     </div>
 
@@ -332,13 +330,13 @@
         <label class="uk-form-label">แพทย์เจ้าของไข้</label>
         <div class="uk-form-controls">
             <?php
-                $query = "SELECT user,f_user,l_user
+                $query = "SELECT user, f_user, l_user
                     FROM tbuser
                     ORDER BY user ASC";
                 $result = mysql_query($query) or die(mysql_error()."[".$query."]");
             ?>
                 <select class="ui search selection dropdown" name="doctor-owner">
-                    <option value="<?php echo $doctor_owner ?>">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
+                    <option value="<?php echo $doctor_owner_id ?>" placeholder="<?php echo $patient_doctor_owner ?>">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
                 <?php
                     while ($row = mysql_fetch_array($result)) {
                         echo "<option value='".$row['user']."'>".$row['f_user']." ".$row['l_user']." (".$row['user'].")"."</option>";

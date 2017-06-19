@@ -58,17 +58,28 @@
 		# genogram
 		# upload img
 		$genogram = $_POST['genogram'];
-		$ext = pathinfo(basename($_FILES['genogram']['name']), PATHINFO_EXTENSION);
-		$geno_img = 'genogram_hn'.$patient_hn.".".$ext;
-		$geno_path = 'img/geno/';
-		$geno_upload_path = $geno_path.$geno_img;
-		# uploading
-		$geno_comp = move_uploaded_file($_FILES['genogram'][tmp_name], $geno_upload_path);
-		if($geno_comp == FALSE){
-			echo "ไม่สามารถอัปโหลดรูปแผนผังครอบครัว";
-			exit();
+		if($_FILES['genogram']['name'] == NULL){
+			$genogram = NULL;
 		}
-		$genogram = $geno_img;
+		else {
+			if($_FILES['genogram']['size'] > 500000){
+				echo "Sorry, your file is too large.";
+				$genogram = NULL;
+			}
+			else {
+				$imgFileType = pathinfo(basename($_FILES['genogram']['name']), PATHINFO_EXTENSION);
+				$geno_img = 'genogram_hn'.$patient_hn.".".$imgFileType;
+				$geno_path = 'img/geno/';
+				$geno_upload_path = $geno_path.$geno_img;
+				# uploading
+				$geno_comp = move_uploaded_file($_FILES['genogram'][tmp_name], $geno_upload_path);
+				if($geno_comp == FALSE){
+					echo "ไม่สามารถอัปโหลดรูปแผนผังครอบครัว";
+					exit();
+				}
+				$genogram = $geno_img;
+			}
+		}
 
     # doctor
     $doctor_owner = $_POST['doctor-owner'];
@@ -82,13 +93,28 @@
     $alternative_input = $_POST['alternative_input'];
 
 		$alcohol = $_POST['alcohol'];
-    if(isset($_POST['alcohol_input'])) { $alcohol_input = 1; }
-    else { $alcohol_input = 0; }
-    $cigarette = $_POST['cigarette'];
-    if(!isset($_POST['cigarette_amount'])) { $cigarette_amount = NULL; }
-    if(!isset($_POST['cigarette_period'])) { $cigarette_period = NULL; }
+    if(isset($_POST['alcohol_input'])) {
+			$alcohol_input = 1;
+		}
+    else { 
+			$alcohol_input = 0;
+		}
 
-    if(isset($_POST['money'])) { $money = 1; } else { $money = 0; }
+    $cigarette = $_POST['cigarette'];
+    if(!isset($_POST['cigarette_amount'])) {
+			$cigarette_amount = NULL;
+		}
+		else {
+			$cigarette_amount = $_POST['cigarette_amount'];
+		}
+    if(!isset($_POST['cigarette_period'])) {
+			$cigarette_period = NULL;
+		}
+		else {
+			$cigarette_period = $_POST['cigarette_period'];
+		}
+
+    if(isset($_POST['money_problem'])) { $money_problem = 1; } else { $money_problem = 0; }
     if(isset($_POST['hypertansion'])) { $hypertansion = 1; } else { $hypertansion = 0; }
     if(isset($_POST['diabetes_mellitus'])) { $diabetes_mellitus = 1; } else { $diabetes_mellitus = 0; }
     if(isset($_POST['dyslipidemia'])) { $dyslipidemia = 1; } else { $dyslipidemia = 0; }
@@ -96,10 +122,20 @@
     if(isset($_POST['cad'])) { $cad = 1; } else { $cad = 0; }
 
     if(isset($_POST['cancer'])) { $cancer = 1; } else { $cancer = 0; }
-    if(!isset($_POST['cancer_input'])) { $cancer_input = NULL; }
+    if(!isset($_POST['cancer_input'])) {
+			$cancer_input = NULL;
+		}
+		else {
+			$cancer_input = $_POST['cancer_input'];
+		}
 
     if(isset($_POST['other'])) { $other = 1; } else { $other = 0; }
-    if(!isset($_POST['other_input'])) { $other_input = NULL; }
+    if(!isset($_POST['other_input'])) {
+			$other_input = NULL;
+		}
+		else {
+			$other_input = $_POST['other_input'];
+		}
 
     //$main
     //$problem

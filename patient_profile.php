@@ -60,7 +60,7 @@
                                 <div class="uk-width-1-4@m">
                                     <div class="uk-margin-bottom"> <small class="uk-text-muted">แพทย์เจ้าของไข้</small>
                                         <br>
-                                        <?php echo $doctor_owner." (".$doctor_owner_id.")"  ?>
+                                        <?php echo $patient_doctor_owner ?>
                                     </div>
                                     <small class="uk-text-muted">ประเภทการเยี่ยมบ้าน</small>
                                     <br>
@@ -158,8 +158,8 @@
                                     </div>
                                     <div class="uk-margin-medium-top">
                                         <?php
-                                        include 'summary_view_latest.php';
-                                    ?>
+                                          include 'summary_view_latest.php';
+                                        ?>
                                     </div>
                                 </div>
                                 <!--/#summary-panel-->
