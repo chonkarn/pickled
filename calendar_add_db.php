@@ -68,9 +68,6 @@ $link = mysqli_connect("localhost", "hvmsdb", "1234", "homevisit");
     mysqli_query($link,"SET character_set_client=utf8");
     mysqli_query($link,"SET character_set_connection=utf8");
     if (mysqli_multi_query($link,$request)){
-//         if (isset($_SERVER["HTTP_REFERER"])) {
-//            header("Location: " . $_SERVER["HTTP_REFERER"]);
-//        }
 
         header( "location: calendar.php?month=".$getpre[1]."&year=".$getpre[0]);
     }

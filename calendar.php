@@ -136,7 +136,6 @@
 
 
                             <?php
-                        echo $test;
                             include'calendar_month.php';
                             $calendar = new Calendar();
                             echo $calendar->show();
