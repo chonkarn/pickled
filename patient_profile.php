@@ -171,7 +171,7 @@
                                         </a>
                                         <?php
                                             if($right == 1) {
-                                              // โค้ดตรงนี้ทำให้บึ้มในห้องสอบ
+                                              
                                             echo '<a href="<?php echo "patient_form.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขข้อมูลผู้ป่วย" uk-tooltip>'
                                                     .'<i class="material-icons">edit</i>'.'</a>';
                                             }

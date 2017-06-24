@@ -14,7 +14,7 @@
                                                $right = 1;}
         else {$chief_name="";$right=0;}
     }
-else {$row["chief"] = "";$chief_name="";}
+else {$row["chief"] = "";$chief_name="";$right=0;}
 
     switch ($row["chief_month"]){
             case 1 : $row["chief_month"] = "มกราคม"; break;    
