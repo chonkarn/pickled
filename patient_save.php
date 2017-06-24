@@ -12,7 +12,7 @@
     mysql_connect($servername, $username, $password) or die(mysql_error());
     mysql_select_db($dbname) or die(mysql_error());
     mysql_query("set character set utf8");
-
+    $recorder = $_SESSION['id'];
     $patient_hn = $_GET['hn'];
 
     $patient_id = $_POST['patient_id'];
@@ -193,7 +193,8 @@
         cancer = '$cancer',
         cancer_input = '$cancer_input',
         other = '$other',
-        other_input = '$other_input'
+        other_input = '$other_input',
+        recorder = '$recorder'
 
         WHERE patient_hn = '$patient_hn'";
 
