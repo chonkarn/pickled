@@ -11,5 +11,5 @@ $("[id*='select']")
         keepOnScreen: 'true',
         allowTab: 'true',
         showOnFocus: 'true',
-        fullTextSearch: 'exact',
+        fullTextSearch: 'true'
     });

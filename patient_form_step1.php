@@ -335,14 +335,14 @@
                     ORDER BY user ASC";
                 $result = mysql_query($query) or die(mysql_error()."[".$query."]");
             ?>
-                <select class="ui search selection dropdown" name="doctor-owner">
-                    <option value="<?php echo $doctor_owner_id ?>" placeholder="<?php echo $patient_doctor_owner ?>">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
-                <?php
-                    while ($row = mysql_fetch_array($result)) {
-                        echo "<option value='".$row['user']."'>".$row['f_user']." ".$row['l_user']." (".$row['user'].")"."</option>";
-                    }
-                ?>
-                </select>
+            <select class="ui search selection dropdown" name="doctor-owner" id="dropdown-doctor-owner">
+                <option value="<?php echo $doctor_owner_id ?>" placeholder="<?php echo $patient_doctor_owner ?>">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
+            <?php
+                while ($row = mysql_fetch_array($result)) {
+                    echo "<option value='".$row['user']."'>".$row['f_user']." ".$row['l_user']." (".$row['user'].")"."</option>";
+                }
+            ?>
+            </select>
         </div>
     </div>
 </div>

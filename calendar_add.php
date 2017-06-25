@@ -12,39 +12,14 @@ mysql_select_db("homevisit") or die(mysql_error());
 ?>
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
 
-        <!--jQuery-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-        <!--mdl-->
-        <link rel="stylesheet" href="lib/mdl/material.min.css">
-        <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
-        <script src="lib/mdl/material.min.js"></script>
-
-        <!--semantic-ui-->
-        <link rel="stylesheet" href="lib/semantic-ui/dist/semantic.min.css">
-        <script src="lib/semantic-ui/dist/semantic.min.js"></script>
-
-        <!--uikit-->
-        <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
-        <script src="lib/uikit/js/uikit.min.js"></script>
-        <script src="lib/uikit/js/uikit-icons.min.js"></script>
-
-        <!--icon-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-        <!--custom css-->
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="css/font.css">
+				<?php include "head.html"; ?>
 
         <!--datepicker-->
 <!--
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        
+
 -->
         <link rel="stylesheet" href="lib/jquery-ui/jquery-ui.min.css">
         <script src="lib/jquery-ui/jquery-ui.min.js"></script>
@@ -59,8 +34,10 @@ mysql_select_db("homevisit") or die(mysql_error());
 
     <body>
         <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+
             <?php include "header.html"; ?>
-            <main class="mdl-layout__content mdl-color--grey-100">
+
+					  <main class="mdl-layout__content mdl-color--grey-100">
                 <div class="mdl-grid demo-content">
                     <ul class="uk-breadcrumb breadcrumb">
                         <li><a href="calendar.php" class="uk-button uk-button-text"><i class="material-icons breadcrumb-icons">date_range</i>ปฏิทินนัดหมาย</a></li>
@@ -82,12 +59,12 @@ mysql_select_db("homevisit") or die(mysql_error());
                                         ?>
 
                                         <select name="patient" class="ui search selection dropdown" id="select-patient">
-                                        <?php 
+                                        <?php
                                         while ($row = mysql_fetch_array($result))
                                         {
                                             echo "<option value='".$row['patient_hn']."'>".$row['patient_p_name'].$row['patient_name']." ".$row['patient_surname']." (HN ".$row['patient_hn'].")"."</option>";
                                         }
-                                    ?>        
+                                    ?>
                                         </select>
                                 </div>
                             </div>
@@ -108,9 +85,9 @@ mysql_select_db("homevisit") or die(mysql_error());
                             </div>
                             <div class="uk-margin">
                                 <label class="uk-form-label" for="form-horizontal-text">แพทย์เยี่ยมบ้าน</label>
-                                        
-                                
-                                
+
+
+
                                 <div class="uk-form-controls">
                                     <?php
                                         $q = "SELECT user,f_user,l_user FROM tbuser ORDER BY user DESC ";
@@ -118,18 +95,21 @@ mysql_select_db("homevisit") or die(mysql_error());
                                         ?>
 
                                         <select name="doctor[]" class="ui search multiple selection dropdown" multiple="" id="select-doctor">
-                                        <?php 
+                                        <?php
                                         while ($ro = mysql_fetch_array($r))
                                         {
                                             echo "<option value='".$ro['user']."'>".$ro['f_user']." ".$ro['l_user']." (".$ro['user'].")"."</option>";
                                         }
-                                    ?>        
+                                    ?>
                                         </select>
                                 </div>
                             </div>
-                            <div class="uk-text-right">
+														<div class="uk-text-right">
+																<button type="submit" class="uk-button uk-button-default button-green">บันทึก</button>
+														</div>
+                            <!-- <div class="uk-text-right">
                                 <button>บันทึก </button>
-                            </div>
+                            </div> -->
                         </form>
                     </div>
                     <!--/#content-->
