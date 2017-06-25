@@ -29,9 +29,18 @@
     <div class="uk-margin">
         <label class="uk-form-label">เลขบัตรประชาชน</label>
         <div class="uk-form-controls">
+            <!-- <div class="ui input">
+                <input type="text" name="patient_id" placeholder="โปรดระบุ" value="">
+            </div> -->
+
             <div class="ui input">
-                <input type="text" name="patient_id" placeholder="โปรดระบุ" value="<?php echo $patient_id ?>">
-            </div>
+              <div class="field">
+          <input name="patient_id" type="number" value="<?php echo $patient_id ?>"></div>
+        </div>
+
+
+
+
         </div>
     </div>
     <div class="uk-margin">

@@ -41,7 +41,7 @@
 
                 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
 
-                    <form action="<?php echo "patient_save.php?hn=".$patient_hn; ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo "patient_save.php?hn=".$patient_hn; ?>" method="post" enctype="multipart/form-data" class="ui form">
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                             <ul class="uk-subnav uk-subnav-pill stepper" uk-switcher>
                                 <li id="step1" class="step three active"><a href="#" title="ข้อมูลทั่วไป" uk-tooltip>1</a></li>
@@ -83,6 +83,7 @@
     <!--custom js-->
     <script src="js/stepper.js"></script>
     <script src="js/dropdown.js"></script>
+    <script src="js/validation_patient.js"></script>
 
 </body>
 

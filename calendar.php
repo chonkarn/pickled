@@ -85,7 +85,7 @@
                                         $query = "SELECT user,f_user,l_user FROM tbuser ORDER BY user DESC";
                                         $result = mysql_query($query) or die(mysql_error()."[".$query."]");
                                     ?>
-                                    
+
                                     <datalist id="doctor" name="doctor">
                                          <?php
                                           while ($ro = mysql_fetch_array($result)) {
@@ -197,27 +197,10 @@
         </main>
     </div>
 
-    <!--jquery-->
-    <!--<script src="js/jquery-3.1.1.min.js"></script>-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
-    <!--js mdl-->
-    <script src="lib/mdl/material.min.js"></script>
-    <script src="lib/mdl-stepper/stepper.min.js"></script>
-
-
-    <!--js uikit-->
-    <script src="lib/uikit/js/uikit.min.js"></script>
-    <script src="lib/uikit/js/uikit-icons.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 
     <!--custom js-->
-    <script src="js/stepper-nonlinear.js"></script>
     <script src="js/liblock.js"></script>
-
-
-
-
 
 </body>
 

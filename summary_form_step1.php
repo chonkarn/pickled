@@ -20,7 +20,7 @@
     <div class="uk-margin">
         <label class="uk-form-label">Basic activities of daily living</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <input name="basic_act" class="uk-checkbox" type="checkbox" value="1" <?php if($basic_act==1){echo "checked";} ?> /> มีปัญหา
+            <label><input name="basic_act" class="uk-checkbox" type="checkbox" value="1" <?php if($basic_act==1){echo "checked";} ?> /> มีปัญหา</label>
         </div>
     </div>
     <div class="uk-margin">
@@ -38,7 +38,7 @@
         <div class="uk-form-controls uk-form-controls-text">
             <div class="uk-grid">
                 <div class="uk-width-1-1">
-                    <input name="instru_act" value="1" class="uk-checkbox" type="checkbox" <?php if($instru_act==1){ echo "checked"; } ?> /> มีปัญหา
+                    <label><input name="instru_act" value="1" class="uk-checkbox" type="checkbox" <?php if($instru_act==1){ echo "checked"; } ?> /> มีปัญหา</label>
                 </div>
             </div>
             <div class="uk-margin">
@@ -100,13 +100,13 @@
                     $healthinsureQuery = mysql_query($healthinsureSQL) or die(mysql_error()."[".$healthinsureSQL."]");
                 ?>
                 <option value="">เลือกสิทธิ์การรักษา</option>
-                <?php 
+                <?php
                     while ($healthinsureRow = mysql_fetch_array($healthinsureQuery)) {
                         echo "<option value='".$healthinsureRow['insure_id']."'>"
                             .$healthinsureRow['insure_name']
                             ."</option>";
                     }
-                ?> 
+                ?>
             </select>
         </div>
     </div>

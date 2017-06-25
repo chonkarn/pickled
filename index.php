@@ -98,7 +98,7 @@
                                                     <?php echo $row['next_visit_date']?>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    <a href="<?php echo " patient_form.php?hn=".$row['patient_hn'] ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -170,7 +170,7 @@
                                                     <?php echo $row['last_visit_date']?>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
+                                                    <a href="<?php echo "summary_form.php?hn=".$row['patient_hn']."&calendar_id=".$row['calendar_id']; ?>" class="uk-button-text text-green"><span uk-icon="icon: pencil"></span></a>
                                                 </td>
                                             </tr>
                                             <?php } ?>

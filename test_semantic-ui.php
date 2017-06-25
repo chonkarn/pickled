@@ -2,44 +2,49 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>ระบบบริหารจัดการข้อมูลหน่วยบริการเยี่ยมบ้าน (Home visit service management system)</title>
-
-    <!--jQuery-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-    <!--mdl-->
-    <link rel="stylesheet" href="lib/mdl/material.min.css">
-    <link rel="stylesheet" href="lib/mdl-template-dashboard/styles.css">
-    <script src="lib/mdl/material.min.js"></script>
-
-    <!--mdl stepper-->
-    <link rel="stylesheet" href="lib/mdl-stepper/stepper.min.css">
-    <script src="lib/mdl-stepper/stepper.min.js"></script>
-    <script src="js/stepper-nonlinear.js"></script>
-
-    <!--uikit-->
-    <link rel="stylesheet" href="lib/uikit/css/uikit.min.css">
-    <script src="lib/uikit/js/uikit.min.js"></script>
-    <script src="lib/uikit/js/uikit-icons.min.js"></script>
-
-    <!--semantic-ui-->
-    <link rel="stylesheet" href="lib/semantic-ui/dist/semantic.min.css">
-    <script src="lib/semantic-ui/dist/semantic.min.js"></script>
-
-    <!--icon-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-    <!--custom css
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/font.css">
-    <link rel="stylesheet" href="css/calendar.css">-->
+    <?php include 'head.html' ?>
 </head>
 
 <body>
+
+  <form class="ui form">
+  <div class="two fields">
+    <div class="field error">
+      <label>Integer</label>
+      <input name="integer" type="text" value="101">
+    </div>
+    <div class="field">
+      <label>E-mail</label>
+      <input name="email" type="text" value="jack@foo">
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <label>Decimal</label>
+      <input name="decimal" type="text" value="1.1.1">
+    </div>
+    <div class="field">
+      <label>Number</label>
+      <input name="number" type="text" value="+200">
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field error">
+      <label>URL</label>
+      <input name="url" type="text" value="ww.fakeurl.com">
+    </div>
+    <div class="field">
+      <label>RegEx</label>
+      <input name="regex" type="text" value="joe">
+    </div>
+  </div>
+  <div class="ui submit button">Submit</div>
+  <div class="ui error message"></div>
+</form>
+
+<script src="js/validation_test.js"></script>
+
+<hr>
 
     <div id="select-summary" class="ui compact selection dropdown">
         <input type="hidden" name="gender">

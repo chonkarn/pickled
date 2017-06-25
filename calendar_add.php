@@ -120,7 +120,11 @@ mysql_select_db("homevisit") or die(mysql_error());
         </div>
 
     </body>
-    <script>
+
+		<!-- custom js -->
+		<script src="js/dropdown.js"></script>
+		
+    <!-- <script>
         $('#select-patient')
             .dropdown({
                 match: 'both',
@@ -142,7 +146,6 @@ mysql_select_db("homevisit") or die(mysql_error());
                 showOnFocus: 'true',
                 fullTextSearch: 'exact'
             });
-
-    </script>
+    </script> -->
 
 </html>

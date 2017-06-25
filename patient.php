@@ -31,8 +31,9 @@
                             <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
 
                                 <h4 class="uk-heading-divider">ค้นหาผู้ป่วยทั้งหมดในระบบ</h4>
-                                <div class="uk-grid">
-                                    <form action="patient_searh.php" method="post">
+																	<div class="uk-margin uk-text-center">
+                                    <form action="patient_searh.php" method="post" >
+
 																			<input class="uk-input uk-form-width-large" list="doctor" name="search_patient" placeholder="ค้นหาจากรหัสโรงพยาบาล หรือ ชื่อ-นามสกุลของผู้ป่วย">
 																			<button type="submit" class="mdl-button mdl-js-button mdl-button--icon"><i class="material-icons">search</i></button>
 
@@ -55,8 +56,9 @@
                                         }
                                     ?>
                                     </datalist>
+
                                     </form>
-                                </div>
+																	</div>
                             </div>
                         </div>
 
@@ -64,7 +66,8 @@
                             <div class="mdl-card__menu">
                                 <a href="patient_checkhn.php" title="เพิ่มผู้ป่วยใหม่" uk-tooltip>
                                     <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mdl-color-text--green">
-                                        <i class="material-icons">add</i></button>
+                                        <i class="material-icons">add</i>
+																			</button>
                                 </a>
                             </div>
                             <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
