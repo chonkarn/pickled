@@ -68,6 +68,7 @@
                                     <div class="uk-align-right">
                                         <button type="submit" class="uk-button uk-button-default button-green">บันทึก</button>
                                     </div>
+                                    <div class="ui error message"></div>
                                 </li>
                             </ul>
                         </div>
@@ -83,6 +84,8 @@
     <!--custom js-->
     <script src="js/stepper.js"></script>
     <script src="js/dropdown.js"></script>
+    <script src="js/checkbox.js"></script>
+    <script src="js/radio.js"></script>
     <script src="js/validation_patient.js"></script>
 
 </body>

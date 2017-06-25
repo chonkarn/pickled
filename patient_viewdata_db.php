@@ -37,21 +37,17 @@ if ($patient_bday != 0 && $patient_bmonth != 0 && $patient_byear != 0){
   $patient_age = $diff->y." ปี ".$diff->m." เดือน ".$diff->d." วัน";
 }
 else {
-  $patient_age = "-";
-  $patient_birthday = "-";
+  $patient_age = "ไม่มีข้อมูล";
+  $patient_birthday = "ไม่มีข้อมูล";
 }
 
 $patient_status = $row['patient_status'];
-if($patient_status == NULL) { $patient_status = "-"; }
 
 $patient_religion = $row['patient_religion'];
-if($patient_religion == NULL) { $patient_religion = "-"; }
 
 $patient_occupation = $row['patient_occupation'];
-if($patient_occupation == NULL) { $patient_occupation = "-"; }
 
 $patient_education = $row['patient_education'];
-if($patient_education == NULL) { $patient_education = "-"; }
 
 # Healthinsure
 $insure_id = $row['healthinsure'];
@@ -59,8 +55,6 @@ $insureSQL = "SELECT * FROM healthinsure WHERE healthinsure.insure_id LIKE '$ins
 $insureQuery = mysql_db_query($dbname, $insureSQL) or die (mysql_error());
 $insureData = mysql_fetch_array($insureQuery);
 $insure = $insureData['insure_name']." (".$insureData['insure_id'].")";
-if($insure == NULL) { $insure = "-"; }
-
 
 # Address
 $patient_addr = $row['patient_add_no'];

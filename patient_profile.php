@@ -33,7 +33,6 @@
             <main class="mdl-layout__content mdl-color--grey-100">
                 <div class="mdl-grid demo-content ">
 
-                    <!--BREADCRUMB-->
                     <ul class="uk-breadcrumb breadcrumb">
                         <li><a href="patient.php" class="uk-button-text text-green"><i class="material-icons breadcrumb-icons">folder_shared</i> ผู้ป่วยเยี่ยมบ้าน</a></li>
                         <li><a class="#">HN <?php echo $patient_hn ?></a></li>
@@ -127,7 +126,7 @@
                                             <div id="multi-summary" class="ui compact selection dropdown">
                                                 <input type="hidden" name="summary-view">
                                                 <i class="dropdown icon"></i>
-                                                <div class="default text">ดูสรุปเยี่ยมบ้านครั้งที่ 5 (15 พฤษภาคม 2560)</div>
+                                                <div class="default text">สรุปเยี่ยมบ้านครั้งที่ 5 (15 พฤษภาคม 2560)</div>
                                                 <div class="menu">
                                                     <div class="item" data-value="male" data-text="Male">
                                                         สรุปเยี่ยมบ้านครั้งที่ 5 (15 พฤษภาคม 2560)
@@ -146,6 +145,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <a type="submit" class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">search</i></a>
                                         </div>
                                         <div class="uk-text-right">
                                             <a href="<?php echo "summary_print.php?hn=".$patient_hn."$calendar_id=".$calendar_id ?>" class="mdl-button mdl-button--icon mdl-button--colored" target="_blank" title="พิมพ์สรุปเยี่ยมบ้านนี้" uk-tooltip>
@@ -171,7 +171,7 @@
                                         </a>
                                         <?php
                                             if($right == 1) {
-                                              
+
                                             echo '<a href="<?php echo "patient_form.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขข้อมูลผู้ป่วย" uk-tooltip>'
                                                     .'<i class="material-icons">edit</i>'.'</a>';
                                             }

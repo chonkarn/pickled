@@ -27,20 +27,32 @@
         </div>
     </div>
     <div class="uk-margin">
+        <label class="uk-form-label">แพทย์เจ้าของไข้</label>
+        <div class="uk-form-controls">
+            <?php
+                $query = "SELECT user, f_user, l_user
+                    FROM tbuser
+                    ORDER BY user ASC";
+                $result = mysql_query($query) or die(mysql_error()."[".$query."]");
+            ?>
+            <select class="ui search selection dropdown" name="doctor-owner">
+                <option value="<?php echo $doctor_owner_id ?>" placeholder="<?php echo $patient_doctor_owner ?>">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
+            <?php
+                while ($row = mysql_fetch_array($result)) {
+                    echo "<option value='".$row['user']."'>".$row['f_user']." ".$row['l_user']." (".$row['user'].")"."</option>";
+                }
+            ?>
+            </select>
+        </div>
+    </div>
+    <div class="uk-margin">
         <label class="uk-form-label">เลขบัตรประชาชน</label>
         <div class="uk-form-controls">
-            <!-- <div class="ui input">
-                <input type="text" name="patient_id" placeholder="โปรดระบุ" value="">
-            </div> -->
-
             <div class="ui input">
               <div class="field">
-          <input name="patient_id" type="number" value="<?php echo $patient_id ?>"></div>
-        </div>
-
-
-
-
+                <input name="patient_id" type="number" value="<?php echo $patient_id ?>">
+              </div>
+            </div>
         </div>
     </div>
     <div class="uk-margin">
@@ -285,10 +297,10 @@
             <div class="ui mini form">
                 <div class="fields">
                     <div class="field">
-                        <input type="text" name="tel_home" placeholder="โทรศัพท์บ้าน" value="<?php echo $patient_tel_home ?>">
+                        <input type="number" name="tel_home" placeholder="โทรศัพท์บ้าน" value="<?php echo $patient_tel_home ?>">
                     </div>
                     <div class="field">
-                        <input type="text" name="tel_mobile" placeholder="โทรศัพท์เคลื่อนที่" value="<?php echo $patient_tel_mobile ?>">
+                        <input type="number" name="tel_mobile" placeholder="โทรศัพท์เคลื่อนที่" value="<?php echo $patient_tel_mobile ?>">
                     </div>
                     <div class="field">
                         <input type="text" name="tel_work" placeholder="โทรศัพท์ที่ทำงาน" value="<?php echo $patient_tel_work ?>">
@@ -309,7 +321,7 @@
                         <input type="text" name="relate_name" placeholder="ชื่อ-นามสกุล" value="<?php echo $relate_name ?>">
                     </div>
                     <div class="field">
-                        <input type="text" name="relate_tel" placeholder="เบอร์โทร" value="<?php echo $relate_tel ?>">
+                        <input type="number" name="relate_tel" placeholder="เบอร์โทร" value="<?php echo $relate_tel ?>">
                     </div>
                     <div class="field">
                         <input type="text" name="relate_def" placeholder="เกี่ยวข้องเป็น" value="<?php echo $relate_def ?>">
@@ -330,28 +342,6 @@
           <br>
           <input type="file" name="genogram"><br>
           อัปโหลดรูปภาพที่ขนาดไม่เกิน 5 MB และมีสกุลไฟล์ .jpg / .jpeg / .png / .gif เท่านั้น
-        </div>
-    </div>
-
-    <h5 class="uk-heading-bullet">แพทย์ผู้ดูแล</h5>
-
-    <div class="uk-margin">
-        <label class="uk-form-label">แพทย์เจ้าของไข้</label>
-        <div class="uk-form-controls">
-            <?php
-                $query = "SELECT user, f_user, l_user
-                    FROM tbuser
-                    ORDER BY user ASC";
-                $result = mysql_query($query) or die(mysql_error()."[".$query."]");
-            ?>
-            <select class="ui search selection dropdown" name="doctor-owner">
-                <option value="<?php echo $doctor_owner_id ?>" placeholder="<?php echo $patient_doctor_owner ?>">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
-            <?php
-                while ($row = mysql_fetch_array($result)) {
-                    echo "<option value='".$row['user']."'>".$row['f_user']." ".$row['l_user']." (".$row['user'].")"."</option>";
-                }
-            ?>
-            </select>
         </div>
     </div>
 </div>

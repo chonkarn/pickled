@@ -42,35 +42,133 @@
     <dd><?php echo $patient_age ?></dd>
 
     <dt>โทรศัพท์ที่บ้าน</dt>
-    <dd><?php if($patient_tel_home){ echo $patient_tel_home;} else { echo "-";} ?></dd>
+    <dd>
+      <?php
+        if($patient_tel_home == NULL){
+          echo "-";
+        }
+        else {
+          echo $patient_tel_home;
+        }
+      ?>
+    </dd>
 
     <dt>โทรศัพท์มือถือ</dt>
-    <dd><?php if($patient_tel_mobile){ echo $patient_tel_mobile;} else { echo "-";} ?></dd>
+    <dd>
+      <?php
+      if($patient_tel_mobile == NULL){
+        echo "-";
+      }
+        else {
+          echo $patient_tel_mobile;
+         }
+         ?>
+    </dd>
 
     <dt>โทรศัพท์ที่ทำงาน</dt>
-    <dd><?php if($patient_tel_work){ echo $patient_tel_work;} else { echo "-";} ?></dd>
+    <dd>
+      <?php if($patient_tel_work == NULL){
+        echo "-";
+       }
+         else {
+           echo $patient_tel_work;
+         }
+         ?>
+       </dd>
 
     <dt>สถานภาพ</dt>
-    <dd><?php echo $patient_status ?></dd>
+    <dd>
+      <?php
+      if($patient_status == NULL){
+        echo "-";
+      }
+      else {
+        echo $patient_status;
+      }
+      ?>
+    </dd>
 
     <dt>ศาสนา</dt>
-    <dd><?php echo $patient_religion ?></dd>
+    <dd>
+      <?php
+        if($patient_religion == NULL){
+          echo "-";
+        }
+        else {
+          echo $patient_religion;
+        }
+     ?>
+    </dd>
 
     <dt>ระดับการศึกษา</dt>
-    <dd><?php echo $patient_education ?></dd>
+    <dd>
+      <?php
+        if($patient_education == NULL){
+          echo "-";
+        }
+        else {
+          echo $patient_education;
+        }
+     ?>
+    </dd>
 
     <dt>อาชีพ</dt>
-    <dd><?php echo $patient_occupation ?></dd>
+    <dd>
+      <?php
+        if($patient_occupation == NULL){
+          echo "-";
+        }
+        else {
+          echo $patient_occupation;
+        }
+     ?>
+     </dd>
 
     <dt>สิทธิการรักษา</dt>
-    <dd><?php echo $insure ?></dd>
+    <dd>
+      <?php
+        if($insure == NULL){
+          echo "-";
+        }
+        else {
+          echo $insure;
+        }
+      ?>
+    </dd>
 
     <dt>ข้อมูลญาติที่ติดต่อได้</dt>
     <dd>
 <!-- <b>ญาติคนที่ 1:</b><br> -->
-        <label class="uk-margin-right"><b>ชื่อ-นามสกุล </b><?php echo $relate_name ?> </label>
-        <label class="uk-margin-right"><b>เกี่ยวข้องเป็น </b><?php echo $relate_def ?></label>
-        <label class="uk-margin-right"><b>เบอร์โทรศัพท์ </b><?php echo $relate_tel ?></label>
+        <label class="uk-margin-right"><b>ชื่อ-นามสกุล </b>
+          <?php
+          if($relate_name == NULL){
+            echo "-";
+          }
+          else {
+            echo $relate_name;
+          }
+          ?>
+        </label>
+        <label class="uk-margin-right"><b>เกี่ยวข้องเป็น </b>
+          <?php
+          if($relate_def == NULL){
+            echo "-";
+          }
+          else {
+            echo $relate_def;
+          }
+          ?>
+        </label>
+        <label class="uk-margin-right"><b>เบอร์โทรศัพท์ </b>
+          <?php
+          if($relate_tel == NULL){
+            echo "-";
+          }
+          else {
+            echo $relate_tel;
+          }
+          ?>
+        </label>
 <!--
         <hr>
         <b>ญาติคนที่ 2:</b>
@@ -183,46 +281,42 @@
 
     <dt>ประวัติโรคในครอบครัว</dt>
     <dd>
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" class="hidden" <?php if($hypertansion == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+      <div class="ui read-only checkbox">
+        <input type="checkbox" tabindex="1" class="hidden" <?php if($hypertansion == 1){ echo "checked"; } ?> />
         <label>Hypertension</label>
       </div>
       <br>
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" class="hidden" <?php if($diabetes_mellitus == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+      <div class="ui read-only checkbox">
+        <input type="checkbox" tabindex="2" class="hidden" <?php if($diabetes_mellitus == 1){ echo "checked"; } ?> />
         <label>Diabetes mellitus</label>
       </div>
       <br>
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" class="hidden" <?php if($dyslipidemia == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+      <div class="ui read-only checkbox">
+        <input type="checkbox" tabindex="3" class="hidden" <?php if($dyslipidemia == 1){ echo "checked"; } ?> />
         <label>Dyslipidemia</label>
       </div>
       <br>
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" class="hidden" <?php if($stroke == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+      <div class="ui read-only checkbox">
+        <input type="checkbox" tabindex="4" class="hidden" <?php if($stroke == 1){ echo "checked"; } ?> />
         <label>Stroke</label>
       </div>
       <br>
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" class="hidden" <?php if($cad == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+      <div class="ui read-only checkbox">
+        <input type="checkbox" tabindex="5" class="hidden" <?php if($cad == 1){ echo "checked"; } ?> />
         <label>CAD</label>
       </div>
       <br>
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" class="hidden" <?php if($cancer == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+      <div class="ui read-only checkbox">
+        <input type="checkbox" tabindex="6" class="hidden" <?php if($cancer == 1){ echo "checked"; } ?> />
         <label>Cancer:</label>
       </div>
-      <div class="ui mini input focus">
-          <?php echo $cancer_input ?>
-      </div>
+      <?php echo $cancer_input ?>
       <br>
-      <div class="ui checkbox">
-        <input type="checkbox" tabindex="0" class="hidden" <?php if($other == 1){ echo "checked"; } else { echo "disabled"; } ?> disabled>
+      <div class="ui read-only checkbox">
+        <input type="checkbox" tabindex="7" class="hidden" <?php if($other == 1){ echo "checked"; } ?> />
         <label>Other:</label>
       </div>
-      <div class="ui mini input focus">
-          <?php echo $other_input ?>
-      </div>
+      <?php echo $other_input ?>
     </dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 3 สรุปข้อมูลปัญหาผู้ป่วย</h4>
