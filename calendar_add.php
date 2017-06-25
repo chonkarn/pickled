@@ -95,6 +95,7 @@ mysql_select_db("homevisit") or die(mysql_error());
                                         ?>
 
                                         <select name="doctor[]" class="ui search multiple selection dropdown" multiple="" id="select-doctor">
+																					<<option value="">พิมพ์ชื่อ-นามสกุล หรือรหัสประจำตัว</option>
                                         <?php
                                         while ($ro = mysql_fetch_array($r))
                                         {

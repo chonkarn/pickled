@@ -81,8 +81,8 @@
     </div>
 
     <!--custom js-->
-    <script src="js/dropdown.js"></script>
     <script src="js/stepper.js"></script>
+    <script src="js/dropdown.js"></script>
 
 </body>
 
