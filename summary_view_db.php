@@ -9,35 +9,34 @@
     $calendarSQL = "SELECT * FROM calendar_info WHERE calendar_info.Id_app LIKE '$calendar_id'";
     $calendarQuery = mysql_db_query($dbname, $calendarSQL) or die (mysql_error());
     $calendarData = mysql_fetch_array($calendarQuery);
-    
+
     $date_visit = $calendarData['dmy'];
     $date_visit_day = date_format(date_create($date_visit), "d");
     $date_visit_month = date_format(date_create($date_visit), "m");
     $date_visit_year = date_format(date_create($date_visit), "Y") + 543;
-    include "meaning_summary.php";
     $date_visit = $date_visit_day." ".$date_visit_month." ".$date_visit_year;
 
     $time_visit = $calendarData['time_calen'];
     $num_visit = $calendarData['num_visit'];
-    
+
     $visit_status = $calendarData['patient_visit_status'];
     $visit_type = $calendarData['patient_visit_type'];
     $doctor_owner_id = $calendarData['patient_doctor_owner'];
-    
+
     #patientinfo
     $patientSQL = "SELECT * FROM patientinfo WHERE patient_hn = '$patient_hn'";
     $patientQuery = mysql_db_query($dbname, $patientSQL) or die (mysql_error());
     $patientData = mysql_fetch_array($patientQuery);
-    
+
     $patient_name = $patientData["patient_p_name"]." ".$patientData["patient_name"]." ".$patientData["patient_surname"];
-    
+
     #tbuser
     $doctor_owner_id = $calendarData['patient_doctor_owner'];
 
     $doctorSQL = "SELECT * FROM tbuser WHERE tbuser.user LIKE '$doctor_owner_id'";
     $doctorQuery = mysql_db_query($dbname, $doctorSQL) or die (mysql_error());
     $doctorData = mysql_fetch_array($doctorQuery);
-    
+
     $doctor_owner = $doctorData['f_user']." ".$doctorData['l_user'];
 
     #summary
@@ -149,6 +148,6 @@ $manage_other_text = $sumData['manage_other_text'];
 
 $suggestion = $sumData['suggestion'];
 
-    
+
 
 ?>

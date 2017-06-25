@@ -1,6 +1,6 @@
 <dl class="dl-horizontal">
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
-    
+
     <dt>ชื่อผู้ป่วย</dt>
     <dd>
         <?php echo $patient_name ?>
@@ -26,7 +26,7 @@
     </dd>
 
     <dt>วันที่ไปเยี่ยม</dt>
-    <dd><?php echo $date_visit ?></dd>
+    <dd><?php echo $date_visit_day." ".$date_visit_month." ".$date_visit_year ?></dd>
 
     <dt>เวลาที่ไปเยี่ยม</dt>
     <dd><?php echo $time_visit ?></dd>
@@ -36,10 +36,39 @@
 
     <dt>เหตุผลการเยี่ยมบ้าน</dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-radio" type="radio" <?php if($reason_visit==1){ echo "checked"; } else { echo "disabled"; } ?> /> Assessment</label>
-        <label class="uk-margin-right"><input class="uk-radio" type="radio" <?php if($reason_visit==2){ echo "checked"; } else { echo "disabled"; } ?> /> Illness management</label>
-        <label class="uk-margin-right"><input class="uk-radio" type="radio" <?php if($reason_visit==3){ echo "checked"; } else { echo "disabled"; } ?> /> Palliative</label>
-        <label class="uk-margin-right"><input class="uk-radio" type="radio" <?php if($reason_visit==4){ echo "checked"; } else { echo "disabled"; } ?> /> Post hospitalized</label>
+      <div class="ui form">
+      <div class="inline fields">
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="reason_visit" tabindex="0" class="hidden" <?php if($reason_visit==1){ echo "checked"; } ?> disabled/>
+            <label>Assessment</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="reason_visit" tabindex="0" class="hidden" <?php if($reason_visit==2){ echo "checked"; } ?> disabled/>
+            <label>Illness management</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="reason_visit" tabindex="0" class="hidden" <?php if($reason_visit==3){ echo "checked"; } ?> disabled/>
+            <label>Palliative</label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="reason_visit" tabindex="0" class="hidden" <?php if($reason_visit==4){ echo "checked"; } ?> disabled/>
+            <label>Post hospitalized</label>
+          </div>
+        </div>
+      </div>
+      </div>
+
+        <!-- <label class="uk-margin-right"><input class="uk-radio" type="radio"  /> Assessment</label>
+        <label class="uk-margin-right"><input class="uk-radio" type="radio" /> Illness management</label>
+        <label class="uk-margin-right"><input class="uk-radio" type="radio"  /> Palliative</label>
+        <label class="uk-margin-right"><input class="uk-radio" type="radio"  /> Post hospitalized</label> -->
     </dd>
 
     <dt>ยาที่ใช้ปัจจุบัน และยาที่ซื้อกินเอง</dt>
@@ -48,40 +77,169 @@
     <h5 class="uk-heading-bullet">Impairment / Immobility</h5>
     <dt>Basic activities of daily living</dt>
     <dd>
-        <label><input class="uk-checkbox" type="checkbox" <?php if($basic_act==1){ echo "checked"; } else { echo "disabled"; } ?> /> มีปัญหา</label>
-        <br>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($basic_act==1){ echo "checked"; } ?> disabled>
+        <label>มีปัญหา</label>
+      </div>
+
+      <br>
+
+        <div class="ui form">
+        <div class="inline fields">
+          <div class="field">
+            <label class="uk-margin-right uk-text-bold">เลือกปัญหา</label>
+          </div>
+
+          <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" class="hidden" <?php if($basic_act_dress==1){ echo "checked"; } ?> disabled/>
+          <label>Dressing</label>
+        </div>
+      </div>
+
+          <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" class="hidden" <?php if($basic_act_eat==1){ echo "checked"; } ?> disabled/>
+          <label>Eating</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" class="hidden" <?php if($basic_act_ambu==1){ echo "checked"; } ?> disabled/>
+          <label>Ambulating</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" class="hidden" <?php if($basic_act_toilet==1){ echo "checked"; } ?> disabled/>
+          <label>Toileting</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" class="hidden" <?php if($basic_act_hygine==1){ echo "checked"; } ?> disabled>
+          <label>Hygine</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+        <!-- <label><input class="uk-checkbox" type="checkbox" /> มีปัญหา</label>
         <label class="uk-margin-right uk-text-bold">เลือกปัญหา</label>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($basic_act_dress==1){ echo "checked"; } else { echo "disabled"; } ?> /> Dressing</label>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($basic_act_eat==1){ echo "checked"; } else { echo "disabled"; } ?> /> Eating</label>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($basic_act_ambu==1){ echo "checked"; } else { echo "disabled"; } ?> /> Ambulating</label>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($basic_act_toilet==1){ echo "checked"; } else { echo "disabled"; } ?> /> Toileting</label>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($basic_act_hygine==1){ echo "checked"; } else { echo "disabled"; } ?> /> Hygine</label>
+        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" /> Dressing</label>
+        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" /> Eating</label>
+        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" /> Ambulating</label>
+        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" /> Toileting</label>
+        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" /> Hygine</label> -->
     </dd>
 
     <dt>Instrumental activities<br>of daily living</dt>
     <dd>
-        <label><input class="uk-checkbox" type="checkbox" <?php if($instru_act==1){ echo "checked"; } else { echo "disabled"; } ?> /> มีปัญหา</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($instru_act==1){ echo "checked"; } ?> disabled/>
+        <label>มีปัญหา</label>
+      </div>
+      <br>
+
+        <div class="ui form">
+        <div class="inline fields">
+          <div class="field">
+            <label class="uk-margin-right uk-text-bold">เลือกปัญหา</label>
+          </div>
+
+          <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" class="hidden" <?php if($instru_act_shop==1){ echo "checked"; } ?> disabled/>
+          <label>Shopping</label>
+        </div>
+      </div>
+
+          <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" class="hidden" <?php if($instru_act_house==1){ echo "checked"; } ?>  disabled/>
+          <label>Houskeeping</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" class="hidden" <?php if($instru_act_med==1){ echo "checked"; } ?> disabled/>
+          <label>Medication</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" class="hidden" <?php if($instru_act_fin==1){ echo "checked"; } ?>  disabled/>
+          <label>Financial</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" class="hidden" <?php if($instru_act_tech==1){ echo "checked"; } ?> disabled/>
+          <label>Transpoting / Technology</label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+        <!-- <label><input class="uk-checkbox" type="checkbox" /> มีปัญหา</label>
         <br>
         <label class="uk-margin-right uk-text-bold">เลือกปัญหา</label>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($instru_act_shop==1){ echo "checked"; } else { echo "disabled"; } ?> /> Shopping</label>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($instru_act_house==1){ echo "checked"; } else { echo "disabled"; } ?> /> Houskeeping</label>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($instru_act_med==1){ echo "checked"; } else { echo "disabled"; } ?> /> Medication</label>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($instru_act_fin==1){ echo "checked"; } else { echo "disabled"; } ?> /> Financial</label>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($instru_act_tech==1){ echo "checked"; } else { echo "disabled"; } ?> /> Transpoting / Technology</label>
+        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" /> Shopping</label>
+        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" /> Houskeeping</label>
+        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Medication</label>
+        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" /> Financial</label>
+        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Transpoting / Technology</label> -->
     </dd>
 
     <h5 class="uk-heading-bullet">Nutrition</h5>
     <dt>Nutritional status</dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-radio" type="radio" name="nutrition_status" <?php if($nutrition_status==1){ echo "checked"; } else { echo "disabled"; } ?> /> Healthy</label>
-        <label class="uk-margin-right"><input class="uk-radio" type="radio" name="nutrition_status" <?php if($nutrition_status==2){ echo "checked"; } else { echo "disabled"; } ?> /> Obesity</label>
-        <label class="uk-margin-right"><input class="uk-radio" type="radio" name="nutrition_status" <?php if($nutrition_status==3){ echo "checked"; } else { echo "disabled"; } ?> /> Malnutrition</label>
+      <div class="ui form">
+      <div class="inline fields">
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="nutrition_status" tabindex="1" class="hidden" <?php if($nutrition_status==1){ echo "checked"; } ?> disabled/>
+            <label>Healthy</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="nutrition_status" tabindex="2" class="hidden" <?php if($nutrition_status==2){ echo "checked"; } ?> disabled/>
+            <label>Obesity</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui radio checkbox">
+            <input type="radio" name="nutrition_status" tabindex="3" class="hidden" <?php if($nutrition_status==3){ echo "checked"; } ?> disabled/>
+            <label>Malnutrition</label>
+          </div>
+        </div>
+
+      </div>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-radio" type="radio" name="nutrition_status"  /> Healthy</label>
+        <label class="uk-margin-right"><input class="uk-radio" type="radio" name="nutrition_status"  /> Obesity</label>
+        <label class="uk-margin-right"><input class="uk-radio" type="radio" name="nutrition_status"  /> Malnutrition</label> -->
     </dd>
 
     <h5 class="uk-heading-bullet">Home environment / Safety</h5>
     <dt>Risk</dt>
     <dd>
-        <input class="uk-checkbox" type="checkbox" <?php if($home_risk==1){ echo "checked"; } else { echo "disabled"; } ?> /> มีความเสี่ยง
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($home_risk==1){ echo "checked"; } ?> disabled/>
+        <label>มีความเสี่ยง</label>
+      </div>
+        <!-- <input class="uk-checkbox" type="checkbox" /> มีความเสี่ยง -->
     </dd>
 
     <dt>Place at risk</dt>
@@ -90,7 +248,11 @@
     <h5 class="uk-heading-bullet">Social support</h5>
     <dt>Caregiver burden</dt>
     <dd>
-        <input class="uk-checkbox" type="checkbox" <?php if($caregiver_burden==1){ echo "checked"; } else { echo "disabled"; } ?> /> มีปัญหา
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($caregiver_burden==1){ echo "checked"; } ?> disabled/>
+        <label>มีปัญหา</label>
+      </div>
+        <!-- <input class="uk-checkbox" type="checkbox"  /> มีปัญหา -->
     </dd>
 
     <dt>Main caregiver</dt>
@@ -133,65 +295,109 @@
     <h5 class="uk-heading-bullet">Management</h5>
     <dt></dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($manage_assess==1){ echo "checked"; } else { echo "disabled"; } ?> /> Assessment</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($manage_assess==1){ echo "checked"; } ?> disabled/>
+        <label>Assessment</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Assessment</label> -->
         <?php echo $manage_assess_text ?>
     </dd>
 
     <dt></dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($manage_pain==1){ echo "checked"; } else { echo "disabled"; } ?> /> Pain & Symptom management</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($manage_pain==1){ echo "checked"; } ?> disabled/>
+        <label>Pain & Symptom management</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Pain & Symptom management</label> -->
         <?php echo $manage_pain_text ?>
     </dd>
     <dt></dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($manage_med==1){ echo "checked"; } else { echo "disabled"; } ?> /> Medication management</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($manage_med==1){ echo "checked"; } ?> disabled/>
+        <label>Medication management</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Medication management</label> -->
         <?php echo $manage_med_text ?>
     </dd>
     <dt></dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($manage_procedure==1){ echo "checked"; } else { echo "disabled"; } ?> /> Procedure</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($manage_procedure==1){ echo "checked"; } ?> disabled/>
+        <label>Procedure</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Procedure</label> -->
         <?php echo $manage_procedure_text ?>
     </dd>
     <dt></dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($manage_fammeet==1){ echo "checked"; } else { echo "disabled"; } ?> /> Family meeting</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($manage_fammeet==1){ echo "checked"; } ?> disabled/>
+        <label>Family meeting</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Family meeting</label> -->
         <?php echo $manage_fammeet_text ?>
     </dd>
 
     <dt></dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($manage_social==1){ echo "checked"; } else { echo "disabled"; } ?> /> Social support & Health insurance</label>
-        <?php echo $manage_social_text ?>         
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($manage_social==1){ echo "checked"; } ?> disabled/>
+        <label>Social support & Health insurance</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Social support & Health insurance</label> -->
+        <?php echo $manage_social_text ?>
     </dd>
 
     <dt></dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($manage_psycho==1){ echo "checked"; } else { echo "disabled"; } ?> /> Psychological care</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($manage_psycho==1){ echo "checked"; } ?> disabled/>
+        <label>Psychological care</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Psychological care</label> -->
         <?php echo $manage_psycho_text ?>
     </dd>
 
     <dt></dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($manage_rehab==1){ echo "checked"; } else { echo "disabled"; } ?> /> Rehabilitation</label>
-        <?php echo $manage_rehab_text ?>             
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($manage_rehab==1){ echo "checked"; } ?> disabled/>
+        <label>Rehabilitation</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Rehabilitation</label> -->
+        <?php echo $manage_rehab_text ?>
     </dd>
 
     <dt></dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($manage_choice==1){ echo "checked"; } else { echo "disabled"; } ?> /> Advance direction choice</label>
-        <?php echo $manage_choice_text ?>             
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($manage_choice==1){ echo "checked"; } ?> disabled/>
+        <label>Advance direction choice</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Advance direction choice</label> -->
+        <?php echo $manage_choice_text ?>
     </dd>
 
     <dt></dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($manage_dying==1){ echo "checked"; } else { echo "disabled"; } ?> /> Dying <span class="uk-text-meta text-small">Funeral plan / Grief bereavement care</span></label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($manage_dying==1){ echo "checked"; } ?> disabled/>
+        <label>Dying <span class="uk-text-meta text-small">Funeral plan / Grief bereavement care</span></label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> Dying <span class="uk-text-meta text-small">Funeral plan / Grief bereavement care</span></label> -->
         <?php echo $manage_dying_text ?>
     </dd>
 
     <dt></dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" disabled> Other specify</label>
-        <?php echo $manage_procedure_text ?>              
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="0" class="hidden" <?php if($manage_other==1){ echo "checked"; } ?> disabled/>
+        <label>Other specify</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" disabled> Other specify</label> -->
+        <?php echo $manage_other_text ?>
     </dd>
 
     <h4 class="uk-heading-divider">ส่วนที่ 2 รายละเอียดปัญหา</h4>
@@ -222,37 +428,61 @@
 
     <dt>HEENT</dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($heent==1){ echo "checked"; } else { echo "disabled"; } ?> /> ปกติ</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="1" class="hidden" <?php if($heent==1){ echo "checked"; } ?> disabled/>
+        <label>ปกติ</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"  /> ปกติ</label> -->
         <?php echo $heent_text ?>
     </dd>
-                        
+
     <dt>Heart</dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($heart==1){ echo "checked"; } else { echo "disabled"; } ?> /> ปกติ</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="1" class="hidden" <?php if($heart==1){ echo "checked"; } ?> disabled/>
+        <label>ปกติ</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"   /> ปกติ</label> -->
         <?php echo $heart_text ?>
     </dd>
 
     <dt>Lungs</dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($lungs==1){ echo "checked"; } else { echo "disabled"; } ?> /> ปกติ</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="1" class="hidden" <?php if($lungs==1){ echo "checked"; } ?> disabled/>
+        <label>ปกติ</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"   /> ปกติ</label> -->
         <?php echo $lungs_text ?>
     </dd>
 
     <dt>Abdomen</dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($abdomen==1){ echo "checked"; } else { echo "disabled"; } ?> /> ปกติ</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="1" class="hidden" <?php if($abdomen==1){ echo "checked"; } ?> disabled/>
+        <label>ปกติ</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"   /> ปกติ</label> -->
         <?php echo $abdomen_text ?>
     </dd>
 
     <dt>Extremities</dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($extremities==1){ echo "checked"; } else { echo "disabled"; } ?> /> ปกติ</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="1" class="hidden" <?php if($extremities==1){ echo "checked"; } ?> disabled/>
+        <label>ปกติ</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" /> ปกติ</label> -->
         <?php echo $extremities_text ?>
     </dd>
-                        
+
     <dt>Neuro</dt>
     <dd>
-        <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox" <?php if($neuro==1){ echo "checked"; } else { echo "disabled"; } ?> /> ปกติ</label>
+      <div class="ui checkbox">
+        <input type="checkbox" tabindex="1" class="hidden" <?php if($neuro==1){ echo "checked"; } ?> disabled/>
+        <label>ปกติ</label>
+      </div>
+        <!-- <label class="uk-margin-right"><input class="uk-checkbox" type="checkbox"   /> ปกติ</label> -->
         <?php echo $neuro_text ?>
     </dd>
 
