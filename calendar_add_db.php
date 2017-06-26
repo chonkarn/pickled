@@ -27,7 +27,11 @@ if (mysqli_connect_errno()) {
     exit();
 }
 
-
+//num visit
+$num_val = "SELECT num_visit from calendar_info WHERE patient_hn = '$patient' LIMIT 1";
+$num_query = mysqli_query($link,$num_val) or die(mysqli_error()."[".$num_val."]");
+$num_show = mysqli_fetch_assoc($num_query);
+$num_visit = $num_show['num_visit'];
 // transaction management
 //turn autocommit off
 mysqli_autocommit($link, false);
@@ -38,8 +42,9 @@ mysqli_query($link,"SET NAMES UTF8");
 mysqli_query($link,"SET character_set_results=utf8");
 mysqli_query($link,"SET character_set_client=utf8");
 mysqli_query($link,"SET character_set_connection=utf8");
+$num_visit = $num_visit+1;
 $add_app = "INSERT INTO calendar_info SET ";
-$add_app = $add_app."Id_own_calen ='$id',dmy='$dmy',time_calen='$time',patient_hn='$patient',patient_visit_status='$status',patient_visit_type='$type',patient_doctor_owner='$patient_doctor_owner',sum_chk=0";
+$add_app = $add_app."Id_own_calen ='$id',dmy='$dmy',time_calen='$time',patient_hn='$patient',patient_visit_status='$status',patient_visit_type='$type',patient_doctor_owner='$patient_doctor_owner',num_visit='$num_visit',sum_chk=0";
 $result = mysqli_query($link, $add_app);
 $app_id = mysqli_insert_id($link); //get autoincrement
 // queries errores

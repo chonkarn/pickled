@@ -11,15 +11,27 @@
     }
     $user = $_SESSION['id'];
     include 'dbname.php';
+    
     $connect = mysql_connect($servername, $username, $password) or die(mysql_error());
     mysql_select_db($dbname) or die(mysql_error());
     mysql_query("set character set utf8");
 
     $conn = mysqli_connect($servername, $username, $password, $dbname);
     mysqli_query($conn, "SET NAMES UTF8");
-
+    
     include 'patient_viewdata_db.php';
     include 'meaning_patient.php';
+    
+    $test = "SELECT * FROM calendar_info WHERE patient_hn = '$patient_hn'  LIMIT 1";
+    $test2 = mysqli_query($conn, $test);
+    $val = mysqli_fetch_array($test2);
+    $num_rows = mysqli_num_rows($test2);
+    
+    //wheter num_visit more than zero
+    $t = "SELECT * FROM summary WHERE patient_hn = '$patient_hn'";
+    $t2 = mysqli_query($conn, $t);
+    $loop = mysqli_num_rows($t2);
+//    echo $loop;
 ?>
 
     <head>
@@ -80,7 +92,7 @@
                                    เยี่ยมบ้านครั้งล่าสุด
                                     </small>
                                         <br>
-                                        <?php echo $last_visit ?>
+                                        <?php echo $val['dmy']; ?>
                                         <!--20/6/2559 <small>(บ่าย)</small>-->
                                     </div>
                                     <div class="uk-margin-bottom"> <small class="uk-text-muted">
@@ -115,32 +127,47 @@
                             <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
                                 <div class="mdl-tabs__tab-bar">
                                     <a href="#profile-panel" class="mdl-tabs__tab is-active">ข้อมูลผู้ป่วย</a>
-                                    <a href="#summary-panel" class="mdl-tabs__tab ">สรุปเยี่ยมบ้าน</a>
+                                    <?php if($loop>0) echo '<a href="#summary-panel-exist" class="mdl-tabs__tab ">สรุปเยี่ยมบ้าน</a>';
+                                    else echo '<a href="#summary-panel-none" class="mdl-tabs__tab ">สรุปเยี่ยมบ้าน</a>'
+                                             
+                                    ?>
+                                    
                                 </div>
                                 <!--/.mdl-tabs__tab-bar-->
-                                <div class="mdl-tabs__panel" id="summary-panel">
+                                <div class="mdl-tabs__panel" id="summary-panel-exist">
                                     <div class="uk-margin uk-margin-top">
                                         <div class="uk-text-left uk-float-left uk-width-1-2 ui small form">
                                             <div id="multi-summary" class="ui compact selection dropdown">
                                                 <input type="hidden" name="summary-view">
                                                 <i class="dropdown icon"></i>
-                                                <div class="default text">สรุปเยี่ยมบ้านครั้งที่ 5 (15 พฤษภาคม 2560)</div>
+<!--                                                <div class="default text">สรุปเยี่ยมบ้าน</div>-->
                                                 <div class="menu">
-                                                    <div class="item" data-value="male" data-text="Male">
-                                                        สรุปเยี่ยมบ้านครั้งที่ 5 (15 พฤษภาคม 2560)
-                                                    </div>
-                                                    <div class="item" data-value="female" data-text="สรุปเยี่ยมบ้านครั้งที่ 4 (1 พฤษภาคม 2560)">
-                                                        สรุปเยี่ยมบ้านครั้งที่ 4 (1 พฤษภาคม 2560)
-                                                    </div>
-                                                    <div class="item" data-value="female" data-text="Female">
-                                                        สรุปเยี่ยมบ้านครั้งที่ 3 (1 พฤษภาคม 2560)
-                                                    </div>
-                                                    <div class="item" data-value="female" data-text="Female">
-                                                        สรุปเยี่ยมบ้านครั้งที่ 2 (1 พฤษภาคม 2560)
-                                                    </div>
-                                                    <div class="item" data-value="female" data-text="Female">
-                                                        สรุปเยี่ยมบ้านครั้งที่ 1 (1 พฤษภาคม 2560)
-                                                    </div>
+                                                    <?php 
+                                        
+                                                        $run = 0;
+                                                        $sum = "SELECT * FROM summary WHERE patient_hn = '$patient_hn'";
+                                                        $sumq= mysqli_query($conn, $sum);
+                                                        while ($sumreslut = mysqli_fetch_array($sumq)){
+                                                            $Id_app = $sumreslut['calendar_id'];
+                                                            $sum2cal = "SELECT dmy FROM calendar_info WHERE Id_app = '$Id_app'";
+                                                            $sum2calq = mysqli_query($conn,$sum2cal);
+                                                            $sum2calre = mysqli_fetch_array($sum2calq);
+                                                            if ($run==0){
+                                                                 echo '<div class="default text">สรุปเยี่ยมบ้านวันที่ '.$sum2calre['dmy'].'</div>'
+                                                                     .'<div class="item" data-value="'.$sum2calre['dmy'].'" data-text="สรุปเยี่ยมบ้านวันที่ '.$sum2calre['dmy'].'">'.
+                                                                    'สรุปเยี่ยมบ้านวันที่ '.$sum2calre['dmy'].' '.
+                                                                '</div>'; 
+                                                            }
+                                                            else {
+                                                                 echo '<div class="item" data-value="male" data-text="Male">'.
+                                                                    'สรุปเยี่ยมบ้านวันที่ '.$sum2calre['dmy'].' '.
+                                                                '</div>'; 
+                                                            }
+                                                            
+                                                            $run++;
+                                                        }
+                                                    ?>
+                                                    
                                                 </div>
                                             </div>
                                             <a type="submit" class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">search</i></a>
@@ -161,7 +188,9 @@
                                     </div>
                                 </div>
                                 <!--/#summary-panel-->
-
+                                <div class="mdl-tabs__panel" id="summary-panel-none">
+                                "ไม่พบข้อมูลสรุปเยี่ยมบ้าน"
+                                </div>
                                 <div class="mdl-tabs__panel is-active" id="profile-panel">
                                     <div class="uk-float-right">
                                         <a href="<?php echo "patient_print.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" target="_blank" title="พิมพ์ข้อมูลผู้ป่วย" uk-tooltip>
