@@ -366,50 +366,7 @@
     $conn->query($sumSQL);
     mysql_db_query($dbname, $sumSQL) or die (mysql_error());
     mysql_close();
-    
-    header("location: summary.php");
+    header("location: summary.php?cal=".$calendar_id);
 ?>
 
-    <head>
-        <?php include "head.html"?>
-    </head>
-
-    <body>
-        <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-
-            <?php include "header.html"?>
-
-                <main class="mdl-layout__content mdl-color--grey-100">
-                    <div class="mdl-grid demo-content">
-
-                        <!--breadcrumb-->
-                        <ul class="uk-breadcrumb breadcrumb">
-                            <li><a href="summary.php" class="uk-button-text"><i class="material-icons breadcrumb-icons">folder_shared</i> สรุปเยี่ยมบ้าน</a></li>
-                            <li>เพิ่มสรุปเยี่ยมบ้าน</li>
-                        </ul>
-
-                        <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-                            <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
-                                <div class="uk-text-center">
-                                    <h4>กรุณารอสักครู่</h4>
-                                    <div class="mdl-spinner mdl-js-spinner is-active"></div>
-                                    <p>กำลังบันทึกสรุปเยี่ยมบ้านครั้งที่
-                                        <?php echo $num_visit; ?> วันที่
-                                            <?php echo $visit_date; ?>
-                                    </p>
-                                    ของ <span class="text-green"><?php echo $patient_name." (HN ".$patient_hn.")"; ?></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/.demo-content-->
-                </main>
-        </div>
-
-        <!--custom js-->
-        <script src="js/select.js"></script>
-        <script src="js/stepper.js"></script>
-
-    </body>
-
-</html>
+    

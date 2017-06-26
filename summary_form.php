@@ -14,7 +14,7 @@
 
     $patient_hn = $_GET['hn'];
     $calendar_id = $_GET['calendar_id'];
-
+//    echo ">>>>".$calendar_id.$patient_hn;
     include "summary_view_db.php";
 ?>
 
@@ -39,8 +39,9 @@
                 </ul>
 
                 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
-
-                    <form action="<?php echo "summary_save.php?hn=".$patient_hn."&calendar_id=".$calendar_id; ?>" method="post">
+                        
+                    <form action="<?php echo "summary_save.php?hn=".$patient_hn."&calendar_id=".$_GET['calendar_id'];?>" method="post">
+                        
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
                             <ul class="uk-subnav uk-subnav-pill stepper" uk-switcher>
                                 <li id="step1" class="step active"><a href="#" title="ข้อมูลทั่วไป" uk-tooltip>1</a></li>

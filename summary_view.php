@@ -41,10 +41,10 @@
 
                 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col">
                     <div class="mdl-card__menu">
-                        <a href="<?php echo "summary_print.php?hn=".$patient_hn."&calendar_id=".$calendar_id ?>" target="_blank" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์สรุปเยี่ยมบ้านนี้" uk-tooltip>
+                        <a href="<?php echo "summary_print.php?hn=".$patient_hn."&calendar_id=".$_GET['calendar_id']; ?>" target="_blank" class="mdl-button mdl-button--icon mdl-button--colored" title="พิมพ์สรุปเยี่ยมบ้านนี้" uk-tooltip>
                             <i class="material-icons">print</i>
                         </a>
-                        <a href="<?php echo "summary_form.php?hn=".$patient_hn."&calendar_id=".$calendar_id ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขสรุปเยี่ยมบ้านนี้" uk-tooltip>
+                        <a href="<?php echo "summary_form.php?hn=".$patient_hn."&calendar_id=".$_GET['calendar_id']; ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขสรุปเยี่ยมบ้านนี้" uk-tooltip>
                             <i class="material-icons">edit</i>
                         </a>
                     </div>
