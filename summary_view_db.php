@@ -1,12 +1,8 @@
 <?php
     $patient_hn = $_GET['hn'];
-    $mySQL = "SELECT * FROM calendar_info WHERE calendar_info.patient_hn LIKE '$patient_hn'";
-    $myQuery = mysql_db_query($dbname, $mySQL) or die (mysql_error());
-    $myrow = mysql_fetch_array($myQuery);
-    $calendar_id = $myrow['Id_app'];
-
+    $calendar_id = $_GET['calendar_id'];
     #calendar_info
-    $calendarSQL = "SELECT * FROM calendar_info WHERE calendar_info.Id_app LIKE '$calendar_id'";
+    $calendarSQL = "SELECT * FROM calendar_info WHERE Id_app = '$calendar_id'";
     $calendarQuery = mysql_db_query($dbname, $calendarSQL) or die (mysql_error());
     $calendarData = mysql_fetch_array($calendarQuery);
 
@@ -43,7 +39,6 @@
     $sumSQL = "SELECT * FROM summary WHERE patient_hn='$patient_hn' AND calendar_id='$calendar_id' ";
     $sumQuery = mysql_db_query($dbname, $sumSQL) or die (mysql_error());
     $sumData = mysql_fetch_array($sumQuery);
-
 $visit_status = $sumData['visit_status'];
 $visit_type = $sumData['visit_type'];
 $summary_status = $sumData['summary_status'];
