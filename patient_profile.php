@@ -19,7 +19,6 @@
     mysqli_query($conn, "SET NAMES UTF8");
 
     include 'patient_viewdata_db.php';
-    include 'summary_view_latest_db.php';
     include 'meaning_patient.php';
 ?>
 
@@ -54,7 +53,15 @@
                                     </div>
                                     <small class="uk-text-muted">เพศ</small>
                                     <br>
-                                    <?php echo $patient_gender ?>
+                                    <?php
+                                    if ($patient_gender == 1) {
+                                      echo "ชาย";
+                                    }else if($patient_gender==2) {
+                                      echo "หญิง";
+                                    }else {
+                                      echo "-";
+
+                                    } ?>
                                 </div>
                                 <div class="uk-width-1-4@m">
                                     <div class="uk-margin-bottom"> <small class="uk-text-muted">แพทย์เจ้าของไข้</small>
@@ -169,14 +176,9 @@
                                         <a href="<?php echo "patient_print.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" target="_blank" title="พิมพ์ข้อมูลผู้ป่วย" uk-tooltip>
                                             <i class="material-icons">print</i>
                                         </a>
-                                        <?php
-                                            if($right == 1) {
-
-                                            echo '<a href="<?php echo "patient_form.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขข้อมูลผู้ป่วย" uk-tooltip>'
-                                                    .'<i class="material-icons">edit</i>'.'</a>';
-                                            }
-                                        ?>
-
+                                        <a href="<?php echo "patient_form.php?hn=".$patient_hn ?>" class="mdl-button mdl-button--icon mdl-button--colored" title="แก้ไขข้อมูลผู้ป่วย" uk-tooltip>
+                                            <i class="material-icons">edit</i>
+                                        </a>
                                     </div>
                                     <div class="uk-margin-top">
                                         <?php include 'patient_viewdata.php' ?>

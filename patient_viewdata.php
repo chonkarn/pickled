@@ -33,7 +33,18 @@
     </dd>
 
     <dt>เพศ</dt>
-    <dd><?php echo $patient_gender ?></dd>
+    <dd>
+      <?php
+      if ($patient_gender == 1) {
+        echo "ชาย";
+      }else if($patient_gender==2) {
+        echo "หญิง";
+      }else {
+        echo "-";
+
+      }
+      ?>
+    </dd>
 
     <dt>วัน เดือน ปีเกิด</dt>
     <dd><?php echo $patient_bday." ".$patient_bmonth." ".$patient_byear ?></dd>
@@ -348,11 +359,11 @@
     <dt>ผู้บันทึกข้อมูล</dt>
     <dd>
         <?php
-            $tbuserSQL = "SELECT * FROM tbuser WHERE user='$user'";
-            $tbuserQuery = mysqli_query($conn, $tbuserSQL);
-            $tbuserData = mysqli_fetch_assoc($tbuserQuery);
-            echo $tbuserData['f_user']." ".$tbuserData['l_user']." (".$tbuserData['user'].")"
+            // $tbuserSQL = "SELECT * FROM tbuser WHERE user='$user'";
+            // $tbuserQuery = mysqli_query($conn, $tbuserSQL);
+            // $tbuserData = mysqli_fetch_assoc($tbuserQuery);
+            // echo $tbuserData['f_user']." ".$tbuserData['l_user']." (".$tbuserData['user'].")"
         ?>
-        <!--นพ.ประสงค์ ทรงธรรม (013651) เมื่อวันที่ 24/09/2559-->
+        <!-- นพ.ประสงค์ ทรงธรรม (013651) เมื่อวันที่ 24/09/2559 -->
     </dd>
 </dl>

@@ -14,12 +14,8 @@ $patient_pname = $row['patient_p_name'];
 $patient_fname = $row['patient_name'];
 $patient_lname = $row['patient_surname'];
 $patient_name = $patient_pname." ".$patient_fname." ".$patient_lname;
-
 $patient_id = $row['patient_id'];
-if($patient_id == NULL) { $patient_id = "-"; }
-
 $patient_gender = $row['patient_gender'];
-if($patient_gender == NULL) { $patient_gender = "-"; }
 
 # Date
 date_default_timezone_set("Asia/Bangkok");
@@ -37,16 +33,12 @@ if ($patient_bday != 0 && $patient_bmonth != 0 && $patient_byear != 0){
   $patient_age = $diff->y." ปี ".$diff->m." เดือน ".$diff->d." วัน";
 }
 else {
-  $patient_age = "ไม่มีข้อมูล";
-  $patient_birthday = "ไม่มีข้อมูล";
+  $patient_age = "-";
 }
 
 $patient_status = $row['patient_status'];
-
 $patient_religion = $row['patient_religion'];
-
 $patient_occupation = $row['patient_occupation'];
-
 $patient_education = $row['patient_education'];
 
 # Healthinsure
@@ -135,5 +127,7 @@ $relate_tel = $row['relate_tel'];
 if($relate_tel == NULL) { $relate_tel = "-"; }
 $relate_def = $row['relate_def'];
 if($relate_def == NULL) { $relate_def = "-"; }
+
+// include 'meaning_patient.php';
 
 ?>

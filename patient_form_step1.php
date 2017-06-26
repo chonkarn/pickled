@@ -1,5 +1,7 @@
 <div class="uk-form-horizontal">
     <h4 class="uk-heading-divider">ส่วนที่ 1 ข้อมูลทั่วไป</h4>
+    <span class="uk-text-danger">* จำเป็นต้องกรอก</span>
+
     <div class="uk-margin">
         <label class="uk-form-label">รหัสโรงพยาบาล</label>
         <div class="uk-form-controls uk-form-controls-text">
@@ -27,7 +29,7 @@
         </div>
     </div>
     <div class="uk-margin">
-        <label class="uk-form-label">แพทย์เจ้าของไข้</label>
+        <label class="uk-form-label">แพทย์เจ้าของไข้ <span class="uk-text-danger">*</span></label>
         <div class="uk-form-controls">
             <?php
                 $query = "SELECT user, f_user, l_user
@@ -46,17 +48,17 @@
         </div>
     </div>
     <div class="uk-margin">
-        <label class="uk-form-label">เลขบัตรประชาชน</label>
+        <label class="uk-form-label">เลขบัตรประชาชน <span class="uk-text-danger">*</span></label>
         <div class="uk-form-controls">
             <div class="ui input">
               <div class="field">
-                <input name="patient_id" type="number" value="<?php echo $patient_id ?>">
+                <input name="patient_id" type="number" value="<?php echo $patient_id ?>" placeholder="เลขบัตรประชาชน 13 หลัก">
               </div>
             </div>
         </div>
     </div>
     <div class="uk-margin">
-        <label class="uk-form-label">ชื่อ-นามสกุล</label>
+        <label class="uk-form-label">ชื่อ-นามสกุล <span class="uk-text-danger">*</span></label>
         <div class="uk-form-controls">
             <div class="ui small form">
                 <div class="fields">
@@ -292,7 +294,7 @@
     </div>
 
     <div class="uk-margin">
-        <label class="uk-form-label">เบอร์โทรติดต่อ</label>
+        <label class="uk-form-label">เบอร์โทรติดต่อ <span class="uk-text-danger">*</span></label>
         <div class="uk-form-controls">
             <div class="ui mini form">
                 <div class="fields">

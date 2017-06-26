@@ -48,7 +48,12 @@
     <div class="uk-margin" style="visibility:hidden;" id="div_alcohol">
         <label class="uk-form-label">ปัญหาการดื่มสุรา</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <input type="checkbox" class="uk-checkbox" name="alcohol_problem" id="alcohol_problem" <?php if($alcohol_problem==1){echo "checked";} ?> /> มีปัญหา <small>(ในกรณีดื่มอยู่ หรือเลิกดื่มแล้ว)</small>
+          <div class="ui checkbox">
+            <input type="checkbox" tabindex="1" class="hidden" name="alcohol_problem" id="alcohol_problem" value="1" <?php if($alcohol_problem==1){echo "checked";} ?> />
+            <label>มีปัญหา <small>(ในกรณีดื่มอยู่ หรือเลิกดื่มแล้ว)</small></label>
+          </div>
+
+            <!-- <input type="checkbox" class="uk-checkbox" name="alcohol_problem" id="alcohol_problem"  /> มีปัญหา <small>(ในกรณีดื่มอยู่ หรือเลิกดื่มแล้ว)</small> -->
         </div>
     </div>
 
@@ -66,8 +71,21 @@
         <div class="uk-form-controls uk-form-controls-text">
             <small>ถ้ากำลังสูบ หรือเลิกสูบแล้ว โปรดระบุปริมาณการสูบบุหรี่</small>
             <br>
-            <label class="uk-margin-right"> จำนวนมวน <input class="uk-input uk-form-width-xsmall uk-form-small" type="number" value="" id="cigarette_amount" name="cigarette_amount" <?php if($cigarette_amount!=NULL){echo $cigarette_amount;} ?> /> / วัน</label>
-            <label class="uk-margin-right"> ระยะเวลาการสูบ <input class="uk-input uk-form-width-xsmall uk-form-small" type="number" valu="" id="cigarette_period" name="cigarette_period" <?php if($cigarette_period!=NULL){echo $cigarette_period;} ?> /> / ปี</label>
+            <div class="ui mini form">
+              <div class="inline fields">
+                <label>จำนวนมวน</label>
+                <div class="inline two wide field">
+                   <input type="number" value="" id="cigarette_amount" name="cigarette_amount" <?php if($cigarette_amount!=NULL){echo $cigarette_amount;} ?> />
+                </div>
+                / วัน
+
+                <label class="uk-margin-left">ระยะเวลาการสูบ</label>
+                <div class="inline two wide field">
+                   <input type="number" valu="" id="cigarette_period" name="cigarette_period" <?php if($cigarette_period!=NULL){echo $cigarette_period;} ?> />
+                </div>
+                / ปี
+              </div>
+            </div>
         </div>
     </div>
 
@@ -76,56 +94,56 @@
     <div class="uk-margin">
         <label class="uk-form-label">สถานะทางการเงิน</label>
         <div class="uk-form-controls uk-form-controls-text">
-            <input class="uk-checkbox" type="checkbox" id="money_problem" name="money_problem" value="1" <?php if($money_problem == 1){ echo "checked"; } ?> /> มีปัญหา
+          <div class="ui checkbox">
+            <input type="checkbox" tabindex="1" class="hidden" id="money_problem" name="money_problem" value="1" <?php if($money_problem == 1){ echo "checked"; } ?> />
+            <label>มีปัญหา</label>
+          </div>
+
+            <!-- <input class="uk-checkbox" type="checkbox" id="money_problem" name="money_problem" value="1"  /> มีปัญหา -->
         </div>
     </div>
     <div class="uk-margin">
         <label class="uk-form-label">ประวัติโรคในครอบครัว</label>
         <div class="uk-form-controls uk-form-controls-text">
-
-
           <div class="ui checkbox">
-            <input type="checkbox" tabindex="1" class="hidden" <?php if($hypertansion == 1){ echo "checked"; } ?> />
+            <input type="checkbox" tabindex="1" class="hidden" value="1" name="hypertansion" <?php if($hypertansion == 1){ echo "checked"; } ?> />
             <label>Hypertension</label>
           </div>
           <br>
           <div class="ui checkbox">
-            <input type="checkbox" tabindex="2" class="hidden" <?php if($diabetes_mellitus == 1){ echo "checked"; } ?> />
+            <input type="checkbox" tabindex="2" class="hidden" value="1" name="diabetes_mellitus" <?php if($diabetes_mellitus == 1){ echo "checked"; } ?> />
             <label>Diabetes mellitus</label>
           </div>
           <br>
           <div class="ui checkbox">
-            <input type="checkbox" tabindex="3" class="hidden" <?php if($dyslipidemia == 1){ echo "checked"; } ?> />
+            <input type="checkbox" tabindex="3" class="hidden" value="1" name="dyslipidemia" <?php if($dyslipidemia == 1){ echo "checked"; } ?> />
             <label>Dyslipidemia</label>
           </div>
           <br>
           <div class="ui checkbox">
-            <input type="checkbox" tabindex="4" class="hidden" <?php if($stroke == 1){ echo "checked"; } ?> />
+            <input type="checkbox" tabindex="4" class="hidden" value="1" name="stroke" <?php if($stroke == 1){ echo "checked"; } ?> />
             <label>Stroke</label>
           </div>
           <br>
           <div class="ui checkbox">
-            <input type="checkbox" tabindex="5" class="hidden" <?php if($cad == 1){ echo "checked"; } ?> />
+            <input type="checkbox" tabindex="5" class="hidden" value="1" name="cad" <?php if($cad == 1){ echo "checked"; } ?> />
             <label>CAD</label>
           </div>
           <br>
-          <div class="ui checkbox">
-            <input type="checkbox" tabindex="6" class="hidden" <?php if($cancer == 1){ echo "checked"; } ?> />
+          <div class="ui checkbox" id="cancer" onclick="cancer_check()">
+            <input type="checkbox" tabindex="6" class="hidden" value="1" name="cancer" <?php if($cancer == 1){ echo "checked"; } ?> />
             <label>Cancer:</label>
           </div>
           <div class="ui mini input focus">
               <input type="text" id="cancer_input" name="cancer_input" placeholder="โปรดระบุ" value="<?php echo $cancer_input ?>" style="visibility:hidden;">
           </div>
           <br>
-          <div class="ui checkbox">
-            <input type="checkbox" tabindex="7" class="hidden" <?php if($other == 1){ echo "checked"; } ?> />
+          <div class="ui checkbox" id="other" onclick="other_check()">
+            <input type="checkbox" tabindex="7" class="hidden" value="1" name="other" <?php if($other == 1){ echo "checked"; } ?> />
             <label>Other:</label>
           </div>
           <div class="ui mini input focus">
               <input type="text" id="other_input" name="other_input" placeholder="โปรดระบุ" value="<?php echo $other_input ?>" style="visibility:hidden;">
           </div>
-
-
-
         </div>
     </div>

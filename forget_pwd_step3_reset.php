@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php 
+<?php
 $username = $_GET["username"];
     ?>
 <head>
@@ -47,15 +47,15 @@ $username = $_GET["username"];
                     <input class="uk-input" id="form-stacked-text" type="password" name="new_pwd_re"placeholder="กรอกรหัสผ่านอีกครั้ง">
                 </div>
                 <div class="uk-margin uk-text-center">
-                    <button class="uk-button uk-button-primary uk-button-green">บันทึก</button>
+                    <button class="uk-button uk-button-default button-green">บันทึก</button>
                 </div>
             </form>
         </div>
     </main>
-    
+
     <!--jquery-->
     <script src="js/jquery-3.1.1.min.js"></script>
-    
+
     <!--js-->
     <script src="lib/mdl/material.min.js"></script>
     <script src="lib/uikit/js/uikit.min.js"></script>

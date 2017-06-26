@@ -40,25 +40,25 @@
       <div class="inline fields">
         <div class="field">
           <div class="ui radio checkbox">
-            <input type="radio" name="reason_visit" tabindex="0" class="hidden" <?php if($reason_visit==1){ echo "checked"; } ?> disabled/>
+            <input type="radio" name="reason_visit" tabindex="1" class="hidden" <?php if($reason_visit==1){ echo "checked"; } ?> disabled/>
             <label>Assessment</label>
           </div>
         </div>
         <div class="field">
           <div class="ui radio checkbox">
-            <input type="radio" name="reason_visit" tabindex="0" class="hidden" <?php if($reason_visit==2){ echo "checked"; } ?> disabled/>
+            <input type="radio" name="reason_visit" tabindex="2" class="hidden" <?php if($reason_visit==2){ echo "checked"; } ?> disabled/>
             <label>Illness management</label>
           </div>
         </div>
         <div class="field">
           <div class="ui radio checkbox">
-            <input type="radio" name="reason_visit" tabindex="0" class="hidden" <?php if($reason_visit==3){ echo "checked"; } ?> disabled/>
+            <input type="radio" name="reason_visit" tabindex="3" class="hidden" <?php if($reason_visit==3){ echo "checked"; } ?> disabled/>
             <label>Palliative</label>
           </div>
         </div>
         <div class="field">
           <div class="ui radio checkbox">
-            <input type="radio" name="reason_visit" tabindex="0" class="hidden" <?php if($reason_visit==4){ echo "checked"; } ?> disabled/>
+            <input type="radio" name="reason_visit" tabindex="4" class="hidden" <?php if($reason_visit==4){ echo "checked"; } ?> disabled/>
             <label>Post hospitalized</label>
           </div>
         </div>

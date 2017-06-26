@@ -43,6 +43,7 @@
 
                     <form action="<?php echo "patient_save.php?hn=".$patient_hn; ?>" method="post" enctype="multipart/form-data" class="ui form">
                         <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+                          
                             <ul class="uk-subnav uk-subnav-pill stepper" uk-switcher>
                                 <li id="step1" class="step three active"><a href="#" title="ข้อมูลทั่วไป" uk-tooltip>1</a></li>
                                 <li id="step2" class="step three"><a href="#" title="รายละเอียดของปัญหา" uk-tooltip>2</a></li>

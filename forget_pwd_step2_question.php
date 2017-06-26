@@ -13,7 +13,7 @@
         break;
     case 4:
         $question = "หนังสือเล่มโปรดของคุณชื่ออะไร";
-        break;        
+        break;
     case 5:
         $question = "โทรศัพท์เครื่องแรกยี่ห้ออะไร";
         break;
@@ -53,7 +53,7 @@
             </div>
         </div>
     </header>
-  
+
     <main class="mdl-grid demo-content">
         <div id="login">
             <h2 class="uk-text-center uk-text-green">รีเซ็ตรหัสผ่าน</h3>
@@ -64,15 +64,15 @@
                     <input class="uk-input" id="form-stacked-text" type="text" id="answer" name="answer" placeholder="คำตอบ">
                 </div>
                 <div class="uk-margin uk-text-right">
-                    <button class="uk-button uk-button-primary uk-button-green">ยืนยัน</button>
+                    <button class="uk-button uk-button-default button-green">ยืนยัน</button>
                 </div>
             </form>
         </div>
     </main>
-    
+
     <!--jquery-->
     <script src="js/jquery-3.1.1.min.js"></script>
-    
+
     <!--js-->
     <script src="lib/mdl/material.min.js"></script>
     <script src="lib/uikit/js/uikit.min.js"></script>
