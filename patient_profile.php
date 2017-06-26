@@ -52,16 +52,7 @@
                                         <?php echo $patient_age ?>
                                     </div>
                                     <small class="uk-text-muted">เพศ</small>
-                                    <br>
-                                    <?php
-                                    if ($patient_gender == 1) {
-                                      echo "ชาย";
-                                    }else if($patient_gender==2) {
-                                      echo "หญิง";
-                                    }else {
-                                      echo "-";
-
-                                    } ?>
+                                    <br><?php echo $patient_gender; ?>
                                 </div>
                                 <div class="uk-width-1-4@m">
                                     <div class="uk-margin-bottom"> <small class="uk-text-muted">แพทย์เจ้าของไข้</small>

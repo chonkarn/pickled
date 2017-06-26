@@ -15,6 +15,7 @@ switch($patient_visit_type){
 switch($patient_gender){
     case 1: $patient_gender = 'ชาย'; break;
     case 2: $patient_gender = 'หญิง'; break;
+    default: $patient_gender = '-';
 }
 
 switch($patient_status){

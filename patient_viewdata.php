@@ -34,16 +34,7 @@
 
     <dt>เพศ</dt>
     <dd>
-      <?php
-      if ($patient_gender == 1) {
-        echo "ชาย";
-      }else if($patient_gender==2) {
-        echo "หญิง";
-      }else {
-        echo "-";
-
-      }
-      ?>
+      <?php echo $patient_gender; ?>
     </dd>
 
     <dt>วัน เดือน ปีเกิด</dt>

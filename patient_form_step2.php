@@ -75,13 +75,13 @@
               <div class="inline fields">
                 <label>จำนวนมวน</label>
                 <div class="inline two wide field">
-                   <input type="number" value="" id="cigarette_amount" name="cigarette_amount" <?php if($cigarette_amount!=NULL){echo $cigarette_amount;} ?> />
+                   <input type="number" value="" id="cigarette_amount" name="cigarette_amount" value="<?php if($cigarette_amount != NULL) { echo $cigarette_amount; } ?>" />
                 </div>
                 / วัน
 
                 <label class="uk-margin-left">ระยะเวลาการสูบ</label>
                 <div class="inline two wide field">
-                   <input type="number" valu="" id="cigarette_period" name="cigarette_period" <?php if($cigarette_period!=NULL){echo $cigarette_period;} ?> />
+                   <input type="number" valu="" id="cigarette_period" name="cigarette_period" value="<?php if($cigarette_period != NULL) { echo $cigarette_period; } ?>" />
                 </div>
                 / ปี
               </div>
